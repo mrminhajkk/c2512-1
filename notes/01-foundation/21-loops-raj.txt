@@ -1,0 +1,103 @@
+o Choosing the loop 
+o function : Why 
+
+if requirement from customer,
+ask question to get clear.
+-------------------------------------
+loops: for, while, do-while
+-------------------------------------
+when to use what?
+	number of iterations is known,
+	go for for loop.
+	
+	if not known, go for one other loops.
+-------------------------------------	
+for loop:
+	printing number bt 1 and 100
+-------------------------------------	
+keep on adding a number till we get zero number.		
+	int sum = 0, a;
+	do {
+		a = int.Parse(Console.ReadLine());
+		sum += a;
+	}
+	while(a != 0);
+-------------------------------------
+keep on adding a number till we get negative number.	
+	int sum = 0, a;
+	a = int.Parse(Console.ReadLine());
+	while(a >= 0){
+		sum += a;
+		a = int.Parse(Console.ReadLine());	
+	}
+-------------------------------------
+Functions: Focus on reusability
+-------------------------------------
+Add two integers
+	Worst Design
+-------------------------------------
+public static void add()
+{
+	int a = int.Parse(Console.ReadLine());
+	int b = int.Parse(Console.ReadLine());
+	int sum = a + b;
+	Console.WriteLine("The sum is: " + sum);
+}	
+public static void Main(string[] args)
+{
+	add();
+}
+-------------------------------------
+the function gets data only from keyboard.
+the function puts sum on console.
+These two happening inside the function.
+
+user of the function is another programmer.
+function will be used by many users(programmers)
+Here, another programer may require to use add functionality
+not to read, add, print all inside the function. 	
+-------------------------------------
+public static void add(int a, int b)
+{
+	int sum = a + b;
+	Console.WriteLine("The sum is: " + sum);
+}	
+public static void Main(string[] args)
+{
+	int a = int.Parse(Console.ReadLine());
+	int b = int.Parse(Console.ReadLine());
+	add(a,b);
+}
+-------------------------------------
+	==>
+-------------------------------------		
+public static void add(int a, int b)
+{
+	int sum = a + b;
+	return sum;
+}	
+public static void Main(string[] args)
+{
+	int a = int.Parse(Console.ReadLine());
+	int b = int.Parse(Console.ReadLine());
+	int sum = add(a,b);
+	Console.WriteLine("The sum is: " + sum);
+}
+-------------------------------------
+Add two integers
+	Best Design
+-------------------------------------	
+public static void add(int a, int b)
+{
+	int sum = a + b;
+	return sum;
+}	
+public static void Main(string[] args)
+{
+	int x = add(4,5);
+	int y = add(10,add(2,3));
+}
+-------------------------------------
+Functions:
+	Chances are that you may never write code 
+	for console input/output in your career.

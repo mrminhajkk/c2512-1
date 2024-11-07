@@ -37,7 +37,7 @@ Problem Statement:
     13. Sana E
         to convert decimal num into binary 
     14. Sooraj M V
-        to print the vowels in the str
+        to print the vowels in the str        
     15. Sreya K:
         to check the largest of three nums 
     16. Vinayak S Kaimal

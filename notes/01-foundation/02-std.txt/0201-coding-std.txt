@@ -1,0 +1,99 @@
+C++ coding standards help developers write code 
+that is consistent, readable, and maintainable. 
+Here are some widely accepted C++ coding standards:
+
+`1. `Naming Conventions`
+   - `Variables`: Use `camelCase` or `snake_case` for variable names (e.g., `myVariable` or `my_variable`). Avoid abbreviations, especially for public members.
+   - `Constants`: Use `ALL_CAPS` for constants (e.g., `MAX_SIZE`).
+   - `Functions`: Use `camelCase` for function names (e.g., `computeArea()`).
+   - `Classes and Structs`: Use `PascalCase` (e.g., `MyClass`).
+   - `Namespaces`: Use `lowercase` for namespaces (e.g., `namespace myproject`).
+   - `Member Variables`: Use a prefix like `m_` or `_` (e.g., `m_value` or `_value`) for private member variables.
+
+`2. `Code Organization`
+   - `Header Guards`: Use `#pragma once` or include guards in header files:
+     ```cpp
+     #ifndef MY_HEADER_H
+     #define MY_HEADER_H
+     // Header code
+     #endif // MY_HEADER_H
+     ```
+   - `Class Declarations in Headers`: Define classes in header files (`.h` or `.hpp`) and implement them in source files (`.cpp`).
+   - `Function Declarations`: Keep function declarations in headers and definitions in source files, unless the function is a short inline function.
+   - `Namespace Usage`: Avoid using `using namespace std;` in headers, as it can pollute the global namespace.
+
+`3. `Formatting`
+   - `Indentation`: Use consistent indentation (usually 2 or 4 spaces). Avoid tabs, as they can vary in appearance across different editors.
+   - `Braces`: Use the "Allman" style or "K&R" style consistently.
+     ```cpp
+     // Allman style
+     if (condition)
+     {
+         // code
+     }
+     ```
+     ```cpp
+     // K&R style
+     if (condition) {
+         // code
+     }
+     ```
+   - `Line Length`: Keep lines shorter than 80-100 characters where possible.
+   - `Whitespace`: Use whitespace to improve readability around operators, after commas, and around control flow keywords.
+
+`4. `Commenting and Documentation`
+   - `Document Functions`: Use comments to describe the purpose of functions, parameters, return values, and potential exceptions.
+     ```cpp
+     /`
+      * Computes the area of a rectangle.
+      * @param width - width of the rectangle.
+      * @param height - height of the rectangle.
+      * @return area of the rectangle.
+      */
+     double computeArea(double width, double height);
+     ```
+   - `In-line Comments`: Use in-line comments sparingly, focusing on complex logic or assumptions.
+
+`5. `Error Handling`
+   - `Prefer Exceptions Over Error Codes`: Use exceptions to handle errors in C++ where appropriate. Define custom exception classes for specific error types if needed.
+   - `Use `try`/`catch` Blocks`: Handle exceptions gracefully and avoid unnecessary `catch(...)` blocks that catch all exceptions.
+   - `Avoid `goto` Statements`: Avoid using `goto`, as it makes the code flow harder to follow.
+
+`6. `Memory Management`
+   - `Use RAII (Resource Acquisition Is Initialization)`: Manage resources with objects that automatically clean up in their destructors.
+   - `Use Smart Pointers`: Use `std::unique_ptr` for exclusive ownership and `std::shared_ptr` for shared ownership to avoid manual memory management with `new` and `delete`.
+   - `Avoid Raw Pointers When Possible`: Prefer `std::vector`, `std::string`, and other standard containers over raw arrays and `char*`.
+
+`7. `Use of `const``
+   - `Immutable Data`: Use `const` for immutable data, both for variables and function parameters.
+   - `Const Member Functions`: Mark member functions as `const` if they don’t modify the object state.
+     ```cpp
+     class MyClass {
+     public:
+         int getValue() const { return value; }
+     private:
+         int value;
+     };
+     ```
+
+`8. `Efficient Use of Standard Libraries`
+   - `Avoid `std::endl``: Prefer `\n` over `std::endl` for performance, as `std::endl` also flushes the buffer.
+   - `Use STL Algorithms and Containers`: Prefer the Standard Template Library (STL) containers (e.g., `std::vector`, `std::map`) and algorithms (e.g., `std::sort`, `std::find`) for safe and optimized data handling.
+
+`9. `Best Practices for Classes and Functions`
+   - `Limit Class Responsibility`: Follow the Single Responsibility Principle by designing classes that have one clear purpose.
+   - `Avoid Large Functions`: Split large functions into smaller, manageable functions. A function should ideally do one thing only.
+   - `Prefer `explicit` Keyword`: Use `explicit` for single-argument constructors to prevent unintended implicit conversions.
+   - `Prefer Initialization Lists`: Use member initialization lists in constructors to initialize members instead of assignment in the constructor body.
+   - `Delete Unused Functions`: Use `= delete` to explicitly delete functions you don’t want to allow (like copy constructors or assignment operators).
+     ```cpp
+     MyClass(const MyClass&) = delete;
+     MyClass& operator=(const MyClass&) = delete;
+     ```
+
+`10. `Testing and Validation`
+   - `Unit Testing`: Use unit testing frameworks (like Google Test) to write tests for individual classes and functions.
+   - `Assertions`: Use `assert` for conditions that must always be true in debug mode to catch programming errors.
+   - `Continuous Integration`: Integrate tests into a CI/CD pipeline to catch issues early and ensure code quality.
+
+Following these standards will result in clean, maintainable, and reliable C++ code.

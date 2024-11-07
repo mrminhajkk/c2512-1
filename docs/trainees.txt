@@ -1,37 +1,81 @@
+Date: Wed, 06/11/2024 afternoon
+1 Abel Mathew Simon   2 Athira KS           3 Ayisha Dhiyana PS 
+4 Bhagya S Kumar      5 Dhaheen Rahman
+6 Josh Danny Alex     7 M Venkatesh         
+8 Nimisha K           9 Pitchumani S M      10 S T Vishakh
+11 Sana E              12 Sooraj M V          13 Sreya K
+14 Vinayak S Kaimal    15 Nayana Haridas
+
+11 8 3 10 14 6 5 15 9 4 1 7 12 2 13
+Sana E, Nimisha K, Ayisha Dhiyana PS,
+S T Vishakh, Vinayak S Kaimal,
+
+Josh Danny Alex, Dhaheen Rahman,
+Nayana Haridas, Pitchumani S M, Bhagya S Kumar,
+
+Abel Mathew Simon, M Venkatesh, 
+Sooraj M V, Athira KS, Sreya K
+
+
+Date: Wed, 07/11/2024 Morning
+Abel Mathew Simon   Athira KS       Ayisha Dhiyana PS 
+Bhagya S Kumar      Bhagya Saimol[?]   Dhaheen Rahman
+Josh Danny Alex     M Venkatesh     Minhaj K K[?]
+Nimisha K           Pitchumani S M[..y]  S T Vishakh
+Sana E              Sooraj M V      Sreya K
+Vinayak S Kaimal    Nayana Haridas
+--
+
 Abel Mathew Simon  : Dual | 24gb | Linux [Y]
     CSE, Java | github [Y]
+    https://github.com/abelmathew07/C2512
 Athira KS : Windows | 4gb | virual box [X] | 
     CES, Java | github [Y]
+    https://github.com/Athiraksagm/c2512
 Ayisha Dhiyana PS : windows | 16 gb | vbx [ubuntu] [Y]
     ECE, C  | github [Y]
+    https://github.com/AyishaDhiyana/C2512
 Bhagya S Kumar : 4gb |Win | wsl | vbox [ubuntu] [X]
     EEE, C | github [Y]
+    https://github.com/24bhagya/C2512
 Bhagya Saimol : win | 8gb | vbox [unbuntu] [X]
     ECE, Java | github [?]
 Dhaheen Rahman : 8gb, win / ubuntu [Y] 
     CSE, Java, C, JS | github [Y]
+    https://github.com/dhaheenrahman/c2512
 Josh Danny Alex: win, 8gb, wsl [ubuntu terminal] | vbox[ubuntu] 
     CSE, Python, C | github [Y]
+    https://github.com/JoshAlex12/c2512
 M Venkatesh: win, 8gb, vbox [ubuntu] [X]    
     CSE, C, C++, Python, JS | github [Y]
+    https://github.com/venkymuddam/C2512
 Minhaj K K : win, 8gb, vbox [ununtu] [Y]
     CSE, C, Java, Python  | github [Y]
 Nimisha K: win, 8gb, dual win/ubuntu [Y]
     ITE, Java, C, Python  | github [Y]
+    https://github.com/Nimisha-ab/c2512
 Pitchumani S M: win, 8gb, vbox[ubuntu] [X]
     ITE, Python | github [Y]
+    https://github.com/Pitchu-mani/C2512
 S T Vishakh: 16gb, Dual win/linux [ubuntu] [Y]
     ECE, C, Python | github [Y]
+    https://github.com/vishakh02/c2512
 Sana E: win/linux, 4gb [Y] 
     CSE, C, Basic Python | github [Y]
+    https://github.com/Sanae0312/c2512
 Sooraj M V: win/linux, 4gb [Y]
     CSE, Python, JS | github [Y]
+    https://github.com/srjmv00/C2512
 Sreya K: win/linux, 4gb [Y]
     EEC, C | github [?]
+    https://github.com/Sreya-Ops/c2512
 Vinayak S Kaimal: win, 16gb,vbox [ubuntu] [In Progress..]
     ECE, C, JS | github [Y]
+    https://github.com/vinayakskaimal372001/c2512/
+    ??
 Nayana Haridas: ------------------
     -------------------
+    https://github.com/nayana-a11y/c--.git
 
 Date: Wed, 06/11/2024
 Abel Mathew Simon   Athira KS       Ayisha Dhiyana PS 
