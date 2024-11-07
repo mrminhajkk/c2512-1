@@ -16,15 +16,15 @@
 16. Factorials of the number. [Josh]
 17. Fibonacci. [Abel]
 18. to print prime numbers between in the limit. [Abel]  
-19. to find an element from the array. 
-20. to find the largest number from array. 
-21. to sort the elements in the array. 
-22. to find sum of n numbers.
-23. to display the duplicate numbers in the array.
-24. to check string anagram. 
-25. to find length of the string.  
-26. to delete duplicates strings in sting list.  
-27. to count vowels in a string.  
+19. to find an element from the array. [Sana]
+20. to find the largest number from array. [Josh] 
+21. to sort the elements in the array. [Abel]
+22. to find sum of n numbers. [Sana]
+23. to display the duplicate numbers in the array. [Josh]
+24. to check string anagram. [Abel]
+25. to find length of the string.  [Sana]
+26. to delete duplicates strings in sting list. [Josh] 
+27. to count vowels in a string.  [Abel]
 28. to count whitespaces in a sentence.  
 
 
