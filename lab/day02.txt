@@ -1,0 +1,11 @@
+1. findAverage (to find average of two numbers) [Sana Team]
+2. findSquare
+3. isDivisibleByThree (to check nubmer is divisible by 3.) [Abel Team] 
+4. calculateCube
+5. swapNums (swap two numbers.) [Josh Team]
+6. isDivisibleBy27
+7. printNaturalNumbers
+8. isArmstrong
+
+
+

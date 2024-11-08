@@ -1,24 +1,32 @@
 9750592159, Maheswaran Whatsapp
-Date: Wed, 06/11/2024 afternoon
+Date: Fri, 07/11/2024 
 1 Abel Mathew Simon   2 Athira KS           3 Ayisha Dhiyana PS 
-4 Bhagya S Kumar      5 Dhaheen Rahman
+4 Bhagya S Kumar      5 Dhaheen Rahman 
+6 Josh Danny Alex     7 M Venkatesh         
+8 Nimisha K           9 Pitchumani S M     10 S T Vishakh
+11 Sana E              12 Sooraj M V          13 Sreya K
+14 Vinayak S Kaimal    15 Nayana Haridas
+
+Date: Thu, 06/11/2024 afternoon
+1 Abel Mathew Simon   2 Athira KS           3 Ayisha Dhiyana PS 
+4 Bhagya S Kumar      5 Dhaheen Rahman 
 6 Josh Danny Alex     7 M Venkatesh         
 8 Nimisha K           9 Pitchumani S M      10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas
 
 11 8 3 10 14 6 5 15 9 4 1 7 12 2 13
-Sana E, Nimisha K, Ayisha Dhiyana PS,
-S T Vishakh, Vinayak S Kaimal,
+Sana E=, Nimisha K=, Ayisha Dhiyana PS=,
+S T Vishakh=, Vinayak S Kaimal=,
 
-Josh Danny Alex, Dhaheen Rahman,
-Nayana Haridas, Pitchumani S M, Bhagya S Kumar,
+Josh Danny Alex=, Dhaheen Rahman=,
+Nayana Haridas=, Pitchumani S M=, Bhagya S Kumar=,
 
-Abel Mathew Simon, M Venkatesh, 
-Sooraj M V, Athira KS, Sreya K
+Abel Mathew Simon=, M Venkatesh=, 
+Sooraj M V=, Athira KS=, Sreya K=
 
 
-Date: Wed, 07/11/2024 Morning
+Date: Thu, 07/11/2024 Morning
 Abel Mathew Simon   Athira KS       Ayisha Dhiyana PS 
 Bhagya S Kumar      Bhagya Saimol[?]   Dhaheen Rahman
 Josh Danny Alex     M Venkatesh     Minhaj K K[?]
@@ -70,7 +78,7 @@ Sooraj M V: win/linux, 4gb [Y]
 Sreya K: win/linux, 4gb [Y]
     EEC, C | github [?]
     https://github.com/Sreya-Ops/c2512
-Vinayak S Kaimal: win, 16gb,vbox [ubuntu] [In Progress..]
+Vinayak S Kaimal: win, 16gb,vbox [ubuntu - 11] [In Progress..]
     ECE, C, JS | github [Y]
     https://github.com/vinayakskaimal372001/c2512/
     ??
