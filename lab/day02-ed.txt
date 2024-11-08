@@ -507,7 +507,8 @@ void isDivisibleByThreeTesttwo(void)
     if (result == true) 
     {
         cout << "The number is divisible by 3" << endl;
-    } else 
+    } 
+    else 
     {
         cout << "The number is not divisible by 3" << endl;
     }

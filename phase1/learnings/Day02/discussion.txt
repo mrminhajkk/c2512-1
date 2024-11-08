@@ -12,7 +12,7 @@
 12. to check number is odd or even. [Abel]
 13. to check a year leap. [Sana]
 14. to check a number perfect square or not. [Sana]  
-15. Reverse the number.  [Josh]
+15. Reverse the number.  
 16. Factorials of the number. [Josh]
 17. Fibonacci. [Abel]
 18. to print prime numbers between in the limit. [Abel]  
@@ -25,7 +25,7 @@
 25. to find length of the string.  [Sana]
 26. to delete duplicates strings in sting list. [Josh] 
 27. to count vowels in a string.  [Abel]
-28. to count whitespaces in a sentence.  
+28. to count whitespaces in a sentence.  [Josh]
 
 
 str = hello 
