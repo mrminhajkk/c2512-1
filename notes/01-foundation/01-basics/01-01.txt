@@ -1,0 +1,58 @@
+`Machine Language` is 
+    the most fundamental level of programming language, 
+    consisting solely of 
+        binary code—strings of 0s and 1s—
+        that is directly understood by a computer's CPU. 
+
+Key Characteristics of Machine Language:
+1. `Binary Format`: 
+    Instructions are written in binary (such as `10101010`), 
+    which corresponds to specific operations 
+    in the hardware's instruction set.
+2. `Machine-Dependent`: 
+    Machine language is unique to each type of computer architecture, 
+    meaning that code written 
+    for one type of CPU generally won’t work on another.
+3. `No Abstractions`: 
+    Unlike higher-level languages, 
+    machine language provides no abstractions for developers, 
+    which makes it challenging and complex to use.
+4. `High Performance`: 
+    Since instructions are executed directly 
+    by the CPU without translation, 
+    programs in machine language have fast execution times, 
+    ideal for time-critical applications.
+
+Example of Machine Language:
+An example of machine language 
+might look like `0000 0101 1111 0001`. 
+Each segment corresponds to an operation or 
+a specific instruction 
+(e.g., "add two numbers," 
+"move data to a register," etc.), 
+determined by the architecture’s instruction set.
+
+Advantages:
+- `Efficiency`: 
+Code executes very quickly 
+as it's directly processed by the CPU.
+- `Direct Hardware Control`:
+Machine language allows complete control over hardware, 
+which is useful for systems programming or tasks 
+that require hardware manipulation.
+
+Disadvantages:
+- `Complexity`: 
+Writing and understanding binary code is error-prone and 
+requires thorough knowledge of the CPU architecture.
+- `Lack of Portability`: 
+Code written for one type of hardware typically won’t run 
+on another without significant modification.
+
+Machine language forms the foundation of software 
+but is rarely used by modern programmers. 
+Instead, higher-level languages 
+that are easier to read and write 
+are typically compiled or interpreted 
+into machine language before execution.
+
