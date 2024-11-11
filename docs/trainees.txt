@@ -30,8 +30,8 @@ S T Vishakh=, Vinayak S Kaimal=,
 Josh Danny Alex=, Dhaheen Rahman=,
 Nayana Haridas=, Pitchumani S M=, Bhagya S Kumar=,
 
-Abel Mathew Simon=, M Venkatesh=, 
-Sooraj M V=, Athira KS=, Sreya K=
+Abel Mathew Simon, M Venkatesh, 
+Sooraj M V, Athira KS=, Sreya K, minhaj
 
 
 Date: Thu, 07/11/2024 Morning
