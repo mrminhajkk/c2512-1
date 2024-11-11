@@ -8,7 +8,7 @@ maximum salary,
 odd salaries sum (example: Rs.5001), and
 2nd minimum odd salary.  
 Check maximum salary is also prime salary.
-Use coding standards and best practices to write pseudo code and c# code.
+Use coding standards and best practices to write pseudo code and c++ code.
 Plan the task codes to make as reusable functions.
 
 
@@ -22,7 +22,7 @@ minimum age,
 odd ages sum (example: 51), and
 2nd maximum adult age.  
 Check minimum age is also prime age.
-Use coding standards and best practices to write pseudo code and c# code.
+Use coding standards and best practices to write pseudo code and c++ code.
 Plan the task codes to make as reusable functions.
 
 
@@ -36,5 +36,45 @@ minimum temperature,
 odd temperatures sum (example: 31), and
 2nd maximum odd temperature.  
 Check minimum temperature is also prime temperature.
-Use coding standards and best practices to write pseudo code and c# code.
+Use coding standards and best practices to write pseudo code and c++ code.
 Plan the task codes to make as reusable functions.
+
+
+
+---01---
+function readSalaries(salaries -> [int], size -> int&)
+function findSum(salaries -> [int], size -> int) -> int 
+function findAverage(salaries -> [int], size -> int) -> float
+function isPrime(number -> int) -> bool 
+function findPrimeSalariesCount(salaries -> [int], size -> int) -> int 
+function isNumberMinimum4Digit(number -> int) -> bool 
+function findMin4DigitSalariesCount(salaries -> [int], size -> int) -> int 
+function findMaxSalary(salaries -> [int], size -> int) -> int 
+function isOdd(number -> int) -> bool
+function findSumOfOddSalaries(salaries -> [int], size -> int) -> int
+function find2ndMinOddSalary(salaries -> [int], size -> int) -> int
+function Test()
+    //salaries [int]
+    size = 0
+    readSalaries(salaries, size) 
+    averageSalary = findAverage(salaires, size)
+    primeSalariesCount = findPrimeSalariesCount(salaires, size)
+    min4DigitSalariesCount = findMin4DigitSalariesCount(salaires, size)
+    maxSalary = findMaxSalary(salaires, size)
+    sumOfOddSalaries = findSumOfOddSalaries(salaires, size)
+    secondMinOddSalary = find2ndMinOddSalary(salaires, size)
+    print averageSalary
+    print primeSalariesCount
+    print min4DigitSalariesCount
+    print maxSalary
+    print sumOfOddSalaries
+    print secondMinOddSalary
+    if isPrime(maxSalary) 
+        print "Max Salary is prime"
+    else 
+        print "Max Salary is not prime"
+pseudoMain 
+
+
+
+

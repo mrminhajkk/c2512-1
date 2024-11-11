@@ -24,8 +24,8 @@ Date: Thu, 06/11/2024 afternoon
 14 Vinayak S Kaimal    15 Nayana Haridas
 
 11 8 3 10 14 6 5 15 9 4 1 7 12 2 13
-Sana E=, Nimisha K=, Ayisha Dhiyana PS=,
-S T Vishakh=, Vinayak S Kaimal=,
+Sana E, Nimisha K, Ayisha Dhiyana PS,
+S T Vishakh, Vinayak S Kaimal,
 
 Josh Danny Alex=, Dhaheen Rahman=,
 Nayana Haridas=, Pitchumani S M=, Bhagya S Kumar=,
