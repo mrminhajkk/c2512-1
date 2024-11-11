@@ -8,18 +8,30 @@ loops: for, while, do-while
 -------------------------------------
 when to use what?
 	number of iterations is known,
-	go for for loop.
+	go for `for loop`.
 	
-	if not known, go for one other loops.
+	if not known, go for one other loops,
+	`while loop` and `do-while loop`.
 -------------------------------------	
 for loop:
 	printing number bt 1 and 100
 -------------------------------------	
 keep on adding a number till we get zero number.		
+//logically wrong but technically correct 
 	int sum = 0, a;
 	do {
 		a = int.Parse(Console.ReadLine());
 		sum += a;
+	}
+	while(a != 0);
+
+
+//logically correct
+int sum = 0, a;
+	do {
+		a = int.Parse(Console.ReadLine());
+		if(a != 0)
+			sum += a;
 	}
 	while(a != 0);
 -------------------------------------
