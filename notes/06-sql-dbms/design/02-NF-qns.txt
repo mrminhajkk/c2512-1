@@ -4,6 +4,22 @@
 Qn:
 Solve:
     Problem:
+        Student Courses
+        Table: STUDENT_COURSES_UNF
+        Columns:
+        - StudentID
+        - StudentName
+        - Address
+        - Course1ID
+        - Course1Name
+        - Course1Grade
+        - Course2ID
+        - Course2Name
+        - Course2Grade
+        - Course3ID
+        - Course3Name
+        - Course3Grade
+
         UNF: STUDENT_COURSES {StudentID, StudentName, Address, 
                 Course1ID, Course1Name, Course1Grade, 
                 Course2ID, Course2Name, Course2Grade,
@@ -27,6 +43,23 @@ Solve:
 Qn:
 Solve: 
     Problem:
+        Order Details
+        Table: ORDER_DETAILS_UNF
+        Columns:
+        - OrderID
+        - CustomerID
+        - CustomerName
+        - OrderDate
+        - Product1ID
+        - Product1Name
+        - Product1Quantity
+        - Product1Price
+        - Product2ID
+        - Product2Name
+        - Product2Quantity
+        - Product2Price
+
+
         UNF: Order_Details {OrderID,  CustomerID,  CustomerName,  OrderDate,  
                     Product1ID,  Product1Name,  Product1Quantity,  Product1Price,  
                     Product2ID,  Product2Name,  Product2Quantity,  Product2Price}
@@ -56,6 +89,20 @@ Solve:
     
 
 Solve: 
+    Employee Projects
+    Table: EMPLOYEE_PROJECTS_UNF
+    Columns:
+    - EmployeeID
+    - EmployeeName
+    - DepartmentID
+    - DepartmentName
+    - Project1ID
+    - Project1Name
+    - Project1Hours
+    - Project2ID
+    - Project2Name
+    - Project2Hours
+
     Problem: EMPLOYEE_PROJECT {EmployeeID, EmployeeName,
         DepartmentID, DepartmentName, 
         Project1ID, Project1Name, Project1Hours, 
@@ -63,12 +110,386 @@ Solve:
 
 
 Solve: 
+    Library Transactions
+    Table: LIBRARY_TRANSACTIONS_UNF
+    Columns:
+    - TransactionID
+    - MemberID
+    - MemberName
+    - TransactionDate
+    - Book1ID
+    - Book1Title
+    - Book1DueDate
+    - Book2ID
+    - Book2Title
+    - Book2DueDate
+
     Problem: LIBRARY_TRANSACTIONS {TransactionID, MemberID, MemberName, TransactionDate, 
         Book1ID, Book1Title, Book1DueDate, 
         Book2ID, Book2Title, Book2DueDate}
 
         
 Solve: 
+    Sales Data
+    Table: SALES_DATA_UNF
+    Columns:
+    - SaleID
+    - StoreID
+    - StoreLocation
+    - SaleDate
+    - Product1ID
+    - Product1Name
+    - Product1Quantity
+    - Product1Revenue
+    - Product2ID
+    - Product2Name
+    - Product2Quantity
+    - Product2Revenue
+
     Problem: Table: SALES_DATA{SaleID, StoreID, StoreLocation, SaleDate, 
         Product1ID, Product1Name, Product1Quantity, Product1Revenue, 
         Product2ID, Product2Name, Product2Quantity, Product2Revenue}
+
+
+
+
+
+=======================
+
+
+step-by-step example of normalizing a table 
+from UNF to 6NF using only column names:
+
+Original Table (Unnormalized Form - UNF)
+
+`Table: CourseDetails_UNF`
+```
+Columns:
+- CourseID
+- CourseName
+- InstructorID
+- InstructorName
+- DepartmentID
+- DepartmentName
+- Students (repeating group)
+```
+
+First Normal Form (1NF)
+
+`Table: CourseDetails_1NF`
+```
+Columns:
+- CourseID
+- CourseName
+- InstructorID
+- InstructorName
+- DepartmentID
+- DepartmentName
+- StudentID
+```
+- `Reasoning`: Converted repeating groups into atomic values.
+
+Second Normal Form (2NF)
+
+`Table: CourseDetails_2NF`
+```
+Columns:
+- CourseID
+- CourseName
+- InstructorID
+- DepartmentID
+- StudentID
+
+`Table: Instructor`
+Columns:
+- InstructorID
+- InstructorName
+
+`Table: Department`
+Columns:
+- DepartmentID
+- DepartmentName
+```
+- `Reasoning`: Removed partial dependencies; 
+`CourseID` is the primary key, 
+and `InstructorID` and `DepartmentID` are foreign keys.
+
+Third Normal Form (3NF)
+
+`Table: CourseDetails_3NF`
+```
+Columns:
+- CourseID (Primary Key)
+- InstructorID (Foreign Key)
+- DepartmentID (Foreign Key)
+
+`Table: Instructor`
+Columns:
+- InstructorID (Primary Key)
+- InstructorName
+
+`Table: Department`
+Columns:
+- DepartmentID (Primary Key)
+- DepartmentName
+```
+- `Reasoning`: Removed transitive dependencies; 
+all non-key attributes are fully dependent on the primary key.
+
+Boyce-Codd Normal Form (BCNF)
+
+`Table: CourseDetails_BCNF`
+```
+Columns:
+- CourseID (Primary Key)
+- InstructorID (Foreign Key)
+- DepartmentID (Foreign Key)
+
+`Table: Instructor`
+Columns:
+- InstructorID (Primary Key)
+- InstructorName
+
+`Table: Department`
+Columns:
+- DepartmentID (Primary Key)
+- DepartmentName
+```
+- `Reasoning`: Ensured all determinants are superkeys; 
+no functional dependencies violate BCNF.
+
+Fourth Normal Form (4NF)
+
+`Table: CourseDetails_4NF`
+```
+Columns:
+- CourseID (Primary Key)
+- InstructorID (Foreign Key)
+- DepartmentID (Foreign Key)
+
+`Table: Instructor`
+Columns:
+- InstructorID (Primary Key)
+- InstructorName
+
+`Table: Department`
+Columns:
+- DepartmentID (Primary Key)
+- DepartmentName
+
+`Table: CourseStudent`
+Columns:
+- CourseID (Foreign Key)
+- StudentID
+```
+- `Reasoning`: Removed multi-valued dependencies; 
+split into separate tables 
+where each table has a single independent 
+set of multi-valued dependencies.
+
+Fifth Normal Form (5NF)
+
+`Table: CourseDetails_5NF`
+```
+Columns:
+- CourseID (Primary Key)
+- InstructorID (Foreign Key)
+- DepartmentID (Foreign Key)
+
+`Table: Instructor`
+Columns:
+- InstructorID (Primary Key)
+- InstructorName
+
+`Table: Department`
+Columns:
+- DepartmentID (Primary Key)
+- DepartmentName
+
+`Table: CourseStudent`
+Columns:
+- CourseID (Foreign Key)
+- StudentID
+
+`Table: CourseInstructorDepartment`
+Columns:
+- CourseID (Foreign Key)
+- InstructorID (Foreign Key)
+- DepartmentID (Foreign Key)
+```
+- `Reasoning`: 
+Removed join dependencies; 
+decomposed into smaller tables to eliminate redundancy 
+while ensuring that all decomposed tables 
+can be joined without loss of information.
+
+Sixth Normal Form (6NF)
+
+`Table: CourseDetails_6NF`
+```
+Columns:
+- CourseID (Primary Key)
+- InstructorID (Foreign Key)
+- DepartmentID (Foreign Key)
+
+`Table: Instructor`
+Columns:
+- InstructorID (Primary Key)
+- InstructorName
+
+`Table: Department`
+Columns:
+- DepartmentID (Primary Key)
+- DepartmentName
+
+`Table: CourseStudent`
+Columns:
+- CourseID (Foreign Key)
+- StudentID
+
+`Table: CourseInstructorDepartment`
+Columns:
+- CourseID (Foreign Key)
+- InstructorID (Foreign Key)
+- DepartmentID (Foreign Key)
+
+`Table: InstructorDepartmentTime`
+Columns:
+- InstructorID (Foreign Key)
+- DepartmentID (Foreign Key)
+- TimeID (Primary Key)
+```
+- `Reasoning`: Removed temporal dependencies; 
+decomposed tables to include time-based attributes where necessary, 
+ensuring no additional temporal dependencies affect the database schema.
+
+Each step addresses specific types of anomalies and dependencies 
+to progressively refine the table schema, 
+ultimately leading to a more normalized and 
+efficient database design.
+
+=======================
+
+Sample Unnormalized Form (UNF) table 
+with column names that you can use 
+for practicing normalization through all the normal forms:
+
+Unnormalized Form (UNF)
+
+`Table: CourseEnrollment_UNF`
+```
+Columns:
+- CourseID
+- CourseName
+- InstructorID
+- InstructorName
+- DepartmentID
+- DepartmentName
+- StudentID
+- StudentName
+- EnrollmentDate
+```
+
+In this table:
+- `CourseID` represents a unique identifier for each course.
+- `CourseName` is the name of the course.
+- `InstructorID` and `InstructorName` provide details about the instructor.
+- `DepartmentID` and `DepartmentName` provide details about the department offering the course.
+- `StudentID` and `StudentName` give details about the students enrolled in the course.
+- `EnrollmentDate` represents when the student enrolled in the course.
+
+You can use this table to perform the normalization steps from UNF through 6NF.
+
+=======================
+
+Another example of a Unnormalized Form (UNF) table 
+with column names for practicing normalization:
+
+Unnormalized Form (UNF)
+
+`Table: EmployeeProject_UNF`
+```
+Columns:
+- EmployeeID
+- EmployeeName
+- ProjectID
+- ProjectName
+- DepartmentID
+- DepartmentName
+- Skills (repeating group)
+- HoursWorked
+```
+
+In this table:
+- `EmployeeID` represents a unique identifier for each employee.
+- `EmployeeName` is the name of the employee.
+- `ProjectID` and `ProjectName` give details about the projects the employee is working on.
+- `DepartmentID` and `DepartmentName` provide information about the department to which the employee belongs.
+- `Skills` is a repeating group of skills that the employee possesses.
+- `HoursWorked` indicates the number of hours worked on a project by the employee.
+
+You can use this table to practice converting 
+from UNF to 1NF, 2NF, 3NF, BCNF, 4NF, 5NF, and 6NF.
+
+=======================
+
+Here are three more examples of Unnormalized Form (UNF) tables 
+with column names for practicing normalization:
+
+Example 1: Sales Order
+
+`Table: SalesOrder_UNF`
+```
+Columns:
+- OrderID
+- CustomerID
+- CustomerName
+- OrderDate
+- ProductID
+- ProductName
+- ProductQuantity
+- UnitPrice
+- ShippingAddress
+- DeliveryDate
+- PaymentMethod
+```
+
+Example 2: Hotel Booking
+
+`Table: HotelBooking_UNF`
+```
+Columns:
+- BookingID
+- CustomerID
+- CustomerName
+- RoomID
+- RoomType
+- CheckInDate
+- CheckOutDate
+- Services (repeating group)
+- TotalAmount
+- PaymentStatus
+```
+
+Example 3: Patient Visit
+
+`Table: PatientVisit_UNF`
+```
+Columns:
+- VisitID
+- PatientID
+- PatientName
+- DoctorID
+- DoctorName
+- DepartmentID
+- DepartmentName
+- VisitDate
+- Diagnosis (repeating group)
+- Prescription (repeating group)
+- FollowUpDate
+```
+
+These tables should provide a variety of scenarios 
+to practice normalization through all the normal forms.
+
+=======================
