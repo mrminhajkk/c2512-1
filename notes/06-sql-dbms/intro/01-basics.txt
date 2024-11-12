@@ -1,0 +1,106 @@
+1. `Introduction to Database`
+   - A database is a collection of organized information 
+   that can be easily accessed, managed, and updated.
+   - In Oracle, databases are structured 
+   to store large amounts of data, 
+   allowing users to retrieve and manipulate it efficiently.
+   - Oracle Database is a widely used RDBMS known 
+   for its scalability, performance, and security.
+
+2. `Introduction to RDBMS`
+   - Relational Database Management System (RDBMS) organizes data 
+   into tables (relations) and 
+   uses Structured Query Language (SQL) for data manipulation.
+   - Oracle is an RDBMS that supports 
+   relational data structures and enforces integrity constraints.
+
+3. `Characteristics of Database Management System (DBMS)`
+   - `Data Abstraction`: 
+   Hides complex data structures, 
+   presenting data at different levels 
+   (conceptual, logical, physical).
+   - `Data Independence`: 
+   Ensures changes in data structure do not affect applications.
+   - `Efficient Data Access`: 
+   Uses indexing, caching, and query optimization 
+   to improve performance.
+   - `Data Integrity and Security`: 
+   Ensures accurate data through 
+   integrity constraints and 
+   secure access 
+   through authorization mechanisms.
+   - `Concurrency Control`: 
+   Manages simultaneous access 
+   using locking mechanisms.
+   - `Transaction Management`: 
+   Maintains data consistency 
+   through atomicity, consistency, isolation, and durability 
+   (ACID) properties.
+
+4. `Data Modeling`
+   - Data modeling is the process of creating 
+   a visual representation of the database structure 
+   to organize data logically.
+   - Oracle supports data models at different levels: 
+   conceptual, logical, and physical.
+   - Entity-Relationship (ER) diagrams are commonly used 
+   in data modeling 
+   to define entities and relationships.
+
+5. `Relational Data Modeling`
+   - Relational data modeling involves designing tables 
+   to represent data entities and 
+   establishing relationships between them.
+   - In Oracle, each entity is represented as a table 
+   with columns and rows.
+   - Relationships are formed using foreign keys, and 
+   data integrity is maintained through primary keys and constraints.
+
+6. `Normalization`
+   - Normalization is the process of organizing data 
+   to reduce redundancy and improve integrity.
+   - The main stages are:
+     - `First Normal Form (1NF)`: 
+     Eliminates duplicate columns and 
+     creates separate tables for related data.
+     - `Second Normal Form (2NF)`: 
+     Ensures all non-key attributes are 
+     fully dependent on the primary key.
+     - `Third Normal Form (3NF)`: 
+     Ensures that non-key attributes 
+     are independent of each other.
+   - Oracle recommends normalization 
+   to avoid data anomalies and maintain data integrity.
+
+7. `Transaction`
+   - A transaction is a set of SQL statements 
+   that perform a single logical unit of work, 
+   with ACID properties:
+     - `Atomicity`: 
+     All or nothing principle.
+     - `Consistency`: 
+     Database remains consistent before and after the transaction.
+     - `Isolation`: 
+     Each transaction operates independently until completion.
+     - `Durability`: 
+     Results are permanent even after a system failure.
+   - In Oracle, transactions start 
+   with a SQL operation and end 
+   with a `COMMIT` or `ROLLBACK`.
+
+8. `Types of Keys`
+   - `Primary Key`: 
+    Unique identifier for table records. 
+    Each table should have one primary key.
+   - `Foreign Key`: 
+    Ensures referential integrity 
+    by linking columns in two tables.
+   - `Candidate Key`: 
+    Columns that can uniquely identify rows 
+    but are not chosen as primary keys.
+   - `Composite Key`: 
+    A primary key formed 
+    by combining multiple columns.
+   - `Unique Key`: 
+    Ensures values in a column or 
+    set of columns are unique.

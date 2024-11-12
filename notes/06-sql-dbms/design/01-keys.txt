@@ -1,0 +1,95 @@
+Types of keys 
+commonly used in database management, 
+especially in Oracle:
+
+1. `Primary Key`
+   - A primary key is a unique identifier for each record in a table.
+   - It ensures that no two rows have the same value in this column(s).
+   - The primary key cannot contain `NULL` values.
+   - Example: In a `Students` table, `StudentID` could serve as the primary key.
+
+2. `Foreign Key`
+   - A foreign key is a field or collection of fields in one table that uniquely identifies a row in another table.
+   - It creates a relationship between two tables, enforcing referential integrity.
+   - Example: In an `Orders` table, `CustomerID` might be a foreign key referencing `CustomerID` in the `Customers` table.
+
+3. `Candidate Key`
+   - A candidate key is a column, or a set of columns, that can uniquely identify any row in a table.
+   - Each table can have multiple candidate keys, but only one can be the primary key.
+   - Example: In an `Employees` table, both `EmployeeID` and `NationalID` might be candidate keys.
+
+4. `Composite Key`
+   - A composite key is a primary key that consists of two or more columns to uniquely identify each row.
+   - Useful when a single column is not sufficient for uniqueness.
+   - Example: In a `CourseRegistration` table, `StudentID` and `CourseID` together could form a composite key.
+
+5. `Unique Key`
+   - A unique key ensures that all values in a column or set of columns are distinct across rows.
+   - Unlike the primary key, a unique key can contain a single `NULL` value (in some databases).
+   - Example: In a `Users` table, `Email` might be a unique key to prevent duplicate email entries.
+
+6. `Super Key`
+   - A super key is a set of one or more columns (attributes) that, taken collectively, allow unique identification of a row in a table.
+   - Every primary key is a super key, but not every super key is a primary key.
+   - Example: `{StudentID, Email}` could be a super key in a `Students` table if both columns together ensure uniqueness.
+
+7. `Alternate Key`
+   - An alternate key is any candidate key that is not selected as the primary key.
+   - These keys provide alternate ways to access data within a table.
+   - Example: In an `Employees` table, if `EmployeeID` is the primary key, `NationalID` can be considered an alternate key.
+
+8. `Surrogate Key`
+   - A surrogate key is an artificial or system-generated key, often a unique number, used as a primary key.
+   - It has no business meaning but provides a unique identifier for each row.
+   - Example: A table with an `ID` column that autoincrements for each new row.
+
+These keys are essential in relational database design 
+as they help enforce data integrity, 
+establish relationships, and 
+optimize data retrieval.
+
+Other specialized types of keys 
+that may be used in database design, 
+especially in complex relational models. 
+Here are some additional key types:
+
+9. `Natural Key`
+   - A natural key is a key with a real-world meaning, derived from data attributes that exist naturally in the data.
+   - Unlike surrogate keys, natural keys are based on actual business data and do not need to be system-generated.
+   - Example: In a `Books` table, `ISBN` (International Standard Book Number) could be a natural key as it uniquely identifies each book.
+
+10. `Compound Key`
+   - Similar to a composite key, a compound key is formed by combining multiple columns to create a unique identifier for each row in the table.
+   - The term "compound" often implies the combination of foreign keys from related tables to form the key.
+   - Example: In an `Enrollment` table, combining `StudentID` and `ClassID` might create a compound key that ensures each student can only enroll in a class once.
+
+11. `Secondary Key`
+   - A secondary key is an attribute or combination of attributes used for data retrieval purposes, not necessarily unique for each record.
+   - Secondary keys are often used as indexes to improve the speed of data retrieval.
+   - Example: In a `Customers` table, `LastName` might serve as a secondary key to allow efficient retrieval by last names, even though multiple customers can have the same last name.
+
+12. `Artificial Key`
+   - An artificial key is created when no suitable natural key exists. It's similar to a surrogate key but is intentionally introduced by designers for uniqueness.
+   - It may be used instead of or in addition to a natural key to simplify relationships.
+   - Example: Adding a unique `CustomerCode` to a `Customers` table when no single natural attribute can guarantee uniqueness.
+
+13. `Recursive Key`
+   - A recursive key is used in self-referencing tables where a row in a table has a foreign key that points back to the same table.
+   - It allows a record to relate to another record in the same table.
+   - Example: In an `Employees` table, `ManagerID` could be a recursive foreign key referring to the `EmployeeID` of another employee who is the manager.
+
+14. `Partition Key`
+   - In distributed databases, a partition key is used to distribute data across different database partitions (or nodes).
+   - It helps in distributing and organizing data efficiently across physical storage systems.
+   - Example: In a distributed sales database, `RegionID` might serve as a partition key to distribute records based on regions.
+
+15. `Composite Primary Key`
+   - Similar to a composite key but specifically refers to a primary key composed of multiple columns.
+   - It is useful when a single column is not enough to ensure uniqueness in a table.
+   - Example: In a `ProjectAssignments` table, combining `EmployeeID` and `ProjectID` might form a composite primary key to ensure each employee can only be assigned to a project once.
+
+Each of these keys serves different purposes 
+depending on the data model and use case, 
+helping to maintain data integrity, 
+optimize performance, or 
+establish relationships within and across tables.

@@ -1,0 +1,676 @@
+Table: (OrderID, ProductID, ProductName, Quantity, OrderDate)
+Candidate Key: (OrderID, ProductID)
+
+Partial Dependency: 
+    If ProductName is dependent only on ProductID and 
+    not on the entire composite key (OrderID, ProductID).
+
+Removing Partial Dependency
+    To remove partial dependencies, you 
+    split the table into two or more tables 
+    so that non, prime attributes 
+    are fully dependent on the whole candidate key.
+
+    Step, by, Step Process:
+    Identify the partial dependency: 
+        ProductName depends only on ProductID.
+    Decompose the table to remove the partial dependency.
+
+Full Functional Dependency
+    A full functional dependency means 
+    that an attribute is functionally dependent on 
+    the entire composite key, 
+    not just part of it.
+    Example: 
+        In the Order table:
+        Quantity is fully dependent on the composite key (OrderID, ProductID).
+
+Difference Between Partial and Transitive Dependency
+Partial Dependency:
+    Occurs in tables with a composite key.
+    A non, prime attribute is dependent on 
+    only part of the composite key.
+    Example: In the table 
+    (OrderID, ProductID, ProductName, OrderDate), 
+    ProductName is partially dependent on ProductID.
+
+Transitive Dependency:
+    Occurs when a non, prime attribute depends on 
+    another non, prime attribute 
+    rather than depending directly on the primary key.
+    Example: 
+        In a table (StudentID, CourseID, InstructorName, InstructorOffice):
+            If InstructorOffice depends on InstructorName, and 
+            InstructorName depends on the composite key (StudentID, CourseID), 
+            then InstructorOffice is transitively dependent on the composite key.
+
+Key Points:
+    Partial Dependency: 
+        Non, prime attribute depends on part of a composite key.
+    Transitive Dependency: 
+        Non, prime attribute depends on another non, prime attribute, 
+        which in turn depends on the primary key.
+
+Dev Communitiy 
+A direct comparison between 
+    2NF and 3NF is 
+    somewhat misleading as it is not an apples, to, apples comparison. 
+    3NF is a more sophisticated case of 2NF, and thus, 
+    it wouldn’t be fair to compare these normal forms. 
+    
+    The choice of normalization depends on your data and end goal. 
+    If you aim to reduce the main redundant data, choose 2NF. 
+    However, if you are looking to ensure referential integrity, 
+    3NF is a better choice.
+
+Geeks:
+    S.NO.	2NF(Second Normal Form)	                                        3NF(Third Normal Form)
+    1.	It is already in 1NF.	                                            It is already in 1NF as well as in 2NF also.
+    2.	In 2NF non, prime attributes are allowed 
+        to be functionally dependent on non, prime attributes.	            In 3NF non, prime attributes are only allowed to be functionally dependent on Super key of relation.
+    3.	No partial functional dependency of non, prime attributes 
+        are on any proper subset of candidate key is allowed.	
+                                                                            No transitive functional dependency of non, prime attributes on any super key is allowed. .
+    4.	Stronger normal form than 1NF but lesser than 3NF	                Stronger normal form than 1NF and 2NF.
+    5.	It eliminates repeating groups in relation.	                        It virtually eliminates all the redundancies.
+    6.	The goal of the second normal form is to eliminate redundant data.	The goal of the third normal form is to ensure referential integrity.
+
+
+
+===================
+
+Boyce-Codd Normal Form (BCNF)
+- `Definition`: A table is in BCNF if it is in 3NF and for every functional dependency \( A \rightarrow B \), \( A \) is a superkey.
+- `Objective`: Ensure that there are no anomalies due to functional dependencies.
+- `Characteristics`:
+  - No non-trivial functional dependencies where the determinant is not a superkey.
+  - A more stringent version of 3NF.
+- `Example`:
+  - If a table has a dependency where a non-candidate key attribute determines a candidate key attribute, this violates BCNF.
+  - Resolve by decomposing the table so that each determinant is a superkey.
+
+Fourth Normal Form (4NF)
+- `Definition`: A table is in 4NF if it is in BCNF and has no multi-valued dependencies.
+- `Objective`: Eliminate multi-valued dependencies to avoid redundancy and maintain data integrity.
+- `Characteristics`:
+  - No multi-valued dependencies: where one attribute determines a set of values independently of other attributes.
+- `Example`:
+  - If a table has columns (StudentID, CourseID, Hobby), where a student can have multiple courses and hobbies independently, it can lead to redundancy.
+  - Resolve by decomposing the table into two: one for student courses and one for student hobbies.
+
+Fifth Normal Form (5NF)
+- `Definition`: A table is in 5NF if it is in 4NF and 
+every join dependency is implied by the candidate keys.
+- `Objective`: Decompose tables to remove redundancy that arises from join dependencies.
+- `Characteristics`:
+  - No join dependencies that cause redundancy.
+- `Example`:
+  - If a table has a complex join dependency, where splitting it into multiple tables ensures no redundant data, it achieves 5NF.
+
+Sixth Normal Form (6NF)
+- `Definition`: A table is in 6NF if it is in 5NF and there are no non-trivial join dependencies at all.
+- `Objective`: Achieve the most granular level of normalization, often used in temporal databases.
+- `Characteristics`:
+  - Decomposed to the fullest extent to eliminate any remaining join dependencies.
+- `Example`:
+  - Used in very specialized applications, such as temporal databases where every fact is stored as an atomic value.
+
+Summary
+- `BCNF`: No non-trivial dependencies where the determinant is not a superkey.
+- `4NF`: No multi-valued dependencies.
+- `5NF`: No join dependencies causing redundancy.
+- `6NF`: Fully decomposed to remove all join dependencies, often used in specialized databases.
+
+Seventh Normal Form (7NF)
+- `Definition`: A table is in 7NF if it is in 6NF and its non-trivial join dependencies are only trivial (i.e., all join dependencies are a consequence of the candidate keys and the projection operation alone).
+- `Objective`: To ensure that each fact is represented only once, eliminating redundancy to the maximum extent.
+- `Characteristics`:
+  - Typically applied in temporal databases where time-variant data is stored.
+  - Ensures that each datum is atomic concerning time.
+  - Decomposes tables to the extent where each table contains only one non-key attribute, along with the candidate keys.
+- `Example`:
+  - Consider a temporal database where each row represents an event with a timestamp. Decomposition might lead to tables where each row contains a single piece of information about an event.
+
+Summary of Normal Forms
+1. `1NF`: Eliminate repeating groups; ensure atomicity.
+2. `2NF`: Eliminate partial dependencies.
+3. `3NF`: Eliminate transitive dependencies.
+4. `BCNF`: Ensure every determinant is a superkey.
+5. `4NF`: Eliminate multi-valued dependencies.
+6. `5NF`: Eliminate redundancy caused by join dependencies.
+7. `6NF`: Fully decompose tables to remove all join dependencies (often used in temporal databases).
+8. `7NF`: Ensure that each non-trivial join dependency is trivial, maximizing decomposition to the most atomic level.
+
+While 7NF is less commonly used and is often theoretical, 
+it is relevant in highly specialized contexts such as temporal databases, 
+where data granularity and atomicity are crucial.
+
+
+While the formalization of normal forms 
+beyond the Seventh Normal Form (7NF) 
+is not commonly encountered in practical database design, 
+there have been discussions and 
+theoretical considerations of higher normal forms. 
+
+However, these higher normal forms (8NF, 9NF, 10NF) 
+are not standard and are generally 
+not part of the conventional database normalization process. 
+
+Most of the practical normalization tasks aim 
+to achieve up to the Fifth Normal Form (5NF) or 
+Sixth Normal Form (6NF) in specialized cases. 
+Here’s a brief summary of the recognized normal forms:
+
+1. `First Normal Form (1NF)`: Eliminate repeating groups; ensure atomicity.
+2. `Second Normal Form (2NF)`: Eliminate partial dependencies.
+3. `Third Normal Form (3NF)`: Eliminate transitive dependencies.
+4. `Boyce-Codd Normal Form (BCNF)`: Ensure every determinant is a superkey.
+5. `Fourth Normal Form (4NF)`: Eliminate multi-valued dependencies.
+6. `Fifth Normal Form (5NF)`: Eliminate redundancy caused by join dependencies.
+7. `Sixth Normal Form (6NF)`: Fully decompose tables to remove all join dependencies, often used in temporal databases.
+8. `Seventh Normal Form (7NF)`: Ensure that each non-trivial join dependency is trivial, maximizing decomposition to the most atomic level.
+
+Practical Considerations
+- `Beyond 6NF/7NF`: 
+  - `Theoretical`: Higher normal forms (such as 8NF, 9NF, 10NF) would be purely theoretical and may not have practical applications or formal definitions in relational database theory.
+  - `Research`: Some researchers might explore these areas, but they are not standardized or widely adopted in database design practices.
+  - `Specialized Needs`: If there are specific use cases or specialized needs for further normalization, these would be addressed on a case-by-case basis rather than through formally defined higher normal forms.
+
+Conclusion
+In summary, 
+while higher normal forms beyond 7NF may be theoretically interesting, 
+they are not part of standard database normalization practices and are rarely, 
+if ever, implemented in practical database systems. 
+The commonly used normal forms (up to 5NF or 6NF) 
+are sufficient for ensuring data integrity, reducing redundancy, and 
+achieving efficient database design in most real-world scenarios.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Certainly! Let's start with a table in Third Normal Form (3NF) and convert it to Boyce-Codd Normal Form (BCNF).
+
+Example Table in 3NF
+
+Consider the following table for a university database:
+
+`Table: CourseEnrollment`
+```
+Columns:
+- CourseID (Primary Key)
+- InstructorID
+- InstructorName
+- DepartmentID
+- DepartmentName
+```
+
+#Functional Dependencies
+1. `CourseID → InstructorID, InstructorName, DepartmentID`
+2. `InstructorID → InstructorName`
+3. `DepartmentID → DepartmentName`
+
+Analysis for BCNF
+
+To be in BCNF, a table must be in 3NF, and every determinant (left side of a functional dependency) must be a superkey.
+
+#Check Functional Dependencies:
+1. ``CourseID → InstructorID, InstructorName, DepartmentID``
+   - `CourseID` is the primary key and is a superkey, so this dependency is fine.
+
+2. ``InstructorID → InstructorName``
+   - `InstructorID` is not a superkey (it doesn't uniquely identify a row in the table alone). Thus, this violates BCNF because `InstructorID` is a determinant, but not a superkey.
+
+3. ``DepartmentID → DepartmentName``
+   - `DepartmentID` is not a superkey (it doesn’t uniquely identify rows in the table alone). This also violates BCNF because `DepartmentID` is a determinant but not a superkey.
+
+Decomposing the Table to BCNF
+
+To convert the table to BCNF, we need to decompose it to ensure all determinants are superkeys. We will create separate tables to handle each functional dependency.
+
+#Decomposition Steps:
+
+1. `Decompose to handle `InstructorID → InstructorName``:
+   - Create a table for `InstructorID` and `InstructorName`.
+
+   `Table: Instructor`
+   ```
+   Columns:
+   - InstructorID (Primary Key)
+   - InstructorName
+   ```
+
+2. `Decompose to handle `DepartmentID → DepartmentName``:
+   - Create a table for `DepartmentID` and `DepartmentName`.
+
+   `Table: Department`
+   ```
+   Columns:
+   - DepartmentID (Primary Key)
+   - DepartmentName
+   ```
+
+3. `Handle the remaining functional dependency`:
+   - The original table is now simplified to link `CourseID`, `InstructorID`, and `DepartmentID`.
+
+   `Table: CourseEnrollment`
+   ```
+   Columns:
+   - CourseID (Primary Key)
+   - InstructorID (Foreign Key)
+   - DepartmentID (Foreign Key)
+   ```
+
+   This table captures the relationship between courses, instructors, and departments without redundancy.
+
+Summary
+
+The decomposed tables are now in BCNF:
+
+1. `Instructor`
+   - Handles the functional dependency `InstructorID → InstructorName`.
+
+2. `Department`
+   - Handles the functional dependency `DepartmentID → DepartmentName`.
+
+3. `CourseEnrollment`
+   - Contains `CourseID`, `InstructorID`, and `DepartmentID` with the remaining functional dependency handled by the key constraints.
+
+In BCNF, every determinant is a superkey, and the tables created meet this criterion. This decomposition removes redundancy and ensures that the functional dependencies are correctly managed according to BCNF principles.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A `superkey` is a set of one or more attributes (columns) that uniquely identifies each record in a table. In other words, a superkey is a combination of columns that can be used to uniquely distinguish each row in the table. A superkey can be a single column or a combination of columns.
+
+Key Concepts:
+1. `Superkey`:
+   - A superkey is a set of attributes that can uniquely identify a tuple (row) in a relation (table).
+   - It may include additional attributes beyond what is necessary for uniqueness.
+
+2. `Candidate Key`:
+   - A candidate key is a minimal superkey. This means it is a superkey that does not have any redundant attributes; removing any attribute would mean it no longer uniquely identifies tuples.
+
+3. `Primary Key`:
+   - A primary key is a candidate key chosen to uniquely identify tuples in a table. There can be multiple candidate keys, but only one is chosen as the primary key.
+
+Example
+
+Consider a table `Student` with the following columns:
+- `StudentID` (unique identifier for students)
+- `Email` (email address of students)
+- `Name` (name of students)
+
+`Functional Dependencies`:
+1. `StudentID → Name, Email`
+2. `Email → Name, StudentID`
+
+`Superkeys`:
+- `{StudentID}`: Uniquely identifies each student. This is a candidate key and hence a superkey.
+- `{Email}`: Uniquely identifies each student as well. This is another candidate key and hence a superkey.
+- `{StudentID, Email}`: This combination is also a superkey because it can uniquely identify each student. However, it's not minimal since `{StudentID}` alone is sufficient.
+
+`Primary Key`:
+- In this example, you could choose `StudentID` as the primary key, as it uniquely identifies each student.
+
+Superkey Characteristics:
+- `Uniqueness`: A superkey can uniquely identify each row in the table.
+- `Redundancy`: A superkey can have extra attributes beyond what is necessary. For example, `{StudentID, Email}` is a superkey, but `{StudentID}` is a minimal superkey (candidate key).
+
+In BCNF, every determinant (left side of a functional dependency) must be a superkey to avoid redundancy and anomalies. This ensures that the table's functional dependencies are fully managed, and all attributes are properly associated with superkeys.
+
+
+
+
+
+
+
+
+
+
+
+
+
+You’re right. The table with columns `CourseID`, `InstructorID`, `InstructorName`, `DepartmentID`, and `DepartmentName` was initially in 3NF because it satisfied the conditions for 3NF, but it did not meet the criteria for Boyce-Codd Normal Form (BCNF). 
+
+Here’s a more accurate explanation:
+
+Why the Table is in 3NF
+
+A table is in Third Normal Form (3NF) if:
+1. It is in Second Normal Form (2NF).
+2. It has no transitive dependencies (i.e., non-key attributes depend only on the primary key).
+
+For the `CourseEnrollment` table:
+- `Primary Key`: `CourseID`
+- `Non-key Attributes`: `InstructorID`, `InstructorName`, `DepartmentID`, `DepartmentName`
+
+The table is in 3NF if:
+- `No Partial Dependencies`: Each non-key attribute is fully functionally dependent on the primary key. For this table, it’s already in 2NF since `CourseID` is the primary key and determines all non-key attributes.
+- `No Transitive Dependencies`: Non-key attributes should only depend on the primary key, not on other non-key attributes.
+
+Why It’s Not in BCNF
+
+To be in Boyce-Codd Normal Form (BCNF), every determinant must be a superkey. 
+
+For the given table:
+- `Functional Dependencies`:
+  1. `CourseID → InstructorID, InstructorName, DepartmentID`
+  2. `InstructorID → InstructorName`
+  3. `DepartmentID → DepartmentName`
+
+- `Issues`:
+  - `InstructorID` is not a superkey but determines `InstructorName`.
+  - `DepartmentID` is not a superkey but determines `DepartmentName`.
+
+Correcting the Table for BCNF
+
+`Decomposition Steps`:
+
+1. `Instructor Table`:
+   ```
+   Columns:
+   - InstructorID (Primary Key)
+   - InstructorName
+   ```
+
+2. `Department Table`:
+   ```
+   Columns:
+   - DepartmentID (Primary Key)
+   - DepartmentName
+   ```
+
+3. `CourseEnrollment Table`:
+   ```
+   Columns:
+   - CourseID (Primary Key)
+   - InstructorID (Foreign Key)
+   - DepartmentID (Foreign Key)
+   ```
+
+This decomposition ensures that all determinants are superkeys, satisfying BCNF. The original `CourseEnrollment` table was not in BCNF due to the dependencies `InstructorID → InstructorName` and `DepartmentID → DepartmentName`, which required further decomposition.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Creating functional dependencies involves understanding the relationships between attributes in a table. Functional dependencies describe how one attribute (or set of attributes) determines another attribute (or set of attributes). Here's how to derive and understand the given functional dependencies based on the scenario:
+
+Context
+
+Imagine we are working with a table that tracks course enrollments in a university. The table might initially contain information about courses, instructors, and departments. 
+
+Functional Dependencies Breakdown
+
+1. ``CourseID → InstructorID, InstructorName, DepartmentID``
+   - `Derivation`:
+     - Each `CourseID` uniquely identifies a course.
+     - Given a specific `CourseID`, you can determine the `InstructorID` (the ID of the instructor teaching that course).
+     - You can also determine the `InstructorName` (the name of the instructor) if the `InstructorID` is known.
+     - You can determine the `DepartmentID` (the department offering the course) given the `CourseID`.
+   - `Explanation`: If `CourseID` is known, it fully determines the `InstructorID`, `InstructorName`, and `DepartmentID` because each course has one instructor and one department.
+
+2. ``InstructorID → InstructorName``
+   - `Derivation`:
+     - Each `InstructorID` uniquely identifies an instructor.
+     - Given an `InstructorID`, you can determine the `InstructorName`.
+   - `Explanation`: The `InstructorID` determines the `InstructorName` because each instructor has a unique ID and name. 
+
+3. ``DepartmentID → DepartmentName``
+   - `Derivation`:
+     - Each `DepartmentID` uniquely identifies a department.
+     - Given a `DepartmentID`, you can determine the `DepartmentName`.
+   - `Explanation`: The `DepartmentID` determines the `DepartmentName` because each department has a unique ID and name.
+
+Creating Functional Dependencies
+
+To create functional dependencies, consider the following steps:
+
+1. `Identify Unique Identifiers`:
+   - Determine which attributes can uniquely identify other attributes. For example, `CourseID` uniquely identifies a course, and from that, you can determine the instructor and department associated with the course.
+
+2. `Determine Attribute Relationships`:
+   - Establish how attributes are related. For instance, if knowing `InstructorID` allows you to determine `InstructorName`, then `InstructorID` → `InstructorName`.
+
+3. `Analyze Table Structure`:
+   - Understand the table’s purpose and the real-world relationships between attributes. If a table contains information about courses, instructors, and departments, you can infer relationships like `CourseID` determining other attributes related to the course.
+
+Example Scenario
+
+Let’s consider a table named `CourseEnrollment` with the following columns:
+- `CourseID` (identifier for each course)
+- `InstructorID` (identifier for the instructor teaching the course)
+- `InstructorName` (name of the instructor)
+- `DepartmentID` (identifier for the department offering the course)
+- `DepartmentName` (name of the department)
+
+`Functional Dependencies`:
+- ``CourseID → InstructorID, InstructorName, DepartmentID``:
+  - Knowing the `CourseID` allows you to uniquely determine the `InstructorID`, `InstructorName`, and `DepartmentID` for that course.
+
+- ``InstructorID → InstructorName``:
+  - Knowing the `InstructorID` allows you to uniquely determine the `InstructorName`.
+
+- ``DepartmentID → DepartmentName``:
+  - Knowing the `DepartmentID` allows you to uniquely determine the `DepartmentName`.
+
+These dependencies reflect how attributes in the table are functionally related based on the real-world relationships they represent.
+
+
+Certainly! Here are the tables at different normal forms for the `CourseEnrollment` scenario:
+
+Unnormalized Form (UNF)
+
+`Table: CourseEnrollment_UNF`
+```
+Columns:
+- CourseID
+- InstructorID
+- InstructorName
+- DepartmentID
+- DepartmentName
+- Students (repeating group)
+```
+
+First Normal Form (1NF)
+
+`Table: CourseEnrollment_1NF`
+```
+Columns:
+- CourseID
+- InstructorID
+- InstructorName
+- DepartmentID
+- DepartmentName
+- StudentID
+```
+
+Second Normal Form (2NF)
+
+`Table: CourseEnrollment_2NF`
+```
+Columns:
+- CourseID
+- InstructorID
+- DepartmentID
+- StudentID
+
+`Table: Instructor`
+Columns:
+- InstructorID
+- InstructorName
+
+`Table: Department`
+Columns:
+- DepartmentID
+- DepartmentName
+```
+
+Third Normal Form (3NF)
+
+`Table: CourseEnrollment_3NF`
+```
+Columns:
+- CourseID (Primary Key)
+- InstructorID (Foreign Key)
+- DepartmentID (Foreign Key)
+```
+
+`Table: Instructor`
+```
+Columns:
+- InstructorID (Primary Key)
+- InstructorName
+```
+
+`Table: Department`
+```
+Columns:
+- DepartmentID (Primary Key)
+- DepartmentName
+```
+
+
+It looks like you want to understand why the `CourseEnrollment` table is considered to be in 3NF and how it is related to BCNF. Let’s review the `CourseEnrollment` table and its decomposition step-by-step, and clarify how each table is normalized.
+
+Original Table in 3NF
+
+`Table: CourseEnrollment_3NF`
+```
+Columns:
+- CourseID (Primary Key)
+- InstructorID (Foreign Key)
+- DepartmentID (Foreign Key)
+```
+
+`Table: Instructor`
+```
+Columns:
+- InstructorID (Primary Key)
+- InstructorName
+```
+
+`Table: Department`
+```
+Columns:
+- DepartmentID (Primary Key)
+- DepartmentName
+```
+
+Normal Forms Breakdown
+
+#1. `First Normal Form (1NF)`:
+- `Requirement`: Ensure that the table has a primary key and no repeating groups or arrays.
+- `Example`: The `CourseEnrollment` table has atomic values, meaning each cell contains a single value, and the table has a primary key (`CourseID`).
+
+#2. `Second Normal Form (2NF)`:
+- `Requirement`: Ensure that the table is in 1NF and that all non-key attributes are fully functionally dependent on the primary key (i.e., no partial dependencies).
+- `Example`: `CourseEnrollment` is in 2NF if all non-key attributes depend entirely on `CourseID`. In this case, the table includes `InstructorID` and `DepartmentID` as foreign keys.
+
+#3. `Third Normal Form (3NF)`:
+- `Requirement`: Ensure that the table is in 2NF and that there are no transitive dependencies (i.e., non-key attributes should not depend on other non-key attributes).
+- `Example`: 
+
+  In `CourseEnrollment_3NF`, the primary key is `CourseID`. The non-key attributes `InstructorID` and `DepartmentID` are foreign keys, and:
+  - `InstructorID` determines `InstructorName` in the `Instructor` table.
+  - `DepartmentID` determines `DepartmentName` in the `Department` table.
+
+  The `CourseEnrollment` table itself does not have transitive dependencies because:
+  - All non-key attributes (`InstructorID`, `DepartmentID`) are directly dependent on the primary key (`CourseID`).
+  - `InstructorName` and `DepartmentName` are managed by their respective tables and do not cause transitive dependencies within `CourseEnrollment`.
+
+Decomposition into BCNF
+
+`BCNF Requirement`: Every determinant must be a superkey.
+
+`For `CourseEnrollment_3NF`:`
+- `Functional Dependencies`:
+  1. `CourseID → InstructorID, DepartmentID`
+  2. `InstructorID → InstructorName`
+  3. `DepartmentID → DepartmentName`
+
+- `Issue`: 
+  - `InstructorID` and `DepartmentID` are not superkeys in the `CourseEnrollment_3NF` table. Thus, this table does not satisfy BCNF.
+
+`Decomposed Tables for BCNF:`
+
+1. `CourseEnrollment Table`:
+   - `Primary Key`: `CourseID`
+   - `Foreign Keys`: `InstructorID`, `DepartmentID`
+
+   ```
+   Columns:
+   - CourseID (Primary Key)
+   - InstructorID (Foreign Key)
+   - DepartmentID (Foreign Key)
+   ```
+
+2. `Instructor Table`:
+   - `Primary Key`: `InstructorID`
+   - `Non-key Attribute`: `InstructorName`
+
+   ```
+   Columns:
+   - InstructorID (Primary Key)
+   - InstructorName
+   ```
+
+3. `Department Table`:
+   - `Primary Key`: `DepartmentID`
+   - `Non-key Attribute`: `DepartmentName`
+
+   ```
+   Columns:
+   - DepartmentID (Primary Key)
+   - DepartmentName
+   ```
+
+Summary
+
+- `3NF`: The `CourseEnrollment_3NF` table is normalized to 3NF because it eliminates transitive dependencies by separating related data into `Instructor` and `Department` tables. 
+- `BCNF`: Further decomposition into BCNF was necessary because the `InstructorID` and `DepartmentID` dependencies needed to be handled by separate tables where these determinants are superkeys.
+
+This approach ensures the tables are free from redundancy and update anomalies while meeting the requirements for higher normalization forms.
