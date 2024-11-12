@@ -6,6 +6,15 @@ SQL code for Oracle:
 -- as Oracle does not have the CREATE DATABASE command 
 -- for user-level operations.
 
+/*
+In Oracle 12c and later versions, the error ORA-65096: 
+invalid common user or role name occurs 
+because Oracle expects common users 
+in a multitenant environment (CDB/PDB) 
+to have usernames that start with C## 
+(for example, C##TRAINER_SEARCH).
+*/
+
 -- Creating a new user/schema in Oracle 
 -- (similar to creating a database in other systems)
 CREATE USER C##trainer_search IDENTIFIED BY password;
