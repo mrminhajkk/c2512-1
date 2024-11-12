@@ -37,7 +37,7 @@ So, remove it to get 1NF.
     Rani      Discete Math            Math
     Rani      Calculus                Math 
 
-databse is in 1NF 
+database is in 1NF 
     all non-key depends on the key
     and all attributes in R are atomic.
 

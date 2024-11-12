@@ -33,7 +33,7 @@ Solve:
         1NF: STUDENT_COURSES {StudentID, StudentName, Address, 
                 CourseID, CourseName, CourseGrade} PK(StudentID,CourseID)
         Partial Dependencies: CourseName, CourseGrade
-        2NF: STUDENT {StudentID, StudentName, Address, CourseID} PK(StudentID) FK(CourseID)
+        2NF: STUDENT {StudentID, StudentName, Address, CourseID} PK(StudentID, CourseID) FK(CourseID)
              Course {CourseID, CourseName, CourseGrade} PK(CourseID)
         Transitive Dependencies: None 
     Solution:
@@ -70,14 +70,18 @@ Solve:
                 Product1ID,  Product1Name,  Product1Quantity,  Product1Price,
                 Product2ID,  Product2Name,  Product2Quantity,  Product2Price
         1NF: Order_Details {OrderID,  CustomerID,  CustomerName,  OrderDate,  
-                    ProductID,  ProductName,  ProductQuantity,  ProductPrice} PK(OrderID, ProductID)
+                    ProductID,  ProductName,  ProductQuantity,  ProductPrice} 
+                    PK(OrderID, ProductID)
         Partial Dependecies: ProductName, ProductPrice
-        1NF: Order_Details {OrderID,  CustomerID,  CustomerName,  OrderDate,  
-                    ProductID,  ProductQuantity} PK(OrderID) FK(ProductID)
+        2NF: Order_Details {OrderID,  CustomerID,  CustomerName,  OrderDate,  
+                    ProductID,  ProductQuantity} PK(OrderID, ProductID) FK(ProductID)
             Product{ProductID,  ProductName, ProductPrice} PK (ProductID)
-        Transitive Dependencies: CustomerName -> CustomerID -> Key, CustomerID -> CustomerName -> Key
-        2NF: Order_Details {OrderID,  CustomerID,  OrderDate,  
-                    ProductID,  ProductQuantity} PK(OrderID) FK(ProductID) FK(CustomerID)
+        Transitive Dependencies: 
+            CustomerName -> CustomerID -> Key, 
+            CustomerID -> CustomerName -> Key
+        3NF: Order_Details {OrderID,  CustomerID,  OrderDate,  
+                    ProductID,  ProductQuantity} PK(OrderID, ProductID) 
+                        FK(ProductID) FK(CustomerID)
             Customer {CustomerID,  CustomerName} PK(CustomerID)
             --
             Product{ProductID,  ProductName, ProductPrice} PK (ProductID)
@@ -107,6 +111,26 @@ Solve:
         DepartmentID, DepartmentName, 
         Project1ID, Project1Name, Project1Hours, 
         Project2ID, Project2Name, Project2Hours}
+    -> 
+    1NF: 
+        EMPLOYEE_PROJECT {EmployeeID, EmployeeName,
+            DepartmentID, DepartmentName, 
+            ProjectID, ProjectName, ProjectHours},
+        PK(EmployeeID, ProjectID)
+    2NF: 
+        EMPLOYEE_PROJECT {EmployeeID, EmployeeName,
+            DepartmentID, DepartmentName, 
+            ProjectID},
+                    PK(EmployeeID, ProjectID), FK(ProjectID)
+        PROJECT { ProjectID, ProjectName, ProjectHours}
+                PK(ProjectID)
+    3NF:
+        EMPLOYEE_PROJECT {EmployeeID, EmployeeName,
+            DepartmentID,  
+            ProjectID},
+                    PK(EmployeeID, ProjectID), FK(ProjectID)
+                    FK(DepartmentID)
+        DEPARTMENT {DepartmentID, DepartmentName} PK{DepartmentID}
 
 
 Solve: 
@@ -124,11 +148,23 @@ Solve:
     - Book2Title
     - Book2DueDate
 
-    Problem: LIBRARY_TRANSACTIONS {TransactionID, MemberID, MemberName, TransactionDate, 
+    Problem: LIBRARY_TRANSACTIONS {
+        TransactionID, MemberID, MemberName, TransactionDate, 
         Book1ID, Book1Title, Book1DueDate, 
         Book2ID, Book2Title, Book2DueDate}
-
-        
+    1NF ->  LIBRARY_TRANSACTIONS
+                {TransactionID, MemberID, MemberName, TransactionDate, 
+                BookID, BookTitle, BookDueDate} + PK(TransactionID, BookID)
+    2NF -> LIBRARY_TRANSACTIONS
+                {TransactionID, MemberID, MemberName, TransactionDate, 
+                BookID, BookDueDate} + 
+                PK(TransactionID, BookID) FK(BookID)
+            Book {BookID, BookTitle} PK(BookID)
+    3NF -> LIBRARY_TRANSACTIONS
+                {TransactionID, MemberID, TransactionDate, 
+                BookID, BookDueDate} + 
+                PK(TransactionID, BookID) FK(BookID) FK(MemberID)
+            Member {MemberID, MemberName} + PK(MemberID)
 Solve: 
     Sales Data
     Table: SALES_DATA_UNF

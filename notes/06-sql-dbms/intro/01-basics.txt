@@ -7,6 +7,10 @@
    - Oracle Database is a widely used RDBMS known 
    for its scalability, performance, and security.
 
+   Examples: 
+      RDBMS: Oracle, MySQL, SQL Server, Postgres, SQLite, DB2 etc 
+      noSQL: Mongo DB, Cassandra etc 
+
 2. `Introduction to RDBMS`
    - Relational Database Management System (RDBMS) organizes data 
    into tables (relations) and 

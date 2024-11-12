@@ -4,15 +4,15 @@ Partial dependency means non-key depends not fully on key.
 2NF: no duplicate by no partial dependency. 
     if 1NF to 2NF, 
         we will have one or more new table(s).
-        we may FK also.
+        we may have FK also.
 Transitive dependency means 
-    non-key 
-    depends on another non-key which 
+    "non-key 
+    depends on another non-key" which 
     depends on key.
 3NF: no duplicate by no transitive dependency. 
     if 2NF to 3NF, 
         we will have one or more new table(s).
-        we may FK also.
+        we may have FK also.
 
 Table: (OrderID, ProductID, ProductName, Quantity, OrderDate)
 Candidate Key: (OrderID, ProductID)
