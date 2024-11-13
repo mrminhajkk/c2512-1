@@ -21,25 +21,56 @@
 
 
 1. Convert the following unnormalized table into 1NF:
-   ```
+   ```UNF
    StudentID | Name    | Courses
    ----------|---------|---------------------
    1         | Alice   | Math, English, Science
    2         | Bob     | Math, History
    ```
    *Ensure each course is separated correctly for 1NF.*
+   
+   Solving:
+   ```1NF, PK(StudentID, Course)
+   StudentID | Name    | Course
+   ----------|---------|---------------------
+   1         | Alice   | Math
+   1         | Alice   | English
+   1         | Alice   | Science
+   2         | Bob     | Math
+   2         | Bob     | History
+   ```
 
 2. Given the following table in 1NF, convert it to 2NF:
-   ```
+   ```1NF PK(OrderID, ProductID)
    OrderID | ProductID | OrderDate | CustomerID | CustomerName | ProductName
    --------|-----------|-----------|------------|--------------|------------
    101     | P1        | 2024-11-01| C1         | John Doe     | Widget A
    101     | P2        | 2024-11-01| C1         | John Doe     | Widget B
    ```
    *Identify partial dependencies and create separate tables.*
+Solving:
+   ```2NF PK(OrderID, ProductID), FK(ProductID)
+   Order 
+   OrderID | ProductID | OrderDate | CustomerID | CustomerName 
+   --------|-----------|-----------|------------|--------------
+   101     | P1        | 2024-11-01| C1         | John Doe     
+   101     | P2        | 2024-11-01| C1         | John Doe     
+
+   PK(ProductID)
+   Product
+   ProductID | ProductName
+   ----------|-------------
+   P1        | Widget A
+   P2        | Widget B 
+   ```
+
+   ==> 
+   Order{OrderID, ProductID, OrderDate, CustomerID}, PK(OrderID, ProductID), FK(ProductID), FK(CustomerID)
+   Customer {CustomerID, CustomerName}, PK(CustomerID)
+   Product {ProductID, ProductName}, PK(ProductID)
 
 3. Normalize the following table from 1NF to 2NF:
-   ```
+   ```1NF, Employee, PK(EmployeeID, ProjectID)
    EmployeeID | Name   | ProjectID | ProjectName | HoursWorked
    -----------|--------|-----------|-------------|------------
    1          | Alice  | 201       | Alpha       | 40
@@ -47,6 +78,13 @@
    2          | Bob    | 201       | Alpha       | 30
    ```
    *Remove partial dependencies and split the table accordingly.*
+Solving:
+1NF, 
+Employee{EmployeeID, Name, ProjectID, ProjectName, HoursWorked}, PK(EmployeeID, ProjectID)
+=>
+2NF
+Employee{EmployeeID, Name, ProjectID, HoursWorked}, PK(EmployeeID, ProjectID), FK(ProjectID)
+Project {ProjectID, ProjectName}, PK(ProjectID)
 
 4. Convert this 2NF table to 3NF:
    ```
@@ -56,6 +94,22 @@
    S2        | C102     | I2           | Prof. Johnson  | 098-765-4321
    ```
    *Identify transitive dependencies and split the table further.*
+Solving:
+2NF 
+Student {StudentID, CourseID, InstructorID, InstructorName, InstructorPhone}, PK(StudentID, CourseID)
+
+Is There TD? 
+   InstructorID -> InstructorName, 
+   InstructorID <- InstructorName 
+   InstructorID -> InstructorPhone, 
+   InstructorID <- InstructorPhone
+   InstructorPhone -> InstructorName, 
+   InstructorPhone <- InstructorName
+Yes. Remove TD.
+3NF 
+Student {StudentID, CourseID, InstructorID}, PK(StudentID, CourseID), FK(CourseID), FK(InstructorID)
+Instructor {InstructorID, InstructorName, InstructorPhone}, PK(InstructorID)
+
 
 5. Normalize the following unnormalized data into 3NF:
    ```
@@ -65,6 +119,23 @@
    1001      | Alice        | 123 Maple St    | Notebook | 5   | 3.00
    ```
    *Ensure each level of normalization is followed step by step.*
+UNF
+Invoice {InvoiceNo, CustomerName, CustomerAddress, Item, Quantity, Price}
+1NF -> no repeating group 
+Invoice {InvoiceNo, CustomerName, CustomerAddress, Item, Quantity, Price}, PK(InvoiceNo, Item)
+   is PD? 
+      Price -> Item, not on (InvoiceNo, Item)
+2NF
+Invoice {InvoiceNo, CustomerName, CustomerAddress, ItemID, Quantity}, PK(InvoiceNo, ItemID), FK(ItemID)
+Item {ItemID, Item, Price}, PK(ItemID)
+   is TD? 
+      CustomerName -> CustomerAddress
+      CustomerAddress -> CustomerName
+3NF 
+Invoice {InvoiceNo, CustomerID, ItemID, Quantity}, PK(InvoiceNo, ItemID), FK(ItemID), FK(CustomerID)
+Customer {CustomerID, CustomerName, CustomerAddress}, PK(CustomerID)
+Item {ItemID, Item, Price}, PK(ItemID)
+
 
 6. Convert this 1NF table to 3NF:
    ```
@@ -74,6 +145,29 @@
    L2        | Book B    | Author Y   | 101 Oak St    | Publisher Z
    ```
    *Start with 1NF, remove partial dependencies for 2NF, and transitive dependencies for 3NF.*
+UNF (no repeating group) -> 1NF (is PD - yes) 
+LibraryBook{LibraryID, BookTitle, AuthorName, AuthorAddress, PublisherName},
+PK(LibraryID, BookTitle)
+   PD: AuthorName, AuthorAddress, PublisherName -> BookTitle
+       not on (LibraryID, BookTitle)
+2NF: 
+LibraryBook{LibraryID, BookID},PK(LibraryID, BookID), FK(BookID)
+Book {BookID, BookTitle, AuthorName, AuthorAddress, PublisherName}, PK(BookID)
+
+is TD ? Yes 
+   AuthorName -> AuthorAddress
+   AuthorName -> PublisherName
+
+   AuthorAddress -not->PublisherName  
+3NF: 
+Author {AuthorID, AuthorName, AuthorAddress, PublisherName}, PK(AuthorID)
+   Still TD 
+Final 3NF:
+Author {AuthorID, AuthorName, AuthorAddress, PublisherID}, PK(AuthorID), FK(PublisherID)
+Publisher {PublisherID, PublisherName}, PK(PublisherID)
+LibraryBook{LibraryID, BookID},PK(LibraryID, BookID), FK(BookID)
+Book {BookID, BookTitle, AuthorID}, PK(BookID), FK(AuthorID)
+
 
 7. Normalize the following data from UNF to 3NF:
    ```
@@ -83,6 +177,27 @@
    ```
    *Separate repeating groups, then apply 2NF and 3NF as needed.*
 
+ UNF:  
+ CustomerOrder {CustomerID, Name, Orders (OrderID, OrderDate, Amount)}
+ 
+ Is repeating group? Yes 
+
+ 1NF:
+ CustomerOrder {CustomerID, Name, OrderID, OrderDate, Amount}, PK(CustomerID, OrderID)
+
+ is PD? Name -> only CustomerID | not  (CustomerID, OrderID)
+
+ 2NF: 
+ CustomerOrder {CustomerID, OrderID, OrderDate, Amount}, PK(CustomerID, OrderID), FK(CustomerID)
+ Customer{CustomerID, Name}, PK(CustomerID)
+
+is TD? no 
+
+3NF: (no conversion required) 
+CustomerOrder {CustomerID, OrderID, OrderDate, Amount}, PK(CustomerID, OrderID), FK(CustomerID)
+ Customer{CustomerID, Name}, PK(CustomerID)
+
+
 8. Convert this table in 2NF to 3NF:
    ```
    ProductID | ProductName | SupplierID | SupplierName | SupplierPhone
@@ -91,6 +206,20 @@
    P2        | Widget B    | S2         | Supplier Y   | 555-5678
    ```
    *Identify and remove transitive dependencies.*
+
+
+Product {ProductID, ProductName, SupplierID, SupplierName, SupplierPhone}, PK(ProductID)
+
+no repeating group.  
+is PD? no PD.        Table is 2NF.
+is TD ?
+   SupplierID, SupplierName, SupplierPhone depends each other 
+   ie non-keys depends on non-keys non entirely on PK 
+
+3NF:
+   Product {ProductID, ProductName, SupplierID}, PK(ProductID), FK(SupplierID)
+   Supplier {SupplierID, SupplierName, SupplierPhone}, PK(SupplierID)
+
 
 9. Normalize the following data from UNF to 3NF:
    ```
