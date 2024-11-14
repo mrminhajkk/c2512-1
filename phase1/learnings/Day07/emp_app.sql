@@ -111,7 +111,7 @@ ADD (salary NUMBER(8,2) DEFAULT 0 NOT NULL ,
 
 SELECT * FROM employees;
 
-UPDATE employees SET salary = 12000, bonus = 800 WHERE id = 1;
+UPDATE employees SET salary = 15000, bonus = 800 WHERE id = 1;
 UPDATE employees SET salary = 8000, bonus = 3000 WHERE id = 2;
 UPDATE employees SET salary = 13000, bonus = 600 WHERE id = 3;
 UPDATE employees SET salary = 7000, bonus = 3800 WHERE id = 4;
