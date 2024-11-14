@@ -1,28 +1,5 @@
-employee management system (ems)
 
-departments {id, name}
-countries {id, name, ruler}
-cities {id, name, admin, country_id}
-employees {id, name, job_title, department_id, address, city_id}
-
-SQL - Sub Languages 
-    DDL : Create Table | Alter Table | Drop Table | Truncate Table 
-    DML : Insert, Update, Delete, Select [DQL]
-    TCL : commit, rollback, savepoint 
-    DCL : grant, revoke
-
-User / Schema: ems  
-
-CREATE USER C##ems IDENTIFIED BY 4321;
-
-GRANT CONNECT, RESOURCE TO C##ems;
-
-GRANT CREATE SESSION TO C##ems CONTAINER=ALL;
-
-
-
-ALTER USER C##ems QUOTA UNLIMITED ON USERS;
-
+-- -- -- --
 SELECT TABLE_NAME FROM USER_TABLES;
 
 CREATE TABLE departments
@@ -38,7 +15,7 @@ VALUES (20,	'Beta');
 INSERT INTO departments (id, name)
 VALUES (30,	'Gama');
 
-
+commit;
 
 DESC departments;
 
@@ -65,6 +42,8 @@ VALUES (11,	'India',	'Modi');
 INSERT INTO countries(id, name, ruler)
 VALUES (41,	'Germany',	'Dravid');
 
+commit; 
+
 SET LINESIZE 500;
 SET TRIMSPOOL ON;
 column name format a20;
@@ -88,6 +67,8 @@ INSERT INTO cities(id, name, admin, country_id)
 VALUES(103,	'Mumbai',	'Sana',	11);
 INSERT INTO cities(id, name, admin, country_id) 
 VALUES(105,	'Kollam',	'Vishak',	31);
+
+commit; 
 
 SET LINESIZE 500;
 SET TRIMSPOOL ON;
@@ -116,21 +97,70 @@ VALUES (3,	'Dhaheen',	'Analyst',	20,	'----',	103);
 INSERT INTO employees (id, name, job_title, department_id, address, city_id)
 VALUES (4,	'Venkatesh',	'SE',	30,	'----',	103);
 INSERT INTO employees (id, name, job_title, department_id, address, city_id)
-VALUES (5,	'minhaj',	'Tester',	10,	----,	101);
+VALUES (5,	'minhaj',	'Tester',	10,	'----',	101);
 INSERT INTO employees (id, name, job_title, department_id, address, city_id)
 VALUES (6,	'Nayana',	'SE',	30,	'----',	104);
 
-SET LINESIZE 500;
-SET TRIMSPOOL ON;
-column name format a20;
-column job_title format a20;
-column address format a20;
+commit; 
 
 SELECT * FROM employees;
 
+ALTER TABLE employees 
+ADD (salary NUMBER(8,2) DEFAULT 0 NOT NULL , 
+    bonus NUMBER(8,2) DEFAULT 0 NOT NULL );
 
--- To clear column format 
-CLEAR COLUMNS name 
+SELECT * FROM employees;
 
--- To reset all columns format 
-CLEAR COLUMNS 
+UPDATE employees SET salary = 12000, bonus = 800 WHERE id = 1;
+UPDATE employees SET salary = 8000, bonus = 3000 WHERE id = 2;
+UPDATE employees SET salary = 13000, bonus = 600 WHERE id = 3;
+UPDATE employees SET salary = 7000, bonus = 3800 WHERE id = 4;
+UPDATE employees SET salary = 11000, bonus = 800 WHERE id = 5;
+UPDATE employees SET salary = 10000, bonus = 1000 WHERE id = 6;
+commit;
+
+-- to query emp_name, city_name 
+
+SELECT employees.name AS emp_name, cities.name AS city_name
+FROM employees 
+INNER JOIN cities ON employees.city_id = cities.id;
+
+-- to query emp_name, city_name + extra employees
+
+SELECT employees.name AS emp_name, cities.name AS city_name
+FROM employees 
+LEFT JOIN cities ON employees.city_id = cities.id;
+
+-- to query emp_name, city_name + extra cities
+SELECT employees.name AS emp_name, cities.name AS city_name
+FROM employees 
+RIGHT JOIN cities ON employees.city_id = cities.id;
+
+-- to query emp_name, city_name + extra employees + extra cities
+SELECT employees.name AS emp_name, cities.name AS city_name
+FROM employees 
+FULL JOIN cities ON employees.city_id = cities.id;
+
+-- to query emp_name, city_name + extra employees + extra cities + extra countries
+SELECT employees.name AS emp_name, 
+    cities.name AS city_name, 
+    countries.name AS country_name
+FROM employees 
+FULL JOIN cities ON employees.city_id = cities.id
+FULL JOIN countries ON cities.country_id = countries.id;
+
+-- to query emp_name, city_name, country_name
+SELECT employees.name AS emp_name, 
+    cities.name AS city_name, 
+    countries.name AS country_name
+FROM employees 
+INNER JOIN cities ON employees.city_id = cities.id
+INNER JOIN countries ON cities.country_id = countries.id;
+
+-- to query emp_name, city_name, country_name + extra countries
+SELECT employees.name AS emp_name, 
+    cities.name AS city_name, 
+    countries.name AS country_name
+FROM employees 
+INNER JOIN cities ON employees.city_id = cities.id
+RIGHT JOIN countries ON cities.country_id = countries.id;
