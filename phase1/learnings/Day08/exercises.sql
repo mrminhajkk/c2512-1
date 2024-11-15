@@ -73,10 +73,18 @@
         where parent.salary = (select max(child.salary) 
                             from employees child 
                             where child.department_id = parent.department_id);
+
+            -- (1) For each employee in the outer query (parent), 
+            -- the subquery calculates the maximum salary (max(child.salary)) 
+            -- for the same department (parent.department_id).
+
+            -- (2) The outer query then selects the employee 
+            -- whose salary matches the maximum salary for their department.
+
     -- display employees whose salary matching their department's second max salary [correlated sub query]
         select parent.* 
         from employees parent 
-        where salary != (select max(salary) as second_max_salary
+        where salary = (select max(salary) as second_max_salary
                         from employees 
                         where (department_id = parent.department_id)
                             and (salary < (select max(salary) as first_max_salary
@@ -87,3 +95,29 @@
                       )
     -- display employees whose salary less than their department's average salary [correlated sub query]
         
+    
+
+    -- display distinct job_titles 
+    select job_title from employees; 
+
+    select distinct job_title from employees; 
+
+    select count(distinct job_title) as number_of_job_title  from employees; 
+
+    select count(job_title) as number_of_job_title  from employees; 
+
+    -- country name then city name based total salary sort by country A-Z then by city name Z-A order 
+        -- display the cities having total salary less than 25000
+        select 
+            countries.name as country_name, 
+            cities.name as city_name,  
+            sum(employees.salary) as salary 
+        from employees 
+            inner join cities on employees.city_id = cities.id 
+            inner join countries on cities.country_id = countries.id 
+        group by countries.name,  cities.name
+        -- having sum(employees.salary) < 25000
+        order by countries.name Asc, cities.name DESC 
+        -- order by country_name Asc, city_name DESC 
+        -- order by 1 Asc, 2 DESC 
+        --order by salary DESC

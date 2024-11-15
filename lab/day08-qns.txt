@@ -1,0 +1,473 @@
+************movies_db*************
+
+````````````````````````````````````````````````````````````````````````````````
+prompt question:
+````````````````````````````````````````````````````````````````````````````````
+I have UNF table 
+    tickets 
+        booking_id, booking_number, theatre_id, theatre_name,
+        customer_id, customer_name, customer_city,
+        movie_name, about_movie, number_of_tickets, tickets_amount,  food_amount, 
+        ticket_plus_food_amount, payment_mode, 
+
+        ticket1seat_number, ticket1_seat_price, 
+        ticket2seat_number, ticket2_seat_price, 
+        ticket3seat_number, ticket3_seat_price,
+        
+        food1_item_id, food1_item_name, food1_price, food1_qty, food1_amount,
+        food2_item_id, food2_item_name, food2_price, food2_qty, food2_amount,
+        food3_item_id, food3_item_name, food3_price, food1_qty, food3_amount,
+        food4_item_id, food4_item_name, food4_price, food1_qty, food4_amount, 
+I formed below NF tables.
+        customer: customer_id, customer_nme, custormer_city 
+        theatre: theatre_id, theatre_name
+        seat: seat_id, seat_number, seat_price
+        food: item_id, item_name, price
+
+        booking: booking_id, booking_number, 
+            movie_name, about_movie, number_of_tickets, 
+            tickets_amount,  food_amoun, ticket_plus_food_amount, payment_mode,
+            customer_id
+        booking_food: item_id, item_name, price, quantity, amount, booking_id
+        booking_ticket: ticket_id, seat_id, price, booking_id  
+        
+My data is going to be.
+        I am Maheswaran, and I have booked ticket for my family living in city Trichy. 
+            movie_name: vettayan,  about_movie: rajnikanth acting, number_of_tickets: 3,
+                running in the theatre name 'venkateswara'
+            seat_numbers [L1,L2,L3] each seat price is Rs.120.
+            food ordered: [samosa @ Rs.60 x 2, pop korn @ Rs.100 x 3, coffee @ Rs.40 x 1, pups @ Rs.50 x 3]
+        And 
+        I have booked ticket for my family and sister family and my father.
+            movie_name: amaran,  about_movie: siva karthikeyab acting, number_of_tickets: 7,
+                running in the theatre name 'star theatre'
+            seat_numbers [A1,A2,A3,A4,A5,A6,A7] each seat price is Rs.180.
+            food ordered: [samosa @ Rs.60 x 2, pop korn @ Rs.100 x 3, coffee @ Rs.40 x 1, pups @ Rs.50 x 3]
+```
+Now, I need the tables script in oracle with primary key, not null, and foreign keys.
+And I need insert statemetns for the tables. 
+And I need the data in tabular form for all NF tables.
+
+
+````````````````````````````````````````````````````````````````````````````````
+prompt solution:
+````````````````````````````````````````````````````````````````````````````````
+Oracle SQL Script
+
+1. Table Creation Script
+```sql
+-- Customer table
+CREATE TABLE customer (
+    customer_id NUMBER PRIMARY KEY,
+    customer_name VARCHAR2(50) NOT NULL,
+    customer_city VARCHAR2(50) NOT NULL
+);
+
+-- Theatre table
+CREATE TABLE theatre (
+    theatre_id NUMBER PRIMARY KEY,
+    theatre_name VARCHAR2(50) NOT NULL
+);
+
+-- Seat table
+CREATE TABLE seat (
+    seat_id NUMBER PRIMARY KEY,
+    seat_number VARCHAR2(10) NOT NULL,
+    seat_price NUMBER NOT NULL
+);
+
+-- Food table
+CREATE TABLE food (
+    item_id NUMBER PRIMARY KEY,
+    item_name VARCHAR2(50) NOT NULL,
+    price NUMBER NOT NULL
+);
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- Booking table
+CREATE TABLE booking (
+    booking_id NUMBER PRIMARY KEY,
+    booking_number VARCHAR2(20) NOT NULL,
+    movie_name VARCHAR2(50) NOT NULL,
+    about_movie VARCHAR2(255),
+    number_of_tickets NUMBER NOT NULL,
+    tickets_amount NUMBER NOT NULL,
+    food_amount NUMBER NOT NULL,
+    ticket_plus_food_amount NUMBER NOT NULL,
+    payment_mode VARCHAR2(20),
+    customer_id NUMBER,
+    theatre_id NUMBER,
+    FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
+    FOREIGN KEY (theatre_id) REFERENCES theatre(theatre_id)
+);
+-- Booking_ticket table
+CREATE TABLE booking_ticket (
+    ticket_id NUMBER PRIMARY KEY,
+    seat_id NUMBER,
+    price NUMBER NOT NULL,
+    booking_id NUMBER,
+    FOREIGN KEY (seat_id) REFERENCES seat(seat_id),
+    FOREIGN KEY (booking_id) REFERENCES booking(booking_id)
+);
+
+-- Booking_food table
+CREATE TABLE booking_food (
+    item_id NUMBER,
+    booking_id NUMBER,
+    price NUMBER NOT NULL,
+    amount NUMBER NOT NULL,
+    PRIMARY KEY (item_id, booking_id),
+    FOREIGN KEY (item_id) REFERENCES food(item_id),
+    FOREIGN KEY (booking_id) REFERENCES booking(booking_id)
+);
+```
+
+2. Data in Tabular Form
+
+#Customer Table
+| customer_id | customer_name | customer_city |
+|-------------|---------------|---------------|
+| 1           | Maheswaran    | Trichy        |
+
+#Theatre Table
+| theatre_id | theatre_name     |
+|------------|------------------|
+| 1          | Venkateswara     |
+| 2          | Star Theatre     |
+
+
+#Seat Table
+| seat_id | seat_number | seat_price |
+|---------|-------------|------------|
+| 1       | L1          | 120        |
+| 2       | L2          | 120        |
+| 3       | L3          | 120        |
+| 4       | A1          | 180        |
+| 5       | A2          | 180        |
+| 6       | A3          | 180        |
+| 7       | A4          | 180        |
+| 8       | A5          | 180        |
+| 9       | A6          | 180        |
+| 10      | A7          | 180        |
+
+#Food Table
+| item_id | item_name | price |
+|---------|-----------|-------|
+| 1       | Samosa    | 60    |
+| 2       | Popcorn   | 100   |
+| 3       | Coffee    | 40    |
+| 4       | Pups      | 50    |
+
+#Booking Table
+| booking_id | booking_number | movie_name | about_movie          | number_of_tickets | tickets_amount | food_amount | ticket_plus_food_amount | payment_mode | customer_id | theatre_id |
+|------------|----------------|------------|-----------------------|--------------------|----------------|-------------|--------------------------|--------------|-------------|------------|
+| 1          | BKG001         | Vettayan   | Rajnikanth acting    | 3                  | 360            | 470         | 830                      | Card         | 1           | 1          |
+| 2          | BKG002         | Amaran     | Siva Karthikeyan act.| 7                  | 1260           | 470         | 1730                     | Cash         | 1           | 2          |
+
+
+#Booking Ticket Table
+| ticket_id | seat_id | price | booking_id |
+|-----------|---------|-------|------------|
+| 1         | 1       | 120   | 1          |
+| 2         | 2       | 120   | 1          |
+| 3         | 3       | 120   | 1          |
+| 4         | 4       | 180   | 2          |
+| 5         | 5       | 180   | 2          |
+| 6         | 6       | 180   | 2          |
+| 7         | 7       | 180   | 2          |
+| 8         | 8       | 180   | 2          |
+| 9         | 9       | 180   | 2          |
+| 10        | 10      | 180   | 2          |
+
+
+#Booking Food Table
+| item_id | booking_id | price | amount |
+|---------|------------|-------|--------|
+| 1       | 1          | 60    | 120    |
+| 2       | 1          | 100   | 300    |
+| 3       | 1          | 40    | 40     |
+| 4       | 1          | 50    | 150    |
+| 1       | 2          | 60    | 120    |
+| 2       | 2          | 100   | 300    |
+| 3       | 2          | 40    | 40     |
+| 4       | 2          | 50    | 150    |
+
+
+3. Insertion Statements
+
+```sql
+-- Insert data into customer table
+INSERT INTO customer (customer_id, customer_name, customer_city) VALUES (1, 'Maheswaran', 'Trichy');
+
+-- Insert data into theatre table
+INSERT INTO theatre (theatre_id, theatre_name) VALUES (1, 'Venkateswara');
+INSERT INTO theatre (theatre_id, theatre_name) VALUES (2, 'Star Theatre');
+
+-- Insert data into seat table
+INSERT INTO seat (seat_id, seat_number, seat_price) VALUES (1, 'L1', 120);
+INSERT INTO seat (seat_id, seat_number, seat_price) VALUES (2, 'L2', 120);
+INSERT INTO seat (seat_id, seat_number, seat_price) VALUES (3, 'L3', 120);
+INSERT INTO seat (seat_id, seat_number, seat_price) VALUES (4, 'A1', 180);
+INSERT INTO seat (seat_id, seat_number, seat_price) VALUES (5, 'A2', 180);
+INSERT INTO seat (seat_id, seat_number, seat_price) VALUES (6, 'A3', 180);
+INSERT INTO seat (seat_id, seat_number, seat_price) VALUES (7, 'A4', 180);
+INSERT INTO seat (seat_id, seat_number, seat_price) VALUES (8, 'A5', 180);
+INSERT INTO seat (seat_id, seat_number, seat_price) VALUES (9, 'A6', 180);
+INSERT INTO seat (seat_id, seat_number, seat_price) VALUES (10, 'A7', 180);
+
+-- Insert data into food table
+INSERT INTO food (item_id, item_name, price) VALUES (1, 'Samosa', 60);
+INSERT INTO food (item_id, item_name, price) VALUES (2, 'Popcorn', 100);
+INSERT INTO food (item_id, item_name, price) VALUES (3, 'Coffee', 40);
+INSERT INTO food (item_id, item_name, price) VALUES (4, 'Pups', 50);
+
+-- Insert data into booking table
+INSERT INTO booking (booking_id, booking_number, movie_name, about_movie, number_of_tickets, tickets_amount, food_amount, ticket_plus_food_amount, payment_mode, customer_id, theatre_id) 
+VALUES (1, 'BKG001', 'Vettayan', 'Rajnikanth acting', 3, 360, 470, 830, 'Card', 1, 1);
+INSERT INTO booking (booking_id, booking_number, movie_name, about_movie, number_of_tickets, tickets_amount, food_amount, ticket_plus_food_amount, payment_mode, customer_id, theatre_id) 
+VALUES (2, 'BKG002', 'Amaran', 'Siva Karthikeyan acting', 7, 1260, 470, 1730, 'Cash', 1, 2);
+
+-- Insert data into booking_ticket table
+INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id) VALUES (1, 1, 120, 1);
+INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id) VALUES (2, 2, 120, 1);
+INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id) VALUES (3, 3, 120, 1);
+INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id) VALUES (4, 4, 180, 2);
+INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id) VALUES (5, 5, 180, 2);
+INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id) VALUES (6, 6, 180, 2);
+INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id) VALUES (7, 7, 180, 2);
+INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id) VALUES (8, 8, 180, 2);
+INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id) VALUES (9, 9, 180, 2);
+INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id) VALUES (10, 10, 180, 2);
+
+-- Insert data into booking_food table
+INSERT INTO booking_food (item_id, booking_id, price, amount) VALUES (1, 1, 60, 120);
+INSERT INTO booking_food (item_id, booking_id, price, amount) VALUES (2, 1, 100, 300);
+INSERT INTO booking_food (item_id, booking_id, price, amount) VALUES (3, 1, 40, 40);
+INSERT INTO booking_food (item_id, booking_id, price, amount) VALUES (4, 1, 50, 150);
+INSERT INTO booking_food (item_id, booking_id, price, amount) VALUES (1, 2, 60, 120);
+INSERT INTO booking_food (item_id, booking_id, price, amount) VALUES (2, 2, 100, 300);
+INSERT INTO booking_food (item_id, booking_id, price, amount) VALUES (3, 2, 40, 40);
+INSERT INTO booking_food (item_id, booking_id, price, amount) VALUES (4, 2, 50, 150);
+``` 
+                                                        ``
+````````````````````````````````````````````````````````````````````````````````
+Another prompt question:
+````````````````````````````````````````````````````````````````````````````````
+I have given my adhaar id for ticket booking.
+Vettayan we watched on 12/Oct/2024 at 6PM. 
+Amaran we watched on 30/Oct/2024 at 11AM. 
+Please add show date time column and adhaar id also.
+And give me tables 'alter' script and update script.
+
+
+````````````````````````````````````````````````````````````````````````````````
+prompt Solution 
+````````````````````````````````````````````````````````````````````````````````
+
+1. `ALTER TABLE Script` for `booking` Table
+
+```sql
+ALTER TABLE booking
+ADD (show_date_time DATE);
+```
+
+`ALTER TABLE Script` for `customer` Table
+```sql
+ALTER TABLE customer
+ADD (adhaar_id VARCHAR2(16) NOT NULL UNIQUE);
+```
+
+2. `Customer Table Data Update` (Adding Aadhaar ID as a Unique Identifier)
+
+#Updating `adhaar_id` in the Customer Table
+
+```sql
+-- Update Aadhaar ID for Maheswaran in Customer Table
+UPDATE customer
+SET adhaar_id = '1234-5678-9012'
+WHERE customer_id = 1;
+```
+-- Update show date and time for the booking of Vettayan
+```
+UPDATE booking
+SET show_date_time = TO_DATE('12-OCT-2024 18:00', 'DD-MON-YYYY HH24:MI')
+WHERE booking_id = 1;
+
+-- Update show date and time for the booking of Amaran
+UPDATE booking
+SET show_date_time = TO_DATE('30-OCT-2024 11:00', 'DD-MON-YYYY HH24:MI')
+WHERE booking_id = 2;
+```
+
+3.
+Updated `Customer` Table Structure in Tabular Format
+
+| customer_id | customer_name | customer_city | adhaar_id       |
+|-------------|---------------|---------------|-----------------|
+| 1           | Maheswaran    | Trichy        | 1234-5678-9012  |
+
+Updated `Booking` Table Structure in Tabular Format
+
+| booking_id | booking_number | movie_name | about_movie          | number_of_tickets | tickets_amount | food_amound | ticket_plus_food_amount | payment_mode | customer_id | theatre_id | show_date_time          |
+|------------|----------------|------------|----------------------|-------------------|----------------|-------------|--------------------------|--------------|-------------|------------|-------------------------|
+| 1          | B001           | Vettayan   | Rajnikanth acting   | 3                 | 360            | 610         | 970                      | Credit Card  | 1           | 1          | 12-OCT-2024 18:00       |
+| 2          | B002           | Amaran     | Siva Karthikeyan acting | 7             | 1260           | 610         | 1870                     | Credit Card  | 1           | 2          | 30-OCT-2024 11:00       |
+
+
+````````````````````````````````````````````````````````````````````````````````
+prompt 3:
+````````````````````````````````````````````````````````````````````````````````
+I have booked ticket for my family only 3 tickets for rubber ball
+in Star Theatre. [Use the ticket numbers and price in ticket table]
+
+There I bought two samosa, three pop korn.
+
+I need to book ticket as one transaction in Oracle 
+with exception handling also.
+
+If readable from master table read and use.
+
+If computable compute and update the table during transaction.
+
+
+````````````````````````````````````````````````````````````````````````````````
+prompt 3 Solution:
+````````````````````````````````````````````````````````````````````````````````
+To book a ticket for the movie "Rubber Ball" in "Star Theatre" 
+for 3 tickets and include food purchases, 
+we can use a `transaction` 
+in Oracle with exception handling 
+to ensure the operation is atomic. Below is the complete script:
+
+Transaction Script
+```sql
+DECLARE
+    -- Variables for ticket and food calculations
+    v_total_ticket_amount NUMBER := 0;
+    v_total_food_amount NUMBER := 0;
+    v_ticket_plus_food_amount NUMBER := 0;
+
+    -- Ticket prices and quantities
+    v_ticket1_price NUMBER := 0;
+    v_ticket2_price NUMBER := 0;
+    v_ticket3_price NUMBER := 0;
+
+    -- Food prices and quantities
+    v_samosa_price NUMBER := 0;
+    v_popkorn_price NUMBER := 0;
+    
+    -- Booking details
+    v_booking_id NUMBER := 3; -- New booking ID
+    v_customer_id NUMBER := 1; -- Assuming "Maheswaran"
+    v_theatre_id NUMBER := 2; -- Assuming "Star Theatre"
+    v_movie_name VARCHAR2(100) := 'Rubber Ball';
+    v_about_movie VARCHAR2(255) := 'A comedy family movie';
+    v_number_of_tickets NUMBER := 3;
+    v_payment_mode VARCHAR2(50) := 'Credit Card';
+    
+BEGIN
+    -- Start the transaction
+    SAVEPOINT start_transaction;
+
+    -- 1. Read prices from the master tables
+    SELECT seat_price INTO v_ticket1_price FROM seat WHERE seat_number = 'A1';
+    SELECT seat_price INTO v_ticket2_price FROM seat WHERE seat_number = 'A2';
+    SELECT seat_price INTO v_ticket3_price FROM seat WHERE seat_number = 'A3';
+
+    SELECT price INTO v_samosa_price FROM food WHERE item_name = 'Samosa';
+    SELECT price INTO v_popkorn_price FROM food WHERE item_name = 'Pop Korn';
+
+    -- 2. Compute totals
+    v_total_ticket_amount := v_ticket1_price + v_ticket2_price + v_ticket3_price;
+    v_total_food_amount := (v_samosa_price * 2) + (v_popkorn_price * 3);
+    v_ticket_plus_food_amount := v_total_ticket_amount + v_total_food_amount;
+
+    -- 3. Insert into booking table
+    INSERT INTO booking (
+        booking_id, booking_number, movie_name, about_movie, number_of_tickets, 
+        tickets_amount, food_amound, ticket_plus_food_amount, payment_mode, customer_id, 
+        theatre_id, show_date_time
+    ) VALUES (
+        v_booking_id, 'RB-1003', v_movie_name, v_about_movie, v_number_of_tickets, 
+        v_total_ticket_amount, v_total_food_amount, v_ticket_plus_food_amount, v_payment_mode, 
+        v_customer_id, v_theatre_id, TO_DATE('15-NOV-2024 15:00', 'DD-MON-YYYY HH24:MI')
+    );
+
+    -- 4. Insert tickets into booking_ticket table
+    INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id)
+    VALUES (6, 'A1', v_ticket1_price, v_booking_id);
+    INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id)
+    VALUES (7, 'A2', v_ticket2_price, v_booking_id);
+    INSERT INTO booking_ticket (ticket_id, seat_id, price, booking_id)
+    VALUES (8, 'A3', v_ticket3_price, v_booking_id);
+
+    -- 5. Insert food into booking_food table
+    INSERT INTO booking_food (item_id, item_name, price, amount, booking_id)
+    VALUES (3, 'Samosa', v_samosa_price, v_samosa_price * 2, v_booking_id);
+    INSERT INTO booking_food (item_id, item_name, price, amount, booking_id)
+    VALUES (4, 'Pop Korn', v_popkorn_price, v_popkorn_price * 3, v_booking_id);
+
+    -- Commit the transaction
+    COMMIT;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        -- Rollback on any error
+        ROLLBACK TO start_transaction;
+        DBMS_OUTPUT.PUT_LINE('Error occurred: ' || SQLERRM);
+END;
+/
+```
+
+
+Key Highlights:
+1. `Master Table Reading`:
+   - Reads seat prices and food prices from the `seat` and `food` tables.
+
+2. `Computations`:
+   - Computes total ticket and food amounts dynamically.
+
+3. `Insertion`:
+   - Inserts data into `booking`, `booking_ticket`, and `booking_food` tables.
+
+4. `Transaction Management`:
+   - Uses a `SAVEPOINT` to mark the start of the transaction.
+   - Rolls back to the savepoint in case of any errors.
+
+Explanation of Variables:
+- ``v_booking_id``: Increment manually or generate dynamically.
+- ``v_customer_id` and `v_theatre_id``: Lookup or assign based on data.
+- ``v_movie_name``: Set the movie name.
+- ``v_ticket_plus_food_amount``: Total of ticket and food costs.
+
+Update Master Tables:
+If new seats or food items are introduced, you can update the `seat` and `food` tables accordingly.
+
+Output:
+On successful execution, this script will:
+1. Insert the booking details into the `booking` table.
+2. Insert ticket details into the `booking_ticket` table.
+3. Insert food details into the `booking_food` table.
+
+
+Added / Updated Data: 
+
+1. `booking` Table
+
+| booking_id | booking_number | movie_name  | about_movie            | number_of_tickets | tickets_amount | food_amount | ticket_plus_food_amount | payment_mode | customer_id | theatre_id | show_datetime       |
+|------------|----------------|-------------|-------------------------|-------------------|----------------|-------------|--------------------------|--------------|-------------|------------|---------------------|
+| 3          | 20241030-0003  | Rubber Ball | Family Fun Adventure   | 3                 | 540            | 380         | 920                      | Card         | 1           | 2          | 2024-10-30 11:00:00 |
+
+2. `booking_ticket` Table
+
+| ticket_id | seat_id | price | booking_id |
+|-----------|---------|-------|------------|
+| 7         | A1      | 180   | 3          |
+| 8         | A2      | 180   | 3          |
+| 9         | A3      | 180   | 3          |
+
+3. `booking_food` Table
+
+| item_id | item_name | price | amount | booking_id |
+|---------|-----------|-------|--------|------------|
+| 5       | Samosa    | 60    | 120    | 3          |
+| 6       | Pop Korn  | 100   | 300    | 3          |
