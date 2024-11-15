@@ -1,0 +1,58 @@
+1. what is oracle?
+2. how do we design relation database? 
+    -- NFs
+    -- terms: repeating group, PD, TD
+    -- keys : super, candidate, alternate, primary, unique - composite 
+3. oracle 21c - "sql developer" vsc extenstion 
+    installation 
+4. employee - UNF, -> 3NF tables -> denormalized table 
+5. Oracle - CRUD operations with employees 
+    schema : emp_db (create user | grant | quoto -> tablespace "USERS")
+    departments, countries, cities, employees 
+        CREATE TABLE 
+        INSERT 
+        ALTER TABLE employees 
+        UPDATE employees 
+
+        denormalized result table using JOINS 
+            inner join 
+            left outer join 
+            right outer join 
+            full outer join 
+6. SQL - query 
+    basic queries for all four tables - 3 tables we did in the class 
+        - employees (self leraning)
+    filtering (where condition) : IN 
+    sorting (order by ASC | DESC)
+    aggregators: COUNT, SUM, AVG, MIN, MAX 
+    group by: group based aggregators 
+
+Not covered: 
+    DDL:
+        CREATE TABLE with foreigh keys, check constraint 
+        DROP TABLE, ALTER TABLE, TRUCATE TABLE 
+    DML:
+        bulk update, DELETE, bulk delete 
+    DCL:
+        REVOKE 
+    TCL:
+        rollback, savepoint 
+    
+    Data types: number, string, boolean, date and time, b/c lob
+
+    Query:  
+        selectors : [columns], constant, expression (operators + functions)
+            arithmetic operators: 
+        filtering: relational operators (=, <>, <=, >=, <, >)
+                        LIKE, between, EXISTS, IN 
+                        NOT LIKE, NOT BETWEEN, NOT EXISTS, NOT IN 
+                logical operators (AND, OR, NOT)
+                 
+        soring: multi-column 
+        group by: multi-column, having (after group giving condition)
+        join with group by 
+        sub query: [normal sub query], correlated sub query 
+        alias names: [column, ] table
+    views, stored procedure
+
+
