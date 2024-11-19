@@ -335,15 +335,15 @@ Key Points:
     - Manages cases like invalid booking IDs or exceeding the maximum limit of bookings.
 4. `Formatted Display:` 
     - Presents booking data in a readable table format.
-1. `Input Validation:`
+5. `Input Validation:`
    - Ensures unique booking IDs.
    - Checks for boundary conditions (e.g., maximum bookings).
-2. `Well-Documented Functions:`
+6. `Well-Documented Functions:`
    - Clear documentation using comments for every function.
    - Modular design for readability and maintainability.
-3. `No Exception Handling:` 
+7. `No Exception Handling:` 
    - Simple error messages for invalid inputs.
-4. `Clarity and Consistency:` 
+8. `Clarity and Consistency:` 
    - Adheres to good coding practices like meaningful variable names and formatted output.
 
 
