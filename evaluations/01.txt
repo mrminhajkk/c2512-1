@@ -103,3 +103,7 @@ The program should fulfill the following requirements:
 - Ensure modularity and clarity in the code for easy maintenance.
 - Display messages for successful operations or any encountered errors.
 - Follow coding standards.
+
+- Here all the learning objectives on "programming fundamentals" 
+to be used properly. You can add your own functionality as menus to 
+meet the learning outcomes.
