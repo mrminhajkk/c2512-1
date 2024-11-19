@@ -175,7 +175,7 @@ int main() {
 
 // Function Definitions
 
-/` 
+/** 
  * @brief Prints the menu options to the console.
  */
 void printMenu() {
@@ -187,7 +187,7 @@ void printMenu() {
     cout << "5. Exit\n";
 }
 
-/`
+/**
  * @brief Creates a new booking and stores details in arrays.
  * @param booking_ids Array of booking IDs.
  * @param ticket_amounts Array of ticket amounts.
@@ -225,7 +225,7 @@ void createBooking(int booking_ids[], int ticket_amounts[], int food_amounts[], 
     cout << "Booking created successfully.\n";
 }
 
-/`
+/**
  * @brief Displays all existing bookings in a tabular format.
  * @param booking_ids Array of booking IDs.
  * @param ticket_amounts Array of ticket amounts.
@@ -249,7 +249,7 @@ void displayBookings(const int booking_ids[], const int ticket_amounts[], const 
     cout << "------------------------------------------------\n";
 }
 
-/`
+/**
  * @brief Finds the index of a booking by ID.
  * @param booking_ids Array of booking IDs.
  * @param numBookings Current number of bookings.
@@ -265,7 +265,7 @@ int findBookingIndexById(const int booking_ids[], int numBookings, int id) {
     return -1;
 }
 
-/`
+/**
  * @brief Edits an existing booking by ID.
  * @param booking_ids Array of booking IDs.
  * @param ticket_amounts Array of ticket amounts.
@@ -294,7 +294,7 @@ void editBooking(int booking_ids[], int ticket_amounts[], int food_amounts[], in
     cout << "Booking updated successfully.\n";
 }
 
-/`
+/**
  * @brief Deletes an existing booking by ID.
  * @param booking_ids Array of booking IDs.
  * @param ticket_amounts Array of ticket amounts.
