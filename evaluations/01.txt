@@ -1,0 +1,105 @@
+Problem Statement
+
+`Title:` Movie Ticket Booking Management System
+
+`Objective:`  
+Develop a menu-driven C++ program 
+to manage a movie ticket booking system. 
+The system should maintain data for movie ticket bookings, 
+including ticket amounts, food amounts, and booking IDs. 
+It should support CRUD operations 
+to create, read, update, and delete booking records.
+
+---
+
+`Requirements:`  
+The program should fulfill the following requirements:
+
+1. `Data Storage:`  
+   - Maintain three arrays in the `main` function:
+     - `booking_ids[]` to store unique booking IDs.
+     - `ticket_amounts[]` to store ticket amounts for each booking.
+     - `food_amounts[]` to store food amounts for each booking.
+   - Maintain an integer variable to track the total number of bookings.
+
+2. `Operations:`  
+   Implement the following operations as menu options:
+   
+   - `Create Booking:`
+     - Add a new booking by accepting inputs for booking ID, ticket amount, and food amount.
+     - Store the data in the respective arrays and increment the number of bookings.
+     - Ensure that the maximum limit of bookings is not exceeded.
+   
+   - `Read/Display Bookings:`
+     - Display all existing bookings in a formatted tabular format, showing:
+       - Booking ID
+       - Ticket Amount
+       - Food Amount
+     - If no bookings exist, display an appropriate message.
+
+   - `Edit Booking by ID:`
+     - Allow the user to search for a booking by its ID.
+     - If the booking exists, display its details and allow the user to update the ticket amount and food amount.
+     - If the booking does not exist, display an appropriate message.
+
+   - `Delete Booking by ID:`
+     - Allow the user to search for a booking by its ID.
+     - If the booking exists, delete it by shifting all subsequent records to fill the gap and decrement the total number of bookings.
+     - If the booking does not exist, display an appropriate message.
+
+3. `Menu Navigation:`  
+   - Present a menu with options to perform the above operations.
+   - Allow the user to perform multiple operations in a session until they choose to exit.
+
+4. `Error Handling:`  
+   - Handle cases where the arrays are full during the creation of a booking.
+   - Handle invalid booking IDs during edit or delete operations.
+
+---
+
+`Example Input and Output:`  
+1. `Menu Options:`  
+   ```
+   1. Create Booking
+   2. Display All Bookings
+   3. Edit Booking
+   4. Delete Booking
+   5. Exit
+   ```
+
+2. `Sample Output for Displaying Bookings:`  
+   ```
+   ------------------------------------------------
+   | Booking ID | Ticket Amount | Food Amount    |
+   ------------------------------------------------
+   | 101        | 250           | 150            |
+   | 102        | 300           | 200            |
+   ------------------------------------------------
+   ```
+
+3. `Sample Operation:`  
+   `Edit Booking by ID:`  
+   - Input: Booking ID = 101  
+   - Output:  
+     ```
+     Current Details:
+     Booking ID: 101, Ticket Amount: 250, Food Amount: 150
+     Enter New Ticket Amount: 280
+     Enter New Food Amount: 180
+     Booking updated successfully!
+     ```
+
+---
+
+`Constraints:`  
+- Maximum number of bookings: 100.
+- Booking IDs must be unique.
+
+---
+
+`Implementation Guidelines:`  
+- Use appropriate functions for each operation 
+(e.g., `createBooking`, `editBooking`, `displayBookings`, `deleteBooking`).
+- Ensure modularity and clarity in the code for easy maintenance.
+- Display messages for successful operations or any encountered errors.
+- Follow coding standards.

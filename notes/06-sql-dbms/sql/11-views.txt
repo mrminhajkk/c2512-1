@@ -1,0 +1,147 @@
+`Views in Oracle`
+
+A `view` in Oracle is a virtual table 
+based on the result of a SQL query. 
+
+It does not store data itself but provides a way 
+to query and interact with data stored in one or more tables.
+
+---
+
+`Types of Views in Oracle`
+
+1. `Simple View`:
+   - Based on a single table.
+   - Does not include functions, groupings, or joins.
+   - Allows DML operations (e.g., `INSERT`, `UPDATE`, `DELETE`).
+
+2. `Complex View`:
+   - Based on multiple tables or includes complex queries with joins, groupings, or functions.
+   - DML operations may not be allowed or require an `INSTEAD OF trigger`.
+
+3. `Materialized View`:
+   - Stores the results of a query physically.
+   - Used for performance optimization.
+   - Can be refreshed manually or automatically.
+
+---
+
+`Advantages of Views`
+
+1. `Simplifies Complex Queries`: Encapsulates complex SQL logic.
+2. `Enhances Security`: Restricts access to specific columns or rows in a table.
+3. `Data Abstraction`: Provides a layer of abstraction over the base tables.
+4. `Reusability`: Enables reusing the same query logic in multiple places.
+
+---
+
+`Creating a View`
+
+#Syntax:
+```sql
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+```
+
+#Example:
+Create a view to show high-salaried employees:
+```sql
+CREATE VIEW high_salaried_employees AS
+SELECT emp_id, name, salary
+FROM employees
+WHERE salary > 50000;
+```
+
+#Query the view:
+```sql
+SELECT * FROM high_salaried_employees;
+```
+
+---
+
+`Modifying a View`
+
+#Syntax:
+```sql
+CREATE OR REPLACE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+```
+
+#Example:
+Update the view to include department ID:
+```sql
+CREATE OR REPLACE VIEW high_salaried_employees AS
+SELECT emp_id, name, salary, dept_id
+FROM employees
+WHERE salary > 50000;
+```
+
+---
+
+`Dropping a View`
+
+#Syntax:
+```sql
+DROP VIEW view_name;
+```
+
+#Example:
+```sql
+DROP VIEW high_salaried_employees;
+```
+
+---
+
+`Updating Data Through Views`
+
+- For `simple views`, you can perform `INSERT`, `UPDATE`, or `DELETE` operations as long as:
+  1. The view references only one table.
+  2. The view does not use aggregate functions, `DISTINCT`, `GROUP BY`, or `JOIN`.
+  3. The view includes all mandatory columns (e.g., columns with `NOT NULL` constraints).
+
+#Example:
+Update data through a view:
+```sql
+UPDATE high_salaried_employees
+SET salary = salary + 5000
+WHERE emp_id = 101;
+```
+
+---
+
+`Limitations of Views`
+
+1. `No Data Storage`: Views do not store data; they always query the base tables.
+2. `Performance`: Complex views can slow down queries.
+3. `DML Restrictions`: Cannot perform `INSERT`, `UPDATE`, or `DELETE` on certain views (complex views without triggers).
+
+---
+
+`Materialized Views`
+
+Unlike regular views, materialized views store query results physically, 
+making them faster for repeated use cases like reporting or analytics.
+
+#Syntax:
+```sql
+CREATE MATERIALIZED VIEW mv_name
+REFRESH [FAST | COMPLETE | FORCE]
+AS
+SELECT column1, column2, ...
+FROM table_name;
+```
+
+#Example:
+```sql
+CREATE MATERIALIZED VIEW mv_high_salaried_employees
+REFRESH FAST
+AS
+SELECT emp_id, name, salary
+FROM employees
+WHERE salary > 50000;
+```
+

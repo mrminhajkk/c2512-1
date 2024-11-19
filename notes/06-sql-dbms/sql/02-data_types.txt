@@ -1,0 +1,83 @@
+Data types
+
+---
+
+`1. Character Data Types`
+Used to store alphanumeric data.
+
+| Data Type       | Description                                                                                     |
+|------------------|-------------------------------------------------------------------------------------------------|
+| `CHAR(size)`     | Fixed-length character data of size `size` bytes. Maximum size: 2000 bytes.                    |
+| `VARCHAR2(size)` | Variable-length character data. Maximum size: 4000 bytes.                                      |
+| `NCHAR(size)`    | Fixed-length Unicode character data. Maximum size: 2000 bytes.                                 |
+| `NVARCHAR2(size)`| Variable-length Unicode character data. Maximum size: 4000 bytes.                              |
+| `CLOB`           | Character large object, used for large text data. Maximum size: 4GB.                           |
+| `NCLOB`          | Unicode character large object.                                                               |
+
+---
+
+`2. Numeric Data Types`
+Used to store numeric data.
+
+| Data Type         | Description                                                                                     |
+|--------------------|-------------------------------------------------------------------------------------------------|
+| `NUMBER(p, s)`     | Variable-precision numeric data. `p` is precision (total digits), `s` is scale (digits after decimal). |
+| `FLOAT(p)`         | Floating-point number with precision `p`.                                                      |
+| `BINARY_FLOAT`     | 32-bit, single-precision floating-point number.                                                |
+| `BINARY_DOUBLE`    | 64-bit, double-precision floating-point number.                                                |
+
+---
+
+`3. Date and Time Data Types`
+Used to store date and time values.
+
+| Data Type        | Description                                                                                     |
+|-------------------|-------------------------------------------------------------------------------------------------|
+| `DATE`            | Stores date and time. Includes year, month, day, hour, minute, and second.                     |
+| `TIMESTAMP(p)`    | Stores date and time with fractional seconds precision `p` (default is 6).                     |
+| `TIMESTAMP WITH TIME ZONE` | Stores date and time, including time zone offset.                                     |
+| `TIMESTAMP WITH LOCAL TIME ZONE` | Stores date and time with time zone normalized to the database time zone.       |
+| `INTERVAL YEAR TO MONTH` | Stores a time interval in years and months.                                             |
+| `INTERVAL DAY TO SECOND` | Stores a time interval in days, hours, minutes, seconds, and fractional seconds.        |
+
+---
+
+`4. Binary Data Types`
+Used to store raw binary data.
+
+| Data Type        | Description                                                                                     |
+|-------------------|-------------------------------------------------------------------------------------------------|
+| `RAW(size)`       | Variable-length binary data. Maximum size: 2000 bytes.                                         |
+| `BLOB`            | Binary large object for storing unstructured binary data (e.g., images, multimedia).           |
+| `BFILE`           | Stores a pointer to a binary file stored outside the database.                                 |
+
+---
+
+`5. Row and Reference Data Types`
+Used for advanced object-oriented database structures.
+
+| Data Type        | Description                                                                                     |
+|-------------------|-------------------------------------------------------------------------------------------------|
+| `ROWID`           | Stores a unique identifier for a row in a database table.                                      |
+| `UROWID`          | Universal row identifier for rows stored in index-organized tables.                            |
+| `REF`             | Reference to an object type.                                                                   |
+
+---
+
+`6. Specialized Data Types`
+Used for specific applications.
+
+| Data Type        | Description                                                                                     |
+|-------------------|-------------------------------------------------------------------------------------------------|
+| `XMLTYPE`         | Used for storing XML data.                                                                     |
+| `JSON`            | Used for storing JSON data (available in Oracle 21c+).                                         |
+| `SPATIAL`         | Used for storing spatial (geographic) data.                                                    |
+
+---
+
+`Key Points`
+1. Choose data types based on data precision, performance, and storage requirements.
+2. `VARCHAR2` is preferred over `CHAR` for variable-length strings to avoid unnecessary space allocation.
+3. `NUMBER` is highly flexible but can consume more storage compared to integer-specific data types in other databases.
+4. Use `BLOB` or `CLOB` for very large data objects.
+

@@ -1,0 +1,166 @@
+`Stored Procedures in Oracle`
+
+A `stored procedure` 
+in Oracle is a named block of PL/SQL code 
+that performs a specific task and can be reused multiple times. 
+It is stored in the database and executed as needed.
+
+---
+
+`Advantages of Stored Procedures`
+
+1. `Code Reusability`: Can be called multiple times, 
+    reducing redundancy.
+2. `Performance`: Precompiled and stored in the database, 
+    leading to faster execution.
+3. `Security`: Permissions can be granted on procedures 
+    instead of base tables.
+4. `Modularity`: Helps organize code into logical units.
+5. `Reduced Network Traffic`: 
+    Executes on the server side, 
+    reducing data transfer overhead.
+
+---
+
+`Components of a Stored Procedure`
+
+1. `Header`: Includes the procedure name and parameters.
+2. `Declaration Section` *(optional)*: 
+    Variables, cursors, or other local elements are declared.
+3. `Execution Section`: Contains the main logic of the procedure.
+4. `Exception Handling` *(optional)*: Manages runtime errors.
+
+---
+
+`Syntax for Creating a Stored Procedure`
+
+```sql
+CREATE OR REPLACE PROCEDURE procedure_name 
+    (parameter1 IN datatype, parameter2 OUT datatype, ...)
+AS
+  -- Declaration section (optional)
+BEGIN
+  -- Execution section (mandatory)
+  -- Your PL/SQL code goes here
+EXCEPTION
+  -- Exception handling section (optional)
+END procedure_name;
+```
+
+---
+
+`Example 1: A Simple Stored Procedure`
+
+Create a procedure to calculate the bonus of an employee 
+based on their salary.
+
+```sql
+CREATE OR REPLACE PROCEDURE calculate_bonus (
+  emp_id IN NUMBER,
+  bonus OUT NUMBER
+)
+AS
+  salary NUMBER;
+BEGIN
+  -- Retrieve employee salary
+  SELECT salary INTO salary
+  FROM employees
+  WHERE employee_id = emp_id;
+
+  -- Calculate bonus (10% of salary)
+  bonus := salary * 0.10;
+END calculate_bonus;
+```
+
+#Call the Procedure:
+```sql
+DECLARE
+  emp_bonus NUMBER;
+BEGIN
+  calculate_bonus(101, emp_bonus);
+  DBMS_OUTPUT.PUT_LINE('Employee Bonus: ' || emp_bonus);
+END;
+```
+
+---
+
+`Example 2: Stored Procedure with DML`
+
+Create a procedure to update an employee's department.
+
+```sql
+CREATE OR REPLACE PROCEDURE update_department (
+  emp_id IN NUMBER,
+  new_dept_id IN NUMBER
+)
+AS
+BEGIN
+  UPDATE employees
+  SET department_id = new_dept_id
+  WHERE employee_id = emp_id;
+
+  COMMIT;
+END update_department;
+```
+
+#Call the Procedure:
+```sql
+BEGIN
+  update_department(101, 30);
+END;
+```
+
+---
+
+`IN, OUT, and IN OUT Parameters`
+
+1. `IN`: Passes a value to the procedure (read-only).
+2. `OUT`: Returns a value from the procedure.
+3. `IN OUT`: Passes a value to the procedure and allows it to be updated and returned.
+
+#Example Using All Parameter Types:
+```sql
+CREATE OR REPLACE PROCEDURE manage_employee (
+  emp_id IN NUMBER,
+  salary_increase IN OUT NUMBER,
+  new_salary OUT NUMBER
+)
+AS
+BEGIN
+  -- Calculate new salary
+  new_salary := salary_increase + (SELECT salary FROM employees WHERE employee_id = emp_id);
+
+  -- Update salary
+  UPDATE employees
+  SET salary = new_salary
+  WHERE employee_id = emp_id;
+
+  COMMIT;
+END manage_employee;
+```
+
+---
+
+`Dropping a Stored Procedure`
+
+To remove a stored procedure from the database:
+```sql
+DROP PROCEDURE procedure_name;
+```
+
+---
+
+`Debugging Stored Procedures`
+
+1. Use `DBMS_OUTPUT.PUT_LINE` to display debug messages.
+2. Use Oracle SQL Developer for step-by-step debugging.
+
+---
+
+`Best Practices for Stored Procedures`
+
+1. `Use Parameters`: Avoid hardcoding values to make procedures flexible.
+2. `Error Handling`: Use the `EXCEPTION` block to handle errors gracefully.
+3. `Avoid Overloading`: Use descriptive procedure names to avoid confusion.
+4. `Grant Necessary Permissions`: Use `GRANT EXECUTE ON procedure_name` to allow others to use the procedure.
+

@@ -1,0 +1,209 @@
+`Indexes in Oracle`
+
+An `index` in Oracle is a schema object 
+used to improve the performance of SQL queries 
+by allowing the database to find rows faster. 
+
+Indexes store pointers to the rows 
+in the table and can significantly 
+reduce the amount of data 
+that needs to be scanned during query execution.
+
+---
+
+`Types of Indexes in Oracle`
+
+1. `B-Tree Index`
+2. `Bitmap Index`
+3. `Function-Based Index`
+4. `Unique Index`
+5. `Composite Index`
+6. `Reverse Key Index`
+7. `Clustered Index`
+8. `Global and Local Partitioned Indexes`
+9. `Domain Index`
+
+---
+
+`1. B-Tree Index (Default Index)`
+
+- The most commonly used index type.
+- Efficient for equality and range-based searches.
+- Automatically balances itself (B-Tree structure).
+
+#Syntax:
+```sql
+CREATE INDEX idx_employee_name ON employees(last_name);
+```
+
+#Usage:
+- Ideal for columns with high cardinality (many unique values).
+- Works well for `=`, `>`, `<`, `>=`, `<=`, `BETWEEN`, and `LIKE` queries.
+
+---
+
+`2. Bitmap Index`
+
+- Uses bitmaps to represent data, making it suitable for low-cardinality columns (few unique values).
+- Efficient for queries involving multiple conditions (e.g., `AND`, `OR`).
+
+#Syntax:
+```sql
+CREATE BITMAP INDEX idx_department_gender ON employees(department_id, gender);
+```
+
+#Usage:
+- Best for data warehouse applications.
+- Not ideal for transactional systems with frequent `INSERT`, `UPDATE`, or `DELETE` operations.
+
+---
+
+`3. Function-Based Index`
+
+- Created on a column or an expression involving one or more columns.
+- Useful for optimizing queries that involve functions or calculations.
+
+#Syntax:
+```sql
+CREATE INDEX idx_upper_lastname ON employees(UPPER(last_name));
+```
+
+#Usage:
+- Queries like `WHERE UPPER(last_name) = 'SMITH'` can use this index.
+
+---
+
+`4. Unique Index`
+
+- Ensures that all values in the indexed column are unique.
+- Automatically created when a `UNIQUE` or `PRIMARY KEY` constraint is defined.
+
+#Syntax:
+```sql
+CREATE UNIQUE INDEX idx_unique_email ON employees(email);
+```
+
+---
+
+`5. Composite Index`
+
+- Created on two or more columns.
+- Useful when multiple columns are frequently queried together.
+
+#Syntax:
+```sql
+CREATE INDEX idx_employee_dept_job ON employees(department_id, job_title);
+```
+
+#Usage:
+- Supports queries like:
+  ```sql
+  SELECT * FROM employees WHERE department_id = 10 AND job_title = 'Manager';
+  ```
+
+---
+
+`6. Reverse Key Index`
+
+- Reverses the bytes of the index key to evenly distribute index values and avoid block contention in high-concurrency environments.
+
+#Syntax:
+```sql
+CREATE INDEX idx_reverse_emp_id ON employees(employee_id) REVERSE;
+```
+
+#Usage:
+- Useful in OLTP environments with sequential primary key generation.
+
+---
+
+`7. Clustered Index`
+
+- Used with clustered tables where rows are stored physically together based on key values.
+- Oracle does not support user-defined clustered indexes like some other databases.
+
+---
+
+`8. Global and Local Partitioned Indexes`
+
+- `Global Index:` Spans all partitions of a table.
+  ```sql
+  CREATE INDEX idx_global_partition ON employees(hire_date) GLOBAL PARTITION BY RANGE (hire_date);
+  ```
+- `Local Index:` Created on each partition of the table.
+  ```sql
+  CREATE INDEX idx_local_partition ON employees(hire_date) LOCAL;
+  ```
+
+#Usage:
+- Useful for partitioned tables in large-scale databases.
+
+---
+
+`9. Domain Index`
+
+- Custom indexes created for specific application needs using Oracle’s extensibility framework.
+
+#Syntax:
+```sql
+CREATE INDEX idx_custom ON documents(text) INDEXTYPE IS CTXSYS.CONTEXT;
+```
+
+#Usage:
+- Often used for full-text search.
+
+---
+
+`Maintaining Indexes`
+
+1. `Rebuild Index:`
+   - Required when indexes become fragmented.
+   ```sql
+   ALTER INDEX idx_employee_name REBUILD;
+   ```
+
+2. `Drop Index:`
+   - Removes an index.
+   ```sql
+   DROP INDEX idx_employee_name;
+   ```
+
+3. `Analyze Index:`
+   - Collects statistics for the optimizer.
+   ```sql
+   ANALYZE INDEX idx_employee_name COMPUTE STATISTICS;
+   ```
+
+---
+
+`Advantages of Indexes`
+
+- Faster query execution for SELECT statements.
+- Efficient data retrieval for large datasets.
+- Optimizes join operations in SQL.
+
+---
+
+`Disadvantages of Indexes`
+
+- Increased storage requirements.
+- Slower `INSERT`, `UPDATE`, and `DELETE` operations due to index maintenance.
+- Can degrade performance if not used wisely.
+
+---
+
+`When to Use Indexes`
+
+1. Columns frequently used in WHERE, JOIN, or GROUP BY clauses.
+2. Columns with high cardinality (many unique values) for B-Tree indexes.
+3. Columns with low cardinality for Bitmap indexes.
+4. Composite keys when multiple columns are queried together.
+
+---
+
+`Best Practices`
+
+- Use indexes selectively on columns critical to query performance.
+- Avoid creating indexes on columns with frequent `UPDATE` operations.
+- Monitor index usage with Oracle performance tools like `V$SQL_PLAN` and `DBMS_STATS`.
+

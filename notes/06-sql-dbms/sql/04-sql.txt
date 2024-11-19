@@ -1,0 +1,167 @@
+SQL Commands in Oracle
+
+SQL commands in Oracle are categorized based 
+on their purpose: `DDL`, `DML`, `TCL`, `DCL`, and `DQL` 
+(Data Query Language). 
+
+Below is an overview of each category along 
+with examples specific to Oracle.
+
+---
+
+`1. Data Definition Language (DDL)`
+Used to define and manage database schema objects such as tables, views, and indexes. `DDL commands are auto-committed`.
+
+| `Command`   | `Description`                                      |
+|---------------|------------------------------------------------------|
+| `CREATE`      | Creates database objects (e.g., tables, views).      |
+| `ALTER`       | Modifies existing database objects.                  |
+| `DROP`        | Deletes database objects.                            |
+| `TRUNCATE`    | Deletes all rows from a table (cannot be rolled back).|
+| `RENAME`      | Renames a database object.                           |
+| `COMMENT`     | Adds comments to a database object.                  |
+
+Examples:
+```sql
+-- Create a table
+CREATE TABLE employees (
+    emp_id NUMBER PRIMARY KEY,
+    name VARCHAR2(100),
+    salary NUMBER
+);
+
+-- Alter a table
+ALTER TABLE employees ADD department_id NUMBER;
+
+-- Drop a table
+DROP TABLE employees;
+
+-- Truncate a table
+TRUNCATE TABLE employees;
+
+-- Rename a table
+RENAME employees TO staff;
+
+-- Add a comment
+COMMENT ON TABLE staff IS 'This table stores employee details';
+```
+
+---
+
+`2. Data Manipulation Language (DML)`
+Used to manipulate and query the data in tables. `DML commands are not auto-committed`.
+
+| `Command`   | `Description`                                      |
+|---------------|------------------------------------------------------|
+| `INSERT`      | Adds new rows to a table.                            |
+| `UPDATE`      | Modifies existing data in a table.                   |
+| `DELETE`      | Removes rows from a table.                           |
+| `MERGE`       | Combines `INSERT` and `UPDATE` functionality.        |
+
+Examples:
+```sql
+-- Insert data into a table
+INSERT INTO employees (emp_id, name, salary) VALUES (1, 'John Doe', 50000);
+
+-- Update data in a table
+UPDATE employees SET salary = salary + 5000 WHERE emp_id = 1;
+
+-- Delete data from a table
+DELETE FROM employees WHERE emp_id = 1;
+
+-- Merge data (upsert)
+MERGE INTO employees e
+USING (SELECT 2 AS emp_id, 'Jane Doe' AS name, 60000 AS salary FROM dual) s
+ON (e.emp_id = s.emp_id)
+WHEN MATCHED THEN
+    UPDATE SET e.salary = s.salary
+WHEN NOT MATCHED THEN
+    INSERT (emp_id, name, salary) VALUES (s.emp_id, s.name, s.salary);
+```
+
+---
+
+`3. Transaction Control Language (TCL)`
+Used to manage transactions in the database. 
+
+| `Command`   | `Description`                                      |
+|---------------|------------------------------------------------------|
+| `COMMIT`      | Saves all changes made during the current transaction.|
+| `ROLLBACK`    | Undoes changes made during the current transaction.  |
+| `SAVEPOINT`   | Creates a point within a transaction for partial rollback.|
+| `SET TRANSACTION` | Defines properties for a transaction.            |
+
+Examples:
+```sql
+-- Start a transaction (default)
+INSERT INTO employees (emp_id, name, salary) VALUES (3, 'Alice', 45000);
+
+-- Commit the transaction
+COMMIT;
+
+-- Rollback changes
+UPDATE employees SET salary = 47000 WHERE emp_id = 3;
+ROLLBACK;
+
+-- Use savepoints
+SAVEPOINT sp1;
+DELETE FROM employees WHERE emp_id = 3;
+ROLLBACK TO sp1;
+
+-- Set transaction properties
+SET TRANSACTION READ ONLY;
+```
+
+---
+
+`4. Data Control Language (DCL)`
+Used to control access to the database.
+
+| `Command`   | `Description`                                      |
+|---------------|------------------------------------------------------|
+| `GRANT`       | Provides privileges to users or roles.               |
+| `REVOKE`      | Removes privileges from users or roles.              |
+
+Examples:
+```sql
+-- Grant privileges
+GRANT SELECT, INSERT ON employees TO user1;
+
+-- Revoke privileges
+REVOKE INSERT ON employees FROM user1;
+```
+
+---
+
+`5. Data Query Language (DQL)`
+Focused on retrieving data from the database. This is often considered part of DML but is sometimes categorized separately.
+
+| `Command`   | `Description`                                      |
+|---------------|------------------------------------------------------|
+| `SELECT`      | Retrieves data from one or more tables or views.     |
+
+Examples:
+```sql
+-- Select data from a table
+SELECT * FROM employees;
+
+-- Select with a condition
+SELECT name, salary FROM employees WHERE salary > 40000;
+
+-- Aggregate functions
+SELECT AVG(salary) AS average_salary FROM employees;
+```
+
+---
+
+Summary Table of Command Categories
+
+| `Category`  | `Commands`                                                                                     |
+|---------------|-------------------------------------------------------------------------------------------------|
+| `DDL`       | `CREATE`, `ALTER`, `DROP`, `TRUNCATE`, `RENAME`, `COMMENT`                                      |
+| `DML`       | `INSERT`, `UPDATE`, `DELETE`, `MERGE`                                                           |
+| `TCL`       | `COMMIT`, `ROLLBACK`, `SAVEPOINT`, `SET TRANSACTION`                                            |
+| `DCL`       | `GRANT`, `REVOKE`                                                                              |
+| `DQL`       | `SELECT`                                                                                       |
+
+---

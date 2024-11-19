@@ -1,0 +1,235 @@
+`Query Optimization in Oracle`
+
+Query optimization in Oracle is 
+the process of improving the performance of SQL queries 
+by reducing their execution time and resource usage. 
+Oracle Database includes a sophisticated `optimizer` 
+that determines the most efficient execution plan for a query.
+
+---
+
+`Key Components of Query Optimization`
+
+1. `Oracle Optimizer`
+   - Analyzes SQL statements and chooses the best execution plan.
+   - Operates in two modes:
+     - `Rule-Based Optimization (RBO)`: Based on predefined rules (deprecated in favor of CBO).
+     - `Cost-Based Optimization (CBO)`: Based on statistics and costs to determine the most efficient plan.
+
+2. `Execution Plan`
+   - A blueprint showing how the database will execute the SQL query.
+   - Can be viewed using the `EXPLAIN PLAN` or `AUTOTRACE` features.
+
+---
+
+`Common Query Optimization Techniques`
+
+1. `Use Proper Indexing`
+   - Create indexes on frequently queried columns to speed up data retrieval.
+   - Avoid over-indexing, as it can slow down `INSERT`, `UPDATE`, and `DELETE` operations.
+
+   `Example:`
+   ```sql
+   CREATE INDEX idx_employee_dept ON employees(department_id);
+   ```
+
+---
+
+2. `Use SELECT Columns Explicitly`
+   - Avoid `SELECT *` as it retrieves unnecessary data and increases I/O.
+
+   `Bad Practice:`
+   ```sql
+   SELECT * FROM employees;
+   ```
+
+   `Optimized Query:`
+   ```sql
+   SELECT employee_id, first_name, salary FROM employees;
+   ```
+
+---
+
+3. `Filter Data Early with WHERE Clauses`
+   - Use selective `WHERE` conditions to reduce the number of rows processed.
+
+   `Example:`
+   ```sql
+   SELECT employee_id, first_name
+   FROM employees
+   WHERE department_id = 10;
+   ```
+
+---
+
+4. `Avoid Full Table Scans`
+   - Use indexes to prevent scanning the entire table.
+
+   `Without Index:`
+   ```sql
+   SELECT employee_id FROM employees WHERE salary > 50000;
+   ```
+
+   `With Index:`
+   ```sql
+   CREATE INDEX idx_employee_salary ON employees(salary);
+   SELECT employee_id FROM employees WHERE salary > 50000;
+   ```
+
+---
+
+5. `Use Joins Effectively`
+   - Use appropriate join types and minimize the data being joined.
+
+   `Bad Practice:`
+   ```sql
+   SELECT e.employee_id, d.department_name
+   FROM employees e, departments d
+   WHERE e.department_id = d.department_id;
+   ```
+
+   `Optimized Query:`
+   ```sql
+   SELECT e.employee_id, d.department_name
+   FROM employees e
+   INNER JOIN departments d
+   ON e.department_id = d.department_id;
+   ```
+
+---
+
+6. `Optimize Subqueries`
+   - Replace correlated subqueries with `JOIN` or `WITH` (Common Table Expressions) when possible.
+
+   `Subquery:`
+   ```sql
+   SELECT e.employee_id
+   FROM employees e
+   WHERE e.department_id = (SELECT d.department_id FROM departments d WHERE d.department_name = 'Sales');
+   ```
+
+   `Optimized Query:`
+   ```sql
+   SELECT e.employee_id
+   FROM employees e
+   INNER JOIN departments d
+   ON e.department_id = d.department_id
+   WHERE d.department_name = 'Sales';
+   ```
+
+---
+
+7. `Use Hints`
+   - Oracle SQL hints guide the optimizer to choose a specific execution plan.
+
+   `Example:`
+   ```sql
+   SELECT /*+ INDEX(employees idx_employee_dept) */ employee_id, first_name
+   FROM employees
+   WHERE department_id = 10;
+   ```
+
+---
+
+8. `Analyze and Gather Statistics`
+   - Keep table and index statistics updated for CBO to make accurate decisions.
+
+   `Example:`
+   ```sql
+   BEGIN
+       DBMS_STATS.GATHER_TABLE_STATS('HR', 'EMPLOYEES');
+   END;
+   ```
+
+---
+
+9. `Avoid Functions on Indexed Columns`
+   - Functions on indexed columns prevent the optimizer from using indexes.
+
+   `Inefficient:`
+   ```sql
+   SELECT employee_id FROM employees WHERE UPPER(first_name) = 'JOHN';
+   ```
+
+   `Optimized Query:`
+   ```sql
+   SELECT employee_id FROM employees WHERE first_name = 'John';
+   ```
+
+---
+
+10. `Use Bind Variables`
+   - Prevent SQL parsing overhead by using bind variables in queries.
+
+   `Without Bind Variable:`
+   ```sql
+   SELECT employee_id FROM employees WHERE department_id = 10;
+   SELECT employee_id FROM employees WHERE department_id = 20;
+   ```
+
+   `With Bind Variable:`
+   ```sql
+   SELECT employee_id FROM employees WHERE department_id = :dept_id;
+   ```
+
+---
+
+11. `Partition Large Tables`
+   - Use table partitioning to divide large tables into smaller, manageable pieces.
+
+   `Example:`
+   ```sql
+   CREATE TABLE employees_partitioned
+   PARTITION BY RANGE (hire_date) (
+       PARTITION p1 VALUES LESS THAN (TO_DATE('01-JAN-2000', 'DD-MON-YYYY')),
+       PARTITION p2 VALUES LESS THAN (TO_DATE('01-JAN-2010', 'DD-MON-YYYY')),
+       PARTITION p3 VALUES LESS THAN (MAXVALUE)
+   );
+   ```
+
+---
+
+12. `Use Materialized Views`
+   - Precompute and store complex query results for reuse.
+
+   `Example:`
+   ```sql
+   CREATE MATERIALIZED VIEW mv_sales_summary AS
+   SELECT department_id, SUM(salary) AS total_salary
+   FROM employees
+   GROUP BY department_id;
+   ```
+
+---
+
+`Execution Plan Analysis`
+
+- Use the `EXPLAIN PLAN` command to understand how Oracle executes a query.
+- `Example:`
+   ```sql
+   EXPLAIN PLAN FOR
+   SELECT * FROM employees WHERE department_id = 10;
+
+   SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+   ```
+
+- Output includes:
+  - Access paths (Full Table Scan, Index Scan).
+  - Join methods (Nested Loops, Hash Join).
+  - Filter operations.
+
+---
+
+`Best Practices`
+
+1. `Minimize Network Traffic`:
+   - Fetch only necessary rows and columns.
+2. `Normalize Tables`:
+   - Reduce data redundancy and improve update efficiency.
+3. `Denormalize for Reporting`:
+   - Use denormalization to optimize read-heavy queries.
+4. `Review Execution Plans Regularly`:
+   - Analyze slow queries to identify inefficiencies.
+5. `Test Changes`:
+   - Test optimizations to ensure improved performance.
+

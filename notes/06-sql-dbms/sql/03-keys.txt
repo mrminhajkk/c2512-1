@@ -1,0 +1,317 @@
+====================================================================
+`Keys in Oracle`
+====================================================================
+Keys in Oracle are constraints or attributes 
+used to maintain the integrity of the data in a table. 
+Tey play a critical role in establishing relationships 
+between tables and ensuring data consistency.
+
+---
+
+`Types of Keys`
+
+1. `Primary Key`
+2. `Unique Key`
+3. `Foreign Key`
+4. `Composite Key`
+5. `Candidate Key`
+6. `Alternate Key`
+7. `Super Key`
+
+---
+
+`1. Primary Key`
+
+- Uniquely identifies each row in a table.
+- A table can have only one primary key.
+- Cannot contain `NULL` values.
+
+#Syntax:
+```sql
+CREATE TABLE employees (
+    employee_id NUMBER PRIMARY KEY,
+    first_name VARCHAR2(50),
+    last_name VARCHAR2(50)
+);
+```
+
+#Example of Adding a Primary Key:
+```sql
+ALTER TABLE employees 
+ADD CONSTRAINT pk_employee PRIMARY KEY (employee_id);
+```
+
+---
+
+`2. Unique Key`
+
+- Ensures all values in the column are unique.
+- Allows only one `NULL` value (if allowed by the database).
+
+#Syntax:
+```sql
+CREATE TABLE departments (
+    department_id NUMBER PRIMARY KEY,
+    department_name VARCHAR2(100) UNIQUE
+);
+```
+
+#Example of Adding a Unique Key:
+```sql
+ALTER TABLE departments 
+ADD CONSTRAINT uq_department_name UNIQUE (department_name);
+```
+
+---
+
+`3. Foreign Key`
+
+- Establishes a relationship between two tables.
+- References the primary key of another table.
+- Ensures referential integrity.
+
+#Syntax:
+```sql
+CREATE TABLE employees (
+    employee_id NUMBER PRIMARY KEY,
+    department_id NUMBER,
+    CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+```
+
+#Example of Adding a Foreign Key:
+```sql
+ALTER TABLE employees 
+ADD CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES departments(department_id);
+```
+
+---
+
+`4. Composite Key`
+
+- A primary or unique key that consists of two or more columns.
+- Used when a single column is insufficient to uniquely identify a row.
+
+#Syntax:
+```sql
+CREATE TABLE order_items (
+    order_id NUMBER,
+    product_id NUMBER,
+    quantity NUMBER,
+    CONSTRAINT pk_order_items PRIMARY KEY (order_id, product_id)
+);
+```
+
+---
+
+`5. Candidate Key`
+
+- A column or combination of columns 
+that can uniquely identify rows in a table.
+- A table can have multiple candidate keys.
+- One candidate key becomes the primary key.
+
+---
+
+`6. Alternate Key`
+
+- Candidate keys that are not chosen 
+as the primary key are called alternate keys.
+
+---
+
+`7. Super Key`
+
+- A set of one or more columns 
+that can uniquely identify rows in a table.
+- Includes primary keys and any other keys 
+that uniquely identify rows.
+
+---
+
+`Key Differences`
+
+| `Key Type`      | `Unique Values` | `NULL Allowed` | `Purpose`                                             |
+|--------------------|-------------------|------------------|---------------------------------------------------------|
+| `Primary Key`    | Yes               | No               | Uniquely identifies rows in the table.                 |
+| `Unique Key`     | Yes               | Yes (only one)   | Ensures unique values in the column.                   |
+| `Foreign Key`    | No                | Yes              | Establishes relationships between tables.              |
+| `Composite Key`  | Yes               | Depends on PK    | Combines multiple columns to uniquely identify rows.   |
+
+---
+
+`Working with Keys`
+
+#Drop a Primary Key:
+```sql
+ALTER TABLE employees DROP CONSTRAINT pk_employee;
+```
+
+#Drop a Foreign Key:
+```sql
+ALTER TABLE employees DROP CONSTRAINT fk_department;
+```
+
+#Add a Key with Naming:
+```sql
+ALTER TABLE employees ADD CONSTRAINT emp_dept_fk FOREIGN KEY (department_id) REFERENCES departments(department_id);
+```
+
+---
+
+`Best Practices`
+
+1. `Use Primary Keys:` Ensure every table has a primary key.
+2. `Avoid Redundant Keys:` Use the minimal number of keys required for data integrity.
+3. `Name Constraints Clearly:` Use descriptive names for constraints (e.g., `pk_table_name` or `fk_table_name_column`).
+4. `Composite Keys:` Use only when a single column is insufficient to uniquely identify rows.
+
+Let me know if you need detailed examples or additional clarification!
+
+
+
+====================================================================
+                                Foreign Key
+====================================================================
+---
+
+`Key Points about Foreign Keys`
+1. `Referential Integrity`: 
+    A foreign key ensures 
+    that the child table cannot have values 
+    that do not exist in the parent table.
+2. `Parent and Child Table`: 
+   - The `parent table` contains the primary (or unique) key.
+   - The `child table` contains 
+    the foreign key referencing the parent key.
+3. `Null Values`: 
+    Foreign keys allow `NULL` values 
+    unless explicitly prohibited 
+    using the `NOT NULL` constraint.
+4. `Actions on Update/Delete`: 
+    You can define behaviors 
+    for updates or deletions 
+    in the parent table 
+    using the `ON DELETE` clause.
+
+---
+
+`Creating Foreign Keys`
+Foreign keys can be defined:
+1. `At the Column Level`: Directly within the column definition.
+2. `At the Table Level`: After all columns are defined.
+
+---
+
+#`1. Create Foreign Key at Column Level`
+
+```sql
+CREATE TABLE child_table (
+    child_id NUMBER PRIMARY KEY,
+    parent_id NUMBER,
+    FOREIGN KEY (parent_id) REFERENCES parent_table(parent_id)
+);
+```
+
+---
+
+#`2. Create Foreign Key at Table Level`
+
+```sql
+CREATE TABLE child_table (
+    child_id NUMBER PRIMARY KEY,
+    parent_id NUMBER,
+    CONSTRAINT fk_parent FOREIGN KEY (parent_id)
+    REFERENCES parent_table(parent_id)
+);
+```
+
+---
+
+`Adding a Foreign Key to an Existing Table`
+
+```sql
+ALTER TABLE child_table
+ADD CONSTRAINT fk_parent
+FOREIGN KEY (parent_id)
+REFERENCES parent_table(parent_id);
+```
+
+---
+
+`ON DELETE Clause`
+The `ON DELETE` clause defines what happens to rows in the child table when a referenced row in the parent table is deleted.
+
+1. `ON DELETE CASCADE`: Deletes the corresponding rows in the child table when a row in the parent table is deleted.
+
+   ```sql
+   CREATE TABLE child_table (
+       child_id NUMBER PRIMARY KEY,
+       parent_id NUMBER,
+       CONSTRAINT fk_parent FOREIGN KEY (parent_id)
+       REFERENCES parent_table(parent_id)
+       ON DELETE CASCADE
+   );
+   ```
+
+2. `ON DELETE SET NULL`: Sets the foreign key value in the child table to `NULL` when a row in the parent table is deleted.
+
+   ```sql
+   CREATE TABLE child_table (
+       child_id NUMBER PRIMARY KEY,
+       parent_id NUMBER,
+       CONSTRAINT fk_parent FOREIGN KEY (parent_id)
+       REFERENCES parent_table(parent_id)
+       ON DELETE SET NULL
+   );
+   ```
+
+---
+
+`Dropping a Foreign Key`
+
+You can drop a foreign key constraint using the `ALTER TABLE` command:
+
+```sql
+ALTER TABLE child_table
+DROP CONSTRAINT fk_parent;
+```
+
+---
+
+`Examples`
+
+#`Parent Table: Employees`
+```sql
+CREATE TABLE employees (
+    employee_id NUMBER PRIMARY KEY,
+    name VARCHAR2(50)
+);
+```
+
+#`Child Table: Departments`
+```sql
+CREATE TABLE departments (
+    department_id NUMBER PRIMARY KEY,
+    manager_id NUMBER,
+    CONSTRAINT fk_manager FOREIGN KEY (manager_id)
+    REFERENCES employees(employee_id)
+    ON DELETE CASCADE
+);
+```
+
+- In this example:
+  - `departments.manager_id` must reference `employees.employee_id`.
+  - Deleting an employee will delete their associated department rows.
+
+---
+
+`Querying Foreign Key Constraints`
+To view foreign keys in a table:
+
+```sql
+SELECT constraint_name, table_name, r_constraint_name
+FROM user_constraints
+WHERE constraint_type = 'R';  -- 'R' for referential (foreign key) constraints
+```
+

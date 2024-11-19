@@ -1,0 +1,109 @@
+SQL operators in Oracle
+
+---
+
+`1. Arithmetic Operators`
+Used for mathematical calculations.
+
+| `Operator` | `Description`            | `Example`                  |
+|--------------|-----------------------------|------------------------------|
+| `+`          | Addition                   | `SELECT 10 + 5 FROM dual;`   |
+| `-`          | Subtraction                | `SELECT 10 - 5 FROM dual;`   |
+| `*`          | Multiplication             | `SELECT 10 * 5 FROM dual;`   |
+| `/`          | Division                   | `SELECT 10 / 5 FROM dual;`   |
+| `MOD`        | Modulus (remainder)        | `SELECT MOD(10, 3) FROM dual;` |
+
+---
+
+`2. Comparison Operators`
+Used to compare values in conditions.
+
+| `Operator` | `Description`                      | `Example`                        |
+|--------------|--------------------------------------|------------------------------------|
+| `=`          | Equal to                            | `SELECT * FROM employees WHERE salary = 50000;` |
+| `!=` or `<>` | Not equal to                        | `SELECT * FROM employees WHERE salary != 50000;` |
+| `>`          | Greater than                       | `SELECT * FROM employees WHERE salary > 50000;` |
+| `<`          | Less than                          | `SELECT * FROM employees WHERE salary < 50000;` |
+| `>=`         | Greater than or equal to           | `SELECT * FROM employees WHERE salary >= 50000;` |
+| `<=`         | Less than or equal to              | `SELECT * FROM employees WHERE salary <= 50000;` |
+
+---
+
+`3. Logical Operators`
+Used to combine or invert conditions.
+
+| `Operator` | `Description`                             | `Example`                                      |
+|--------------|---------------------------------------------|-------------------------------------------------|
+| `AND`        | Returns true if both conditions are true    | `SELECT * FROM employees WHERE salary > 40000 AND dept_id = 10;` |
+| `OR`         | Returns true if any condition is true       | `SELECT * FROM employees WHERE salary > 40000 OR dept_id = 10;` |
+| `NOT`        | Returns true if the condition is false      | `SELECT * FROM employees WHERE NOT (dept_id = 10);` |
+
+---
+
+`4. Set Operators`
+Used to combine results of two or more queries.
+
+| `Operator`      | `Description`                        | `Example`                         |
+|-------------------|----------------------------------------|-------------------------------------|
+| `UNION`           | Combines results (eliminates duplicates)| `SELECT name FROM employees UNION SELECT name FROM managers;` |
+| `UNION ALL`       | Combines results (includes duplicates) | `SELECT name FROM employees UNION ALL SELECT name FROM managers;` |
+| `INTERSECT`       | Returns common records                | `SELECT name FROM employees INTERSECT SELECT name FROM managers;` |
+| `MINUS`           | Returns records in the first query but not in the second | `SELECT name FROM employees MINUS SELECT name FROM managers;` |
+
+---
+
+`5. Special Operators`
+Provide specialized functionality in SQL queries.
+
+| `Operator`      | `Description`                              | `Example`                                             |
+|-------------------|----------------------------------------------|--------------------------------------------------------|
+| `BETWEEN ... AND` | Checks if value is in range (inclusive)      | `SELECT * FROM employees WHERE salary BETWEEN 30000 AND 60000;` |
+| `IN`              | Checks if value exists in a list             | `SELECT * FROM employees WHERE dept_id IN (10, 20, 30);` |
+| `LIKE`            | Matches patterns using wildcards             | `SELECT * FROM employees WHERE name LIKE 'J%';`         |
+| `IS NULL`         | Checks if value is null                     | `SELECT * FROM employees WHERE bonus IS NULL;`          |
+| `IS NOT NULL`     | Checks if value is not null                 | `SELECT * FROM employees WHERE bonus IS NOT NULL;`      |
+| `EXISTS`          | Checks if a subquery returns any rows       | `SELECT * FROM departments WHERE EXISTS (SELECT 1 FROM employees WHERE dept_id = departments.dept_id);` |
+
+---
+
+`6. String Operators`
+Used for string concatenation.
+
+| `Operator`      | `Description`                              | `Example`                     |
+|-------------------|----------------------------------------------|----------------------------------|
+| `||`              | Concatenates two or more strings             | `SELECT 'Hello' || ' ' || 'World' FROM dual;` |
+
+---
+
+`7. Hierarchical Query Operators`
+Used for hierarchical queries.
+
+| `Operator`      | `Description`                              | `Example`                                             |
+|-------------------|----------------------------------------------|--------------------------------------------------------|
+| `CONNECT BY`      | Defines parent-child relationships           | `SELECT employee_id, manager_id FROM employees CONNECT BY PRIOR employee_id = manager_id;` |
+| `START WITH`      | Specifies the root of the hierarchy          | `SELECT employee_id, manager_id FROM employees START WITH manager_id IS NULL CONNECT BY PRIOR employee_id = manager_id;` |
+
+---
+
+`8. Other Operators`
+Miscellaneous operators used for specific purposes.
+
+| `Operator`      | `Description`                              | `Example`                     |
+|-------------------|----------------------------------------------|----------------------------------|
+| `ALL`             | Compares a value to all values in a subquery | `SELECT * FROM employees WHERE salary > ALL (SELECT salary FROM managers);` |
+| `ANY`             | Compares a value to any value in a subquery  | `SELECT * FROM employees WHERE salary > ANY (SELECT salary FROM managers);` |
+| `SOME`            | Synonym for `ANY`                           | `SELECT * FROM employees WHERE salary > SOME (SELECT salary FROM managers);` |
+
+---
+
+Examples Summary:
+Here’s a practical query combining multiple operators:
+
+```sql
+SELECT employee_id, name, salary
+FROM employees
+WHERE (salary BETWEEN 40000 AND 80000 OR dept_id IN (10, 20))
+  AND manager_id IS NOT NULL
+  AND name LIKE 'A%';
+```
+

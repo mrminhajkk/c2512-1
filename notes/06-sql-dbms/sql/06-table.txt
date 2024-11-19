@@ -1,0 +1,207 @@
+`Table in Oracle`
+
+A `table` in Oracle is a database object 
+that stores data in rows and columns. 
+
+It is the fundamental building block of an Oracle database and 
+is used to organize and store data efficiently.
+
+---
+
+`Creating a Table`
+
+#Syntax:
+```sql
+CREATE TABLE table_name (
+    column1 datatype [constraint],
+    column2 datatype [constraint],
+    ...
+);
+```
+
+#Example:
+```sql
+CREATE TABLE employees (
+    employee_id NUMBER(6) PRIMARY KEY,
+    first_name VARCHAR2(50),
+    last_name VARCHAR2(50) NOT NULL,
+    email VARCHAR2(100) UNIQUE,
+    hire_date DATE NOT NULL,
+    salary NUMBER(10, 2) CHECK (salary > 0),
+    department_id NUMBER(4)
+);
+```
+
+---
+
+`Common Data Types for Columns`
+
+| `Data Type`   | `Description`                                                                                 |
+|------------------|-----------------------------------------------------------------------------------------------|
+| `NUMBER(p, s)`   | Numeric values with precision `p` and scale `s` (e.g., `NUMBER(10,2)` for up to 8 digits and 2 decimals). |
+| `VARCHAR2(size)` | Variable-length string with a maximum size.                                                   |
+| `CHAR(size)`     | Fixed-length string.                                                                          |
+| `DATE`           | Stores date and time values.                                                                  |
+| `CLOB`           | Stores large text data.                                                                       |
+| `BLOB`           | Stores binary data like images or files.                                                      |
+
+---
+
+`Constraints in Oracle Tables`
+
+Constraints enforce rules at the column or table level.
+
+| `Constraint`      | `Description`                                  |
+|----------------------|-------------------------------------------------|
+| `PRIMARY KEY`        | Ensures the column has unique, non-NULL values. |
+| `FOREIGN KEY`        | Enforces a relationship between tables.         |
+| `UNIQUE`             | Ensures all values in the column are unique.    |
+| `NOT NULL`           | Ensures the column cannot have NULL values.     |
+| `CHECK`              | Ensures the column value satisfies a condition. |
+
+#Example:
+```sql
+CREATE TABLE departments (
+    department_id NUMBER(4) PRIMARY KEY,
+    department_name VARCHAR2(100) NOT NULL,
+    manager_id NUMBER(6),
+    CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employees(employee_id)
+);
+```
+
+---
+
+`Altering a Table`
+
+1. `Add a New Column`:
+   ```sql
+   ALTER TABLE employees ADD phone_number VARCHAR2(15);
+   ```
+
+2. `Modify a Column`:
+   ```sql
+   ALTER TABLE employees MODIFY salary NUMBER(12, 2);
+   ```
+
+3. `Drop a Column`:
+   ```sql
+   ALTER TABLE employees DROP COLUMN phone_number;
+   ```
+
+4. `Add or Drop Constraints`:
+   ```sql
+   ALTER TABLE employees ADD CONSTRAINT chk_salary CHECK (salary > 3000);
+   ALTER TABLE employees DROP CONSTRAINT chk_salary;
+   ```
+
+---
+
+`Querying Data from a Table`
+
+#Syntax:
+```sql
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+```
+
+#Example:
+```sql
+SELECT first_name, last_name, salary
+FROM employees
+WHERE department_id = 10;
+```
+
+---
+
+`Updating Data in a Table`
+
+#Syntax:
+```sql
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+```
+
+#Example:
+```sql
+UPDATE employees
+SET salary = salary * 1.1
+WHERE department_id = 10;
+```
+
+---
+
+`Deleting Data from a Table`
+
+#Syntax:
+```sql
+DELETE FROM table_name
+WHERE condition;
+```
+
+#Example:
+```sql
+DELETE FROM employees
+WHERE department_id = 20;
+```
+
+---
+
+`Dropping a Table`
+
+To remove a table completely from the database:
+
+#Syntax:
+```sql
+DROP TABLE table_name [CASCADE CONSTRAINTS];
+```
+
+#Example:
+```sql
+DROP TABLE employees CASCADE CONSTRAINTS;
+```
+
+---
+
+`Temporary Tables`
+
+Temporary tables are used to store data temporarily 
+during a session or transaction.
+
+#Syntax:
+```sql
+CREATE GLOBAL TEMPORARY TABLE temp_table_name (
+    column1 datatype,
+    column2 datatype
+) ON COMMIT DELETE ROWS;
+```
+
+#Example:
+```sql
+CREATE GLOBAL TEMPORARY TABLE temp_sales (
+    sale_id NUMBER,
+    amount NUMBER
+) ON COMMIT PRESERVE ROWS;
+```
+
+- `ON COMMIT DELETE ROWS`: Data is deleted at the end of the transaction.
+- `ON COMMIT PRESERVE ROWS`: Data persists until the session ends.
+
+---
+
+`Best Practices`
+
+1. `Use Proper Data Types`: 
+    Match data types with the expected data 
+    to optimize storage and performance.
+2. `Constraints`: 
+    Define constraints to ensure data integrity.
+3. `Indexes`: 
+    Use indexes on frequently queried columns 
+    for faster access.
+4. `Avoid Unused Columns`: 
+    Design tables with only necessary columns.
+5. `Normalization`: 
+    Use normalization to reduce data redundancy.
+
