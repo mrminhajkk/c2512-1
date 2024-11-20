@@ -121,3 +121,92 @@
         -- order by country_name Asc, city_name DESC 
         -- order by 1 Asc, 2 DESC 
         --order by salary DESC
+
+    -- country name then city name based total salary sort by country A-Z then by city name Z-A order 
+        -- maximum city salary     
+        select *  
+        from (select 
+                countries.name as country_name, 
+                cities.name as city_name,  
+                sum(employees.salary) as salary 
+            from employees 
+                inner join cities on employees.city_id = cities.id 
+                inner join countries on cities.country_id = countries.id 
+            group by countries.name,  cities.name
+            order by countries.name Asc, cities.name DESC) city_salaries
+        where salary > 8000;
+
+        --Noted point: From the result table of the query also, we can do further querying.
+
+
+    -- Notes: I like to name the query. Is tehre any option? 
+        -- 1. alias name in the table selectors ['FROM' clause]
+        -- 2. physically name the query [It is called "view" in SQL / Oracle]
+        DROP VIEW v_city_salaries;
+        CREATE VIEW v_city_salaries AS 
+        select 
+                countries.name as country_name, 
+                cities.name as city_name,  
+                sum(employees.salary) as salary 
+            from employees 
+                inner join cities on employees.city_id = cities.id 
+                inner join countries on cities.country_id = countries.id 
+            group by countries.name,  cities.name
+            order by countries.name Asc, cities.name DESC;
+
+        -- usage 
+        select *  
+        from v_city_salaries
+        where salary > 8000;
+
+        select *  
+        from employees;
+        -- -- -- 
+
+
+        ganguli whose is city banglore which is at australia 
+
+        savepoint begin_employee_create;
+        INSERT INTO countries(id, name, ruler)
+        VALUES (51,	'australia', 'Dhoni');
+
+        INSERT INTO cities(id, name, country_id, admin)
+        VALUES (106, 'Banglore', 51, 'Josh');
+
+        INSERT INTO departments (id, name)
+        VALUES (40,	'Cricket');
+
+        INSERT INTO employees 
+        (id, name, job_title, department_id, address, city_id, salary, bonus)
+        VALUES (10,	'Ganguli',	'Cricketer', 40, '----',	106, 64000, 50);  
+        commit;
+        -- rollback to begin_employee_create;
+
+
+        select * from countries;
+        select * from cities;
+        select * from departments;
+        select * from employees;
+
+        delete from employees where id = 7; commit;
+
+
+        --- --- -
+Note: 
+    stored procedure: program in SQL / Database 
+        with return         stored procedure 
+        without return      stored function 
+
+Note: stored script / program with arguments as inputs is called stored procedure.
+
+
+-- simple script
+BEGIN 
+    DBMS_OUTPUT.PUT_LINE('Hello World!!!');
+END;
+
+-- to read number or if null, default(else) value
+select nvl(max(id),1) from departments;
+
+examples for stored procedures and functions are in folder "Day11"
+

@@ -377,7 +377,7 @@ BEGIN
     SELECT price INTO v_popkorn_price FROM food WHERE item_name = 'Pop Korn';
 
     -- 2. Compute totals
-    v_total_ticket_amount := v_ticket1_price + v_ticket2_price + v_ticket3_price;
+    v_total_ticket_amount    v_ticket1_price + v_ticket2_price + v_ticket3_price;
     v_total_food_amount := (v_samosa_price * 2) + (v_popkorn_price * 3);
     v_ticket_plus_food_amount := v_total_ticket_amount + v_total_food_amount;
 

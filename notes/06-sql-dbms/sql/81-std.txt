@@ -1,0 +1,62 @@
+General Naming Guidelines
+    Use Meaningful Names: Names should be descriptive enough to convey the purpose of the object.
+    Consistency: Maintain consistent naming conventions across all objects to avoid confusion.
+    Avoid Reserved Words: Do not use Oracle reserved keywords as names, as this can lead to errors.
+    Case Sensitivity: By default, Oracle names are case-insensitive. However, if you enclose names in double quotes, they become case-sensitive.
+Naming Conventions
+1. Tables
+    Format: PREFIX_OBJECTTYPE_OBJECTNAME
+    Examples:
+    EMPLOYEES
+    CUSTOMERS
+    ORDERS
+
+2. Views
+    Format: V_OBJECTNAME or VW_OBJECTNAME
+    Examples:
+    V_EMPLOYEES
+    VW_ACTIVE_CUSTOMERS
+    V_ORDER_SUMMARY
+3. Stored Procedures and Functions
+    Format: SP_OBJECTNAME for procedures, FN_OBJECTNAME for functions
+    Examples:
+    SP_ADD_EMPLOYEE
+    FN_GET_TOTAL_SALES
+    SP_UPDATE_ORDER_STATUS
+4. Synonyms
+    Format: SYNONYM_OBJECTNAME
+    Examples:
+    SYN_EMPLOYEES
+    SYN_CUSTOMER_VIEW
+5. Triggers
+    Format: TRG_OBJECTNAME_EVENT
+    Examples:
+    TRG_BEFORE_INSERT_EMPLOYEES
+    TRG_AFTER_UPDATE_ORDERS
+6. Columns
+    Format: Use a combination of the table name and the column's purpose.
+    Examples:
+    For the EMPLOYEES table: EMPLOYEE_ID, FIRST_NAME, LAST_NAME, HIRE_DATE
+    For the ORDERS table: ORDER_ID, ORDER_DATE, CUSTOMER_ID
+7. Indexes
+Format: IDX_TABLE_COLUMN
+Examples:
+    IDX_EMPLOYEES_LAST_NAME
+    IDX_ORDERS_ORDER_DATE
+Additional Best Practices
+    Use Underscores: Use underscores to separate words for better readability (e.g., FIRST_NAME instead of FIRSTNAME).
+    Limit Length: Keep names concise but descriptive. Oracle has a limit of 30 characters for object names.
+    Prefix/Suffix: Use prefixes or suffixes to indicate the type of object (e.g., V_ for views, SP_ for stored procedures).
+    Avoid Abbreviations: Avoid using abbreviations that may not be universally understood. If you must use them, document them clearly.
+    Example of a Naming Convention in Use
+Here’s a hypothetical example of how these conventions might look in practice:
+
+Table: EMPLOYEES
+View: V_EMPLOYEES_ACTIVE
+Stored Procedure: SP_ADD_EMPLOYEE
+Function: FN_GET_EMPLOYEE_NAME
+Trigger: TRG_BEFORE_INSERT_EMPLOYEES
+Column: EMPLOYEE_ID, FIRST_NAME, LAST_NAME
+Index: IDX_EMPLOYEES_LAST_NAME
+Summary
+Following a consistent naming convention for database objects in Oracle helps improve code readability, maintainability, and collaboration among team members. It's essential to document your chosen conventions so that all team members can adhere to them.

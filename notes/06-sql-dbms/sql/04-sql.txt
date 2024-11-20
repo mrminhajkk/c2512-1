@@ -117,6 +117,9 @@ SET TRANSACTION READ ONLY;
 `4. Data Control Language (DCL)`
 Used to control access to the database.
 
+Some of the privileges: SELECT, INSERT, DELETE, UPDATE, ALTER, INDEX, REFERENCES, or ALL 
+PRIVILEGES 
+
 | `Command`   | `Description`                                      |
 |---------------|------------------------------------------------------|
 | `GRANT`       | Provides privileges to users or roles.               |

@@ -164,3 +164,116 @@ DROP PROCEDURE procedure_name;
 3. `Avoid Overloading`: Use descriptive procedure names to avoid confusion.
 4. `Grant Necessary Permissions`: Use `GRANT EXECUTE ON procedure_name` to allow others to use the procedure.
 
+==================================
+
+
+Conditional statements and loop constructs in Oracle
+
+### 1. **Conditional Statements**
+
+#### `IF` Statement
+The `IF` statement in PL/SQL allows you to execute a block of code based on a condition.
+
+```sql
+IF condition THEN
+    -- statements
+ELSIF another_condition THEN
+    -- statements
+ELSE
+    -- statements
+END IF;
+```
+
+- **Example**:
+
+```sql
+DECLARE
+    v_salary NUMBER := 5000;
+BEGIN
+    IF v_salary > 3000 THEN
+        DBMS_OUTPUT.PUT_LINE('Salary is above 3000');
+    ELSIF v_salary = 3000 THEN
+        DBMS_OUTPUT.PUT_LINE('Salary is exactly 3000');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Salary is below 3000');
+    END IF;
+END;
+```
+
+### 2. **Loop Constructs**
+
+PL/SQL provides several types of loops:
+
+#### `LOOP`
+This is the simplest form of loop, which will continue executing until a `EXIT` condition is met.
+
+```sql
+LOOP
+    -- statements
+    EXIT WHEN condition;
+END LOOP;
+```
+
+- **Example**:
+
+```sql
+DECLARE
+    v_counter NUMBER := 1;
+BEGIN
+    LOOP
+        DBMS_OUTPUT.PUT_LINE('Counter: ' || v_counter);
+        v_counter := v_counter + 1;
+        EXIT WHEN v_counter > 5;
+    END LOOP;
+END;
+```
+
+#### `FOR` Loop
+A `FOR` loop is useful when you know the number of iterations in advance. It iterates over a range of values.
+
+```sql
+FOR i IN start_value..end_value LOOP
+    -- statements
+END LOOP;
+```
+
+- **Example**:
+
+```sql
+DECLARE
+    v_salary NUMBER := 1000;
+BEGIN
+    FOR i IN 1..5 LOOP
+        v_salary := v_salary + 100;
+        DBMS_OUTPUT.PUT_LINE('Salary: ' || v_salary);
+    END LOOP;
+END;
+```
+
+#### `WHILE` Loop
+A `WHILE` loop continues executing as long as the condition is true.
+
+```sql
+WHILE condition LOOP
+    -- statements
+END LOOP;
+```
+
+- **Example**:
+
+```sql
+DECLARE
+    v_counter NUMBER := 1;
+BEGIN
+    WHILE v_counter <= 5 LOOP
+        DBMS_OUTPUT.PUT_LINE('Counter: ' || v_counter);
+        v_counter := v_counter + 1;
+    END LOOP;
+END;
+```
+
+### Summary of Control Structures:
+- **IF**: For conditional execution.
+- **LOOP**: For repeating a block of code indefinitely until an exit condition is met.
+- **FOR**: For iterating a known range of values.
+- **WHILE**: For repeating a block of code while a condition remains true.
