@@ -85,7 +85,8 @@ Foundation Course
     Introduction to Web Applications  [Day 9]
         Learning Outcomes:
             Able to explain the client and server architecture.
-            Able to explain the various tiers of Web Application and examples of technologies used in these tiers
+            Able to explain the various tiers of Web Application and 
+                examples of technologies used in these tiers
         Topics:
             Client server architecture
             Web Applications
