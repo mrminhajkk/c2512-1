@@ -1,0 +1,336 @@
+Linux : every monrning for 10 half days 
+C++ (5 days): every afternoon for 10 half days 
+
+Software Engineering: Everyday from today. Before evaluation 2.
+
+===================================================================================
+
+C++ : high level programming language 
+    == C + OOP 
+    == modern programming language 
+- system software 
+- application software 
+
+===================================================================================
+identifier: programmer defined name 
+    for variable, function, array, class-like etc  
+    data types: 
+        primitive types 
+        [short | long | signed | unsigned] int, float, [long] double, char, bool 
+        derived types
+            function, array, 
+            struct / class / union ==> representing to define the class 
+            enum, strong enum ==> named constants 
+program structure 
+basics of function 
+control statements 
+    branching 
+        if..else 
+        switch 
+    loops 
+        for 
+        while 
+        do..while 
+        for..each 
+===================================================================================
+many problems we have solved before. 
+===================================================================================
+OOP : Object Oriented Programming 
+
+Case Study:
+    Banking Management System: 
+        Savings Accounts for customer of the bank. 
+
+    Account : {name, number, balance, phoneNumber, numberOfTransaction, isActive}
+
+What is this account? 
+    each account will have composite data like integer, decimal, boolean, text etc. 
+
+    structure [struct]: composite data ie many fields with different datatype 
+    struct / class: to define the class 
+                
+    object: implementation using blueprint | model  
+            composite data in many fields buldled in one name 
+            -- variable [mem allocs]
+    class: blueprint | model
+        composite data type 
+==========================================================================
+Old School
+==========================================================================
+
+struct Account 
+{
+    char name[255];
+    char number[20];
+    double balance;
+    char phoneNumber[20];
+    int numberOfTransaction;
+    bool isActive;
+};
+
+void withdraw(Account *ptrAccount, double amount)
+{
+    ptrAccount->balance -= amount;
+    ptrAccount->numberOfTransaction++;
+}
+
+void deposit(Account *ptrAccount, double amount)
+{
+    ptrAccount->balance += amount;
+    ptrAccount->numberOfTransaction++;
+}
+=========================================================================
+Old School Tested
+========================================================================== 
+#include<cstring>
+#include<cstdlib>
+#include<iostream>
+
+using std::cout;
+using std::endl;
+
+struct Account 
+{
+    char name[255];
+    char number[20];
+    double balance;
+    char phoneNumber[20];
+    int numberOfTransaction;
+    bool isActive;
+};
+
+void withdraw(Account* ptrAccount, double amount);
+void deposit(Account* ptrAccount, double amount);
+
+int main()
+{
+    Account account {}; 
+    strcpy(account.name, "Abel");
+    strcpy(account.number, "1002001001");
+    strcpy(account.phoneNumber, "1112223333");
+    account.isActive = true;
+    deposit(&account, 50000);
+    deposit(&account, 75000);
+    deposit(&account, 30000);
+    withdraw(&account, 4);
+    withdraw(&account, 5);
+    deposit(&account, 60000);
+    withdraw(&account, 4);
+    withdraw(&account, 5);
+    withdraw(&account, 4);
+    withdraw(&account, 5);
+    withdraw(&account, 4);
+    withdraw(&account, 5);
+
+    //account.balance = 0;
+
+    cout << "Account Holder Name:" << account.name << "[" 
+         << (account.isActive ? "Active" : "Inactive")
+         << "]" 
+         << endl;
+    cout << "Account Number:" << account.number << endl;
+    cout << "Phone Number:" << account.phoneNumber << endl;
+    cout << "Balance:$" << account.balance  
+         << "[" << account.numberOfTransaction << " trans]" << endl;
+    
+    return EXIT_SUCCESS;
+}
+
+void withdraw(Account* ptrAccount, double amount)
+{
+    ptrAccount->balance -= amount;
+    ptrAccount->numberOfTransaction++;
+}
+
+void deposit(Account* ptrAccount, double amount)
+{
+    ptrAccount->balance += amount;
+    ptrAccount->numberOfTransaction++;
+}
+==========================================================================
+New School Tested
+==========================================================================
+#include<cstring>
+#include<cstdlib>
+#include<iostream>
+
+using std::cout;
+using std::endl;
+struct Account 
+{
+    public:
+        char name[255];
+        char number[20];
+        double balance;
+        char phoneNumber[20];
+        int numberOfTransaction;
+        bool isActive;
+    public: 
+        void withdraw(double amount);
+        void deposit(double amount);
+    
+};
+
+int main()
+{
+    Account account {}; 
+    strcpy(account.name, "Abel");
+    strcpy(account.number, "1002001001");
+    strcpy(account.phoneNumber, "1112223333");
+    account.isActive = true;
+    account.deposit(50000);
+    account.deposit(75000);
+    account.deposit(30000);
+    account.withdraw(4);
+    account.withdraw(5);
+    account.deposit(60000);
+    account.withdraw(4);
+    account.withdraw(5);
+    account.withdraw(4);
+    account.withdraw(5);
+    account.withdraw(4);
+    account.withdraw(5);
+
+    cout << "Account Holder Name:" << account.name << "[" 
+         << (account.isActive ? "Active" : "Inactive")
+         << "]" 
+         << endl;
+    cout << "Account Number:" << account.number << endl;
+    cout << "Phone Number:" << account.phoneNumber << endl;
+    cout << "Balance:$" << account.balance  
+         << "[" << account.numberOfTransaction << " trans]" << endl;
+    
+    return EXIT_SUCCESS;
+}
+
+void Account::withdraw( double amount)
+{
+    balance -= amount;
+    numberOfTransaction++;
+}
+
+void Account::deposit(double amount)
+{
+    balance += amount;
+    numberOfTransaction++;
+}
+
+==========================================================================
+Why OOPs? 
+    - to access the member data by the member functions directly 
+    - to protect the member data 
+        - private member data 
+          + 
+          constructor ie initilizer
+          +
+          encapsulated member data ie getters / setters 
+                +
+                set the member data via setters only inside the class 
+                and outside the class 
+                + 
+                access the member data via getters only 
+                +
+                before getting data / before setting data, 
+                we can validate the member data 
+                like checking balance before withdrawal 
+                like checking amount before deposit not to allow negative amount 
+==========================================================================
+#include<cstring>
+#include<cstdlib>
+#include<iostream>
+
+using std::cout;
+using std::endl;
+struct Account 
+{
+    private: //secured
+        char name[255];
+        char number[20];
+        double balance;
+        char phoneNumber[20];
+        int numberOfTransaction;
+        bool _isActive;
+    
+    private: //properties
+        void setName(char _name[]) { strcpy(name, _name); }
+        void setNumber(char _number[]) { strcpy(name, _number); }
+        
+        void setBalance(double _balance) { balance = _balance; }
+        void setNumberOfTransaction(int _numberOfTransaction) { numberOfTransaction = _numberOfTransaction; }
+        void setActive(bool __isActive) { _isActive = __isActive; }
+    public: //properties -> getter/setter | encapsulated properties 
+        char* getName() {  return name; }
+        //
+        char* getNumber() {  return name;  }
+        //
+        void setPhoneNumber(char _phoneNumber[])  { strcpy(phoneNumber, _phoneNumber); }
+        char* getPhoneNumber()  { return phoneNumber; }
+        //
+        double getBalance() { return balance; }
+        //
+        int getNumberOfTransaction() { return numberOfTransaction; }
+        //
+        bool isActive() { return _isActive; }
+    public://first time initilization of the account 
+        void init(char _name[], char _number[], char _phoneNumber[]);
+    public: //behavours
+        void withdraw(double amount);
+        void deposit(double amount);
+        //deactivate()
+    
+};
+
+int main()
+{
+    Account account {}; 
+    account.init((char*)"Abel", (char*)"1002001001", (char*)"1112223333");//mistake-fix later
+    
+    account.deposit(50000);
+    account.deposit(75000);
+    account.deposit(30000);
+    account.withdraw(4);
+    account.withdraw(5);
+    account.deposit(60000);
+    account.withdraw(4);
+    account.withdraw(5);
+    account.withdraw(4);
+    account.withdraw(5);
+    account.withdraw(4);
+    account.withdraw(5);
+
+    cout << "Account Holder Name:" << account.getName() << "[" 
+         << (account.isActive() ? "Active" : "Inactive")
+         << "]" 
+         << endl;
+    cout << "Account Number:" << account.getNumber() << endl;
+    cout << "Phone Number:" << account.getPhoneNumber() << endl;
+    cout << "Balance:$" << account.getBalance()  
+         << "[" << account.getNumberOfTransaction() << " trans]" << endl;
+    
+    return EXIT_SUCCESS;
+}
+
+void Account::withdraw( double amount)
+{
+    //validate amount as not negative
+    //validate balance >= amount
+    setBalance(-amount);
+    setNumberOfTransaction(getNumberOfTransaction() + 1);
+}
+
+void Account::deposit(double amount)
+{
+    //validate amount as not negative
+    setBalance(amount);
+    setNumberOfTransaction(getNumberOfTransaction() + 1);
+}
+
+void Account::init(char _name[], char _number[], char _phoneNumber[])
+{
+    setName(_name);
+    setNumber(_number);
+    setPhoneNumber(_phoneNumber);
+    setBalance(0);
+    setNumberOfTransaction(0);
+    setActive(true);
+}
