@@ -247,9 +247,9 @@ Department Management System
 3. Delete Department
 4. Display All Departments
 5. Exit
-Enter your choice: 3 1
+Enter your choice: 3
 Enter Department ID: 30
-Enter Department Name: GAmma     Gamma
+Enter Department Name: GAmma
 Department created successfully!
 
 Department Management System
@@ -271,7 +271,7 @@ Department Management System
 4. Display All Departments
 5. Exit
 Enter your choice: 2
-Enter Department ID to Update: 1 20
+Enter Department ID to Update: 20
 Existing Name: Beta
 Enter New Name: Beta Plus
 Department updated successfully!
@@ -313,7 +313,7 @@ Department Management System
 3. Delete Department
 4. Display All Departments
 5. Exit
-Enter your choice: 3 4
+Enter your choice: 3
 Departments:
 ID: 10, Name: Alpha
 ID: 20, Name: Beta Plus
