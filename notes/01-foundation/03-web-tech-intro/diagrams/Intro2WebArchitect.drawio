@@ -1,0 +1,266 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0" version="24.8.6" pages="3">
+  <diagram name="Application Architectures" id="nriaRztLxjiaazCTK_36">
+    <mxGraphModel dx="872" dy="469" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-1" value="Application Architectures" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="810" height="860" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-2" value="2 - tier architecture" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="50" width="740" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-3" value="Thick Client&lt;div&gt;(Java Swing Desktop Appliction)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-2">
+          <mxGeometry x="270" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-4" value="Server&lt;div&gt;(Oracle)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-2">
+          <mxGeometry x="535" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-5" value="2-tier architecture" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-2">
+          <mxGeometry x="345" y="10" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-6" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="CKi5UGb8s7fiA2mJqWgT-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="425" y="79.5" as="sourcePoint" />
+            <mxPoint x="495" y="79.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-7" value="Presentation&amp;nbsp;&lt;div&gt;(UI) User Interactions&lt;/div&gt;&lt;div&gt;+ Application Layer&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-2">
+          <mxGeometry x="260" y="120" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-8" value="Database&lt;div&gt;Data&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-2">
+          <mxGeometry x="570" y="120" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-9" value="3 - tier architecture" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="240" width="740" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-10" value="Client" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-9">
+          <mxGeometry x="110" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-11" value="Application Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-9">
+          <mxGeometry x="320" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-12" value="Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-9">
+          <mxGeometry x="540" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-13" value="3-tier architecture" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-9">
+          <mxGeometry x="220" y="20" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-14" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="CKi5UGb8s7fiA2mJqWgT-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="90" as="sourcePoint" />
+            <mxPoint x="310" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-15" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="CKi5UGb8s7fiA2mJqWgT-9">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="89.5" as="sourcePoint" />
+            <mxPoint x="530" y="89.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-16" value="Database&lt;div&gt;Data&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-9">
+          <mxGeometry x="570" y="130" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-17" value="Presentation&amp;nbsp;&lt;div&gt;(UI) User Interactions&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-9">
+          <mxGeometry x="120" y="130" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-18" value="Application Layer&lt;div&gt;&amp;nbsp;Business Logic&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-9">
+          <mxGeometry x="330" y="130" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-19" value="3 - tier architecture" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="470" width="740" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-20" value="React JS&amp;nbsp;&lt;div&gt;Frontend Application&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-19">
+          <mxGeometry x="110" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-21" value="Express JS&lt;div&gt;Backend Application&amp;nbsp;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-19">
+          <mxGeometry x="320" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-22" value="Mongo&lt;div&gt;Database Server&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-19">
+          <mxGeometry x="540" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-23" value="MERN 3-tier architecture" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-19">
+          <mxGeometry x="220" y="20" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-24" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="CKi5UGb8s7fiA2mJqWgT-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="90" as="sourcePoint" />
+            <mxPoint x="310" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-25" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="CKi5UGb8s7fiA2mJqWgT-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="89.5" as="sourcePoint" />
+            <mxPoint x="530" y="89.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-26" value="Presentation&amp;nbsp;&lt;div&gt;(UI) User Interactions&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-19">
+          <mxGeometry x="110" y="130" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-27" value="Application Layer&lt;div&gt;&amp;nbsp;Business Logic&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-19">
+          <mxGeometry x="325" y="130" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-28" value="Database&lt;div&gt;Data&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-19">
+          <mxGeometry x="570" y="130" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-29" value="" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="680" width="740" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-30" value="Angular JS Application&lt;div&gt;Vue JS Application&lt;/div&gt;&lt;div&gt;Android Application&lt;/div&gt;&lt;div&gt;ios Application&lt;/div&gt;&lt;div&gt;Ubuntu Desktop Application&lt;/div&gt;&lt;div&gt;Windows Desktop Application&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-29">
+          <mxGeometry x="80" y="10" width="170" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-31" value="&lt;div&gt;&lt;div&gt;Python Django Backend&lt;/div&gt;&lt;/div&gt;&lt;div&gt;Python Flask Backend&lt;/div&gt;&lt;div&gt;Java Backend (Spring)&lt;/div&gt;&lt;div&gt;Java EE Backend (JSF)&lt;/div&gt;&lt;div&gt;C# ASP.NET Web API Backend&lt;/div&gt;&lt;div&gt;Zend PHP Backend&amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div&gt;C++ Backend&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-29">
+          <mxGeometry x="310" y="10" width="170" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="CKi5UGb8s7fiA2mJqWgT-32" value="&lt;div&gt;&lt;div&gt;&lt;b&gt;RDBMS :&lt;/b&gt;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;Oracle&lt;/div&gt;&lt;div&gt;MySQL&lt;/div&gt;&lt;div&gt;SQL Server&lt;/div&gt;&lt;div&gt;Postgres&lt;/div&gt;&lt;div&gt;SQLite&lt;/div&gt;&lt;div&gt;&lt;b&gt;noSQL:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Mongo DB&lt;/div&gt;&lt;div&gt;Cassandra&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CKi5UGb8s7fiA2mJqWgT-29">
+          <mxGeometry x="530" width="170" height="150" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="P6PsZK2Fdq8nFbadCWc-" name="MERN Architecture">
+    <mxGraphModel dx="872" dy="469" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-1" value="3 - tier architecture" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="210" width="740" height="370" as="geometry" />
+        </mxCell>
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-2" value="React JS&amp;nbsp;&lt;div&gt;Frontend Application&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="7E8Drn3qy1whhRhHhEKi-1">
+          <mxGeometry x="110" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-3" value="Express JS&lt;div&gt;Backend Application&amp;nbsp;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="7E8Drn3qy1whhRhHhEKi-1">
+          <mxGeometry x="320" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-4" value="Mongo&lt;div&gt;Database Server&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="7E8Drn3qy1whhRhHhEKi-1">
+          <mxGeometry x="540" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-5" value="MERN 3-tier architecture" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7E8Drn3qy1whhRhHhEKi-1">
+          <mxGeometry x="220" y="20" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-6" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="7E8Drn3qy1whhRhHhEKi-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="90" as="sourcePoint" />
+            <mxPoint x="310" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-7" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="7E8Drn3qy1whhRhHhEKi-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="89.5" as="sourcePoint" />
+            <mxPoint x="530" y="89.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-8" value="Presentation&amp;nbsp;&lt;div&gt;(UI) User Interactions&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7E8Drn3qy1whhRhHhEKi-1">
+          <mxGeometry x="110" y="130" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-9" value="Application Layer&lt;div&gt;&amp;nbsp;Business Logic&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7E8Drn3qy1whhRhHhEKi-1">
+          <mxGeometry x="325" y="130" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-10" value="Database&lt;div&gt;Data&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7E8Drn3qy1whhRhHhEKi-1">
+          <mxGeometry x="570" y="130" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-11" value="localhost : 8080" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7E8Drn3qy1whhRhHhEKi-1">
+          <mxGeometry x="325" y="190" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-12" value="localhost : 3000&lt;div&gt;127.0.0.1 : 3000&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7E8Drn3qy1whhRhHhEKi-1">
+          <mxGeometry x="120" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7E8Drn3qy1whhRhHhEKi-13" value="localhost : 27017" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="7E8Drn3qy1whhRhHhEKi-1">
+          <mxGeometry x="540" y="190" width="120" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="QsUJFmtQkl2pWsklEMqL" name="Web Architectures">
+    <mxGraphModel dx="872" dy="469" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-1" value="Web Architectures" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="10" width="770" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-2" value="3 - tier architecture" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-1">
+          <mxGeometry x="15" y="40" width="740" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-3" value="Thin Client&lt;div&gt;(Browser)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-2">
+          <mxGeometry x="110" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-4" value="Web Server&lt;div&gt;(Responds the pages to the Browser +&lt;br&gt;Handles transaction and query requests)&amp;nbsp;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-2">
+          <mxGeometry x="320" y="50" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-5" value="Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-2">
+          <mxGeometry x="540" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-6" value="3-tier architecture" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-2">
+          <mxGeometry x="270" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-7" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="lhmYzdUx2P_aAvF6DCVV-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="90" as="sourcePoint" />
+            <mxPoint x="310" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-8" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="lhmYzdUx2P_aAvF6DCVV-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="89.5" as="sourcePoint" />
+            <mxPoint x="530" y="89.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-9" value="Database&lt;div&gt;Data&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-2">
+          <mxGeometry x="570" y="130" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-10" value="Presentation&amp;nbsp;&lt;div&gt;(UI) User Interactions&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-2">
+          <mxGeometry x="120" y="130" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-11" value="Application Layer&lt;div&gt;&amp;nbsp;Business Logic&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-2">
+          <mxGeometry x="325" y="150" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-12" value="3 - tier architecture" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-1">
+          <mxGeometry x="15" y="260" width="740" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-13" value="Thin Client" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-12">
+          <mxGeometry x="110" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-14" value="Application Server for Express JS Application (Web Server)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-12">
+          <mxGeometry x="320" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-15" value="Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-12">
+          <mxGeometry x="540" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-16" value="3-tier architecture (full stack developments)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-12">
+          <mxGeometry x="220" y="20" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-17" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="lhmYzdUx2P_aAvF6DCVV-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="90" as="sourcePoint" />
+            <mxPoint x="310" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-18" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="lhmYzdUx2P_aAvF6DCVV-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="460" y="89.5" as="sourcePoint" />
+            <mxPoint x="530" y="89.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-19" value="Database&lt;div&gt;Data&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-12">
+          <mxGeometry x="570" y="130" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-20" value="Presentation&amp;nbsp;&lt;div&gt;(UI) User Interactions&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Single Page Application&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-12">
+          <mxGeometry x="110" y="150" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-21" value="Application Layer&lt;div&gt;&amp;nbsp;Business Logic&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-12">
+          <mxGeometry x="330" y="120" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-22" value="Web Server&lt;div&gt;for React JS Application&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="lhmYzdUx2P_aAvF6DCVV-12">
+          <mxGeometry x="320" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lhmYzdUx2P_aAvF6DCVV-23" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="lhmYzdUx2P_aAvF6DCVV-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="130" as="sourcePoint" />
+            <mxPoint x="310" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

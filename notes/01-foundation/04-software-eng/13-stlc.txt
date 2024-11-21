@@ -1,0 +1,91 @@
+`Software Testing Life Cycle (STLC)`
+
+The `Software Testing Life Cycle (STLC)` is 
+a systematic process for testing software 
+to ensure quality and alignment with requirements. 
+
+It is a part of the broader SDLC 
+but focuses exclusively on testing activities.
+
+---
+
+`Phases of STLC`
+
+1. `Requirement Analysis`  
+   - `Objective`: Understand and analyze the testing requirements.  
+   - `Activities`:  
+     - Study the `Software Requirements Specification (SRS)`.  
+     - Identify testable and non-testable requirements.  
+     - Create a `Requirement Traceability Matrix (RTM)`.  
+   - `Deliverables`: Requirement document with clarity on test cases.
+
+2. `Test Planning`  
+   - `Objective`: Develop a strategy for the testing process.  
+   - `Activities`:  
+     - Define the scope and objectives of testing.  
+     - Allocate resources, tools, and timelines.  
+     - Prepare a `Test Plan` document.  
+   - `Deliverables`: Test Plan, Test Effort Estimation.
+
+3. `Test Case Design`  
+   - `Objective`: Write detailed test cases based on requirements.  
+   - `Activities`:  
+     - Identify test scenarios.  
+     - Write test cases and prepare test data.  
+     - Get test cases reviewed.  
+   - `Deliverables`: Test cases, Test data.
+
+4. `Environment Setup`  
+   - `Objective`: Prepare the test environment to execute test cases.  
+   - `Activities`:  
+     - Configure hardware and software.  
+     - Set up testing tools.  
+     - Ensure prerequisites are met (databases, servers).  
+   - `Deliverables`: Test environment ready for execution.
+
+5. `Test Execution`  
+   - `Objective`: Run test cases and report defects.  
+   - `Activities`:  
+     - Execute test cases.  
+     - Log defects with detailed information.  
+     - Retest after fixes and perform regression testing.  
+   - `Deliverables`: Test execution report, Defect report.
+
+6. `Test Closure`  
+   - `Objective`: Conclude testing activities after achieving goals.  
+   - `Activities`:  
+     - Ensure all planned tests are executed.  
+     - Document lessons learned and best practices.  
+     - Create a `Test Closure Report`.  
+   - `Deliverables`: Test Closure Report.
+
+---
+
+`Key Points about STLC`
+- Each phase has specific entry and exit criteria.
+- Testing begins as soon as requirements are available, not after development is complete.
+- It focuses on `prevention` (early detection of defects) and 
+`detection` (ensuring the software meets requirements).
+
+---
+
+`STLC vs. SDLC`
+| `Aspect`               | `STLC`                                 | `SDLC`                       |
+|---------------------------|------------------------------------------|---------------------------------|
+| Focus                    | Software testing phases                  | Entire software development    |
+| Purpose                  | Validate software quality                | Create functional software     |
+| Deliverables             | Test cases, Defect reports               | Complete software product      |
+| Process Coverage         | Testing activities only                  | Development, testing, and maintenance |
+
+---
+
+`Advantages of STLC`
+- Detects defects early in the process.
+- Ensures high-quality software delivery.
+- Enhances efficiency by defining structured test activities.
+- Promotes better collaboration between teams.
+
+---
+
+`Conclusion`
+STLC ensures thorough testing and quality assurance, reducing the risk of defects in the final product. It complements the SDLC by focusing specifically on validating the software's functionality, performance, and reliability.

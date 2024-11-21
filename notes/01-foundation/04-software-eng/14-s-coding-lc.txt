@@ -1,0 +1,103 @@
+There isn't a universally recognized 
+"Software Coding Life Cycle" (SCLC) as
+ a standalone framework like SDLC or STLC. 
+ However, `coding activities` are 
+ a critical part of the broader 
+ `Software Development Life Cycle (SDLC)` and 
+ are often treated as a distinct phase within it.
+
+---
+
+`Coding Phase in SDLC`
+
+In SDLC, the `Coding or Implementation Phase` is 
+where developers translate the design into actual code. 
+
+While there’s no specific "Software Coding Life Cycle," 
+the `coding phase` can be broken into structured activities, 
+resembling a lifecycle approach.
+
+---
+
+`Phases in a Software Coding Process`
+
+1. `Requirement Understanding`
+   - `Objective`: Gain a clear understanding of functional and technical requirements.
+   - `Activities`:
+     - Review the `Software Requirements Specification (SRS)`.
+     - Understand the design documents (HLD, LLD).
+     - Clarify doubts with stakeholders or designers.
+   - `Output`: Developer notes and a coding plan.
+
+2. `Environment Setup`
+   - `Objective`: Prepare the tools and technologies needed for development.
+   - `Activities`:
+     - Set up Integrated Development Environment (IDE).
+     - Install required libraries, frameworks, and dependencies.
+     - Configure version control systems (e.g., Git).
+   - `Output`: Fully functional development environment.
+
+3. `Coding and Implementation`
+   - `Objective`: Write code for the software application.
+   - `Activities`:
+     - Follow coding standards and guidelines.
+     - Write modular, reusable, and well-documented code.
+     - Implement unit tests to verify individual components.
+   - `Output`: Functional source code.
+
+4. `Code Review and Optimization`
+   - `Objective`: Ensure the code is efficient, readable, and free of defects.
+   - `Activities`:
+     - Peer or automated code reviews.
+     - Identify and fix issues (bugs, logic errors, security vulnerabilities).
+     - Optimize code for performance and scalability.
+   - `Output`: Reviewed and optimized code.
+
+5. `Testing and Debugging`
+   - `Objective`: Verify that the written code meets the requirements.
+   - `Activities`:
+     - Test the code using automated or manual methods.
+     - Debug and resolve identified issues.
+     - Perform regression tests after fixes.
+   - `Output`: Debugged and validated code.
+
+6. `Integration`
+   - `Objective`: Combine individual modules into a working system.
+   - `Activities`:
+     - Merge code into a shared repository.
+     - Test module interactions.
+     - Resolve integration conflicts or errors.
+   - `Output`: Integrated software ready for system testing.
+
+7. `Documentation`
+   - `Objective`: Create detailed technical and user documentation.
+   - `Activities`:
+     - Document APIs, functions, and configurations.
+     - Write developer guides and end-user manuals.
+   - `Output`: Comprehensive code documentation.
+
+8. `Maintenance and Refactoring`
+   - `Objective`: Ensure the code remains functional and up-to-date.
+   - `Activities`:
+     - Fix issues reported post-deployment.
+     - Refactor code to adapt to new requirements or improve performance.
+   - `Output`: Updated and maintainable code.
+
+---
+
+`Key Principles in Coding`
+- `Modularity`: Write code in smaller, reusable modules.
+- `Consistency`: Follow coding standards and naming conventions.
+- `Documentation`: Write comments and documentation for better understanding.
+- `Testing`: Include automated and manual testing during coding.
+
+---
+
+`Conclusion`
+While "Software Coding Life Cycle" (SCLC) isn't an established term, 
+the coding process within SDLC follows a structured approach. 
+
+It emphasizes understanding requirements, 
+writing efficient code, and ensuring quality through reviews and testing. 
+
+This process plays a crucial role in delivering high-quality software.

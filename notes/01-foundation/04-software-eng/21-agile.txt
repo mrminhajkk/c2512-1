@@ -1,0 +1,96 @@
+The `Manifesto for Agile Software Development` was created in 2001 
+by a group of software developers 
+to establish the core values and principles for Agile methodologies. 
+
+It emphasizes delivering value, collaboration, and adaptability.
+
+---
+
+`Four Core Values of the Agile Manifesto`
+1. `Individuals and Interactions` over Processes and Tools  
+   - People and communication are more critical than rigid systems or tools.
+
+2. `Working Software` over Comprehensive Documentation  
+   - Deliver functional software rather than excessive documentation.
+
+3. `Customer Collaboration` over Contract Negotiation  
+   - Actively engage with customers to meet their needs instead of focusing solely on contracts.
+
+4. `Responding to Change` over Following a Plan  
+   - Be flexible and adapt to changes rather than strictly adhering to a pre-set plan.
+
+---
+
+`12 Principles of the Agile Manifesto`
+
+1. `Customer Satisfaction`: Deliver valuable software early and continuously.
+2. `Welcome Changing Requirements`: Adapt to changes, even late in development.
+3. `Frequent Delivery`: Deliver working software frequently, in short iterations.
+4. `Collaboration`: Ensure close cooperation between business people and developers.
+5. `Motivated Individuals`: Build projects around motivated people and trust them.
+6. `Face-to-Face Communication`: Use direct, in-person communication whenever possible.
+7. `Working Software`: Use working software as the primary measure of progress.
+8. `Sustainable Pace`: Maintain a consistent, sustainable work rhythm.
+9. `Technical Excellence`: Focus on quality to enhance agility.
+10. `Simplicity`: Maximize the amount of work not done (focus on essentials).
+11. `Self-Organizing Teams`: Allow teams to organize themselves for better results.
+12. `Reflection and Adjustment`: Regularly evaluate and improve processes.
+
+---
+
+The `Agile Manifesto` is a foundation for Agile practices, 
+emphasizing adaptability, collaboration, and 
+delivering value to customers.
+
+
+=============================
+
+`Agile Methodologies`
+Agile methodologies are frameworks used 
+to implement the `Agile mindset`, 
+focusing on iterative development, collaboration, and 
+delivering value quickly. 
+
+Common Agile methodologies include:
+
+1. `Scrum`: Iterative sprints for incremental delivery.
+2. `Kanban`: Visual workflow management for continuous delivery.
+3. `Extreme Programming (XP)`: Emphasizes technical practices 
+    like test-driven development.
+4. `Lean Development`: Focuses on eliminating waste and delivering value.
+5. `Crystal`: Adapts based on project size and priorities.
+6. `Feature-Driven Development (FDD)`: 
+    Builds software by designing and developing features.
+
+---
+
+`Agile Principles (from the Agile Manifesto)`
+
+1. `Customer Satisfaction`: Deliver value early and continuously.
+2. `Welcome Changes`: Adapt to changing requirements, even late in development.
+3. `Frequent Delivery`: Deliver working software frequently (weeks, not months).
+4. `Collaboration`: Work closely with customers and stakeholders.
+5. `Motivated Teams`: Empower teams to make decisions and 
+    provide them the environment and support needed.
+6. `Face-to-Face Communication`: Encourage direct communication 
+    as the most effective way of sharing information.
+7. `Working Software`: Measure progress by functional, working software.
+8. `Sustainable Development`: Maintain a consistent development pace.
+9. `Technical Excellence`: Focus on high-quality technical practices.
+10. `Simplicity`: Optimize the amount of work by focusing on the essentials.
+11. `Self-Organizing Teams`: Let teams decide how best to achieve goals.
+12. `Reflection and Improvement`: Regularly analyze processes and 
+    adjust for better efficiency.
+
+---
+
+`Core Characteristics of Agile`
+- `Iterative Development`: Small, incremental progress.
+- `Customer-Centric`: Involves stakeholders continuously.
+- `Flexibility`: Adapts to change easily.
+- `Collaboration`: Encourages teamwork and communication.
+- `Transparency`: Visibility of progress and challenges.
+
+This structure emphasizes Agile's iterative, flexible, 
+and value-driven approach 
+while highlighting its core principles and methodologies.

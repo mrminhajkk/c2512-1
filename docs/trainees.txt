@@ -1,4 +1,23 @@
-9750592159, Maheswaran Whatsapp | email: gmaheswaranmca@gmail.com
+Trainer: Maheswaran, Whatsapp Number: 9750592159, email: gmaheswaranmca@gmail.com
+-------------------------------------------------------------------------------------------
+Date: Thu, 21/11/2024 evening
+1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
+4 Bhagya S Kumar      5 Dhaheen Rahman 
+6 Josh Danny Alex     7 M Venkatesh         
+8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
+11 Sana E              12 Sooraj M V          13 Sreya K
+14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj
+-------------------------------------------------------------------------------------------
+Date: Thu, 21/11/2024 morning
+01T3 Abel Mathew Simon   02T3 Athira KS    3 Ayisha Dhiyana PS 
+4 Bhagya S Kumar      5 Dhaheen Rahman 
+6 Josh Danny Alex     7 M Venkatesh         
+8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
+11 Sana E              12 Sooraj M V          13 Sreya K
+14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj
+[Introduction To Web : Bootstrap Based App Pages Design Completed, 
+Lab (Team meeting): 10am - 12pm]
+-------------------------------------------------------------------------------------------
 Date: Wed, 20/11/2024 evening
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -6,7 +25,9 @@ Date: Wed, 20/11/2024 evening
 8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
+[Introduction To Web : 2-tier, 3-tier architectures, basics of web technologies,
+HTML / CSS / Bootstrap Started]
+-------------------------------------------------------------------------------------------
 Date: Wed, 20/11/2024 morning
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -14,7 +35,8 @@ Date: Wed, 20/11/2024 morning
 8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
+[DBMS Oracle : Views, Transactions, Stored Procedure (Condition, Exception etc)]
+-------------------------------------------------------------------------------------------
 Date: Tue, 19/11/2024 evening
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -22,7 +44,10 @@ Date: Tue, 19/11/2024 evening
 8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
+[Evaluation / Assessmenst Tests on
+(1) Programming Fundamentals 
+CRUD operations on Booking Entity {id, ticket_amount, food_amount}]
+-------------------------------------------------------------------------------------------
 Date: Tue, 19/11/2024 morning
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -30,28 +55,11 @@ Date: Tue, 19/11/2024 morning
 8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
-Date: Mon, 18/11/2024 evening
-1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
-4 Bhagya S Kumar      5 Dhaheen Rahman 
-6 Josh Danny Alex     7 M Venkatesh         
-8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
-11 Sana E              12 Sooraj M V          13 Sreya K
-14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
-Date: Mon, 18/11/2024 morning
-1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
-4 Bhagya S Kumar      5 Dhaheen Rahman 
-6 Josh Danny Alex     7 M Venkatesh         
-8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
-11 Sana E              12 Sooraj M V          13 Sreya K
-14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
 [Evaluation / Case Study Presentation on DBMS and SQL Done. Vinayak, Ayisha, Sana]
-[Evaluation / Assessmenst Tests on 
+[Evaluation / Assessmenst Tests on
 (1) Programming Fundamentals and 
 (2) DBMS 20 Qns 90 mins]
-
-
+-------------------------------------------------------------------------------------------
 Date: Mon, 18/11/2024 evening
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -60,7 +68,7 @@ Date: Mon, 18/11/2024 evening
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
 [Evaluation / Case Study Presentation on DBMS and SQL Continued. Athira, Abel, Josh, Nayana, Pitchumani,Bhagya,Dhaheen, Nimisha, Vishak]
-
+-------------------------------------------------------------------------------------------
 Date: Mon, 18/11/2024 morning
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -69,8 +77,7 @@ Date: Mon, 18/11/2024 morning
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
 [Evaluation / Case Study Presentation on DBMS and SQL Started. Sooraj, Venkatesh, minhaj, Sreya]
-
-
+-------------------------------------------------------------------------------------------
 Date: Fri, 15/11/2024 evening
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -78,7 +85,7 @@ Date: Fri, 15/11/2024 evening
 8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K[ab]
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
+-------------------------------------------------------------------------------------------
 Date: Fri, 15/11/2024 morning
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -86,7 +93,7 @@ Date: Fri, 15/11/2024 morning
 8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K[ab]
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj [ab??]
-
+-------------------------------------------------------------------------------------------
 Date: Thu, 14/11/2024 evening
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -94,7 +101,7 @@ Date: Thu, 14/11/2024 evening
 8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
+-------------------------------------------------------------------------------------------
 Date: Thu, 14/11/2024 morning
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -102,7 +109,7 @@ Date: Thu, 14/11/2024 morning
 8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
+-------------------------------------------------------------------------------------------
 Date: Wed, 13/11/2024 evening
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -110,7 +117,7 @@ Date: Wed, 13/11/2024 evening
 8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
+-------------------------------------------------------------------------------------------
 Date: Wed, 13/11/2024 morning
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -118,8 +125,7 @@ Date: Wed, 13/11/2024 morning
 8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
-
+-------------------------------------------------------------------------------------------
 Date: Tue, 12/11/2024 evening
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -127,7 +133,7 @@ Date: Tue, 12/11/2024 evening
 8 Nimisha K           9 Pitchumani S M [ab]      10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
+-------------------------------------------------------------------------------------------
 Date: Tue, 12/11/2024 morning
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar [ab]     5 Dhaheen Rahman 
@@ -135,7 +141,7 @@ Date: Tue, 12/11/2024 morning
 8 Nimisha K           9 Pitchumani S M      10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
+-------------------------------------------------------------------------------------------
 Date: Mon, 11/11/2024 evening
 1 Abel Mathew Simon   2 Athira KS          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -143,7 +149,7 @@ Date: Mon, 11/11/2024 evening
 8 Nimisha K           9 Pitchumani S M      10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
+-------------------------------------------------------------------------------------------
 Date: Mon, 11/11/2024 morning
 1 Abel Mathew Simon   2 Athira KS [ab]          3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -151,7 +157,7 @@ Date: Mon, 11/11/2024 morning
 8 Nimisha K           9 Pitchumani S M      10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj 
-
+-------------------------------------------------------------------------------------------
 Date: Fri, 07/11/2024 
 1 Abel Mathew Simon   2 Athira KS           3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -159,7 +165,7 @@ Date: Fri, 07/11/2024
 8 Nimisha K           9 Pitchumani S M     10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas
-
+-------------------------------------------------------------------------------------------
 Date: Thu, 06/11/2024 afternoon
 1 Abel Mathew Simon   2 Athira KS           3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 
@@ -167,7 +173,7 @@ Date: Thu, 06/11/2024 afternoon
 8 Nimisha K           9 Pitchumani S M      10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas
-
+-------------------------------------------------------------------------------------------
 11 8 3 10 14 6 5 15 9 4 1 7 12 2 13
 Sana E, Nimisha K, Ayisha Dhiyana PS,
 S T Vishakh, Vinayak S Kaimal,

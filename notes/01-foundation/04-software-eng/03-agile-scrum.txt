@@ -1,0 +1,120 @@
+`Agile Scrum` is a popular `Agile methodology` 
+used for iterative and incremental software development. 
+
+It focuses on delivering value 
+quickly through collaboration, adaptability, and 
+frequent feedback. 
+
+Scrum divides the project 
+into manageable chunks called `sprints`, 
+which typically last 2–4 weeks. 
+Each sprint delivers a potentially shippable product increment.
+
+---
+
+`Key Components of Scrum`
+
+1. `Roles in Scrum`
+   - `Product Owner`:
+     - Represents the customer and stakeholders.
+     - Prioritizes the product backlog.
+     - Ensures the team builds the most valuable features.
+   - `Scrum Master`:
+     - Facilitates the Scrum process and removes impediments.
+     - Ensures the team adheres to Scrum principles.
+     - Acts as a coach for the team.
+   - `Development Team`:
+     - Cross-functional team of developers, designers, and testers.
+     - Responsible for building and delivering the product increment.
+
+---
+
+2. `Scrum Artifacts`
+   - `Product Backlog`:
+     - A prioritized list of features, requirements, and tasks.
+     - Maintained by the Product Owner.
+   - `Sprint Backlog`:
+     - A subset of the product backlog chosen for the sprint.
+     - Includes tasks needed to deliver the sprint goal.
+   - `Increment`:
+     - The completed, potentially shippable product output at the end of a sprint.
+
+---
+
+3. `Scrum Events`
+   - `Sprint`:
+     - A time-boxed iteration (2–4 weeks) where work is planned, executed, and reviewed.
+     - Goal: Deliver a usable product increment.
+   - `Sprint Planning`:
+     - The team collaborates to decide what backlog items will be worked on in the sprint.
+     - Inputs: Product backlog, sprint goal.
+   - `Daily Scrum (Stand-up)`:
+     - A 15-minute daily meeting to synchronize team efforts.
+     - Questions discussed:
+       1. What did I do yesterday?
+       2. What will I do today?
+       3. Are there any impediments?
+   - `Sprint Review`:
+     - Held at the end of the sprint to demo the increment.
+     - Stakeholders provide feedback.
+   - `Sprint Retrospective`:
+     - Reflects on the sprint process to improve future iterations.
+     - Focus: What went well, what didn’t, and actionable improvements.
+
+---
+
+`Agile Scrum Workflow`
+1. `Create and Prioritize Product Backlog`:
+   - Product Owner lists all requirements/features.
+2. `Sprint Planning`:
+   - Team selects tasks for the sprint.
+3. `Execution of Sprint`:
+   - Development team works on sprint backlog tasks.
+4. `Daily Scrum Meetings`:
+   - Monitor progress and address blockers.
+5. `Sprint Review`:
+   - Deliver and demonstrate the increment to stakeholders.
+6. `Sprint Retrospective`:
+   - Identify process improvements for the next sprint.
+7. `Repeat`:
+   - Start the next sprint with updated goals and backlogs.
+
+---
+
+`Key Principles of Agile Scrum`
+- `Customer-Centric`: Focus on delivering value to the customer.
+- `Iterative Development`: Deliver small, functional increments.
+- `Collaboration`: Encourage interaction among team members and stakeholders.
+- `Adaptability`: Respond to changes in requirements or priorities.
+- `Transparency`: Ensure visibility of progress and issues.
+
+---
+
+`Advantages`
+- `Flexibility`: Can quickly adapt to changing requirements.
+- `Faster Delivery`: Regular increments provide early value to customers.
+- `Collaboration`: Increases team involvement and stakeholder engagement.
+- `Continuous Improvement`: Retrospectives help refine the process.
+
+---
+
+`Disadvantages`
+- `Less Predictable`: Difficult to predict timeframes and costs upfront.
+- `Requires Skilled Team`: Success depends on experienced team members and a good Scrum Master.
+- `Scope Creep`: Without proper control, frequent changes can lead to loss of focus.
+
+---
+
+`When to Use Agile Scrum`
+- Projects with dynamic requirements.
+- When customer feedback is critical.
+- Teams that can collaborate closely.
+- Projects requiring frequent delivery of functional increments.
+
+---
+
+Agile Scrum is ideal for projects 
+where flexibility and customer feedback are key drivers. 
+
+It empowers teams 
+to deliver high-quality software efficiently and adaptively.

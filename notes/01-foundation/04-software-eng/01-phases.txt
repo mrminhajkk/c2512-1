@@ -1,0 +1,89 @@
+The `Software Development Life Cycle (SDLC)` 
+consists of several phases 
+that ensure the systematic development and 
+maintenance of software applications. 
+
+Below are the common phases:
+
+---
+
+1. `Planning`
+   - `Purpose`: Define project goals and determine the feasibility of the project.
+   - `Key Activities`:
+     - Requirement analysis.
+     - Feasibility study (technical, financial, and operational).
+     - Resource allocation and timeline estimation.
+   - `Output`: Project plan, budget, and timeline.
+
+---
+
+2. `Requirement Analysis`
+   - `Purpose`: Gather and document detailed business and functional requirements.
+   - `Key Activities`:
+     - Stakeholder interviews and workshops.
+     - Create requirement specifications (Functional Requirement Document - FRD).
+     - Define system constraints and expectations.
+   - `Output`: Requirement Specification Document (RSD) or Software Requirements Specification (SRS).
+
+---
+
+3. `Design`
+   - `Purpose`: Create the architecture and design for the software system.
+   - `Key Activities`:
+     - High-Level Design (HLD): Architecture, modules, and data flow.
+     - Low-Level Design (LLD): Detailed design of individual components.
+   - `Output`: Design documents, wireframes, or prototypes.
+
+---
+
+4. `Implementation (Coding)`
+   - `Purpose`: Write code based on the design documents.
+   - `Key Activities`:
+     - Development of modules or components.
+     - Code review and version control.
+     - Adherence to coding standards.
+   - `Output`: Executable software (builds or versions).
+
+---
+
+5. `Testing`
+   - `Purpose`: Verify that the software meets requirements and is free of defects.
+   - `Key Activities`:
+     - Unit Testing: Test individual components.
+     - Integration Testing: Test interactions between components.
+     - System Testing: Test the complete system.
+     - User Acceptance Testing (UAT): Ensure the system meets end-user needs.
+   - `Output`: Test cases, test results, and a defect-free product.
+
+---
+
+6. `Deployment`
+   - `Purpose`: Deliver the software to the production environment for use.
+   - `Key Activities`:
+     - Deploy the software in staging and production environments.
+     - Conduct final checks and live testing.
+     - Provide user training and documentation.
+   - `Output`: Live operational software.
+
+---
+
+7. `Maintenance`
+   - `Purpose`: Ensure the software operates efficiently post-deployment.
+   - `Key Activities`:
+     - Bug fixing and patch releases.
+     - Performance enhancements.
+     - Feature updates based on feedback.
+   - `Output`: Updated and reliable software.
+
+---
+
+Additional SDLC Models
+SDLC can follow different models depending on the project:
+- `Waterfall Model`: Sequential phases.
+- `Agile Model`: Iterative and incremental.
+- `Spiral Model`: Risk-driven with iterative cycles.
+- `V-Model`: Validation and verification-focused.
+- `DevOps`: Continuous integration and delivery.
+
+Each phase has specific deliverables and objectives 
+to ensure software quality and project success.

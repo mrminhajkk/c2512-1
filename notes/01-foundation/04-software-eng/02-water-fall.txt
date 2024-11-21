@@ -1,0 +1,111 @@
+The `Waterfall Model` is a `sequential and linear approach` 
+to software development. 
+
+It is one of the earliest SDLC models, 
+emphasizing completing each phase before moving to the next. 
+
+This model works well for projects 
+with clearly defined requirements and 
+minimal expected changes during development.
+
+---
+
+`Phases of the Waterfall Model`
+
+1. `Requirement Analysis`
+   - `Objective`: Collect and document all the software requirements.
+   - `Activities`:
+     - Stakeholder discussions to identify needs.
+     - Create a detailed `Software Requirement Specification (SRS)` document.
+   - `Output`: Clear, documented requirements.
+
+---
+
+2. `System Design`
+   - `Objective`: Develop the architecture and design of the system.
+   - `Activities`:
+     - High-Level Design (HLD): Overall system structure, database design, and data flow.
+     - Low-Level Design (LLD): Detailed design of each module or component.
+   - `Output`: Design documents, diagrams, and specifications.
+
+---
+
+3. `Implementation (Coding)`
+   - `Objective`: Translate the design into actual code.
+   - `Activities`:
+     - Developers write and integrate code for all modules.
+     - Use programming tools and follow coding standards.
+   - `Output`: Source code and executable builds.
+
+---
+
+4. `Testing`
+   - `Objective`: Identify and fix defects in the system.
+   - `Activities`:
+     - Unit Testing: Verify individual components.
+     - Integration Testing: Test interactions between modules.
+     - System Testing: Check overall system functionality.
+     - Acceptance Testing: Validate the software against the requirements.
+   - `Output`: Tested and defect-free product.
+
+---
+
+5. `Deployment`
+   - `Objective`: Deliver the software to the customer for use.
+   - `Activities`:
+     - Deploy the product to the production environment.
+     - Provide training and documentation for users.
+   - `Output`: Fully deployed system.
+
+---
+
+6. `Maintenance`
+   - `Objective`: Address issues and improve functionality post-deployment.
+   - `Activities`:
+     - Bug fixing, updates, and enhancements.
+     - Performance optimization and support.
+   - `Output`: Updated and reliable software.
+
+---
+
+`Key Characteristics`
+- `Sequential Process`: Each phase must be completed before the next begins.
+- `Documentation-Driven`: Heavily relies on detailed documentation at each phase.
+- `No Overlap`: There’s no returning to previous phases after completion 
+    (except through costly revisions).
+
+---
+
+`Advantages`
+- `Simple and Easy to Understand`: 
+    Clear structure makes it ideal for beginners.
+- `Well-Suited for Stable Requirements`: 
+    Works best when requirements are clear and unchanging.
+- `Well-Defined Phases`: 
+    Each phase has specific deliverables and objectives.
+- `Documentation`: 
+    Comprehensive documentation ensures clarity and reduces ambiguity.
+
+---
+
+`Disadvantages`
+- `Inflexibility`: 
+    Changes in requirements late in the process 
+    can be expensive or unfeasible.
+- `Delayed Testing`: 
+    Errors are found only in the testing phase, 
+    potentially leading to rework.
+- `Unsuitable for Complex Projects`: 
+    Does not accommodate iterative development or 
+    frequent changes.
+
+---
+
+`When to Use the Waterfall Model`
+- Projects with clearly defined and unchanging requirements.
+- Small-scale projects with straightforward goals.
+- When detailed documentation is critical (e.g., regulatory or compliance-heavy projects).
+
+---
+
+The Waterfall Model is suitable for projects where precision and predictability outweigh the need for adaptability. However, for modern software development, iterative models like `Agile` are often preferred.

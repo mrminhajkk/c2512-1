@@ -1,0 +1,103 @@
+`Software Development Life Cycle (SDLC)`
+
+The `Software Development Life Cycle (SDLC)` is 
+a structured process used to develop software 
+in a systematic and organized way. 
+
+It ensures the delivery of high-quality software 
+while managing cost, time, and resources effectively.
+
+---
+
+`Phases of SDLC`
+
+1. `Requirement Analysis`
+   - `Objective`: Understand and document the needs of stakeholders.
+   - `Activities`:
+     - Gather requirements from stakeholders.
+     - Analyze feasibility (technical, operational, and financial).
+     - Create a `Software Requirements Specification (SRS)` document.
+   - `Output`: Approved requirements document.
+
+2. `System Design`
+   - `Objective`: Plan the architecture and design of the software.
+   - `Activities`:
+     - Design system architecture.
+     - Create data models, flowcharts, and prototypes.
+     - Define hardware and software requirements.
+   - `Output`: Design documents, including High-Level Design (HLD) and Low-Level Design (LLD).
+
+3. `Implementation (Coding)`
+   - `Objective`: Translate the design into executable code.
+   - `Activities`:
+     - Developers write source code.
+     - Follow coding standards and guidelines.
+     - Use version control systems to manage code.
+   - `Output`: Source code.
+
+4. `Testing`
+   - `Objective`: Verify and validate the software against requirements.
+   - `Activities`:
+     - Perform unit testing, integration testing, system testing, and user acceptance testing (UAT).
+     - Identify and fix defects.
+   - `Output`: Bug-free software ready for deployment.
+
+5. `Deployment`
+   - `Objective`: Release the software to users.
+   - `Activities`:
+     - Deploy the software in production.
+     - Train users and provide necessary documentation.
+   - `Output`: Live software available for use.
+
+6. `Maintenance`
+   - `Objective`: Ensure the software continues to operate effectively.
+   - `Activities`:
+     - Fix bugs reported by users.
+     - Update software to accommodate new requirements or technologies.
+     - Perform routine maintenance.
+   - `Output`: Updated and stable software.
+
+---
+
+`SDLC Models`
+There are several models of SDLC, each suited to different project needs:
+
+1. `Waterfall Model`:
+   - Linear, sequential approach.
+   - Suitable for projects with clear requirements.
+2. `Agile Model`:
+   - Iterative and incremental.
+   - Emphasizes flexibility and customer collaboration.
+3. `V-Model (Validation and Verification)`:
+   - Testing is planned alongside each development phase.
+   - Focuses on quality assurance.
+4. `Iterative Model`:
+   - Develops the software in repeated cycles.
+   - Each iteration includes planning, design, coding, and testing.
+5. `Spiral Model`:
+   - Combines iterative development with risk assessment.
+   - Suitable for complex and high-risk projects.
+
+---
+
+`Advantages of SDLC`
+- Ensures clarity and organization in the development process.
+- Improves project management and tracking.
+- Reduces the risk of project failure.
+- Promotes quality and reliability in software.
+
+---
+
+`Disadvantages of SDLC`
+- May be rigid or inflexible in traditional models like Waterfall.
+- Requires accurate initial requirements to be effective.
+- Can be time-consuming and costly for large projects.
+
+---
+
+`Conclusion`
+SDLC is a foundational framework for software development 
+that ensures projects are well-planned, executed, and maintained. 
+
+Choosing the right SDLC model is crucial 
+for meeting project requirements efficiently.
