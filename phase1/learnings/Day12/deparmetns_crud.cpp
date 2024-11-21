@@ -20,6 +20,8 @@ class DepartmentManager
     private:
         Department _departments[MAX_DEPTS];
         int _departmentCount;
+
+        int FindDepartment(int id); // Private helper function
     public:
         DepartmentManager();
         void Create(Department& department);
@@ -86,6 +88,18 @@ char* Department::GetName() { return _name; }
 // DepartmentManager class member functions
 DepartmentManager::DepartmentManager() : _departmentCount(0) {}
 
+int DepartmentManager::FindDepartment(int id) 
+{
+    for (int i = 0; i < _departmentCount; ++i) 
+    {
+        if (_departments[i].GetId() == id) 
+        {
+            return i; // Return the index if found
+        }
+    }
+    return -1; // Return -1 if not found
+}
+
 void DepartmentManager::Create(Department& department) 
 {
     if (_departmentCount < MAX_DEPTS) 
@@ -96,29 +110,31 @@ void DepartmentManager::Create(Department& department)
 
 void DepartmentManager::Update(int id, Department& department) 
 {
-    for (int i = 0; i < _departmentCount; ++i) 
+    int index = FindDepartment(id);
+    if (index != -1) 
     {
-        if (_departments[i].GetId() == id) 
-        {
-            _departments[i] = department;
-            return;
-        }
+        _departments[index] = department;
+    }
+    else 
+    {
+        std::cout << "Department with ID " << id << " not found!\n";
     }
 }
 
 void DepartmentManager::Delete(int id) 
 {
-    for (int i = 0; i < _departmentCount; ++i) 
+    int index = FindDepartment(id);
+    if (index != -1) 
     {
-        if (_departments[i].GetId() == id) 
+        for (int i = index; i < _departmentCount - 1; ++i) 
         {
-            for (int j = i; j < _departmentCount - 1; ++j) 
-            {
-                _departments[j] = _departments[j + 1];
-            }
-            --_departmentCount;
-            return;
+            _departments[i] = _departments[i + 1];
         }
+        --_departmentCount;
+    }
+    else 
+    {
+        std::cout << "Department with ID " << id << " not found!\n";
     }
 }
 
@@ -126,12 +142,10 @@ Department* DepartmentManager::ReadAll() { return _departments; }
 
 Department DepartmentManager::ReadById(int id) 
 {
-    for (int i = 0; i < _departmentCount; ++i) 
+    int index = FindDepartment(id);
+    if (index != -1) 
     {
-        if (_departments[i].GetId() == id) 
-        {
-            return _departments[i];
-        }
+        return _departments[index];
     }
     return Department(); // Return default if not found
 }
