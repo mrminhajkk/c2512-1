@@ -214,3 +214,141 @@ void DepartmentUI::DisplayAll()
                   << ", Name: " << departments[i].GetName() << "\n";
     }
 }
+
+
+/*
+Output::
+
+Department Management System
+1. Create Department
+2. Update Department
+3. Delete Department
+4. Display All Departments
+5. Exit
+Enter your choice: 1
+Enter Department ID: 10
+Enter Department Name: Alpha
+Department created successfully!
+
+Department Management System
+1. Create Department
+2. Update Department
+3. Delete Department
+4. Display All Departments
+5. Exit
+Enter your choice: 1
+Enter Department ID: 20
+Enter Department Name: Beta
+Department created successfully!
+
+Department Management System
+1. Create Department
+2. Update Department
+3. Delete Department
+4. Display All Departments
+5. Exit
+Enter your choice: 3 1
+Enter Department ID: 30
+Enter Department Name: GAmma     Gamma
+Department created successfully!
+
+Department Management System
+1. Create Department
+2. Update Department
+3. Delete Department
+4. Display All Departments
+5. Exit
+Enter your choice: 4
+Departments:
+ID: 10, Name: Alpha
+ID: 20, Name: Beta
+ID: 30, Name: Gamma
+
+Department Management System
+1. Create Department
+2. Update Department
+3. Delete Department
+4. Display All Departments
+5. Exit
+Enter your choice: 2
+Enter Department ID to Update: 1 20
+Existing Name: Beta
+Enter New Name: Beta Plus
+Department updated successfully!
+
+Department Management System
+1. Create Department
+2. Update Department
+3. Delete Department
+4. Display All Departments
+5. Exit
+Enter your choice: 3
+Enter Department ID to Delete: 40
+Department not found!
+
+Department Management System
+1. Create Department
+2. Update Department
+3. Delete Department
+4. Display All Departments
+5. Exit
+Enter your choice: 3
+Enter Department ID to Delete: 50
+Department not found!
+
+Department Management System
+1. Create Department
+2. Update Department
+3. Delete Department
+4. Display All Departments
+5. Exit
+Enter your choice: 1
+Enter Department ID: 40
+Enter Department Name: H
+Department created successfully!
+
+Department Management System
+1. Create Department
+2. Update Department
+3. Delete Department
+4. Display All Departments
+5. Exit
+Enter your choice: 3 4
+Departments:
+ID: 10, Name: Alpha
+ID: 20, Name: Beta Plus
+ID: 30, Name: Gamma
+ID: 40, Name: H
+
+Department Management System
+1. Create Department
+2. Update Department
+3. Delete Department
+4. Display All Departments
+5. Exit
+Enter your choice: 3
+Enter Department ID to Delete: 40
+Are you sure you want to delete 'H'? (y/n): y
+Department deleted successfully!
+
+Department Management System
+1. Create Department
+2. Update Department
+3. Delete Department
+4. Display All Departments
+5. Exit
+Enter your choice: 4
+Departments:
+ID: 10, Name: Alpha
+ID: 20, Name: Beta Plus
+ID: 30, Name: Gamma
+
+Department Management System
+1. Create Department
+2. Update Department
+3. Delete Department
+4. Display All Departments
+5. Exit
+Enter your choice: 5
+
+ */
