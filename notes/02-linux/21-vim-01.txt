@@ -1,0 +1,137 @@
+Here are some essential `Vim editor commands` 
+to help you get started with editing files in Vim:
+
+---
+
+`Basic Modes in Vim`
+1. `Normal Mode (Default Mode)`:
+   - Used for navigation and executing commands.
+   - Press `Esc` to ensure you’re in this mode.
+
+2. `Insert Mode`:
+   - Used to insert text.
+   - Enter by pressing `i` (insert before cursor) or `a` (append after cursor).
+   - Exit by pressing `Esc`.
+
+3. `Visual Mode`:
+   - Used for selecting text.
+   - Enter by pressing `v` (character-wise selection) or `V` (line-wise selection).
+   - Exit by pressing `Esc`.
+
+4. `Command-Line Mode`:
+   - Used for saving, exiting, and other commands.
+   - Enter by typing `:`.
+
+---
+
+`Opening and Closing Files`
+- `Open a file`:
+  ```bash
+  vim filename
+  ```
+
+- `Save changes`:
+  - In Command-Line Mode: `:w`
+
+- `Exit Vim`:
+  - Save and exit: `:wq` or `ZZ`
+  - Exit without saving: `:q!`
+
+- `Save as a new file`:
+  - `:w new_filename`
+
+---
+
+`Navigation`
+- Move `up/down/left/right`:
+  - `k`: up
+  - `j`: down
+  - `h`: left
+  - `l`: right
+
+- Jump to the `start/end of a line`:
+  - `0`: start of the line
+  - `^`: first non-whitespace character
+  - `$`: end of the line
+
+- Move by `words`:
+  - `w`: next word
+  - `b`: beginning of the previous word
+
+- Move by `paragraphs`:
+  - `{`: start of the previous paragraph
+  - `}`: start of the next paragraph
+
+- Move to a specific `line number`:
+  - `:n` (replace `n` with the line number)
+  - Example: `:15` to go to line 15.
+
+---
+
+`Editing`
+- Enter `Insert Mode`:
+  - `i`: insert before cursor
+  - `a`: insert after cursor
+  - `o`: open a new line below
+  - `O`: open a new line above
+
+- `Delete text`:
+  - `x`: delete a character
+  - `dd`: delete the current line
+  - `d$`: delete from cursor to end of the line
+
+- `Undo/Redo`:
+  - `u`: undo last action
+  - `Ctrl + r`: redo
+
+- `Copy/Paste`:
+  - `yy`: copy (yank) the current line
+  - `p`: paste after the cursor
+  - `P`: paste before the cursor
+
+- `Replace`:
+  - Replace one character: `r<char>`
+  - Replace text: `R` (type over existing text, exit with `Esc`)
+
+---
+
+`Search`
+- Search for a string:
+  - `/pattern`: search forward for "pattern"
+  - `?pattern`: search backward for "pattern"
+
+- Navigate search results:
+  - `n`: next occurrence
+  - `N`: previous occurrence
+
+- Replace text:
+  - `:%s/old/new/g`: replace all occurrences of "old" with "new" in the file.
+
+---
+
+`Visual Mode`
+- Select text:
+  - `v`: character-wise selection
+  - `V`: line-wise selection
+  - `Ctrl + v`: block-wise selection
+
+- Perform actions on selected text:
+  - `y`: yank (copy)
+  - `d`: delete
+  - `>`: indent
+  - `<`: un-indent
+
+---
+
+`Exiting Modes`
+- Always press `Esc` to return to `Normal Mode` before issuing any commands.
+
+---
+
+`Practice Workflow`
+1. Open a file: `vim filename`.
+2. Navigate to where you want to make changes.
+3. Enter `Insert Mode` by pressing `i` and type your text.
+4. Press `Esc` to return to Normal Mode.
+5. Save and exit with `:wq`.
+

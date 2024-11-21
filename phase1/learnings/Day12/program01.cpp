@@ -24,7 +24,7 @@ struct Account
     public: //properties -> getter/setter | encapsulated properties 
         char* getName() {  return name; }
         //
-        char* getNumber() {  return name;  }
+        char* getNumber() {  return number;  }
         //
         void setPhoneNumber(char _phoneNumber[])  { strcpy(phoneNumber, _phoneNumber); }
         char* getPhoneNumber()  { return phoneNumber; }

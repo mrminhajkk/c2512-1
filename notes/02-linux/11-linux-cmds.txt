@@ -1,0 +1,53 @@
+Linux commands 
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   Command   |   Syntax                                |   Examples                            |   Explanation                     |
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `cat`     | `cat [options] [file...]`               | `cat file.txt`                        | Displays the content of a file.   |
+|             |                                         | `cat file1.txt file2.txt > merged.txt`| Use `-n` to number lines.         |
+|             |                                         | `cat -n file.txt`                     |                                   |
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `mkdir`   | `mkdir [options] [directory...]`        | `mkdir new_dir`                       |  Creates directories.             |
+|             |                                         | `mkdir -p parent_dir/child_dir`       | Use `-p` for nested directories.  |
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `rmdir`   | `rmdir [options] [directory...]`        | `rmdir empty_dir`                     | Removes empty directories.        |
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `touch`   | `touch [options] [file...]`             | `touch file.txt`                      |                                   |
+|             |                                         | `touch file1.txt file2.txt`           | Creates empty files or updates file timestamps.|
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `mv`      | `mv [source] [destination]`             | `mv file.txt /path/`                  | 
+|             |                                         | `mv oldname.txt newname.txt`          | Moves or renames files/directories.|
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `cp`      | `cp [options] [source] [destination]`   | `cp file.txt /path/`                  | Copies files or directories.      |
+|             |                                         | `cp -r dir1 dir2`                     | Use `-r` for recursive copying.   |
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `ls`      | `ls [options] [path...]`                | `ls`                                  | Lists files and directories.      |
+|             |                                         | `ls -l`                               | Use `-l` for details,             |
+|             |                                         | `ls -a`                               | `-a` for hidden files.            |
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `pwd`     | `pwd`                                   | `pwd`                                 | Prints the current working directory.|
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `grep`    | `grep [options] pattern [file...]`      | `grep "text" file.txt`                | Searches for patterns in files.   |
+|             |                                         | `grep -i "Text" file.txt`             | Use `-i` for case-insensitivity,  |
+|             |                                         | `grep -r "text" dir/`                 | `-r` for recursive search.        |
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |    
+|   `rm`      | `rm [options] [file...]`                | `rm file.txt`                         | Deletes files or directories.     |
+|             |                                         | `rm -r dir/`                          | Use `-r` for recursive deletion,  |
+|             |                                         | `rm -i file.txt`                      | `-i` for confirmation.            |
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `ln`      | `ln [options] target [link_name]`       | `ln file.txt link_name`               | Creates hard or symbolic links.   |
+|             |                                         |  `ln -s /path/file.txt symlink`       | Use `-s` for symbolic links.      |
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `ssh`     | `ssh [options] [user@hostname]`         | `ssh user@192.168.1.1`                | Connects to a remote machine securely. | 
+|             |                                         | `ssh -p 2222 user@hostname`           | Use `-p` to specify a port.       |
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `scp`     | `scp [options] source destination`      | `scp file.txt user@192.168.1.1:/path/`| Copies files/directories securely over SSH. |
+|             |                                         | `scp -r dir/ user@host:/path/`        | Use `-r` for directories.         |
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `ps`      | `ps [options]`                          | `ps`                                  | Displays currently running processes.|
+|             |                                         | `ps -aux`                             | Use `-aux` for detailed info.     |
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `top`     | `top`                                   | `top`                                 | Displays real-time process and system usage information.|
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |
+|   `free`    | `free [options]`                        | `free`                                |                                   |
+|             |                                         | `free -h`                             | Displays memory usage. Use `-h` for human-readable output.|
+|-------------|-----------------------------------------|---------------------------------------|---------------------------------- |

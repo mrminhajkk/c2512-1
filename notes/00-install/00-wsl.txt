@@ -1,0 +1,9 @@
+C:\mywork\source\c2512>wsl
+DESKTOP-E9TJ2O1:/mnt/host/c/mywork/source/c2512# pwd
+/mnt/host/c/mywork/source/c2512
+DESKTOP-E9TJ2O1:/mnt/host/c/mywork/source/c2512# sudo apt update
+-ash: sudo: not found
+DESKTOP-E9TJ2O1:/mnt/host/c/mywork/source/c2512# wsl -l -v
+-ash: wsl: not found
+DESKTOP-E9TJ2O1:/mnt/host/c/mywork/source/c2512# exit
+
