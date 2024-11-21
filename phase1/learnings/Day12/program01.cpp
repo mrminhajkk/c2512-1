@@ -77,14 +77,14 @@ void Account::withdraw( double amount)
 {
     //validate amount as not negative
     //validate balance >= amount
-    setBalance(-amount);
+    setBalance(getBalance()-amount);
     setNumberOfTransaction(getNumberOfTransaction() + 1);
 }
 
 void Account::deposit(double amount)
 {
     //validate amount as not negative
-    setBalance(amount);
+    setBalance(getBalance()+amount);
     setNumberOfTransaction(getNumberOfTransaction() + 1);
 }
 
