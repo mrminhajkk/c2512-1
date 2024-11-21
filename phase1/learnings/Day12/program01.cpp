@@ -16,7 +16,7 @@ struct Account
     
     private: //properties
         void setName(char _name[]) { strcpy(name, _name); }
-        void setNumber(char _number[]) { strcpy(name, _number); }
+        void setNumber(char _number[]) { strcpy(number, _number); }
         
         void setBalance(double _balance) { balance = _balance; }
         void setNumberOfTransaction(int _numberOfTransaction) { numberOfTransaction = _numberOfTransaction; }
