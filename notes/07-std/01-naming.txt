@@ -1,0 +1,171 @@
+Google's C++ Style Guide emphasizes 
+    consistency, 
+    clarity, and 
+    readability. 
+Below are the key naming conventions based on the guide:
+
+---
+
+`1. Class Names`
+- Use `PascalCase` (also known as UpperCamelCase).
+- Names should be descriptive and represent what the class does.
+- Avoid abbreviations unless they are widely known.
+
+`Examples`:
+```cpp
+class EmployeeRecord {};
+class NetworkManager {};
+class XMLParser {};
+```
+
+---
+
+`2. Function Names`
+- Use `PascalCase` (UpperCamelCase).
+- Function names should describe the action or purpose clearly.
+- Avoid abbreviations, except for common terms.
+
+`Examples`:
+```cpp
+void OpenFile();
+void ParseData();
+std::string GetName() const;
+```
+
+---
+
+`3. Variable Names`
+- Use `snake_case` for `local variables, parameters, and non-static data members`.
+- Non-static member variables should have a trailing underscore (`_`) to differentiate them from local variables or parameters.
+
+`Examples`:
+```cpp
+int num_employees;         // Local variable
+std::string first_name_;   // Non-static member variable
+```
+
+---
+
+`4. Static and Global Variables`
+- Use `PascalCase` and prefix with `g_` for global variables.
+- Use `s_` for static class member variables.
+
+`Examples`:
+```cpp
+int g_TotalCount = 0;      // Global variable
+static int s_InstanceCount = 0; // Static member variable
+```
+
+---
+
+`5. Constants`
+- Use `kPascalCase` for constants, prefixed with `k`.
+- Constants should be declared as `constexpr` or `const`.
+
+`Examples`:
+```cpp
+constexpr double kPi = 3.14159;
+const int kMaxBufferSize = 1024;
+```
+
+---
+
+`6. Enum Names`
+- Use `PascalCase` for the enum name and `kPascalCase` for the enumerators.
+
+`Examples`:
+```cpp
+enum class Color {
+    kRed,
+    kGreen,
+    kBlue
+};
+
+enum Status {
+    kOk,
+    kError,
+    kUnknown
+};
+```
+
+---
+
+`7. Macro Names`
+- Use `ALL_CAPS` with underscores for macros.
+- Prefix with the project or library name to avoid collisions.
+
+`Examples`:
+```cpp
+#define PROJECT_NAME "MyApp"
+#define MAX_ARRAY_SIZE 100
+```
+
+---
+
+`8. Type Aliases`
+- Use `PascalCase` for `typedef` or `using` declarations.
+
+`Examples`:
+```cpp
+using StringMap = std::map<std::string, std::string>;
+typedef std::vector<int> IntVector;
+```
+
+---
+
+`9. Namespace Names`
+- Use `lowercase` words separated by underscores.
+- Names should be short and descriptive.
+
+`Examples`:
+```cpp
+namespace my_project {};
+namespace network_utils {};
+```
+
+---
+
+`10. File Names`
+- Use `snake_case` for file names.
+- Use `.h` for header files and `.cc` for implementation files.
+
+`Examples`:
+```
+employee_record.h
+employee_record.cc
+```
+
+---
+
+`Example Code Using Google's Style Guide`:
+```cpp
+#include <string>
+#include <vector>
+
+namespace my_project {
+
+constexpr int kMaxRetries = 5;
+
+class EmployeeRecord {
+ public:
+  EmployeeRecord(int id, const std::string& name)
+      : id_(id), name_(name) {}
+
+  void SetName(const std::string& name) { name_ = name; }
+  std::string GetName() const { return name_; }
+
+  static int GetEmployeeCount() { return s_employee_count_; }
+
+ private:
+  int id_;
+  std::string name_;
+  static int s_employee_count_;
+};
+
+}  // namespace my_project
+```
+
+By adhering to Google's C++ Style Guide, 
+you ensure that your code remains 
+consistent, readable, and easy to maintain 
+across teams.

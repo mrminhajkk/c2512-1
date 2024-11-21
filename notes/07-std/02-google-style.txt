@@ -1,0 +1,141 @@
+Google's C++ Style Guide provides a comprehensive set of rules and best practices for writing clear, maintainable, and efficient C++ code. Here are the key points the guide emphasizes:
+
+---
+
+`1. General Coding Principles`
+- `Consistency`: Maintain consistency within a file, a project, or a team to improve readability.
+- `Clarity`: Code should be easy to understand; avoid overly clever solutions.
+- `Efficiency`: Prioritize efficient solutions, but not at the cost of code clarity or maintainability.
+- `Safety`: Write code that avoids undefined behavior and ensures safety in memory management.
+
+---
+
+`2. File Organization`
+- `Header Files (`.h`)`:
+  - Use include guards or `#pragma once` to avoid multiple inclusions.
+  - Keep headers minimal by forward-declaring types when possible.
+  - Avoid including implementation details.
+- `Implementation Files (`.cc`)`:
+  - Include headers in the `.cc` file.
+  - Place `#include` statements in the order: own header, system headers, library headers.
+
+---
+
+`3. Naming Conventions`
+- `Classes and Types`: Use `PascalCase` (e.g., `EmployeeRecord`).
+- `Functions`: Use `PascalCase` (e.g., `OpenFile`).
+- `Variables`: Use `snake_case` (e.g., `employee_count`), with trailing underscores for non-static member variables (`name_`).
+- `Constants`: Use `kPascalCase` (e.g., `kMaxBufferSize`).
+- `Namespaces`: Use `lowercase_with_underscores` (e.g., `my_project`).
+- `Macros`: Use `ALL_CAPS` with underscores (e.g., `MAX_BUFFER_SIZE`).
+
+---
+
+`4. Classes`
+- Prefer `composition` over inheritance unless inheritance is semantically correct.
+- Avoid public data members; use private members with accessor methods.
+- Use initializer lists in constructors when possible.
+- Declare destructors as `virtual` in base classes if the class is intended for polymorphism.
+- Mark classes as `final` if they are not intended to be derived from.
+
+---
+
+`5. Functions`
+- Write short, well-focused functions.
+- Pass objects by reference when appropriate (use `const&` for read-only parameters).
+- Prefer `override` for overridden virtual functions.
+- Use `constexpr` when possible for constant expressions.
+
+---
+
+`6. Variables`
+- Minimize variable scope and initialize variables as close to their usage as possible.
+- Prefer `auto` for readability when the type is obvious.
+- Use `constexpr` and `const` instead of macros for constant values.
+
+---
+
+`7. Memory Management`
+- Prefer smart pointers (`std::unique_ptr` or `std::shared_ptr`) over raw pointers.
+- Avoid manual memory management (`new` and `delete`).
+- Use RAII (Resource Acquisition Is Initialization) for managing resources.
+
+---
+
+`8. Error Handling`
+- Use exceptions sparingly, and only when recovering from errors is possible.
+- Prefer error codes or `std::optional` for handling recoverable errors.
+- Use assertions (`assert()`) to catch programming errors during development.
+
+---
+
+`9. Style and Formatting`
+- Use 2 spaces for indentation (Google's default).
+- Limit line length to 80 characters when possible.
+- Use spaces around operators (`x = y + z;`) and after commas in function calls.
+
+---
+
+`10. Standard Library`
+- Prefer using the C++ Standard Library (STL) over custom solutions:
+  - Use `std::vector` instead of raw arrays.
+  - Use `std::string` instead of `char*`.
+  - Use algorithms like `std::sort` instead of writing custom sorting logic.
+
+---
+
+`11. Templates`
+- Use templates for generic programming but avoid overuse.
+- Keep template definitions simple and prefer type traits for specialization.
+
+---
+
+`12. Multithreading and Concurrency`
+- Prefer thread-safe abstractions (e.g., `std::thread`, `std::mutex`, `std::atomic`).
+- Avoid low-level thread manipulation unless necessary.
+- Use thread pools or task-based concurrency where appropriate.
+
+---
+
+`13. Testing`
+- Write unit tests for all code.
+- Use Google Test (`gtest`) or similar frameworks for testing.
+- Ensure tests cover edge cases and invalid inputs.
+
+---
+
+`14. Tooling`
+- Use modern C++ tools like `clang-tidy`, `cppcheck`, and `valgrind` to catch issues early.
+- Adhere to modern C++ standards (C++11 and later).
+- Use a consistent build system (e.g., Bazel, CMake).
+
+---
+
+`15. Performance`
+- Measure performance before optimizing.
+- Avoid premature optimization; focus on readability and maintainability first.
+- Use profilers to identify bottlenecks.
+
+---
+
+`16. Deprecated Features`
+- Avoid using old C-style code (e.g., `malloc/free`, `printf`, raw arrays).
+- Prefer modern C++ features like smart pointers, STL containers, and lambdas.
+
+---
+
+`17. Code Reviews`
+- All code changes must go through peer review.
+- Reviews should focus on correctness, readability, and adherence to style guidelines.
+
+---
+
+`18. Best Practices`
+- Avoid global variables; use constants or static members instead.
+- Make functions and classes as specific as possible to their task.
+- Prefer composition over inheritance.
+- Write self-documenting code; avoid unnecessary comments.
+
+---
+
+For more detailed rules and rationale, refer to [Google's C++ Style Guide](https://google.github.io/styleguide/cppguide.html).

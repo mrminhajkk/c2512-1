@@ -334,3 +334,70 @@ void Account::init(char _name[], char _number[], char _phoneNumber[])
     setNumberOfTransaction(0);
     setActive(true);
 }
+
+==========================================================================
+department {id, name}
+
+10, "Alpha"
+20, "Beta"
+30, "Gamma"
+
+const int MAX_DEPTS = 100;
+
+class Department 
+{
+    private://protecting data 
+        int _id;
+        char _name[255];
+    public: //getters/setters
+        void SetId(int id);
+        int GetId();
+        void SetName(char name[]);
+        char* GetName();
+        Department(int id, char name[]);
+};
+
+class DepartmentManager
+{
+    private:
+        Department _departments[MAX_DEPTS];
+        int _departmentCount;
+    public: 
+        void Create(Department& department);
+        void Update(int id, Department& department);
+        void Delete(int id);
+        Department* ReadAll();
+        Department ReadById(); 
+
+        DepartmentManager();
+}
+
+class DepartmentUI
+{
+    private:
+        
+    public: 
+        void CreateUI(); // input id, name and form department object, call departmentManager.Create(department);
+        void UpdateUI(); // input id, display data after departmentManager.ReadById, ask name for edit, call departmentManager.Update
+        void DeleteUI(); // input id, display data, ask confirmation for delete, call departmentManager.Delete
+        void DisplayAll(); // call departmentManager.ReadAll to display all departments 
+};
+
+//DepartmentUI in the menus to make CRUD operations 
+
+void Department::SetId(int id) { _id = id; }
+int Department::GetId() { return _id; }
+void Department::SetName(char name[]) { strcpy(_name, name); }
+char* Department::GetName() { return _name; }
+
+Department::Department(int id, char name[])
+{
+    SetId(id);
+    SetName(name);
+}
+
+
+DepartmentManager::DepartmentManager()
+{
+    _departmentCount = 0;
+}
