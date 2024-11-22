@@ -1,15 +1,15 @@
 #include <iostream>
 #include <cstdlib>
 using std::cout;
-using std::endl;
 using std::cin;
+using std::endl;
 
-int main()
-{
-	cout << "Hello World" << endl;
+int main() {
 	char name[255];
-	cout << "Name:";
+
+	cout << "Enter name:";
 	cin >> name;
-	cout << "Hello " << name << endl;
+	cout << "Hello " << name << "!!!" << endl;
+
 	return EXIT_SUCCESS;
 }

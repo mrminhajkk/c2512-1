@@ -1,0 +1,95 @@
+
+==========================================================
+Task 1
+==========================================================
+1.1 "Hello Name"
+Now, we are going move the file "hello_world.cpp" 
+from dir "Day13" to dir "Day13/cpp".
+
+We make copy of "hello_world.cpp" into "hello_name.cpp". 
+
+There we will change the program in "hello_name.cpp"
+so that we will have the greeting for given name 
+as "Hello Ayisha!!!".
+
+1.2 "Hello Student"
+Take copy of "hello_name.cpp" into "hello_student.cpp".
+variables of {id, name}.
+
+Output: "Hello Ayisha of id 1001!!!"
+
+1.3 "Hello 2 Students"
+Take copy of "hello_student.cpp" into "hello_2students.cpp".
+variables of {id - 2, name - 2} => id1, id2, name1, name2
+
+Output: "Hello Ayisha of id 1001!!!"
+        "Hello Athira of id 1002!!!"
+
+1.4 "Hello N Students"
+Take copy of "hello_2students.cpp" as "hello_students.cpp"
+
+variables : ids [5], names [5]
+Output: Number of students: 5 
+        "Hello Ayisha of id 1001!!!"
+        "Hello Athira of id 1002!!!"
+        ...
+
+
+1.5 is OOP version of 1.3 "Hello 2 Students using object/class"
+"hello_2students_oops.cpp"
+student1 {id, name}      | object / record / entity / structure | name resolution
+student2 {id, name}         - composite data 
+Output: "Hello Ayisha of id 1001!!!"
+        "Hello Athira of id 1002!!!"
+
+1.6 "Hello N Students using object/class"
+"hello_students_oops.cpp"
+students [5]    : id, name 
+Output: Number of students: 5 
+        "Hello Ayisha of id 1001!!!"
+        "Hello Athira of id 1002!!!"
+        ...
+==========================================================
+
+
+Soliving Steps:
+==========================================================
+i
+1. create dir "cpp"
+    $ mkdir cpp 
+2. move file "hello_world.cpp" into dir "cpp"
+    $ mv hello_world.cpp cpp 
+3. change to dir "cpp"
+    $ cd cpp
+4. copy "hello_world.cpp" as "hello_name.cpp"
+    $ cp hello_world.cpp hello_name.cpp
+5. nano hello_name.cpp 
+6. g++ hello_name.cpp 
+7. ./a.out 
+ii
+8. copy "hello_name.cpp" as "hello_student.cpp" 
+9. nano hello_student.cpp 
+10. g++ hello_student.cpp 
+11. ./a.out
+iii 
+8. copy "hello_student.cpp" as "hello_2students.cpp" 
+9. nano hello_2students.cpp 
+10. g++ hello_2students.cpp 
+11. ./a.out 
+iv. 
+8. copy "hello_2students.cpp" as "hello_students.cpp" 
+9. nano hello_students.cpp 
+10. g++ hello_students.cpp 
+11. ./a.out 
+v. 
+8. copy "hello_2students.cpp" as "hello_2students_oops.cpp" 
+9. nano hello_2students_oops.cpp 
+10. g++ hello_2students_oops.cpp 
+11. ./a.out 
+vi.
+8. copy "hello_students.cpp" as "hello_students_oops.cpp" 
+9. nano hello_students_oops.cpp 
+10. g++ hello_students_oops.cpp 
+11. ./a.out 
+==========================================================
+

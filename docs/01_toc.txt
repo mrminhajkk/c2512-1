@@ -4,20 +4,26 @@ LaunchPad FY-25 | C++ Programming on Linux
 Foundation Course
     Programming Fundamentals [Day 1..4]
         Learning Outcomes:
-            Able to explain basic concepts of machine language, assembly language, assembler, high level language with examples, compiler, linker, interpreter, editor and IDE
-            Given a simple problem statement, find the solution and represent the solution as a pseudo code. (Simple problem is one that can be solved using the basic control statements of a programming language)
-            Convert the pseudocode into a program using C++ programming language following the coding standards by doing one or more of the following operations
-                Store data and perform input/output operations
-                Perform arithmetic operations
-                Perform relational operation and logical operations
-                Perform branching using the if-else statement
-                Write nested if-else statement
-                Perform fixed number of looping using the for statement
-                Perform looping where the number of times is undefined using while and do-while statements
-                Write break and continue statements to alter the normal flow of looping
-                Write nested loops using all the 3 looping constructs
-                Choose the most suitable looping construct for the solution
-                Write the switch-case statement
+            1. Able to explain basic concepts of machine language, assembly language, assembler, 
+                high level language with examples, compiler, linker, interpreter, 
+                editor and IDE
+            2. Given a simple problem statement, 
+                find the solution and represent the solution as a pseudo code. 
+                (Simple problem is one that can be solved 
+                using the basic control statements of a programming language)
+            3. Convert the pseudocode into a program using C++ programming language 
+                following the coding standards by doing one or more of the following operations
+                i) Store data and perform input/output operations
+                ii) Perform arithmetic operations
+                iii) Perform relational operation and logical operations
+                iv) Perform branching using the if-else statement
+                v) Write nested if-else statement
+                vi) Perform fixed number of looping using the for statement
+                vii) Perform looping where the number of times is undefined using while and do-while statements
+                viii) Write break and continue statements to alter the normal flow of looping
+                ix) Write nested loops using all the 3 looping constructs
+                x) Choose the most suitable looping construct for the solution
+                xi) Write the switch-case statement
         Topics:
             Introduction to programming
             Machine Language
@@ -51,13 +57,14 @@ Foundation Course
             The “switch-case” statement
     Introduction to DBMS & Oracle SQL [Day 5..8]
         Learning Outcomes:
-            Able to explain different Database models and purpose of DB and RDBMS
-            For a given requirement, the participant should able to write queries for following scenarios 
-                Calculate information across result sets using aggregate queries (sum, min, max, avg, etc.)
-                Insert, update, and delete data
-                Retrieve data from single table based on conditions
-                Retrieve data from multiple tables using Joins
-                Retrieving data using Sub-queries
+            1. Able to explain different Database models and purpose of DB and RDBMS
+            2. For a given requirement, the participant should able to write queries for following scenarios 
+                i) Calculate information across result sets 
+                    using aggregate queries (sum, min, max, avg, etc.)
+                ii) Insert, update, and delete data
+                iii) Retrieve data from single table based on conditions
+                iv) Retrieve data from multiple tables using Joins
+                v) Retrieving data using Sub-queries
         Topics:
             Introduction to database
             Introduction to RDBMS
@@ -84,9 +91,9 @@ Foundation Course
 
     Introduction to Web Applications  [Day 9]
         Learning Outcomes:
-            Able to explain the client and server architecture.
-            Able to explain the various tiers of Web Application and 
-                examples of technologies used in these tiers
+            1. Able to explain the client and server architecture.
+            2. Able to explain the various tiers of Web Application and 
+               examples of technologies used in these tiers
         Topics:
             Client server architecture
             Web Applications
@@ -100,9 +107,9 @@ Foundation Course
             Difference between web server and application server
     Software Engineering    [Day 11]
         Learning Outcomes:
-            Able to explain various phases Software Development Life Cycle
-            Able to explain the Waterfall model
-            Able to explain the Agile Scrum methodologies
+            1. Able to explain various phases Software Development Life Cycle
+            2. Able to explain the Waterfall model
+            3. Able to explain the Agile Scrum methodologies
         Topics:
             Introduction to Software Engineering
             SDLC
@@ -121,9 +128,9 @@ Foundation Course
 Linux OS basics and shell scripting	 [Day 12..16]
     Introduction to Linux OS
         Learning Outcomes:
-            Able to explain the evolution of Linux OS and various distributions of Linux OS.
-            Able to explain the file system in Linux and perform various file management operations
-            For a given requirement, able to write Shell script 
+            1. Able to explain the evolution of Linux OS and various distributions of Linux OS.
+            2. Able to explain the file system in Linux and perform various file management operations
+            3. For a given requirement, able to write Shell script 
         Topics:
             History of Linux and different versions
             Features of Linux

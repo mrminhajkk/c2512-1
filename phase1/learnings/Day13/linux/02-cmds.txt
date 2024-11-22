@@ -1,0 +1,80 @@
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13# ls
+a.out  discussion.txt  hello_world.cpp  linux
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13# mkdir cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13# mv hello_world.cpp cpp/
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13# ls
+a.out  cpp  discussion.txt  linux
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13# cd cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ls
+hello_world.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cp hello_world.cpp hello_name.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ls
+hello_name.cpp  hello_world.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# nano hello_name.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_name.cpp
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+        char name[255];
+
+        cout << "Enter name:";
+        cin >> name;
+        cout << "Hello " << name << "!!!" << endl;
+
+        return EXIT_SUCCESS;
+}
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# nano hello_name.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_name.cpp
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+        char name[255];
+
+        cout << "Enter name:";
+        cin >> name;
+        cout << "Hello " << name << "!!!" << endl
+
+        return EXIT_SUCCESS;
+}
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# g++ hello_name.cpp
+hello_name.cpp: In function ‘int main()’:
+hello_name.cpp:12:50: error: expected ‘;’ before ‘return’
+   12 |         cout << "Hello " << name << "!!!" << endl
+      |                                                  ^
+      |                                                  ;
+   13 |
+   14 |         return EXIT_SUCCESS;
+      |         ~~~~~~
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# nano hello_name.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cat hello_name.cpp
+#include <iostream>
+#include <cstdlib>
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main() {
+        char name[255];
+
+        cout << "Enter name:";
+        cin >> name;
+        cout << "Hello " << name << "!!!" << endl;
+
+        return EXIT_SUCCESS;
+}
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# g++ hello_name.cpp
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ./a.out
+Enter name:Ayisha
+Hello Ayisha!!!
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# ./a.out
+Enter name:Sana
+Hello Sana!!!
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp#
