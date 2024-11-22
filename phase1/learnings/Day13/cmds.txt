@@ -63,3 +63,19 @@ To copy file "hello_world.cpp" as "hello_name.cpp":
 To (detailed) list the current dir:
     $ ls -l 
     -- we can see when a.out is changed.
+
+To open the "hello_student.cpp" in vim editor:
+    $ vim hello_student.cpp 
+
+    -- modes, navigations, selections, copy, paste, indent, save, exit 
+To display first 15 lines of program in "hello_student.cpp" 
+    $ cat -n hello_student.cpp | head -n 15
+
+To dispaly after 15th line from the program in "hello_student.cpp":
+    --assume total lines are 40
+    $ cat -n hello_student.cpp | tail -n 25
+ 
+To dispaly between lines 16 and 23 from the program in "hello_student.cpp":
+    --assume total lines are 40. 
+    $ cat -n hello_student.cpp | tail -n 25 | head -n 8
+
