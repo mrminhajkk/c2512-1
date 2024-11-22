@@ -7,6 +7,8 @@ Date: Thu, 21/11/2024 evening
 8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
 11 Sana E              12 Sooraj M V          13 Sreya K
 14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj
+[Introduction To OOP : Why OOP Bank Management System and Department CRUD operations with Department, 
+Lab (Team meeting): 4pm - 6pm]
 -------------------------------------------------------------------------------------------
 Date: Thu, 21/11/2024 morning
 01T3 Abel Mathew Simon   02T3 Athira KS    3 Ayisha Dhiyana PS 
