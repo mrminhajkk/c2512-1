@@ -1,0 +1,464 @@
+What is Object-Oriented Programming?
+    The object oriented approach is 
+    a fundamental shift from the procedural approach. 
+    
+    Instead of functions and procedures being central to the program, 
+    in the OO world, we have objects 
+    that are the building blocks. 
+    
+    An OO program is made up of several objects 
+    that interact with each other to make up the application.
+
+    For example: 
+    In a Banking System, 
+    there would be Customer objects pertaining to each customer. 
+    
+    Each customer object would own its set of Account Objects,
+    pertaining to the set of 
+        Savings and 
+        Current Accounts 
+    that the customer holds in the bank.
+    
+    Today, most programming languages are object oriented.
+    For example: 
+        Java, C++, C#
+
+    Why do you think most of today’s 
+    programming languages are object oriented? 
+    
+    Are there any advantages of OO languages?
+
+Comparing Procedural with OO
+    Consider the Banking System. 
+    
+    In the procedural approach, 
+    we would try to find the top level modules of the application. 
+    
+    Eg. A Module to maintain customers, 
+    another to maintain accounts and so on. 
+    
+    In each of these modules, 
+    we would have procedures and functions 
+    to take care of different features. 
+    
+    Eg. Procedure/Function to 
+        add customer or 
+        delete customer 
+    in the module for maintaining customer. 
+    
+    Or procedures/ functions to 
+        deposit and 
+        withdraw 
+    in the module for maintaining accounts. 
+    
+    So in the procedural approach, 
+    we identify modules, 
+    then identify procedures/functions – 
+    this is like a top down approach to system development.
+
+    Procedures and functions are 
+    the building blocks of the application 
+    in the procedural approach.
+
+    However, in the OO approach, 
+    it is the objects 
+    which are the building blocks. 
+    
+    If we reconsider the same system, 
+    we would have objects for
+        customer “Geetha” and 
+        customer “Mahesh”;
+    we would also have objects 
+    for their respective savings and current accounts. 
+    
+    These objects would interact with each other for us 
+    to achieve the desired features of the application.
+
+Why Object-Oriented Programming?
+
+    Before the advent of Object-Oriented technology, 
+    the primary software engineering methodology was 
+        structured or 
+        procedural programming. 
+    
+    Some drawbacks of this approach are as follows:
+    Structured programming is based around 
+        data structures and 
+        subroutines. 
+
+    Data structures are simply containers 
+    for the information needed by subroutines.
+    
+    Thus, emphasis is almost entirely 
+    on algorithm required to solve a problem.
+
+    Data is openly accessible to other parts of the program,
+    which is risky.
+
+    Structured programming tends to produce 
+    a design that is unique to that problem 
+    (thus non-reusable). 
+    
+    Reusing code from another project 
+    usually involves a lot of effort and time. 
+    
+    Moreover, since the emphasis is on functionality, 
+    functionality change might force entire code to be modified, 
+    thus increasing development time. 
+    
+    In structured programming, 
+    while analysis starts with a consideration of real-world problems, 
+    the real-world focus is lost 
+    as requirements are transformed into a series of data flow diagrams.
+
+Advantages of OOP:
+    Simplicity: 
+        Software objects model the real world objects. 
+        Hence the complexity is reduced and 
+        the program structure is very clear.
+    
+    Modularity: 
+        Each object forms a “separate entity” 
+        whose internal workings are decoupled 
+        from other parts of the system.
+
+    Modifiability: 
+        It is easy to make minor changes 
+        in the data representation or the procedures 
+        in an OO program. 
+        
+        Changes inside a class do not affect any other part of a program, 
+        since the only “public interface”
+        that the external world has to a class is 
+        through the use of “methods”.
+
+    Extensibility: 
+        Adding new features or responding to changing operating environments 
+        can be solved by 
+            introducing a few new objects and 
+            modifying some existing ones.
+
+    Maintainability: 
+        Objects can be separately maintained,
+        thus making locating and fixing problems easier.
+    
+    Re-usability: 
+        Objects can be reused in different programs.
+
+    - OOP is more than just learning a new language. 
+    - It requires “a new way of thinking”. 
+    - The idea is primarily 
+        not to concentrate on 
+            the cornerstones of procedural languages - 
+                data structures and
+                algorithms, 
+        instead think in terms of “objects”.
+
+Features of OOP:
+    Models built by using Object-Oriented technology 
+    can be smoothly implemented in any software, 
+    by using “Object-Oriented modeling language”. 
+    
+    These models also easily adjust to changing requirements.
+    It is based on best practices. 
+
+    As a result, the systems developed 
+    by using Object-Oriented technology are
+    stable with a baselined architecture. 
+    
+    The systems are more reliable, scalable, and succinct. 
+    
+    They are more easily maintained and adaptable to change.
+
+What is an Object?
+    An object in the real-world, 
+    can be 
+        physical, 
+        conceptual, or 
+        a software entity. 
+    
+    We come across so many objects in the real world. 
+    
+    In fact, everything can be considered as an object - 
+        a person, 
+        a pen, 
+        a vehicle, 
+        a book, etc. 
+    
+    Essentially these are all tangible things that 
+        exist, 
+        can be felt, or 
+        can be destroyed.
+
+    However, there could be other entities 
+    which may not be considered as objects in the real world, 
+        like 
+            an account or 
+            a contract, or 
+            a set of business charts, or 
+            a linked list 
+    since they are “intangible” or “conceptual”. 
+    
+    Nevertheless, they also have a well defined structure and behavior, and 
+    hence are treated as objects in the software domain.
+    
+    Examples of tangible entities
+        Person, 
+        Pen, 
+        Vehicle
+    Examples of intangible entities
+        Account, 
+        Contract, 
+        Business Charts
+    Examples of software entities
+        Database Management System
+
+    --- 
+
+    OO application, 
+    we will have 
+        an object corresponding to “Geetha” and 
+        another object corresponding to “Mahesh”. 
+    
+    Similarly, we would have objects 
+        corresponding to 
+            Geetha’s Savings Account, 
+            Geetha’s Current Account 
+        as well as 
+            Mahesh’s Current Account.
+    
+    Typically objects could correspond to 
+        following Roles played by people 
+        interacting with system 
+    (Like Geetha and Mahesh 
+    who are “Customer” objects)
+
+    Structures used for storing and processing data
+    (Like Account objects for Geetha and Mahesh)
+
+    Other systems or devices interacting with system
+    (Like Utility Payment System 
+    that can be accessed from Bank System)
+
+    Events and entities of the system 
+    (Like a transaction or a account status report)
+
+Characterization
+    Each object is characterized by 
+        identity, 
+        state, and
+        behavior.
+    
+    Identity: 
+        Two books of same title are still 
+        two different books - 
+        they are two instances of a “book” 
+        which happen to have similar properties, 
+        just as there will be two copies 
+        if they existed in the library. 
+        
+        The identity of one is to be distinguished from the other.
+    
+    State: 
+        It is one of the possible conditions 
+        that an object may be in. 
+        
+        It is indicated by the set of values 
+        that each of its attributes possesses.
+    
+        For example: 
+        An account object may be in 
+            an active or 
+            suspended state 
+        depending on the balance that it possesses.
+    
+    Behavior: 
+        It is what an object does 
+        when it receives instructions. 
+        
+        For example: 
+            Deposit or 
+            withdrawal 
+                that occurs against an account object.
+
+What is an Object? – Object State:
+    The current state of an object is defined 
+    by the 
+        set of values of its attributes and 
+        the links that the object has with other objects.
+    
+    The current state of an object is said to have changed, 
+    if one or more attribute values change. 
+    
+    The object remains in control of 
+    how the outside world is allowed to use it:
+        by assigning a state 
+        (e.g., 
+            account number,
+            Account type, 
+            balance) to itself,  and
+        by providing methods for changing that state
+
+    --- 
+
+    The behaviour of an object in terms of 
+        how an object responds,
+        depends on state of object. 
+        
+    If the bank has a business rule on
+        the minimum account balance, 
+        then an operation such as withdrawal will not be permitted 
+        if the balance is less than what is permitted.
+
+    At any point, an object will be in a single state. 
+    
+    As such, any new combination of attribute values would imply 
+    a new state for an object. 
+    
+    That means there could be infinitely many states for each object. 
+    
+    Should we consider each of these states?? Well No! 
+    
+    We only need to consider the object states 
+    which will have an impact on the behaviour of the object.
+
+What is an Object? – Object Behavior:
+    Behavior is what an object does on receiving 
+        a set of instructions. 
+    
+    Object behavior is represented by the operations
+    that the object can perform.
+    
+    For example: 
+        A Bank ATM object will have operations such as
+            withdraw, 
+            print transactions, 
+            swipe card, and so on. 
+        A bicycle object may have operations such as 
+            change gear, 
+            change speed, and so on.
+
+What is an Object? – Object Identity:
+    Two accounts may possess same attributes like 
+        type, 
+        balance, etc. 
+    
+    Yet these two accounts have separate distinct identities.
+    
+    One account could be mine, and 
+    the other could be yours.
+    
+    Although objects may share the same state 
+    (attributes and relationships), 
+    they are separate and independent objects 
+    with their own “unique identity”.
+
+What is a Class?
+    Classes describe objects 
+    that share 
+        characteristics, 
+        methods,
+        relationships, and 
+        semantics. 
+    
+    Each class has 
+        a name, 
+        attributes
+            (its values determine state of an object), and 
+        operations 
+            (which provides the behavior for the object).
+
+    What is the relationship between objects and classes?
+
+    What exists in real world is objects. 
+    
+    When we classify these objects 
+    on the basis of commonality of structure and behavior, 
+    what we get are classes. 
+    
+    Classes are “logical”, 
+    they don’t really exist in real world. 
+    
+    While writing software programs, 
+    it is the classes that get defined first. 
+    
+    These classes serve as a blueprint 
+    from which objects are created.
+    
+    For example: 
+        In the example shown in the slide, 
+        there may be thousands of bank customers 
+        all having same set of attributes 
+            (i.e., 
+                Name, 
+                Address, 
+                Email-ID,
+                TelNumber
+            ). 
+        Each customer is created from 
+            the same set of blueprints, and 
+            therefore contains the same attributes. 
+            
+        Similarly, there can be thousands of Bank Accounts instantiated 
+        from the same “Account” class!
+        
+        In terms of Object-Oriented technology, 
+        we say that these customers are all “instances” of the “class of objects” 
+        known as Customer. 
+        
+        A “class” is the blueprint from which individual “objects” are created.         *****
+
+    --- 
+
+    To help identify potential classes, 
+    their attributes and their operations, 
+    watch out for the nouns and verbs of the problem statement. 
+    
+    A Noun having a well defined structure and behaviour, 
+    which can be a standalone entity, is a potential class.
+    
+    Nouns which cannot be a stand alone entity 
+    but point to properties or characteristics of 
+    something could be potential attributes. 
+    
+    And finally, verbs describing 
+    what could be “done” are potential operations of the class.
+    
+    In the example here, 
+    note that 
+        all nouns and 
+        verbs are underlined. 
+        
+    Potential Classes could be 
+        Customer, 
+        Account,
+        Savings Account, 
+        Current Account. 
+    
+    Potential Attributes (of Account Class) could be 
+        Account Number and 
+        Account Balance.
+    Potential operations (of Account Class) could be 
+        deposit and
+        withdraw.
+
+Class Attribute and Operation:
+    Getting into Details – Class Attribute and Operation:
+    A class has named properties, 
+    which are attributes of the class.
+    An attribute would be of a specific type. 
+    
+    At runtime, an object will have associated values 
+    for each of its attributes.
+    
+    A class can have several operations. 
+    
+    An operation is an implementation of a service 
+    that can be requested from an object.
+    
+    When an operation of an object has to be invoked 
+    by another object, 
+    it passes a “message” to the object. 
+    
+    Messages would correspond to the operation name.
+

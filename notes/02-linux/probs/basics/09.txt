@@ -1,0 +1,64 @@
+Problem Statement: `Employee Salary Management System`
+
+`Objective`:  
+You need to develop a C++ program that performs the following tasks:
+
+1. `Input an Array of Salaries`:
+   - The program should take input for the salaries of `10 employees` 
+   (you can modify the number as required).
+   - The program should store these salaries in an array.
+
+2. `Find the Second Highest Salary`:
+   - Implement a function to find the second highest salary in the array.
+
+3. `Check if the Second Highest Salary is Exactly 5 Digits`:
+   - After identifying the second highest salary, 
+   check whether the salary is a 5-digit number (between 10000 and 99999).
+   - Print a message indicating 
+   whether the second highest salary is 5 digits or not.
+
+4. `Print All Salaries`:
+   - Implement a function 
+   to print all employee salaries stored in the array.
+
+`Modular Approach`:
+- Break the problem into multiple functions:
+  - A function for `inputting the salaries`.
+  - A function for `finding the second highest salary`.
+  - A function for `checking if the salary is 5 digits`.
+  - A function for `printing all salaries`.
+
+Requirements:
+- Use `functions` for modular programming.
+- The program should be able 
+to handle the array of salaries, 
+find the second highest salary, 
+check if it's a 5-digit salary, and 
+print the salaries.
+- Use basic `branching statements`, `loops`, and `arrays`.
+- Develop the program step-by-step 
+in the `vi editor` to learn various commands.
+
+`Steps for Learning and Implementation`:
+
+1. `Create the Program`:
+   - Develop the program using the `vi` editor in Linux.
+   - Use `Linux commands` to compile and run the program.
+
+2. `Incremental Development`:
+   - First, implement the input function.
+   - Then, add the function to find the second highest salary.
+   - Follow by checking if the second highest salary is 5 digits.
+   - Finally, print the salaries.
+
+---
+
+By following this problem statement, 
+you will be able to learn:
+- `C++ programming` concepts such as 
+arrays, functions, and branching statements.
+- How to work with `Linux commands` 
+for file handling, compiling, and running C++ programs.
+- How to use the `vi editor` 
+for editing C++ code.
+

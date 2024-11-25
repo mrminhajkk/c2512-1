@@ -1,0 +1,108 @@
+Beginner Level Problem Statement: 
+    Introduction to Linux Commands for C++ Development
+
+`Objective`:  
+Learn and practice basic Linux commands 
+that are helpful for beginners in C++ development. 
+The goal is to get familiar with file management, 
+compiling simple C++ programs, and 
+basic system commands in a Linux environment.
+
+---
+
+Tasks:
+
+1. `Basic File and Directory Management`:  
+   - Organize C++ files using simple Linux commands.  
+     Example:  
+     - Create a new directory for your C++ project using `mkdir project_name`.  
+     - List files in a directory using `ls`.  
+     - Change to your project directory using `cd project_name`.  
+     - Create a text file (e.g., `program.cpp`) using `touch program.cpp`.  
+
+2. `Compiling Simple C++ Programs`:  
+   - Compile a simple C++ program using basic Linux commands.  
+     Example:  
+     - Create a simple C++ program file (e.g., `hello.cpp`).  
+     - Compile it using the `g++` command:  
+       ```bash
+       g++ -o hello hello.cpp
+       ```
+     - Run the compiled program using `./hello`.
+
+3. `Basic Text Editing`:  
+   - Learn how to edit and view text files using Linux commands.  
+     Example:  
+     - Open the `hello.cpp` file with a basic editor like `nano`:
+       ```bash
+       nano hello.cpp
+       ```
+     - Save and exit the editor using `CTRL+X` (for `nano`).
+
+4. `Using `cat` to View File Content`:  
+   - View the contents of a file without opening it in an editor.  
+     Example:  
+     - Use the `cat` command to view the contents of `hello.cpp`:  
+       ```bash
+       cat hello.cpp
+       ```
+
+5. `File Removal`:  
+   - Delete files and directories safely.  
+     Example:  
+     - Remove the `hello.cpp` file using the `rm` command:  
+       ```bash
+       rm hello.cpp
+       ```
+     - Remove an empty directory using `rmdir`.
+
+6. `Navigating Directories`:  
+   - Learn how to move between directories.  
+     Example:  
+     - Go to the home directory using `cd ~`.  
+     - Navigate to a parent directory using `cd ..`.  
+     - Check your current directory using `pwd`.
+
+7. `Viewing System Information`:  
+   - Get basic information about the system.  
+     Example:  
+     - Use the `whoami` command to display the current user.  
+     - Use the `date` command to display the current system date and time.
+
+8. `Simple Process Management`:  
+   - View running processes and manage basic tasks.  
+     Example:  
+     - List all running processes using `ps`.  
+     - End a process using the `kill` command with its process ID (PID).
+
+9. `Viewing File Sizes and Disk Space`:  
+   - Check file sizes and disk usage.  
+     Example:  
+     - Use `ls -lh` to display the file size of files in the current directory.  
+     - Check disk usage with `df -h`.
+
+10. `Redirecting Output`:  
+    - Save the output of commands to a file.  
+      Example:  
+      - Redirect the output of `echo "Hello, world!"` to a file with `>`:
+        ```bash
+        echo "Hello, world!" > output.txt
+        ```
+      - View the contents of the file using `cat output.txt`.
+
+---
+
+`Deliverable`:  
+Complete each task by using the specified Linux commands. 
+Record the steps and commands used. 
+Make sure to test basic C++ programs, 
+navigate directories, and 
+handle files, 
+so you become comfortable working 
+in a Linux environment for C++ development.
+
+This beginner-level problem statement will introduce you 
+to the most fundamental Linux commands and 
+help you get comfortable working 
+with the Linux command line 
+as you progress in your C++ development journey.

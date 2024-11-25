@@ -1,0 +1,74 @@
+Beginner Level Problem Statement: 
+Using the `vi` Editor for C++ Program Development
+
+`Objective`:  
+Learn to use the `vi` editor effectively 
+to create, edit, and manage C++ programs 
+in a Linux environment.
+
+---
+
+`Tasks`:
+
+1. `Create a new C++ project directory`:
+   - Create a directory called `vi_cpp_project` 
+   to store your C++ programs.
+   
+2. `Navigate to the project directory`:
+   - Change into the `vi_cpp_project` directory.
+
+3. `Create a new C++ file using `vi` editor`:
+   - Open `vi` and create a new file called `welcome.cpp`.
+
+4. `Write a basic C++ program in `vi``:
+   - In `vi`, write a simple C++ program 
+   that prints "Welcome to Linux programming!".
+   
+5. `Save and exit the `vi` editor`:
+   - After writing the code, save the file and exit `vi`.
+
+6. `Edit the program`:
+   - Open `welcome.cpp` again in `vi`, and 
+   modify the program to ask for the user's name and 
+   greet them by name.
+   - Use `vi` commands to navigate and modify the file, 
+   such as inserting text, deleting lines, 
+   and saving changes.
+
+7. `Compile the C++ program`:
+   - Compile the program using the `g++` compiler 
+   into an executable called `welcome`.
+
+8. `Run the compiled program`:
+   - Run the executable to check if the program works 
+   as expected (asks for name and greets).
+
+9. `View the contents of the C++ file`:
+   - Use the `cat` command 
+   to display the contents of `welcome.cpp`.
+
+10. `Use `vi` to make further edits`:
+    - Open `welcome.cpp` in `vi` and 
+    add an additional line to print "Goodbye!" 
+    at the end of the program.
+
+11. `Compile and run the updated program`:
+    - After editing, recompile and run the program 
+    to ensure it displays the welcome message followed 
+    by the goodbye message.
+
+12. `Delete the C++ file`:
+    - Once finished, remove the `welcome.cpp` file.
+
+13. `Remove the project directory`:
+    - Check if the directory is empty and remove it.
+
+---
+
+`Goal`:  
+By completing these tasks, 
+you will gain hands-on experience with the `vi` editor 
+for creating and editing C++ programs, 
+navigating within files, and 
+using `vi` commands like `i` (insert), `dd` (delete), 
+`:wq` (save and quit), and more.

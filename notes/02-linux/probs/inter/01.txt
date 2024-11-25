@@ -1,0 +1,98 @@
+Problem Statement: 
+
+Intermediate Level Linux Usage for C++ Development
+
+`Objective`:  
+Learn and apply essential Linux commands 
+in the context of C++ programming 
+to enhance your development workflow. 
+
+This task will focus on common Linux commands 
+for file management, compiling, debugging, and 
+process monitoring that are useful 
+to intermediate-level C++ programmers.
+
+---
+
+Tasks:
+
+1. `File and Directory Management`:  
+   - Organize your C++ project files efficiently using basic Linux commands.  
+     Example:  
+     - Create directories for source files, headers, and executables using `mkdir`.  
+     - List files with specific extensions (`.cpp`, `.h`) using `ls` or `find`.  
+     - Copy or move C++ files between directories with `cp` and `mv`.
+
+2. `Compiling C++ Programs`:  
+   - Compile simple C++ programs and handle errors using the terminal.  
+     Example:  
+     - Compile a single C++ file using `g++ -o output file.cpp`.  
+     - Clean up object files and executables with `rm`.
+
+3. `Debugging Basics with `gdb``:  
+   - Use `gdb` to perform basic debugging on C++ programs.  
+     Example:  
+     - Set breakpoints to step through the code and inspect variable values.  
+     - Run your program with `gdb` and use basic commands 
+     like `run`, `break`, and `next`.
+
+4. `Text Search and Editing`:  
+   - Use Linux text-processing commands 
+   to search and manipulate code.  
+     Example:  
+     - Search for function definitions using `grep`.  
+     - Count the number of lines of code in a file using `wc -l`.  
+     - View file content with `cat`, `less`, or `more`.
+
+5. `Version Control with `git``:  
+   - Use `git` to manage your C++ project and track changes.  
+     Example:  
+     - Initialize a git repository (`git init`).  
+     - Add files and commit changes (`git add .` and `git commit -m "message"`).  
+     - View the status of your project with `git status`.
+
+6. `Basic Process Monitoring`:  
+   - Monitor the performance of your C++ application and system resources.  
+     Example:  
+     - View running processes with `ps` or `top`.  
+     - Kill a process using `kill` or `kill -9`.
+
+7. `Redirecting Output`:  
+   - Redirect standard output and error messages to files during execution.  
+     Example:  
+     - Save output to a file using `>`, and error output using `2>`.  
+     - Append output to a file with `>>`.
+
+8. `File Compression and Archiving`:  
+   - Compress and archive your project files for storage or deployment.  
+     Example:  
+     - Create a compressed archive of your project files 
+     with `tar -czvf project.tar.gz`.  
+     - Extract files from an archive using `tar -xzvf`.
+
+9. `Running Scripts`:  
+   - Write simple shell scripts to automate repetitive C++ tasks.  
+     Example:  
+     - Create a script to automate the process of 
+     compiling and running C++ programs.
+
+10. `Networking Commands`:  
+    - Test network connectivity 
+    for remote debugging or deploying C++ programs.  
+      Example:  
+      - Use `ping` to check the connection to a server.  
+      - Use `scp` to securely copy files to a remote system.
+
+---
+
+`Deliverable`:  
+Complete each task by applying the appropriate Linux commands. 
+Record your experience with these commands and 
+how they help streamline your C++ development process. 
+
+Document any challenges you faced and how you solved them.
+
+This modified version should be more approachable 
+for an intermediate C++ programmer 
+while still allowing you to practice essential Linux commands 
+in a development context.

@@ -1,0 +1,37 @@
+Beginner Level Problem Statement: 
+
+C++ Program Management in Linux
+
+`Objective`:  
+Familiarize yourself with basic Linux commands 
+by creating, compiling, and managing 
+a simple C++ program within a project directory.
+
+---
+
+`Tasks`:
+
+1. Create a directory called `cpp_project` 
+to store your C++ programs.
+2. Navigate into the `cpp_project` directory.
+3. Create a C++ file named `first_program.cpp` 
+in the directory.
+4. Write a simple C++ program inside `first_program.cpp` 
+that prints "Hello, World!" to the console.
+5. Compile the C++ program into an executable.
+6. Run the compiled executable to check the output.
+7. View the contents of `first_program.cpp` 
+using a Linux command.
+8. Remove the `first_program.cpp` file after testing it.
+9. Check if the directory `cpp_project` is empty and 
+then remove it if it is.
+
+---
+
+`Goal`:  
+By completing these tasks, 
+you will practice using Linux commands related to file and 
+    directory management, 
+    text editing, 
+    compiling, and 
+    running C++ programs.

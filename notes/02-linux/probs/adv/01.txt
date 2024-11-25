@@ -1,0 +1,76 @@
+### Problem Statement: Efficient Linux Usage for Advanced C++ Development
+
+**Objective**:  
+Master Linux commands essential for an advanced C++ programmer by solving tasks related to C++ development workflows. Focus on commands for file management, process handling, debugging, version control, and performance optimization in a Linux environment.
+
+---
+
+#### Tasks:
+
+1. **File and Directory Management**:  
+   - Navigate the file system to organize C++ source files and build artifacts.  
+     Example:  
+     - Create a project directory with `mkdir`.  
+     - List files with specific extensions using `ls` and `find`.  
+     - Copy and move files between directories with `cp` and `mv`.
+
+2. **Compilation and Build Tools**:  
+   - Use `g++` and `make` to compile and link multi-file C++ programs.  
+     Example:  
+     - Compile a program with `g++ -o output file1.cpp file2.cpp`.  
+     - Automate builds using `make` and write a Makefile.
+
+3. **Debugging with `gdb`**:  
+   - Debug a C++ program step-by-step using `gdb`.  
+     Example:  
+     - Set breakpoints and inspect variable values during runtime.
+
+4. **File Content Management**:  
+   - Analyze or modify C++ source code using text-processing commands.  
+     Example:  
+     - Search for function definitions using `grep`.  
+     - Count lines of code with `wc`.  
+     - Compare versions of files with `diff`.
+
+5. **Version Control with `git`**:  
+   - Manage source code versions using `git`.  
+     Example:  
+     - Initialize a repository (`git init`).  
+     - Commit changes (`git add` and `git commit`).  
+     - View logs and differences (`git log`, `git diff`).
+
+6. **Process and Performance Monitoring**:  
+   - Optimize and monitor C++ applications using process commands.  
+     Example:  
+     - View resource usage with `top` or `htop`.  
+     - Trace system calls with `strace`.  
+     - Measure program performance with `time`.
+
+7. **Error and Log Management**:  
+   - Redirect output and manage logs during testing.  
+     Example:  
+     - Save compiler errors to a file using `2>`.  
+     - View logs with `tail` and `less`.
+
+8. **Networking and Deployment**:  
+   - Test and deploy C++ applications in a networked environment.  
+     Example:  
+     - Use `scp` or `rsync` to transfer executables.  
+     - Check connectivity with `ping` and `curl`.  
+     - Deploy programs on remote systems using `ssh`.
+
+9. **Archiving and Backup**:  
+   - Archive and compress project files for deployment.  
+     Example:  
+     - Create a tarball with `tar -cvf`.  
+     - Extract files with `tar -xvf`.
+
+10. **Custom Scripts**:  
+    - Automate repetitive tasks using `bash` scripts.  
+      Example:  
+      - Write a script to compile and test multiple C++ files in one command.
+
+---
+
+**Deliverable**:  
+Complete each task by using the appropriate Linux commands while working on real-world C++ projects. Document the commands used and how they streamlined your development workflow.

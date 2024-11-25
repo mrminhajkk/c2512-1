@@ -1,0 +1,122 @@
+Problem Statement: `Employee Directory Management System`
+
+`Objective`:  
+You are tasked with developing a C++ program 
+that manages employee directory information 
+(such as name, salary, job title) and 
+performs various tasks related to file operations and directory management. 
+The tasks will require you to use Linux commands and 
+the `vi/vim` editor to configure the development environment.
+
+Tasks Overview:
+
+1. `Create a Directory to Store Employee Files`:
+   - Create a new directory called `EmployeeData` 
+   using the `mkdir` command. 
+   This directory will store information about employees.
+   - Inside the directory, create multiple files 
+   with employee details (e.g., `employee1.txt`, `employee2.txt`) 
+   using the `touch` command.
+
+2. `Edit Employee Files Using `vi`/`vim` Editor`:
+   - Open and edit the employee files using `vi`/`vim`. 
+   You need to add employee details such as Name, Salary, and Job Title. 
+   You will practice the following `vi`/`vim` commands:
+     - `Basic Navigation`: `h`, `j`, `k`, `l`, `gg`, `G`, `w`, `b`
+     - `Editing Commands`: `i`, `a`, `o`, `dd`, `yy`, `p`
+     - `Searching`: `/` (search for employee name), `n`, `N`
+     - `Saving and Quitting`: `:w`, `:q`, `:wq`, `:q!`
+     - `Undo and Redo`: `u`, `Ctrl + r`
+     - `Configuration`: Configure your `vim` editor 
+     by editing the `~/.vimrc` file 
+     (e.g., set line numbers, highlight search, etc.).
+
+3. `Listing the Employee Files`:
+   - Use the `ls` command to list the files inside the `EmployeeData` directory.
+   - Use the `pwd` command to print the current working directory.
+
+4. `View Employee Details with `cat``:
+   - Use the `cat` command to view the contents of the employee files.
+
+5. `Search Employee Information Using `grep``:
+   - Search for a specific employee's name or job title 
+   in the employee files using the `grep` command.
+
+6. `Move or Copy Employee Files`:
+   - Move an employee file to a new directory using the `mv` command.
+   - Copy an employee file to a backup directory using the `cp` command.
+
+7. `Remove Employee Files`:
+   - Use the `rm` command to remove an employee file.
+   - If necessary, create an empty file using `touch` and remove it.
+
+8. `Create a Symbolic Link to an Employee File`:
+   - Create a symbolic link using the `ln` command, 
+   linking an employee file to a different location.
+
+9. `Monitor System Resources`:
+   - Use the `ps`, `top`, and `free` commands 
+   to check the system’s current processes, CPU usage, and 
+   memory usage while your program runs.
+
+10. `Directory Cleanup`:
+   - After working with files, use `rmdir` 
+   to remove any empty directories that you no longer need.
+
+11. `Remote File Management Using `ssh` and `scp``:
+   - Connect to a remote system using `ssh`.
+   - Copy an employee file from your local machine 
+   to the remote machine using the `scp` command.
+
+---
+
+Step-by-Step Instructions for the Program:
+
+1. `Create the `EmployeeData` Directory`:
+   - Create a directory where you will store the employee files using `mkdir`.
+   - Inside that directory, create multiple files using `touch` for each employee.
+
+2. `Edit Employee Files`:
+   - Open and edit each employee file using `vi` or `vim`.
+   - Add information for each employee (e.g., name, salary, job title).
+   - Explore basic `vi` commands as you make these edits.
+
+3. `Explore Commands`:
+   - Use `cat` to display the contents of the employee files.
+   - Use `grep` to search for specific details like an employee’s name or job title.
+   - Use `ls` to list all employee files in the directory.
+
+4. `File Operations`:
+   - Copy (`cp`) and move (`mv`) employee files.
+   - Create symbolic links with `ln` for quick access to commonly used employee files.
+
+5. `System Monitoring`:
+   - While running your program, check system resources 
+   like CPU and memory with `ps`, `top`, and `free`.
+
+6. `Remote Operations`:
+   - Set up an SSH connection to a remote machine and transfer an employee file with `scp`.
+
+---
+
+Objective of the Problem:
+
+- This problem will help you learn and practice `Linux commands` 
+like `mkdir`, `touch`, `mv`, `cp`, `ls`, `pwd`, `cat`, `grep`, 
+`rm`, `ln`, `ssh`, `scp`, `ps`, `top`, and `free`.
+- It will also help you learn the `vi/vim editor` 
+in depth, including basic navigation, editing, and configuration commands.
+- You will configure `vim` through the `~/.vimrc` file, 
+helping you personalize your editor.
+- You will practice `file and directory management`, 
+including creating, editing, moving, and deleting files.
+- You will also learn how to work with remote systems using SSH and SCP.
+
+---
+
+By following this problem statement, you'll be able to:
+- Develop proficiency in using common `Linux commands`.
+- Become proficient in navigating and editing files 
+using the `vi/vim editor`.
+- Understand how to configure the `vim editor` 
+to enhance your development workflow.

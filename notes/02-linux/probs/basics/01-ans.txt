@@ -1,0 +1,215 @@
+Here's a step-by-step guide to solving the 
+`Beginner Level Problem Statement` 
+for Linux commands in C++ development.
+
+---
+
+1. `Basic File and Directory Management`:
+
+`Create a directory for your C++ project`:
+```bash
+mkdir project_name
+```
+This will create a new directory called `project_name`.
+
+`List files in a directory`:
+```bash
+ls
+```
+This will list all the files and directories in the current directory.
+
+`Change to the project directory`:
+```bash
+cd project_name
+```
+This will move you into the `project_name` directory.
+
+`Create a C++ file`:
+```bash
+touch hello.cpp
+```
+This will create a new file named `hello.cpp` in the current directory.
+
+---
+
+2. `Compiling Simple C++ Programs`:
+
+`Write a simple C++ program`:
+Create the `hello.cpp` file with a simple program, 
+using `nano` or another text editor:
+
+```bash
+nano hello.cpp
+```
+Add this code inside `hello.cpp`:
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello, World!" << endl;
+    return 0;
+}
+```
+
+`Compile the C++ program`:
+```bash
+g++ -o hello hello.cpp
+```
+This compiles `hello.cpp` and creates an executable called `hello`.
+
+`Run the compiled program`:
+```bash
+./hello
+```
+The output should be:
+```
+Hello, World!
+```
+
+---
+
+3. `Basic Text Editing`:
+
+`Edit the C++ file`:
+You can open and edit `hello.cpp` using `nano` (or any editor):
+```bash
+nano hello.cpp
+```
+Make any necessary changes and then save the file 
+by pressing `CTRL + X`, then `Y` to confirm, and `Enter` to save.
+
+---
+
+4. `Using `cat` to View File Content`:
+
+`View the contents of the file`:
+```bash
+cat hello.cpp
+```
+This will display the content of `hello.cpp` in the terminal.
+
+---
+
+5. `File Removal`:
+
+`Remove the C++ file`:
+```bash
+rm hello.cpp
+```
+This will delete the `hello.cpp` file.
+
+`Remove an empty directory`:
+```bash
+rmdir project_name
+```
+This will delete the `project_name` directory if it's empty.
+
+---
+
+6. `Navigating Directories`:
+
+`Go to the home directory`:
+```bash
+cd ~
+```
+This will take you to your home directory.
+
+`Go to the parent directory`:
+```bash
+cd ..
+```
+This moves you one level up in the directory structure.
+
+`Check the current directory`:
+```bash
+pwd
+```
+This will print the full path of the current directory.
+
+---
+
+7. `Viewing System Information`:
+
+`Display the current user`:
+```bash
+whoami
+```
+This will display the username of the currently logged-in user.
+
+`Display the current date and time`:
+```bash
+date
+```
+This will show the current date and time.
+
+---
+
+8. `Simple Process Management`:
+
+`View running processes`:
+```bash
+ps
+```
+This will display the currently running processes.
+
+`End a process`:
+First, find the process ID (PID) by running `ps`, then kill it:
+```bash
+kill <PID>
+```
+For example:
+```bash
+kill 1234
+```
+
+---
+
+9. `Viewing File Sizes and Disk Space`:
+
+`View file sizes in a directory`:
+```bash
+ls -lh
+```
+This shows the file sizes in a human-readable format (KB, MB, GB).
+
+`Check disk usage`:
+```bash
+df -h
+```
+This will show the disk space usage in a human-readable format.
+
+---
+
+10. `Redirecting Output`:
+
+`Redirect output to a file`:
+```bash
+echo "Hello, World!" > output.txt
+```
+This will write "Hello, World!" to a file named `output.txt`.
+
+`View the content of the file`:
+```bash
+cat output.txt
+```
+This will display the contents of `output.txt`.
+
+---
+
+Summary of Commands:
+
+1. `File and Directory Management`: `mkdir`, `ls`, `cd`, `touch`, `rm`, `rmdir`
+2. `Compiling`: `g++ -o hello hello.cpp`, `./hello`
+3. `Text Editing`: `nano hello.cpp`
+4. `Viewing File Content`: `cat hello.cpp`
+5. `Process Management`: `ps`, `kill`
+6. `System Information`: `whoami`, `date`, `pwd`
+7. `Disk Usage`: `df -h`, `ls -lh`
+8. `Redirecting Output`: `echo "text" > file.txt`, `cat file.txt`
+
+---
+
+By completing these steps, 
+you will become familiar with the most basic and essential Linux commands, 
+which are foundational for C++ development in a Linux environment.
