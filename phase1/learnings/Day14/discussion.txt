@@ -1,4 +1,6 @@
 Question to learn linux: 
+    (path to qns: /notes/02-linux/probs/basics)
+    (path to topics: /notes/02-linux/ [00-linux.txt, 01-linux.txt])
     01 mahesh with nayana for entire class 
     02 Ayisha,  Dhaheen, Sreya              Evolution of Linux OS 
     03 [all others : 2nd task]
@@ -10,26 +12,17 @@ Question to learn linux:
     09 [2nd task] Ayisha,  Dhaheen, Sreya
     10
 
-
-    3 4 5 1 2
-    2 1 4 3 5
-    5 4 6 3 1 2
-
     Participants mail ids:
-    Sana E, Nimisha K, Ayisha Dhiyana PS,
-    S T Vishakh, Vinayak S Kaimal,
-
-    Josh Danny Alex, Dhaheen Rahman,
-    Nayana Haridas, Pitchumani S M, Bhagya S Kumar=,
-
-    Abel Mathew Simon, M Venkatesh, 
-    Sooraj M V, Athira KS, Sreya K, 
-    minhaj
+    Sana E, Nimisha K, Ayisha Dhiyana PS, S T Vishakh, Vinayak S Kaimal, 3 4 5 1 2
+    Josh Danny Alex, Dhaheen Rahman, Nayana Haridas, Pitchumani S M, Bhagya S Kumar=, 2 1 4 3 5
+    Abel Mathew Simon, M Venkatesh,  Sooraj M V, Athira KS, Sreya K, minhaj 5 4 6 3 1 2
 
     Evolution of Linux OS 
     Linux Distributions 
     Features of Linux
     Linux Architecture + Linux Shell
     Linux File System
+
+
     
     
