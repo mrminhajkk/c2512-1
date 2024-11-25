@@ -2,12 +2,53 @@ To disply working folder:
     $ pwd
 To display contents of the current directory:
     $ ls
+    use cases:
+    $ls         --lists the files and dirs 
+    $ls -l      --long listings ie in tabular column
 To change to directory "phase1":
     $ cd phase1
+    use cases:
+    -- changed to child dir "phase1":
+        root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512# cd phase1 
+        -- after the command 
+        root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1#
+    -- changed to the relative path "phase1/learnings/Day13/cpp"
+        root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512# cd phase1/learnings/Day13/cpp
+        --after the command 
+        root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# 
+    -- changed to parent dir 
+        root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13/cpp# cd ..
+        --after the command 
+        root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13# 
+        -- changed to grand parent dir (2 level up)
+        root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13# cd ../..
+        -- after the command 
+        root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1#
+        -- assume the below working dir: (change to parent, from parent change to 'Day12')
+        root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day13# cd ../Day12
+        -- after the command 
+        root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/Day12# 
+        
 To create directory "Day13" in the current dir:
     $ mkdir Day13
+    use cases: 
+    -- create new dir "Day13"
+        root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/# mkdir Day13
+        -- after the command 
+        -- dir Day13 is created if not exists, otherwise we will get "File not Exist" error msg 
+    root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/phase1/learnings/# mkdir Day14/cpp 
+        -- after the command 
+        -- if dir "Day14" exists:
+            the dir "cpp" will be created under dir "Day14" which is child of dir "learnings" 
+        -- else if dir "Day14" doest not exists: 
+            "File not Exist" error msg 
+
 To delete empty directory "Day13" in the current dir:
     $ rmdir Day13
+    -- after the command 
+    -- Directory not empty for the case if dir "Day13" contains files or dirs
+    -- dir "Day13" will be deleted if dir "Day13" has no file or dir 
+
 To query version of c compiler:
     $ gcc --version
 To query version of c++ compiler:

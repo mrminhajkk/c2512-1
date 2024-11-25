@@ -2,10 +2,10 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
-
+const int MAX_SIZE = 6; 
 int giveMeNumber()
 {	
-	int num = rand() % 15 + 1;
+	int num = rand() % MAX_SIZE + 1;
 	return num;
 }
 
@@ -23,7 +23,7 @@ bool isExist(int nums[], int size, int num)
 void giveMeNumbers(int nums[])
 {
     srand(static_cast<unsigned>(time(0)));
-    for(int I = 1; I <= 15; I++)
+    for(int I = 1; I <= MAX_SIZE; I++)
     {
         int num = giveMeNumber();
         while(isExist(nums, I, num))
@@ -36,9 +36,9 @@ void giveMeNumbers(int nums[])
 
 int main()
 {
-	int numbers[15];
+	int numbers[MAX_SIZE];
 	giveMeNumbers(numbers);
-	for(int I = 1; I <= 15; I++)
+	for(int I = 1; I <= MAX_SIZE; I++)
     {
         cout << numbers[I-1] << " ";
     }

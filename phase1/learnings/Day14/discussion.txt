@@ -1,0 +1,35 @@
+Question to learn linux: 
+    01 mahesh with nayana for entire class 
+    02 Ayisha,  Dhaheen, Sreya              Evolution of Linux OS 
+    03 [all others : 2nd task]
+    04 Vishakh, Josh, Athira                Linux Distributions
+    05 Vinayak, Pitchumani, minhaj          Features of Linux    
+    06 Sana, Nayana, Sooraj                 Linux Architecture + Linux Shell
+    07 Nimisha, Bhagya, Abel                Linux File System
+    08 Venkatesh                            Linux Architecture + Linux Shell
+    09 [2nd task] Ayisha,  Dhaheen, Sreya
+    10
+
+
+    3 4 5 1 2
+    2 1 4 3 5
+    5 4 6 3 1 2
+
+    Participants mail ids:
+    Sana E, Nimisha K, Ayisha Dhiyana PS,
+    S T Vishakh, Vinayak S Kaimal,
+
+    Josh Danny Alex, Dhaheen Rahman,
+    Nayana Haridas, Pitchumani S M, Bhagya S Kumar=,
+
+    Abel Mathew Simon, M Venkatesh, 
+    Sooraj M V, Athira KS, Sreya K, 
+    minhaj
+
+    Evolution of Linux OS 
+    Linux Distributions 
+    Features of Linux
+    Linux Architecture + Linux Shell
+    Linux File System
+    
+    
