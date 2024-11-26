@@ -1,0 +1,145 @@
+Today focus: 
+#1
+    -- some of the linux commands 
+        -- text processing 
+            to have multi file project 
+        -- multi file project with vim 
+    -- ps, top, free 
+#2 c++ 
+    variables (static memory, dynmaic memory)
+    array (static memory, dynmaic memory)
+        diff c dynamic mem vs c++ dynamic memory 
+    OOP 
+        - object 
+        - class 
+            - member fields 
+            - member functions 
+            - access specifiers 
+                - securing data [attibutes]
+                - accessing public members outside [behaviours]
+            two plots of shape Rectangle 
+                Average of areas. [arithmetic ops]
+        - two objects 
+            two plots of shape Rectangle
+                I need to check which is higher area [comparison]
+        - plots of shape circle and triangle in tvm 
+                I have four plots of different shapes. 
+                How I am going to deal these different shaped plots in program?
+                -- inheritance [is-a relationship]
+        - array of plots which are different shapes 
+            -- multiple shapes plots in one array 
+                uses inheritance to solve faster 
+        - principles oops:
+            object, class, inheritance, polimorphism, encapsulation, abstrction 
+        - programming paradigms 
+            precedural programming vs OOP  
+============================================================
+#1
+    -- some of the linux commands 
+        -- text processing 
+            to have multi file project 
+        -- multi file project with vim 
+    -- ps, top, free 
+
+    Day14/cpp/movie_ticket.cpp => 
+    Day15/cpp/12 [modules: Const, BookingManager, Menu, Main]
+            |-- - Const.h 
+                - BookingManager.h 
+                - Menu.h 
+                - BookingManager.cpp 
+                - Menu.cpp 
+                - Main.cpp 
+            |-- -BookingManager.o
+                - Menu.o
+                - Main.o 
+                - App.out 
+
+To display lines of code from line#5 to line#6
+$ head -n 6 movie_ticket.cpp | tail -n 2
+    -- select 6 lines of code 
+    -- extract last two lines of code 
+-- from line#5 to line#6 into file "Const.h" whose is path "../../Day15/cpp/12"
+$ head -n 6 movie_ticket.cpp | tail -n 2 > ../../Day15/cpp/12/Const.h
+-- to print the file "Const.h" which is in the dir "../../Day15/cpp/12"
+$ cat ../../Day15/cpp/12/Const.h
+-- from line#9 to line#13 into file "BookingManager.h" whose is path "../../Day15/cpp/12"
+$ head -n 13 movie_ticket.cpp | tail -n 5 > ../../Day15/cpp/12/BookingManager.h
+$ cat ../../Day15/cpp/12/BookingManager.h
+-- from line#14 to line#14 into file "Menu.h" whose is path "../../Day15/cpp/12"
+$ head -n 14 movie_ticket.cpp | tail -n 1 > ../../Day15/cpp/12/Menu.h
+$ cat ../../Day15/cpp/12/Menu.h
+16-53 "Main.cpp"
+$ sed -n 16,53p movie_ticket.cpp > ../../Day15/cpp/12/Main.cpp
+$ cat ../../Day15/cpp/12/Main.cpp
+57-67 "Menu.cpp"
+$ sed -n 57,67p movie_ticket.cpp > ../../Day15/cpp/12/Menu.cpp
+$ cat ../../Day15/cpp/12/Menu.cpp
+69-203 "BookingManager.cpp"
+$ sed -n 69,203p movie_ticket.cpp > ../../Day15/cpp/12/BookingManager.cpp
+$ cat ../../Day15/cpp/12/BookingManager.cpp
+-- to display contents of dir of path "../../Day15/cpp/12"
+$ ls ../../Day15/cpp/12
+-- to change to dir of path "../../Day15/cpp/12"
+$ cd ../../Day15/cpp/12
+
+We have done so far: 
+    |-- - Const.h 
+        - BookingManager.h 
+        - Menu.h 
+        - BookingManager.cpp 
+        - Menu.cpp 
+        - Main.cpp 
+
+We have to edit the modules workable: 
+    -- to open all the files in vim editor as "multi-file" vim editor 
+$ vim *.h *.cpp 
+OR 
+$ vim Const.h BookingManager.h  Menu.h BookingManager.cpp Menu.cpp Main.cpp
+
+in vim editor
+-- to display all buffers (opened files for editing)
+:buffers            OR      :ls 
+
+-- to goto buffer based its buffer number 
+:buffer 3 #it opens the buffer numbered "3" for editing 
+
+- to navigate between previous and next buffers:
+:bn     -- for next buffer              :n
+:bp     -- for previous buffer          :N
+
+-- to split the buffers horizontally 
+:split BookingManager.cpp 
+
+-- to split the buffers vertially 
+:vsplit BookingManger.cpp 
+
+-- to move between splitted windows:
+Ctrl + w,w
+
+-- to hide the splitted window: 
+:hide 
+
+-- to close the buffer 
+:bd 
+
+-- to open in another tab 
+:tabedit BookingManager.cpp 
+
+-- to move between the tabs: 
+:tabn   -- to move next tab 
+:tabp   -- to move previous tab 
+
+===========================================================
+We use linux commands to make a program as multi-module program 
+    -- to select `from line #` to `to line #` in source file 
+    and to redirect the selected code to another file 
+    in different path 
+
+To open project files in the vim editor 
+    to work with multi-file vim editor 
+    -- vim *.cpp *.h 
+    buffers, list buffer, nav bt buffers, close buffer, hide buffer 
+    splitting windows, navs bt splitted windows 
+    making many tabs, navs bet tabs 
+
+===========================================================

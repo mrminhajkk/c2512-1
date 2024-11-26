@@ -17,12 +17,12 @@ vim file1.cpp file2.cpp file3.cpp
 Switch Between Files
 - `Switch to the next file:`
   ```vim
-  :n
+  :n      :bn
   ```
 - `Switch to the previous file:`
   ```vim
-  :N
-  ```
+  :N      :bp 
+  ``` 
 
 Open a File from Within Vim
 - If you're already in Vim, you can open another file using the :edit command:
@@ -34,7 +34,7 @@ Each file opened in Vim is loaded into a buffer.
 
 List Buffers
 ```vim
-:ls
+:ls           :buffers 
 ```
 
 Switch to a Specific Buffer
