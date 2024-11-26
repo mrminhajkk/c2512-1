@@ -1,0 +1,147 @@
+`Abstraction` and `Encapsulation` are 
+two fundamental Object-Oriented Programming (OOP) concepts, 
+but they serve different purposes:
+
+---
+
+`Abstraction`
+`Definition:`  
+Abstraction focuses on `hiding the implementation details` and 
+showing only the necessary features of an object. 
+It allows you to work with an object 
+at a higher level of detail 
+without worrying about how it performs its tasks.
+
+`Key Points:`
+- Concerned with `what an object does`, not `how it does it`.
+- Achieved using `abstract classes` or `interfaces`.
+
+Example:
+Imagine a `Car`. As a user, you interact 
+with its features like 
+starting the engine, driving, and braking. 
+You don’t need to understand 
+the internal working of the engine or braking system.
+
+```csharp
+// Abstract Class
+public abstract class Vehicle
+{
+    public abstract void Start();
+    public abstract void Stop();
+}
+
+// Derived Class
+public class Car : Vehicle
+{
+    public override void Start()
+    {
+        Console.WriteLine("Car engine started.");
+    }
+    public override void Stop()
+    {
+        Console.WriteLine("Car stopped.");
+    }
+}
+
+// Usage
+public class Program
+{
+    public static void Main()
+    {
+        Vehicle myCar = new Car();
+        myCar.Start(); // Output: Car engine started.
+        myCar.Stop();  // Output: Car stopped.
+    }
+}
+```
+
+Here, the `Vehicle` class abstracts the concept of a vehicle, 
+hiding the specific implementation of starting or stopping the vehicle.
+
+---
+
+`Encapsulation`
+`Definition:`  
+Encapsulation is the process of `binding data and methods` 
+that operate on the data into a single unit (class) and 
+`restricting direct access` to some of the object’s components. 
+It helps to `protect data` from unauthorized access and modification.
+
+`Key Points:`
+- Concerned with `how data is protected and manipulated`.
+- Achieved using `access modifiers` like `private`, `protected`, and `public`.
+
+Example:
+Imagine a `Bank Account`. Users can deposit or withdraw money, 
+but they cannot directly access or modify the balance. 
+This ensures that all changes to the balance are controlled and validated.
+
+```csharp
+public class BankAccount
+{
+    private decimal balance; // Encapsulated field
+
+    public decimal Balance // Public property
+    {
+        get { return balance; }
+        private set { balance = value; } // Only internal changes allowed
+    }
+
+    public void Deposit(decimal amount)
+    {
+        if (amount > 0)
+        {
+            Balance += amount;
+            Console.WriteLine($"Deposited: {amount}");
+        }
+        else
+        {
+            Console.WriteLine("Invalid deposit amount.");
+        }
+    }
+
+    public void Withdraw(decimal amount)
+    {
+        if (amount > 0 && amount <= Balance)
+        {
+            Balance -= amount;
+            Console.WriteLine($"Withdrawn: {amount}");
+        }
+        else
+        {
+            Console.WriteLine("Invalid withdraw amount.");
+        }
+    }
+}
+
+// Usage
+public class Program
+{
+    public static void Main()
+    {
+        BankAccount account = new BankAccount();
+        account.Deposit(1000);  // Deposited: 1000
+        account.Withdraw(500); // Withdrawn: 500
+        Console.WriteLine(account.Balance); // Output: 500
+    }
+}
+```
+
+Here, the `balance` field is private and 
+only accessible via public methods 
+(`Deposit` and `Withdraw`). 
+This prevents direct manipulation of 
+the balance and ensures proper validation.
+
+---
+
+`Summary`
+| Concept        | Abstraction                                     | Encapsulation                                    |
+|----------------|------------------------------------------------|------------------------------------------------|
+| `Focus`      | Hiding implementation details                  | Protecting data and methods                    |
+| `Achieved by`| Abstract classes, interfaces                  | Access modifiers, private fields, properties   |
+| `Example`    | Vehicle abstraction (Car inherits Vehicle)     | BankAccount class encapsulates balance field   |
+
+Both abstraction and encapsulation work together 
+to create robust and maintainable OOP designs.

@@ -154,5 +154,26 @@ To open project files in the vim editor
         - findArea() 
 
 3. In c++ we have keywords class or struct to define the class.
-    
-    
+===========================================================
+Shape 
+    + findArea() : float 
+    + print(): void 
+    + isGreaterThan(Shape& other) : bool 
+    + equals(Shape& other) : bool 
+
+Retangle : Shape 
+===========================================================
+    inheritance: [tomorrow]
+        existing class [Shape] -> new class [Rectangle] = Shape + own members 
+             as Shape has no-defnition functions, we cannot use those fns inside the Rectangle 
+             here, Rectangle has to define the Shape functions 
+        existing class [Shape] -> new class [Circle] = Shape + own members 
+            as Shape has no-defnition functions, we cannot use those fns inside the Circle 
+             here, Circle has to define the Shape functions 
+===========================================================
+    OOP: 
+        class: Rectangle
+        class:Rectangle fields as private 
+        class:Rectangle has comparison functions 
+        We used Rectangle to compare two plots. 
+===========================================================
