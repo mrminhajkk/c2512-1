@@ -26,7 +26,7 @@ ps [options]
 
 3. `Detailed process view`:
    ```bash
-   ps -ef
+   ps -ep
    ```
    - Includes user, PID (Process ID), parent process, and other details.
 

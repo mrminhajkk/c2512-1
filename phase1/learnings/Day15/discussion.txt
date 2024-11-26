@@ -143,3 +143,16 @@ To open project files in the vim editor
     making many tabs, navs bet tabs 
 
 ===========================================================
+1. object, class 
+    object: variable of composite data 
+        -- copy from blueprint class 
+    class: data type to declare objects 
+        definition data type of object 
+        -- blueprint 
+2. Define a plot 
+    Rectangle {length, breadth}
+        - findArea() 
+
+3. In c++ we have keywords class or struct to define the class.
+    
+    
