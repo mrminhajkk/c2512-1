@@ -1,0 +1,87 @@
+To display a specific range of lines 
+(e.g., from line `X` to line `Y`) 
+in a file, you can use the 
+``sed`` command or 
+``awk`` command in Linux. Here's how:
+
+---
+
+`Using `sed``
+The `sed` command is ideal for extracting a range of lines.
+
+Syntax:
+```bash
+sed -n 'X,Yp' filename
+```
+
+Example:
+To display lines 10 to 20 of `file.cpp`:
+```bash
+sed -n '10,20p' file.cpp
+```
+- `-n`: Suppresses default output.
+- `'10,20p'`: Tells `sed` to print lines 10 through 20.
+
+---
+
+`Using `awk``
+The `awk` command provides similar functionality.
+
+Syntax:
+```bash
+awk 'NR>=X && NR<=Y' filename
+```
+
+Example:
+To display lines 10 to 20 of `file.cpp`:
+```bash
+awk 'NR>=10 && NR<=20' file.cpp
+```
+- `NR`: The current line number.
+- `>=` and `<=`: Specify the range of lines to display.
+
+---
+
+`Using `head` and `tail``
+You can combine `head` and `tail` 
+to extract a specific range.
+
+Example:
+To display lines 10 to 20 of `file.cpp`:
+```bash
+head -n 20 file.cpp | tail -n +10
+```
+- `head -n 20`: Extracts the first 20 lines.
+- `tail -n +10`: Displays lines from the 10th onward.
+
+---
+
+`Using `less` (Interactive Viewing)`
+If you want to interactively view lines from `X` to `Y`:
+1. Open the file in `less`:
+   ```bash
+   less file.cpp
+   ```
+2. Jump to the starting line (`X`) by typing:
+   ```bash
+   X
+   ```
+3. View lines until line `Y` by typing:
+   ```bash
+   YG
+   ```
+
+---
+
+`Command Comparison`
+| Command                  | Suitable For              |
+|--------------------------|---------------------------|
+| `sed -n 'X,Yp'`          | Extracting line ranges.   |
+| `awk 'NR>=X && NR<=Y'`   | Extracting with conditions.|
+| `head` + `tail`          | Quick and simple tasks.   |
+| `less`                   | Interactive viewing.      |
+
+Each method is efficient, and 
+you can choose one based 
+on your preference or the tools available 
+on your system.
