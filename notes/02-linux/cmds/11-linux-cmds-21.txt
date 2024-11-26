@@ -1,0 +1,152 @@
+In Linux, `file permissions` control 
+who can read, write, or execute a file or directory. 
+
+Permissions are managed 
+using a combination of `user roles` and `access types`.
+
+---
+
+`1. User Roles`
+Each file or directory has three types of roles:
+1. `Owner`: The user who owns the file.
+2. `Group`: A group of users who share access to the file.
+3. `Others`: All other users on the system.
+
+---
+
+`2. Access Types`
+There are three types of permissions:
+1. `Read (r)`: Allows viewing the file's content or 
+listing a directory's contents.
+2. `Write (w)`: Allows modifying the file or its content, and 
+creating/deleting files in a directory.
+3. `Execute (x)`: Allows running the file as a program or 
+accessing a directory.
+
+---
+
+`3. Viewing File Permissions`
+Use the `ls -l` command to view file permissions:
+```bash
+ls -l filename
+```
+
+#Example Output:
+```bash
+-rwxr-xr--
+```
+
+`Breakdown of the Permissions:`
+- `-` : File type (`-` for regular file, `d` for directory).
+- `rwx` : Owner permissions (read, write, execute).
+- `r-x` : Group permissions (read, no write, execute).
+- `r--` : Others permissions (read only).
+
+---
+
+`4. Changing File Permissions`
+Permissions can be modified using the `chmod` command.
+
+#`Using Symbolic Notation`:
+```bash
+chmod u+x filename
+```
+- `u`: Owner (user).
+- `g`: Group.
+- `o`: Others.
+- `a`: All (user, group, others).
+- `+`: Add permission.
+- `-`: Remove permission.
+- `=`: Set exact permission.
+
+`Example`:
+- Add execute permission for the owner:
+  ```bash
+  chmod u+x file.txt
+  ```
+
+- Remove write permission for group:
+  ```bash
+  chmod g-w file.txt
+  ```
+
+#`Using Numeric Notation`:
+Each permission is assigned a numeric value:
+- `Read (r)` = 4
+- `Write (w)` = 2
+- `Execute (x)` = 1
+- No permission = 0
+
+Combine values to set permissions:
+- `rwx` = 7 (4+2+1)
+- `rw-` = 6 (4+2)
+- `r--` = 4
+
+`Syntax`:
+```bash
+chmod 754 filename
+```
+
+`Example`:
+- `754` breakdown:
+  - `7` = Owner (`rwx`).
+  - `5` = Group (`r-x`).
+  - `4` = Others (`r--`).
+
+---
+
+`5. Changing Ownership`
+Use `chown` to change the owner or group of a file.
+
+`Change the owner`:
+```bash
+chown new_owner filename
+```
+
+`Change the group`:
+```bash
+chown :new_group filename
+```
+
+`Change both owner and group`:
+```bash
+chown new_owner:new_group filename
+```
+
+---
+
+`6. Changing Default Permissions`
+Default permissions for newly created files and directories 
+are controlled by the `umask` value.
+
+View the current `umask`:
+```bash
+umask
+```
+
+Set a new `umask`:
+```bash
+umask 022
+```
+
+---
+
+`Examples`
+1. `Grant all users execute permission`:
+   ```bash
+   chmod a+x script.sh
+   ```
+
+2. `Restrict file access to the owner only`:
+   ```bash
+   chmod 700 secret.txt
+   ```
+
+3. `Allow read/write for the owner, and read-only for others`:
+   ```bash
+   chmod 644 document.txt
+   ```
+
+File permissions are critical 
+for managing security and access control 
+in Linux systems.

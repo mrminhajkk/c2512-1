@@ -1,0 +1,206 @@
+The ``grep`` command is a powerful tool 
+in Unix/Linux for searching text patterns in files. 
+Here's a comprehensive guide:
+
+---
+
+`Basic Syntax`
+```bash
+grep [options] "pattern" filename
+```
+
+`Key Features`
+- Searches for `patterns` (regular expressions) in files.
+- Outputs lines containing the matching pattern.
+- Supports case sensitivity, recursive searching, and more.
+
+---
+
+`Examples`
+1. `Search for a String in a File`
+   ```bash
+   grep "main" file.cpp
+   ```
+   - Searches for the string `main` in `file.cpp` and displays matching lines.
+
+2. `Case-Insensitive Search`
+   ```bash
+   grep -i "main" file.cpp
+   ```
+   - Matches `main`, `Main`, `MAIN`, etc.
+
+3. `Search for an Exact Word`
+   ```bash
+   grep -w "int" file.cpp
+   ```
+   - Matches only whole words like `int`, not `integer` or `print`.
+
+4. `Recursive Search in Directories`
+   ```bash
+   grep -r "TODO" .
+   ```
+   - Searches for `TODO` in the current directory and subdirectories.
+
+5. `Count the Number of Matches`
+   ```bash
+   grep -c "return" file.cpp
+   ```
+   - Outputs the number of lines that match the pattern.
+
+6. `Display Line Numbers`
+   ```bash
+   grep -n "error" file.cpp
+   ```
+   - Shows matching lines along with their line numbers.
+
+7. `Highlight Matches`
+   ```bash
+   grep --color "main" file.cpp
+   ```
+   - Highlights the matching text in the output.
+
+8. `Filter Command Output`
+   ```bash
+   ps aux | grep "python"
+   ```
+   - Filters lines containing `python` from the output of `ps aux`.
+
+9. `Exclude Matching Lines`
+   ```bash
+   grep -v "debug" file.cpp
+   ```
+   - Displays all lines except those containing `debug`.
+
+10. `Search for Multiple Patterns`
+    ```bash
+    grep -e "main" -e "return" file.cpp
+    ```
+    - Matches either `main` or `return`.
+
+11. `Match a Regular Expression`
+    ```bash
+    grep "[a-zA-Z0-9_]*()" file.cpp
+    ```
+    - Matches function-like patterns in the file.
+
+12. `Output File Names Only`
+    ```bash
+    grep -l "class" *.cpp
+    ```
+    - Lists the names of files containing the pattern `class`.
+
+---
+
+`Useful Options`
+| Option      | Description                                      |
+|-------------|--------------------------------------------------|
+| `-i`        | Case-insensitive search.                        |
+| `-v`        | Invert match (exclude matching lines).          |
+| `-n`        | Display line numbers.                          |
+| `-c`        | Count matching lines.                          |
+| `-r`        | Search recursively in directories.             |
+| `-l`        | List filenames with matches.                   |
+| `-w`        | Match whole words only.                        |
+| `--color`   | Highlight matches in the output.               |
+
+---
+
+`Combining with Other Commands`
+1. `Search in Compressed Files`
+   ```bash
+   zgrep "pattern" file.gz
+   ```
+
+2. `Find Files with Patterns`
+   ```bash
+   find . -type f -name "*.cpp" | xargs grep "main"
+   ```
+
+3. `Search with Piping`
+   ```bash
+   dmesg | grep "error"
+   ```
+
+The `grep` command is an essential tool 
+for text processing and debugging, 
+offering flexibility and powerful pattern-matching capabilities.
+
+
+======================================================
+
+
+
+To display only declarations in C++ code using `grep`, 
+you can use regular expressions 
+to match common patterns of C++ declarations. 
+The specifics depend on 
+what types of declarations you're looking 
+for (e.g., variable, function, class, etc.).
+
+Here’s an example to match some typical C++ declaration patterns:
+
+Match Function Declarations
+To match function declarations (without bodies), you can use:
+
+```bash
+grep -E "^[a-zA-Z_][a-zA-Z0-9_]*[ \t]+[a-zA-Z_][a-zA-Z0-9_]*\([^;{]*\);" file.cpp
+```
+
+This will match lines like:
+```cpp
+int func();
+void example(int, char);
+```
+
+Match Variable Declarations
+To match variable declarations, you can look for patterns that include a type followed by a variable name, ending with a semicolon:
+
+```bash
+grep -E "^[ \t]*(int|float|double|char|bool|std::string|auto)[ \t]+[a-zA-Z_][a-zA-Z0-9_]*[ \t]*(=[^;]*)?;" file.cpp
+```
+
+This will match lines like:
+```cpp
+int x;
+double value = 3.14;
+std::string name = "example";
+```
+
+Match Class Declarations
+To match class declarations, you can look for the `class` or `struct` keyword:
+
+```bash
+grep -E "^[ \t]*(class|struct)[ \t]+[a-zA-Z_][a-zA-Z0-9_]*[ \t]*;" file.cpp
+```
+
+This will match lines like:
+```cpp
+class MyClass;
+struct MyStruct;
+```
+
+Match All Declarations
+If you want a broader pattern to match most common declarations:
+
+```bash
+grep -E "^[ \t]*(class|struct|int|float|double|char|bool|std::string|auto|void)[ \t]+[a-zA-Z_][a-zA-Z0-9_]*[ \t]*\([^;{]*\)?[ \t]*[=;]?" file.cpp
+```
+
+This will match:
+- Function declarations
+- Variable declarations
+- Class/struct declarations
+
+Excluding Definitions
+To ensure you exclude definitions (e.g., function bodies), add logic to filter out `{`:
+
+```bash
+grep -E "^[ \t]*(class|struct|int|float|double|char|bool|std::string|auto|void)[ \t]+[a-zA-Z_][a-zA-Z0-9_]*[ \t]*\([^;{]*\)?[ \t]*[=;]?" file.cpp | grep -v "{"
+```
+
+These patterns can be adapted further depending 
+on the structure of your C++ code and 
+additional requirements.
+
+
+======================================================

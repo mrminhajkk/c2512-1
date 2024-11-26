@@ -1,0 +1,128 @@
+``ps``, ``top``, and ``free`` commands in Linux
+
+---
+
+`1. `ps` (Process Status)`
+
+The `ps` command provides a snapshot of the currently running processes.
+
+`Basic Syntax`:
+```bash
+ps [options]
+```
+
+`Common Usage`:
+1. `Show processes for the current shell`:
+   ```bash
+   ps
+   ```
+   - Lists processes started by the current user in the current terminal.
+
+2. `View all processes`:
+   ```bash
+   ps -e
+   ```
+   - Displays every running process.
+
+3. `Detailed process view`:
+   ```bash
+   ps -ef
+   ```
+   - Includes user, PID (Process ID), parent process, and other details.
+
+4. `View processes by a user`:
+   ```bash
+   ps -u username
+   ```
+
+5. `Find a specific process`:
+   ```bash
+   ps -ef | grep process_name
+   ```
+
+---
+
+`2. `top` (Task Manager)`
+
+The `top` command provides a real-time view of system performance, including CPU, memory usage, and running processes.
+
+`Basic Syntax`:
+```bash
+top
+```
+
+`Key Features`:
+- Displays CPU and memory usage.
+- Sorts processes by resource usage.
+
+`Common Usage`:
+1. `Start `top``:
+   ```bash
+   top
+   ```
+
+2. `Interact within `top``:
+   - ``q``: Quit.
+   - ``k``: Kill a process by entering its PID.
+   - ``r``: Renice a process (change priority).
+   - ``h``: Show help.
+
+3. `Sort by memory usage`:
+   Press `M`.
+
+4. `View processes by a specific user`:
+   ```bash
+   top -u username
+   ```
+
+---
+
+`3. `free` (Memory Usage)`
+
+The `free` command shows information about memory usage, including free, used, and swap memory.
+
+`Basic Syntax`:
+```bash
+free [options]
+```
+
+`Common Usage`:
+1. `Display memory usage in bytes`:
+   ```bash
+   free
+   ```
+
+2. `Show memory usage in human-readable format`:
+   ```bash
+   free -h
+   ```
+   - Outputs in KB, MB, or GB.
+
+3. `Show memory details continuously`:
+   ```bash
+   watch free -h
+   ```
+   - Updates memory information every 2 seconds.
+
+
+    To stop the watch free -h command or any watch command, simply press:
+    ```bash
+    Ctrl + C
+    ```
+4. `Swap memory usage`:
+   - Check the "Swap" row for used and free swap memory.
+
+---
+
+`Comparison Table`
+
+| Command  | Purpose                               | Key Features                                          |
+|----------|---------------------------------------|------------------------------------------------------|
+| `ps`     | List running processes (static view). | Displays detailed info on running processes.         |
+| `top`    | Real-time process and resource monitor.| Interactive view of CPU, memory, and process usage.  |
+| `free`   | Show memory and swap usage.           | Memory usage statistics in different formats.        |
+
+These commands are essential 
+for system monitoring and debugging in Linux. 
+Use them to manage processes and monitor 
+resource usage effectively.

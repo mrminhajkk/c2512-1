@@ -1,0 +1,187 @@
+Managing file and directory permissions 
+in Linux is crucial for ensuring security and 
+proper access control. 
+Two primary commands 
+used for this purpose are ``chmod`` (change mode) and 
+``chown`` (change ownership).
+
+---
+
+`1. `chmod`: Change File or Directory Permissions`
+
+The ``chmod`` command is used to modify the read, write, and execute permissions of files and directories.
+
+`Syntax`
+```bash
+chmod [options] mode file
+```
+
+---
+
+`Permission Modes`
+Permissions can be changed using `symbolic notation` or `numeric notation`.
+
+`Symbolic Notation`
+- `User roles`:
+  - `u`: Owner (user).
+  - `g`: Group.
+  - `o`: Others.
+  - `a`: All (user, group, and others).
+- `Actions`:
+  - `+`: Add permission.
+  - `-`: Remove permission.
+  - `=`: Set permission exactly.
+
+`Examples`:
+1. Add execute permission for the owner:
+   ```bash
+   chmod u+x file.txt
+   ```
+2. Remove write permission for the group:
+   ```bash
+   chmod g-w file.txt
+   ```
+3. Grant all permissions to everyone:
+   ```bash
+   chmod a+rwx file.txt
+   ```
+
+`Numeric Notation`
+- `Permission values`:
+  - `4`: Read (r).
+  - `2`: Write (w).
+  - `1`: Execute (x).
+  - `0`: No permission.
+- Combine values for a total:
+  - `7`: Read, write, execute (`rwx`).
+  - `6`: Read, write (`rw-`).
+  - `5`: Read, execute (`r-x`).
+  - `4`: Read only (`r--`).
+
+`Examples`:
+1. Set permissions to `rwxr-xr--`:
+   ```bash
+   chmod 754 file.txt
+   ```
+2. Set permissions to `rw-rw-r--`:
+   ```bash
+   chmod 664 file.txt
+   ```
+
+---
+
+`Recursive Permission Changes`
+To apply changes to a directory and its contents:
+```bash
+chmod -R mode directory/
+```
+
+`Example`:
+Grant read/write/execute permissions for everyone recursively:
+```bash
+chmod -R 777 /path/to/directory
+```
+
+---
+
+`2. `chown`: Change Ownership`
+
+The ``chown`` command is used 
+to change the owner or group of a file or directory.
+
+`Syntax`
+```bash
+chown [options] [owner][:group] file
+```
+
+---
+
+`Examples`
+1. `Change the owner`:
+   ```bash
+   chown new_user file.txt
+   ```
+   - Changes ownership of `file.txt` to `new_user`.
+
+2. `Change the group`:
+   ```bash
+   chown :new_group file.txt
+   ```
+   - Changes group ownership of `file.txt` to `new_group`.
+
+3. `Change both owner and group`:
+   ```bash
+   chown new_user:new_group file.txt
+   ```
+
+4. `Apply recursively`:
+   ```bash
+   chown -R new_user:new_group /path/to/directory
+   ```
+
+---
+
+`3. Combining `chmod` and `chown``
+
+`Example Scenario`:
+You have a file called `report.txt`, and you want to:
+- Make the file readable and writable only by the owner.
+- Change the owner to `john` and the group to `team`.
+
+`Commands`:
+```bash
+chmod 600 report.txt
+chown john:team report.txt
+```
+
+---
+
+`4. Checking Permissions and Ownership`
+
+Use the `ls -l` command 
+to check current permissions and ownership:
+```bash
+ls -l file.txt
+```
+
+`Example Output`:
+```bash
+-rw-r--r-- 1 john team 1024 Nov 26 10:00 file.txt
+```
+
+- ``-rw-r--r--``: File permissions.
+- ``john``: Owner.
+- ``team``: Group.
+
+---
+
+`5. Advanced Use Cases`
+
+`Setting Default Permissions: `umask``
+To define default permissions 
+for newly created files and directories, 
+use the `umask` command.
+
+Check the current `umask`:
+```bash
+umask
+```
+
+Set a new default `umask`:
+```bash
+umask 022
+```
+
+---
+
+`Troubleshooting Permission Issues`
+1. `Permission Denied`: Check permissions 
+with `ls -l` and modify with `chmod` if necessary.
+2. `Ownership Issues`: Verify the owner/group 
+using `ls -l` and adjust using `chown`.
+
+By effectively managing permissions 
+with `chmod` and `chown`, 
+you can ensure secure and 
+controlled access to your files and 
+directories in Linux.
