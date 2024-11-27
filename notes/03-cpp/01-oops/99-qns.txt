@@ -84,3 +84,8 @@ on StayID and NumberOfDays?
         MAHESH RECOMMENDATION: to use getter / setter
 
 
+function Overloading:
+    Equals(hs1, hs2)
+    Equals(hs1, hs2, hs3)
+    Equals(p1, p2)
+

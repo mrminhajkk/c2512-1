@@ -52,3 +52,13 @@ To use two objects under comparsons
 
     Approach: r1.GreaterThan(r2)
         GreaterThan is the object function
+=======================================================================
+
+Next tasks: 
+    1. Individual comparison functions as object functions 
+    2. Individual comparison functions as non-member functions [friends to class, outside the object functions]
+    3. Individual comparison functions as non-member functions [friends to class, outside the object functions]
+            + 
+            comparison functions of hospital stay together in the main function to test 
+    4. comparison functions in another class which is friend to object class 
+    5. Solving min, max, 2nd min, 2nd max on array of objects 
