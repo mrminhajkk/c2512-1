@@ -45,3 +45,10 @@ Implement a `Doctor` Class with Comparison Methods in C++
 nimisha Sana, Ayisha, Vishakh, Vinayak  2 4 3 1 5
 josh dhaheen bhagya Nayana, Pitchumani  1 3 4 2 5
 minhaj venkatesh sooraj sreya Abel, Athira 3 2 4 1 6 5
+=======================================================================
+To define two objects, 
+To use two objects under comparsons 
+    Rectangle r1(30,40), r2(60,15); // area as the comparison 
+
+    Approach: r1.GreaterThan(r2)
+        GreaterThan is the object function

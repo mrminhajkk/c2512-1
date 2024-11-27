@@ -1,0 +1,86 @@
+1. what is function? [user-defined function]
+    named code, takes arguments, returns value also.
+    - modularization (to solve task: ie task code)
+    - reusability
+2. what is object? [user-defined type]
+    object, instance : synonymous 
+    to handle composite data, 
+    varialbe to represent bundle which holds the composite data 
+    --
+    variable of type 'defined class'
+    variable of type Rectangle class 
+    variable of type Circle class 
+    variable of type HospitalStay class 
+    --
+3. what is class? 
+    defined class is the datatype of the object. 
+    Rectangle class is the datatype of the objects 
+        rectangle1(30,40), rectangle2(60,15) etc 
+    + define functions to operate on object attributes 
+    member functions of the object  - object functions 
+    instance methods 
+
+    + encapsulation : [data + functions operating on data]
+    + abstraction: public behaviours : see interface to talk to the object 
+    to find sum and diff of two complex numbers.
+    class ComplexNumber 
+        - real : double 
+        - imaginary : double 
+        + findSum(ComplexNumber&) : ComplexNumber 
+        + findDiff(ComplexNumber&) : ComplexNumber 
+    ComplexNumber c1(10,3), c2(15,18), c3(4, 7), c4(67,2);
+    ComplexNumber s = c1.findSum(c2);
+    ComplexNumber d = c3.findDiff(c4);
+
+4. To operate the data of the objects outside the class:
+4.1 objects with members functions:
+-----------------------------------------
+   HospitalStay { StayID, NumberOfDays}
+    - StayID : string
+    - NumberOfDays : int
+    -----------------------------------------
+    + Equals(HospitalStay& other) : bool 
+    + NotEquals(HospitalStay& other) : bool 
+    + GreaterThan(HospitalStay& other) : bool 
+    + GreaterThanEquals(HospitalStay& other) : bool 
+    + LessThan(HospitalStay& other) : bool 
+    + LessThanEquals(HospitalStay& other) : bool 
+    -----------------------------------------
+    + HospitalStay(p_StayID, p_NumberOfDays) 
+-----------------------------------------
+4.2: objects where functions are outside to operate on the data 
+-----------------------------------------
+   HospitalStay { StayID, NumberOfDays}
+    - StayID : string
+    - NumberOfDays : int
+    -----------------------------------------
+    
+    -----------------------------------------
+    + HospitalStay(p_StayID, p_NumberOfDays) 
+-----------------------------------------
++ Equals(HospitalStay& first, HospitalStay& second) : bool 
++ NotEquals(HospitalStay& first, HospitalStay& second) : bool 
++ GreaterThan(HospitalStay& first, HospitalStay& second) : bool 
++ GreaterThanEquals(HospitalStay& first, HospitalStay& second) : bool 
++ LessThan(HospitalStay& first, HospitalStay& second) : bool 
++ LessThanEquals(HospitalStay& first, HospitalStay& second) : bool 
+
+    HospitalStay hs1("HS001", 5);
+    HospitalStay hs2("HS002", 7);
+
+    Equals(hs1, hs2)
+    GreaterThan(hs1, hs2) 
+
+How Equals(..) or GreaterThan(..) will operates 
+on StayID and NumberOfDays?
+
+
+5. who will access the private members of the object? 
+    1. member functions of the object 
+        MAHESH RECOMMENDATION: to use getter / setter
+    2. friend function (outside the object) of the object 
+    3. friend class (another class) of the object
+    4. public getter / setter for object private fields/attr 
+        MAHESH RECOMMENDATION: to use getter / setter
+
+
