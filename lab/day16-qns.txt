@@ -1,0 +1,415 @@
+#001 
+Implement a `Patient` Class with Comparison Methods in C++
+
+`Task:` 
+    Create a class `Patient` that represents a patient 
+    with properties `PatientID` (string) and `Age` (int). 
+    Implement the following methods 
+    to compare the ages of two patients:
+
+1. `Equals(const Patient& other)` - 
+    Checks if two patients are of the same age.
+2. `NotEquals(const Patient& other)` - 
+    Checks if two patients are of different ages.
+3. `GreaterThan(const Patient& other)` - 
+    Checks if one patient is older than another.
+4. `GreaterThanEquals(const Patient& other)` - 
+    Checks if one patient is older or the same age as another.
+5. `LessThan(const Patient& other)` - 
+    Checks if one patient is younger than another.
+6. `LessThanEquals(const Patient& other)` - 
+    Checks if one patient is younger or the same age as another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    Patient p1("P001", 45);
+    Patient p2("P002", 50);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << p1.Equals(p2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << p1.GreaterThan(p2) << std::endl; // Output: false
+    std::cout << "LessThanEquals: " << p1.LessThanEquals(p2) << std::endl; // Output: true
+
+    return 0;
+}
+```
+
+#002
+Implement a `Prescription` Class with Comparison Methods in C++
+
+`Task:` 
+    Create a class `Prescription` 
+    that represents a prescription 
+    with properties `PrescriptionID` (string) and 
+                    `Dosage` (int, in milligrams). 
+    Implement the following methods 
+        to compare the dosage between two prescriptions:
+
+1. `Equals(const Prescription& other)` - 
+    Checks if two prescriptions have the same dosage.
+2. `NotEquals(const Prescription& other)` - 
+    Checks if two prescriptions have different dosages.
+3. `GreaterThan(const Prescription& other)` - 
+    Checks if one prescription has a higher dosage than another.
+4. `GreaterThanEquals(const Prescription& other)` - 
+    Checks if one prescription has a higher or equal dosage compared to another.
+5. `LessThan(const Prescription& other)` - 
+    Checks if one prescription has a lower dosage than another.
+6. `LessThanEquals(const Prescription& other)` - 
+    Checks if one prescription has a lower or equal dosage compared to another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    Prescription pres1("RX001", 500);
+    Prescription pres2("RX002", 400);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << pres1.Equals(pres2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << pres1.GreaterThan(pres2) << std::endl; // Output: true
+    std::cout << "LessThanEquals: " << pres1.LessThanEquals(pres2) << std::endl; // Output: false
+
+    return 0;
+}
+```
+
+
+#003
+Implement a `Vaccination` Class with Comparison Methods in C++
+
+`Task:` 
+    Create a class `Vaccination` 
+    that represents a vaccination record 
+    with properties `VaccinationID` (string) and 
+                    `DosesAdministered` (int). 
+    Implement the following methods 
+        to compare the number of doses administered between two vaccination records:
+
+1. `Equals(const Vaccination& other)` - 
+    Checks if two vaccinations have the same number of doses administered.
+2. `NotEquals(const Vaccination& other)` - 
+    Checks if two vaccinations have a different number of doses administered.
+3. `GreaterThan(const Vaccination& other)` - 
+    Checks if one vaccination has more doses administered than another.
+4. `GreaterThanEquals(const Vaccination& other)` - 
+    Checks if one vaccination has more or the same number of doses administered as another.
+5. `LessThan(const Vaccination& other)` - 
+    Checks if one vaccination has fewer doses administered than another.
+6. `LessThanEquals(const Vaccination& other)` - 
+    Checks if one vaccination has fewer or the same number of doses administered as another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    Vaccination v1("V001", 2);
+    Vaccination v2("V002", 3);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << v1.Equals(v2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << v1.GreaterThan(v2) << std::endl; // Output: false
+    std::cout << "LessThanEquals: " << v1.LessThanEquals(v2) << std::endl; // Output: true
+
+    return 0;
+}
+```
+
+
+#004
+Implement a `Surgery` Class with Comparison Methods in C++
+
+`Task:` 
+    Create a class `Surgery` 
+    that represents a surgery 
+    with properties `SurgeryID` (string) and 
+                    `Duration` (int, in minutes). 
+    Implement the following methods 
+        to compare the durations of two surgeries:
+
+1. `Equals(const Surgery& other)` - 
+    Checks if two surgeries have the same duration.
+2. `NotEquals(const Surgery& other)` - 
+    Checks if two surgeries have different durations.
+3. `GreaterThan(const Surgery& other)` - 
+    Checks if one surgery takes longer than another.
+4. `GreaterThanEquals(const Surgery& other)` - 
+    Checks if one surgery takes longer or the same amount of time as another.
+5. `LessThan(const Surgery& other)` - 
+    Checks if one surgery takes less time than another.
+6. `LessThanEquals(const Surgery& other)` - 
+    Checks if one surgery takes less or the same amount of time as another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    Surgery s1("S001", 90);
+    Surgery s2("S002", 120);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << s1.Equals(s2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << s1.GreaterThan(s2) << std::endl; // Output: false
+    std::cout << "LessThanEquals: " << s1.LessThanEquals(s2) << std::endl; // Output: true
+
+    return 0;
+}
+```
+
+#005
+Implement a `LabTest` Class with Comparison Methods in C++
+
+`Task:` 
+    Create a class `LabTest` 
+    that represents a lab test 
+    with properties `TestID` (string) and 
+                    `ResultValue` (double, indicating the test result). 
+    Implement the following methods 
+        to compare the result values of two lab tests:
+
+1. `Equals(const LabTest& other)` - 
+    Checks if two lab tests have the same result value.
+2. `NotEquals(const LabTest& other)` - 
+    Checks if two lab tests have different result values.
+3. `GreaterThan(const LabTest& other)` - 
+    Checks if one lab test result is greater than another.
+4. `GreaterThanEquals(const LabTest& other)` - 
+    Checks if one lab test result is greater than or equal to another.
+5. `LessThan(const LabTest& other)` - 
+    Checks if one lab test result is less than another.
+6. `LessThanEquals(const LabTest& other)` - 
+    Checks if one lab test result is less than or equal to another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    LabTest lt1("LT001", 75.5);
+    LabTest lt2("LT002", 80.0);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << lt1.Equals(lt2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << lt1.GreaterThan(lt2) << std::endl; // Output: false
+    std::cout << "LessThanEquals: " << lt1.LessThanEquals(lt2) << std::endl; // Output: true
+
+    return 0;
+}
+```
+
+#006
+Implement a `Doctor` Class with Comparison Methods in C++
+
+`Task:` 
+    Create a class `Doctor` 
+    that represents a doctor 
+    with properties `DoctorID` (string) and 
+                    `YearsOfExperience` (int). 
+    Implement the following methods 
+        to compare the years of experience between two doctors:
+
+1. `Equals(const Doctor& other)` - 
+    Checks if two doctors have the same number of years of experience.
+2. `NotEquals(const Doctor& other)` - 
+    Checks if two doctors have a different number of years of experience.
+3. `GreaterThan(const Doctor& other)` - 
+    Checks if one doctor has more years of experience than another.
+4. `GreaterThanEquals(const Doctor& other)` - 
+    Checks if one doctor has more or the same number of years of experience as another.
+5. `LessThan(const Doctor& other)` - 
+    Checks if one doctor has fewer years of experience than another.
+6. `LessThanEquals(const Doctor& other)` - 
+    Checks if one doctor has fewer or the same number of years of experience as another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    Doctor d1("D001", 15);
+    Doctor d2("D002", 10);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << d1.Equals(d2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << d1.GreaterThan(d2) << std::endl; // Output: true
+    std::cout << "LessThanEquals: " << d1.LessThanEquals(d2) << std::endl; // Output: false
+
+    return 0;
+}
+```
+
+#007
+Implement a `HospitalStay` Class with Comparison Methods in C++
+
+`Task:` 
+    Create a class `HospitalStay` 
+    that represents a hospital stay 
+    with properties `StayID` (string) and 
+                    `NumberOfDays` (int). 
+    Implement the following methods 
+        to compare the length of stays between two hospital stays:
+
+1. `Equals(const HospitalStay& other)` - 
+    Checks if two hospital stays have the same number of days.
+2. `NotEquals(const HospitalStay& other)` - 
+    Checks if two hospital stays have a different number of days.
+3. `GreaterThan(const HospitalStay& other)` - 
+    Checks if one stay is longer than another.
+4. `GreaterThanEquals(const HospitalStay& other)` - 
+    Checks if one stay is longer or the same length as another.
+5. `LessThan(const HospitalStay& other)` - 
+    Checks if one stay is shorter than another.
+6. `LessThanEquals(const HospitalStay& other)` -
+    Checks if one stay is shorter or the same length as another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    HospitalStay hs1("HS001", 5);
+    HospitalStay hs2("HS002", 7);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << hs1.Equals(hs2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << hs1.GreaterThan(hs2) << std::endl; // Output: false
+    std::cout << "LessThanEquals: " << hs1.LessThanEquals(hs2) << std::endl; // Output: true
+
+    return 0;
+}
+```
+
+#008 
+
+Design a `MedicalRecord` Class with Comparison Methods in C++
+
+`Task:` 
+    Create a class `MedicalRecord` 
+    that represents a medical record 
+    with properties `RecordID` (string) and 
+                    `DateOfVisit` (a `std::tm` object). 
+    Implement the following methods 
+        to compare the dates of visits between two medical records:
+
+1. `Equals(const MedicalRecord& other)` - 
+    Checks if two medical records have the same date of visit.
+2. `NotEquals(const MedicalRecord& other)` - 
+    Checks if two medical records have different dates of visit.
+3. `GreaterThan(const MedicalRecord& other)` - 
+    Checks if one record’s date of visit is after another’s.
+4. `GreaterThanEquals(const MedicalRecord& other)` - 
+    Checks if one record’s date of visit is on or after another’s.
+5. `LessThan(const MedicalRecord& other)` - 
+    Checks if one record’s date of visit is before another’s.
+6. `LessThanEquals(const MedicalRecord& other)` -   
+    Checks if one record’s date of visit is on or before another’s.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    std::tm date1 = {0, 0, 0, 15, 4, 124}; // May 15, 2024
+    std::tm date2 = {0, 0, 0, 10, 3, 124}; // April 10, 2024
+
+    MedicalRecord mr1("MR001", date1);
+    MedicalRecord mr2("MR002", date2);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << mr1.Equals(mr2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << mr1.GreaterThan(mr2) << std::endl; // Output: true
+    std::cout << "LessThanEquals: " << mr1.LessThanEquals(mr2) << std::endl; // Output: false
+
+    return 0;
+}
+```
+
+
+#009
+Implement a `SurgicalProcedure` Class with Comparison Methods in C++
+
+`Task:` 
+    Create a class `SurgicalProcedure` 
+    that represents a surgical procedure 
+    with properties `ProcedureID` (string) and 
+                    `Cost` (double). 
+    Implement the following methods 
+        to compare the costs of two surgical procedures:
+
+1. `Equals(const SurgicalProcedure& other)` - 
+    Checks if two procedures have the same cost.
+2. `NotEquals(const SurgicalProcedure& other)` - 
+    Checks if two procedures have different costs.
+3. `GreaterThan(const SurgicalProcedure& other)` - 
+    Checks if one procedure is more expensive than another.
+4. `GreaterThanEquals(const SurgicalProcedure& other)` - 
+    Checks if one procedure is more expensive or the same price as another.
+5. `LessThan(const SurgicalProcedure& other)` - 
+    Checks if one procedure is less expensive than another.
+6. `LessThanEquals(const SurgicalProcedure& other)` - 
+    Checks if one procedure is less expensive or the same price as another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    SurgicalProcedure sp1("SP001", 5000.0);
+    SurgicalProcedure sp2("SP002", 4500.0);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << sp1.Equals(sp2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << sp1.GreaterThan(sp2) << std::endl; // Output: true
+    std::cout << "LessThanEquals: " << sp1.LessThanEquals(sp2) << std::endl; // Output: false
+
+    return 0;
+}
+```
+
+
+#010
+Create a `Medication` Class with Comparison Methods in C++
+
+`Task:` 
+    Implement a class `Medication` 
+    that represents a medication 
+    with properties `MedicationID` (string) and 
+                    `DosagePerDay` (double). 
+    The following methods should be implemented 
+        to compare the daily dosages of two medications:
+
+1. `Equals(const Medication& other)` - 
+    Checks if two medications have the same daily dosage.
+2. `NotEquals(const Medication& other)` - 
+    Checks if two medications have different daily dosages.
+3. `GreaterThan(const Medication& other)` - 
+    Checks if one medication has a higher daily dosage than another.
+4. `GreaterThanEquals(const Medication& other)` - 
+    Checks if one medication has a higher or equal daily dosage compared to another.
+5. `LessThan(const Medication& other)` - 
+    Checks if one medication has a lower daily dosage than another.
+6. `LessThanEquals(const Medication& other)` - 
+    Checks if one medication has a lower or equal daily dosage compared to another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    Medication m1("M001", 100.0);
+    Medication m2("M002", 150.0);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << m1.Equals(m2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << m1.GreaterThan(m2) << std::endl; // Output: false
+    std::cout << "LessThanEquals: " << m1.LessThanEquals(m2) << std::endl; // Output: true
+
+    return 0;
+}
+```

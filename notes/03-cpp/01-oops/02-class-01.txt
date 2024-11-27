@@ -1,0 +1,127 @@
+`Overview of Class and Object in C++`
+
+`Class`
+- A `class` in C++ is a blueprint for creating objects. 
+It defines the properties (data members) and 
+               behaviors (member functions) 
+that the objects of the class will have.
+- Classes allow the concept of `encapsulation`, 
+where data and methods are bundled together.
+- The syntax for defining a class:
+  
+  ```cpp
+  class ClassName {
+  public:       // Access specifier
+      // Data members (variables)
+      // Member functions (methods)
+  };
+  ```
+
+`Key Characteristics of Classes:`
+1. `Access Specifiers`:
+   - `public`: Members are accessible outside the class.
+   - `private`: Members are accessible only within the class.
+   - `protected`: Members are accessible within the class and 
+    by derived classes.
+   
+2. `Data Members`: Variables defined in a class to hold data.
+
+3. `Member Functions`: Functions defined in a class to perform actions.
+
+4. `Encapsulation`: The concept of restricting direct access 
+to some of the object's components.
+
+Example:
+```cpp
+#include <iostream>
+using namespace std;
+
+class Car {
+public:
+    string brand;   // Public data member
+    int speed;      // Public data member
+
+    void displayDetails() {  // Member function
+        cout << "Brand: " << brand << ", Speed: " << speed << " km/h" << endl;
+    }
+};
+```
+
+---
+
+`Object`
+- An `object` is an instance of a class. 
+It is created using the class blueprint and 
+holds its own copies of the data members defined in the class.
+- Objects allow interaction with the data and methods of a class.
+
+Creating an Object:
+```cpp
+Car myCar;  // Object of class Car
+myCar.brand = "Toyota";
+myCar.speed = 180;
+myCar.displayDetails();
+```
+
+---
+
+`Relationship Between Class and Object`
+- A `class` is a user-defined data type.
+- `Objects` are concrete instances of the class 
+that occupy memory and contain the data defined by the class.
+
+---
+
+`Illustrative Example:`
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// Define a class
+class Student {
+private:
+    string name;  // Private data member
+    int age;      // Private data member
+
+public:
+    // Setter function
+    void setDetails(string studentName, int studentAge) {
+        name = studentName;
+        age = studentAge;
+    }
+
+    // Getter function
+    void displayDetails() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+
+int main() {
+    // Create an object of Student class
+    Student student1;
+
+    // Set details for the object
+    student1.setDetails("Alice", 20);
+
+    // Display the details
+    student1.displayDetails();
+
+    return 0;
+}
+```
+
+`Output:`
+```
+Name: Alice, Age: 20
+```
+
+---
+
+`Advantages of Classes and Objects in C++`
+1. `Encapsulation`: Combines data and functions in one unit.
+2. `Reusability`: Code can be reused through inheritance.
+3. `Modularity`: Classes make programs easier to understand and maintain.
+4. `Abstraction`: Users can interact with objects at a high level 
+without knowing internal details. 
+

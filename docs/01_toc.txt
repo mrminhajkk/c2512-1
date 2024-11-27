@@ -261,12 +261,16 @@ C++ Programming
         Learning Outcomes:
             Explain polymorphism with the example of method overloading
             Identify the need of static data and methods and code them
-            Identify the need of final data members, final methods and final parameters and code them
+            Identify the need of final data members, 
+                final methods and final parameters and code them
             Identify the need of arrays as properties of a class and code them
             Explain polymorphism with the example of method overriding
-            Explain early binding (compile time polymorphism) and late/dynamic binding (runtime polymorphism) with method overloading and method overriding
+            Explain early binding (compile time polymorphism) and 
+                late/dynamic binding (runtime polymorphism) 
+                with method overloading and method overriding
             Identify the need of interfaces and write code
-            Explain how runtime polymorphism is achieved with the help of abstract classes and interfaces
+            Explain how runtime polymorphism is achieved 
+                with the help of abstract classes and interfaces
             Identify the need for multiple inheritance of interfaces and write code
         Topics:
             Polymorphism and its advantages
@@ -280,7 +284,8 @@ C++ Programming
 
     Operator Overloading    [Day 22]
         Learning Outcomes:
-            Able to explain the need for Operator Overloading and write code for Operator Overloading as  Member Functions and Non-member Functions
+            Able to explain the need for Operator Overloading and 
+            write code for Operator Overloading as  Member Functions and Non-member Functions
             Able to perform Operator Overloading the Stream Insertion Operator
         Topics:
             Introduction to Operator overloading
@@ -295,15 +300,18 @@ C++ Programming
             Able to define a pure virtual function and an abstract class
             Able to explain the uses of abstract classes
             Identify the need of pure virtual functions and code them
-            Able to explain how runtime polymorphism is achieved with the help of abstract classes
+            Able to explain how runtime polymorphism is achieved 
+                with the help of abstract classes
         Topics:
             Virtual Functions
             Pure Virtual functions
             Abstract Class
     Exception Handling      [Day 24]
         Learning Outcomes:
-            Identify the probable exceptions and write necessary code to handle them to avoid the program from crashing
-            Identify the need of user defined exceptions, create them and throw them
+            Identify the probable exceptions and write necessary code 
+                to handle them to avoid the program from crashing
+            Identify the need of user defined exceptions, 
+                create them and throw them
         Topics:
             Exceptions
             Handling exceptions using “try-catch”

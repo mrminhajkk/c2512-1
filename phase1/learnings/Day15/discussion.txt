@@ -129,6 +129,15 @@ Ctrl + w,w
 :tabn   -- to move next tab 
 :tabp   -- to move previous tab 
 
+
+-- in the vim editor, to find and replace in entire file: 
+    find word: Rectangle 
+    replace word: Circle 
+    Now, to replace "Rectangle" as "Circle" 
+
+    in command mode: 
+    :%s/Rectangle/Circle/g
+
 ===========================================================
 We use linux commands to make a program as multi-module program 
     -- to select `from line #` to `to line #` in source file 

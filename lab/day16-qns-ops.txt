@@ -1,0 +1,295 @@
+#001 
+Implement a `Patient` Class with Comparison Operators Overloading in C++
+
+`Task:` 
+    Create a class `Patient` that represents a patient 
+    with properties `PatientID` (string) and `Age` (int). 
+    Overload the following operators to compare the ages of two patients:
+
+1. `operator==` - 
+    Checks if two patients are of the same age.
+2. `operator!=` - 
+    Checks if two patients are of different ages.
+3. `operator>` - 
+    Checks if one patient is older than another.
+4. `operator>=` - 
+    Checks if one patient is older or the same age as another.
+5. `operator<` - 
+    Checks if one patient is younger than another.
+6. `operator<=` - 
+    Checks if one patient is younger or the same age as another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    Patient p1("P001", 45);
+    Patient p2("P002", 50);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << (p1 == p2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << (p1 > p2) << std::endl;      // Output: false
+    std::cout << "LessThanEquals: " << (p1 <= p2) << std::endl;  // Output: true
+
+    return 0;
+}
+```
+
+#002
+Implement a `Prescription` Class with Comparison Operators Overloading in C++
+
+`Task:` 
+    Create a class `Prescription` 
+    that represents a prescription 
+    with properties `PrescriptionID` (string) and 
+                    `Dosage` (int, in milligrams). 
+    Overload the following operators 
+        to compare the dosage between two prescriptions:
+
+1. `operator==` - 
+    Checks if two prescriptions have the same dosage.
+2. `operator!=` - 
+    Checks if two prescriptions have different dosages.
+3. `operator>` - 
+    Checks if one prescription has a higher dosage than another.
+4. `operator>=` - 
+    Checks if one prescription has a higher or equal dosage compared to another.
+5. `operator<` - 
+    Checks if one prescription has a lower dosage than another.
+6. `operator<=` - 
+    Checks if one prescription has a lower or equal dosage compared to another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    Prescription pres1("RX001", 500);
+    Prescription pres2("RX002", 400);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << (pres1 == pres2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << (pres1 > pres2) << std::endl;       // Output: true
+    std::cout << "LessThanEquals: " << (pres1 <= pres2) << std::endl;   // Output: false
+
+    return 0;
+}
+```
+
+#003
+Implement a `Vaccination` Class with Comparison Operators Overloading in C++
+
+`Task:` 
+    Create a class `Vaccination` 
+    that represents a vaccination record 
+    with properties `VaccinationID` (string) and 
+                    `DosesAdministered` (int). 
+    Overload the following operators 
+        to compare the number of doses administered between two vaccination records:
+
+1. `operator==` - 
+    Checks if two vaccinations have the same number of doses administered.
+2. `operator!=` - 
+    Checks if two vaccinations have a different number of doses administered.
+3. `operator>` - 
+    Checks if one vaccination has more doses administered than another.
+4. `operator>=` - 
+    Checks if one vaccination has more or the same number of doses administered as another.
+5. `operator<` - 
+    Checks if one vaccination has fewer doses administered than another.
+6. `operator<=` - 
+    Checks if one vaccination has fewer or the same number of doses administered as another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    Vaccination v1("V001", 2);
+    Vaccination v2("V002", 3);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << (v1 == v2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << (v1 > v2) << std::endl;      // Output: false
+    std::cout << "LessThanEquals: " << (v1 <= v2) << std::endl;  // Output: true
+
+    return 0;
+}
+```
+
+#004
+Implement a `Surgery` Class with Comparison Operators Overloading in C++
+
+`Task:` 
+    Create a class `Surgery` 
+    that represents a surgery 
+    with properties `SurgeryID` (string) and 
+                    `Duration` (int, in minutes). 
+    Overload the following operators 
+        to compare the durations of two surgeries:
+
+1. `operator==` - 
+    Checks if two surgeries have the same duration.
+2. `operator!=` - 
+    Checks if two surgeries have different durations.
+3. `operator>` - 
+    Checks if one surgery takes longer than another.
+4. `operator>=` - 
+    Checks if one surgery takes longer or the same amount of time as another.
+5. `operator<` - 
+    Checks if one surgery takes less time than another.
+6. `operator<=` - 
+    Checks if one surgery takes less or the same amount of time as another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    Surgery s1("S001", 90);
+    Surgery s2("S002", 120);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << (s1 == s2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << (s1 > s2) << std::endl;       // Output: false
+    std::cout << "LessThanEquals: " << (s1 <= s2) << std::endl;   // Output: true
+
+    return 0;
+}
+```
+
+#005
+Implement a `LabTest` Class with Comparison Operators Overloading in C++
+
+`Task:` 
+    Create a class `LabTest` 
+    that represents a lab test 
+    with properties `TestID` (string) and 
+                    `ResultValue` (double, indicating the test result). 
+    Overload the following operators 
+        to compare the result values of two lab tests:
+
+1. `operator==` - 
+    Checks if two lab tests have the same result value.
+2. `operator!=` - 
+    Checks if two lab tests have different result values.
+3. `operator>` - 
+    Checks if one lab test result is greater than another.
+4. `operator>=` - 
+    Checks if one lab test result is greater than or equal to another.
+5. `operator<` - 
+    Checks if one lab test result is less than another.
+6. `operator<=` - 
+    Checks if one lab test result is less than or equal to another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    LabTest lt1("LT001", 75.5);
+    LabTest lt2("LT002", 80.0);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << (lt1 == lt2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << (lt1 > lt2) << std::endl;      // Output: false
+    std::cout << "LessThanEquals: " << (lt1 <= lt2) << std::endl;  // Output: true
+
+    return 0;
+}
+```
+
+#006
+Implement a `Doctor` Class with Comparison Operators Overloading in C++
+
+`Task:` 
+    Create a class `Doctor` 
+    that represents a doctor 
+    with properties `DoctorID` (string) and 
+                    `YearsOfExperience` (int). 
+    Overload the following operators 
+        to compare the years of experience between two doctors:
+
+1. `operator==` - 
+    Checks if two doctors have the same number of years of experience.
+2. `operator!=` - 
+    Checks if two doctors have a different number of years of experience.
+3. `operator>` - 
+    Checks if one doctor has more years of experience than another.
+4. `operator>=` - 
+    Checks if one doctor has more or the same number of years of experience as another.
+5. `operator<` - 
+    Checks if one doctor has fewer years of experience than another.
+6. `operator<=` - 
+    Checks if one doctor has fewer or the same number of years of experience as another.
+
+---
+
+`Example Input and Output:`
+```cpp
+int main() {
+    Doctor d1("D001", 15);
+    Doctor d2("D002", 10);
+
+    std::cout << std::boolalpha;
+    std::cout << "Equals: " << (d1 == d2) << std::endl;          // Output: false
+    std::cout << "GreaterThan: " << (d1 > d2) << std::endl;      // Output: true
+    std::cout << "LessThanEquals: " << (d1 <= d2) << std::endl;       return 0;
+}
+```
+
+
+
+
+`#006 - Implement a `Doctor` Class with Array Processing in C++`
+
+`Task:`  
+Create a class `Doctor` that represents a doctor with properties `DoctorID` (string) and `YearsOfExperience` (int). Implement functions to find the following from an array of `Doctor` objects:
+
+1. `Doctor with Minimum Years of Experience` -  
+   Find the doctor with the least number of years of experience.
+2. `Doctor with Maximum Years of Experience` -  
+   Find the doctor with the most years of experience.
+3. `Doctor with Second Minimum Years of Experience` -  
+   Find the doctor with the second lowest years of experience.
+4. `Doctor with Second Maximum Years of Experience` -  
+   Find the doctor with the second highest years of experience.
+
+`Functions to Implement:`  
+- `findMinExperience()`
+- `findMaxExperience()`
+- `findSecondMinExperience()`
+- `findSecondMaxExperience()`
+
+Example Input and Output:  
+
+```cpp
+int main() {
+    Doctor doctors[] = {
+        Doctor("D001", 15),
+        Doctor("D002", 10),
+        Doctor("D003", 20),
+        Doctor("D004", 25),
+        Doctor("D005", 18)
+    };
+
+    int n = sizeof(doctors) / sizeof(doctors[0]);
+    
+    std::cout << "Doctor with Min Experience: " << doctors[findMinExperience(doctors, n)].DoctorID << " with Experience " << doctors[findMinExperience(doctors, n)].YearsOfExperience << std::endl;
+    std::cout << "Doctor with Max Experience: " << doctors[findMaxExperience(doctors, n)].DoctorID << " with Experience " << doctors[findMaxExperience(doctors, n)].YearsOfExperience << std::endl;
+    std::cout << "Doctor with 2nd Min Experience: " << doctors[findSecondMinExperience(doctors, n)].DoctorID << " with Experience " << doctors[findSecondMinExperience(doctors, n)].YearsOfExperience << std::endl;
+    std::cout << "Doctor with 2nd Max Experience: " << doctors[findSecondMaxExperience(doctors, n)].DoctorID << " with Experience " << doctors[findSecondMaxExperience(doctors, n)].YearsOfExperience << std::endl;
+
+    return 0;
+}
+```
+
+Example Output:
+```
+Doctor with Min Experience: D002 with Experience 10
+Doctor with Max Experience: D004 with Experience 25
+Doctor with 2nd Min Experience: D001 with Experience 15
+Doctor with 2nd Max Experience: D005 with Experience 18
+```
+

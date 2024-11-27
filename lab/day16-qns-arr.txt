@@ -1,0 +1,249 @@
+#001  
+`Implement a `Patient` Class with Array Processing in C++`
+
+`Task:`  
+    Create a class `Patient` 
+    that represents a patient 
+    with properties `PatientID` (string) and `Age` (int). 
+    Implement functions to find the following 
+    from an array of `Patient` objects:
+
+1. `Minimum Age` - 
+    Find the patient with the minimum age.
+2. `Maximum Age` - 
+    Find the patient with the maximum age.
+3. `Second Minimum Age` - 
+    Find the patient with the second lowest age.
+4. `Second Maximum Age` - 
+    Find the patient with the second highest age.
+
+`Functions to Implement:`  
+- `findMinAge()`
+- `findMaxAge()`
+- `findSecondMinAge()`
+- `findSecondMaxAge()`
+
+`Example Input and Output:`  
+```cpp
+int main() {
+    Patient patients[] = {
+        Patient("P001", 45),
+        Patient("P002", 50),
+        Patient("P003", 32),
+        Patient("P004", 60),
+        Patient("P005", 28)
+    };
+    
+    std::cout << std::boolalpha;
+    
+    std::cout << "Min Age: " << patients[findMinAge(patients, 5)].Age << std::endl;    // Output: 28
+    std::cout << "Max Age: " << patients[findMaxAge(patients, 5)].Age << std::endl;    // Output: 60
+    std::cout << "2nd Min Age: " << patients[findSecondMinAge(patients, 5)].Age << std::endl; // Output: 32
+    std::cout << "2nd Max Age: " << patients[findSecondMaxAge(patients, 5)].Age << std::endl; // Output: 50
+
+    return 0;
+}
+```
+
+---
+
+#002  
+`Implement a `Prescription` Class with Array Processing in C++`
+
+`Task:`  
+    Create a class `Prescription` 
+    that represents a prescription 
+    with properties `PrescriptionID` (string) and `Dosage` (int, in milligrams). 
+    Implement functions to find the following 
+    from an array of `Prescription` objects:
+
+1. `Minimum Dosage` - 
+    Find the prescription with the minimum dosage.
+2. `Maximum Dosage` - 
+    Find the prescription with the maximum dosage.
+3. `Second Minimum Dosage` - 
+    Find the prescription with the second lowest dosage.
+4. `Second Maximum Dosage` - 
+    Find the prescription with the second highest dosage.
+
+`Functions to Implement:`  
+- `findMinDosage()`
+- `findMaxDosage()`
+- `findSecondMinDosage()`
+- `findSecondMaxDosage()`
+
+`Example Input and Output:`  
+```cpp
+int main() {
+    Prescription prescriptions[] = {
+        Prescription("RX001", 500),
+        Prescription("RX002", 400),
+        Prescription("RX003", 750),
+        Prescription("RX004", 300),
+        Prescription("RX005", 600)
+    };
+    
+    std::cout << std::boolalpha;
+    
+    std::cout << "Min Dosage: " << prescriptions[findMinDosage(prescriptions, 5)].Dosage << std::endl;  // Output: 300
+    std::cout << "Max Dosage: " << prescriptions[findMaxDosage(prescriptions, 5)].Dosage << std::endl;  // Output: 750
+    std::cout << "2nd Min Dosage: " << prescriptions[findSecondMinDosage(prescriptions, 5)].Dosage << std::endl;  // Output: 400
+    std::cout << "2nd Max Dosage: " << prescriptions[findSecondMaxDosage(prescriptions, 5)].Dosage << std::endl;  // Output: 600
+
+    return 0;
+}
+```
+
+---
+
+#003  
+`Implement a `Vaccination` Class with Array Processing in C++`
+
+`Task:`  
+    Create a class `Vaccination` 
+    that represents a vaccination record 
+    with properties `VaccinationID` (string) and `DosesAdministered` (int). 
+    Implement functions to find the following 
+    from an array of `Vaccination` objects:
+
+1. `Minimum Doses Administered` - 
+    Find the vaccination record with the minimum number of doses administered.
+2. `Maximum Doses Administered` - 
+    Find the vaccination record with the maximum number of doses administered.
+3. `Second Minimum Doses Administered` - 
+    Find the vaccination record with the second lowest number of doses administered.
+4. `Second Maximum Doses Administered` - 
+    Find the vaccination record with the second highest number of doses administered.
+
+`Functions to Implement:`  
+- `findMinDoses()`
+- `findMaxDoses()`
+- `findSecondMinDoses()`
+- `findSecondMaxDoses()`
+
+`Example Input and Output:`  
+```cpp
+int main() {
+    Vaccination vaccinations[] = {
+        Vaccination("V001", 2),
+        Vaccination("V002", 3),
+        Vaccination("V003", 1),
+        Vaccination("V004", 5),
+        Vaccination("V005", 4)
+    };
+    
+    std::cout << std::boolalpha;
+    
+    std::cout << "Min Doses: " << vaccinations[findMinDoses(vaccinations, 5)].DosesAdministered << std::endl;  // Output: 1
+    std::cout << "Max Doses: " << vaccinations[findMaxDoses(vaccinations, 5)].DosesAdministered << std::endl;  // Output: 5
+    std::cout << "2nd Min Doses: " << vaccinations[findSecondMinDoses(vaccinations, 5)].DosesAdministered << std::endl;  // Output: 2
+    std::cout << "2nd Max Doses: " << vaccinations[findSecondMaxDoses(vaccinations, 5)].DosesAdministered << std::endl;  // Output: 4
+
+    return 0;
+}
+```
+
+`#004 - Implement a `Surgery` Class with Array Processing in C++`
+
+`Task:`  
+Create a class `Surgery` 
+that represents a surgery 
+with properties `SurgeryID` (string) and `Duration` (int, in minutes). 
+Implement functions to find the following from an array of `Surgery` objects:
+
+1. `Minimum Duration` -  
+   Find the surgery record with the minimum duration.
+2. `Maximum Duration` -  
+   Find the surgery record with the maximum duration.
+3. `Second Minimum Duration` -  
+   Find the surgery record with the second lowest duration.
+4. `Second Maximum Duration` -  
+   Find the surgery record with the second highest duration.
+
+`Functions to Implement:`  
+- `findMinDuration()`
+- `findMaxDuration()`
+- `findSecondMinDuration()`
+- `findSecondMaxDuration()`
+
+Example Input and Output:  
+
+```cpp
+int main() {
+    Surgery surgeries[] = {
+        Surgery("S001", 90),
+        Surgery("S002", 120),
+        Surgery("S003", 80),
+        Surgery("S004", 100),
+        Surgery("S005", 110)
+    };
+
+    int n = sizeof(surgeries) / sizeof(surgeries[0]);
+    
+    std::cout << "Min Duration Surgery: " << surgeries[findMinDuration(surgeries, n)].SurgeryID << " with Duration " << surgeries[findMinDuration(surgeries, n)].Duration << std::endl;
+    std::cout << "Max Duration Surgery: " << surgeries[findMaxDuration(surgeries, n)].SurgeryID << " with Duration " << surgeries[findMaxDuration(surgeries, n)].Duration << std::endl;
+    std::cout << "2nd Min Duration Surgery: " << surgeries[findSecondMinDuration(surgeries, n)].SurgeryID << " with Duration " << surgeries[findSecondMinDuration(surgeries, n)].Duration << std::endl;
+    std::cout << "2nd Max Duration Surgery: " << surgeries[findSecondMaxDuration(surgeries, n)].SurgeryID << " with Duration " << surgeries[findSecondMaxDuration(surgeries, n)].Duration << std::endl;
+
+    return 0;
+}
+```
+
+Example Output:
+```
+Min Duration Surgery: S003 with Duration 80
+Max Duration Surgery: S002 with Duration 120
+2nd Min Duration Surgery: S001 with Duration 90
+2nd Max Duration Surgery: S005 with Duration 110
+```
+
+`#005 - Implement a `LabTest` Class with Array Processing in C++`
+
+`Task:`  
+Create a class `LabTest` that represents a lab test with properties `TestID` (string) and `ResultValue` (double, indicating the test result). Implement functions to find the following from an array of `LabTest` objects:
+
+1. `Minimum ResultValue` -  
+   Find the lab test record with the minimum result value.
+2. `Maximum ResultValue` -  
+   Find the lab test record with the maximum result value.
+3. `Second Minimum ResultValue` -  
+   Find the lab test record with the second lowest result value.
+4. `Second Maximum ResultValue` -  
+   Find the lab test record with the second highest result value.
+
+`Functions to Implement:`  
+- `findMinResultValue()`
+- `findMaxResultValue()`
+- `findSecondMinResultValue()`
+- `findSecondMaxResultValue()`
+
+Example Input and Output:  
+
+```cpp
+int main() {
+    LabTest tests[] = {
+        LabTest("LT001", 75.5),
+        LabTest("LT002", 80.0),
+        LabTest("LT003", 65.0),
+        LabTest("LT004", 85.5),
+        LabTest("LT005", 78.0)
+    };
+
+    int n = sizeof(tests) / sizeof(tests[0]);
+    
+    std::cout << "Min Result Value Test: " << tests[findMinResultValue(tests, n)].TestID << " with Result " << tests[findMinResultValue(tests, n)].ResultValue << std::endl;
+    std::cout << "Max Result Value Test: " << tests[findMaxResultValue(tests, n)].TestID << " with Result " << tests[findMaxResultValue(tests, n)].ResultValue << std::endl;
+    std::cout << "2nd Min Result Value Test: " << tests[findSecondMinResultValue(tests, n)].TestID << " with Result " << tests[findSecondMinResultValue(tests, n)].ResultValue << std::endl;
+    std::cout << "2nd Max Result Value Test: " << tests[findSecondMaxResultValue(tests, n)].TestID << " with Result " << tests[findSecondMaxResultValue(tests, n)].ResultValue << std::endl;
+
+    return 0;
+}
+```
+
+Example Output:
+```
+Min Result Value Test: LT003 with Result 65
+Max Result Value Test: LT004 with Result 85.5
+2nd Min Result Value Test: LT001 with Result 75.5
+2nd Max Result Value Test: LT005 with Result 78
+```

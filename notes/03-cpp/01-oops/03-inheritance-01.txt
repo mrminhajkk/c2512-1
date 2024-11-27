@@ -1,0 +1,157 @@
+Overview of Inheritance in C++
+
+`Inheritance` in C++ is a mechanism 
+that allows one class (called the *derived class*) 
+to inherit attributes and methods 
+from another class (called the *base class*). 
+
+It promotes code reuse and establishes 
+a hierarchical relationship between classes.
+
+---
+
+`Key Concepts`
+1. `Base Class and Derived Class`:
+   - `Base Class`: The class whose properties and behaviors are inherited.
+   - `Derived Class`: The class that inherits properties and behaviors from the base class.
+
+   ```cpp
+   class Base {
+   public:
+       int baseVar;
+       void display() {
+           std::cout << "Base class method\n";
+       }
+   };
+
+   class Derived : public Base {
+   public:
+       void show() {
+           std::cout << "Derived class method\n";
+       }
+   };
+   ```
+
+   `Usage`:
+   ```cpp
+   Derived obj;
+   obj.baseVar = 10;  // Inherited from Base
+   obj.display();     // Inherited method
+   obj.show();        // Derived class method
+   ```
+
+---
+
+`Types of Inheritance`
+1. `Single Inheritance`: One derived class inherits from one base class.
+2. `Multiple Inheritance`: A derived class inherits from multiple base classes.
+3. `Multilevel Inheritance`: A derived class acts as a base class for another class.
+4. `Hierarchical Inheritance`: Multiple derived classes inherit from a single base class.
+5. `Hybrid Inheritance`: A combination of two or more types of inheritance.
+
+---
+
+`Access Specifiers`
+Access specifiers (`public`, `protected`, `private`) control 
+how the base class members are accessible in the derived class.
+
+| `Base Class Member` | `public Inheritance` | `protected Inheritance` | `private Inheritance` |
+|------------------------|------------------------|----------------------------|--------------------------|
+| `public`              | public                | protected                  | private                  |
+| `protected`           | protected             | protected                  | private                  |
+| `private`             | Not inherited         | Not inherited              | Not inherited            |
+
+---
+
+`Types of Member Inheritance`
+1. `Inherited Members`:
+   - Public and Protected members of the base class are inherited 
+   (based on the inheritance type).
+   - Private members are not directly inherited 
+   but can be accessed through public or protected methods 
+   in the base class.
+
+2. `Overriding`:
+   - A derived class can override a base class method if declared `virtual`.
+
+   ```cpp
+   class Base {
+   public:
+       virtual void display() {
+           std::cout << "Base class display\n";
+       }
+   };
+
+   class Derived : public Base {
+   public:
+       void display() override {
+           std::cout << "Derived class display\n";
+       }
+   };
+   ```
+
+3. `Accessing Base Class Methods`:
+   - Use the `Base::methodName()` syntax.
+
+---
+
+`Constructor and Destructor`
+- `Constructor`: The base class constructor is called first 
+when a derived class object is created.
+- `Destructor`: The derived class destructor is called first 
+when a derived class object is destroyed.
+
+---
+
+`Example`
+```cpp
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    int baseVar;
+    Base() { cout << "Base Constructor\n"; }
+    ~Base() { cout << "Base Destructor\n"; }
+    void showBase() { cout << "Base Method\n"; }
+};
+
+class Derived : public Base {
+public:
+    Derived() { cout << "Derived Constructor\n"; }
+    ~Derived() { cout << "Derived Destructor\n"; }
+    void showDerived() { cout << "Derived Method\n"; }
+};
+
+int main() {
+    Derived obj;
+    obj.baseVar = 5;
+    obj.showBase();
+    obj.showDerived();
+    return 0;
+}
+```
+
+`Output`:
+```
+Base Constructor
+Derived Constructor
+Base Method
+Derived Method
+Derived Destructor
+Base Destructor
+```
+
+---
+
+`Benefits of Inheritance`
+- Code reuse.
+- Polymorphism through method overriding.
+- Clear hierarchical relationships between classes.
+
+`Drawbacks`
+- Overhead of complexity.
+- Can lead to issues like the `diamond problem` (solved with virtual inheritance).
+
+Understanding and applying inheritance effectively helps 
+in designing modular and maintainable code structures.

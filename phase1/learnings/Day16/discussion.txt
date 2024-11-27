@@ -1,0 +1,47 @@
+Today focus: "multiple shapes plots in one array"
+    C++ 
+    1. class object | "encapsulation", "abstraction"
+    2. array 
+    3. dynamic memory 
+    4. say hi to "inheritance", "polimorphism" 
+=======================================================================
+#007 Implement a `HospitalStay` Class with Comparison Methods in C++
+
+HospitalStay { StayID, NumberOfDays}
+    - StayID : string
+    - NumberOfDays : int
+    + Equals(HospitalStay&) : bool 
+    + NotEquals(HospitalStay&) : bool 
+    + GreaterThan(HospitalStay&) : bool 
+    + GreaterThanEquals(HospitalStay&) : bool 
+    + LessThan(HospitalStay&) : bool 
+    + LessThanEquals(HospitalStay&) : bool 
+    + HospitalStay(p_StayID, p_NumberOfDays)
+
+#001    Vishakh josh sreya
+Implement a `Patient` Class with Comparison Methods in C++
+    `PatientID` (string) and `Age` (int)
+#002    nimisha Nayana venkatesh
+Implement a `Prescription` Class with Comparison Methods in C++
+    `PrescriptionID` (string) and 
+    `Dosage` (int, in milligrams)
+#003    Ayisha  dhaheen minhaj
+Implement a `Vaccination` Class with Comparison Methods in C++
+    `VaccinationID` (string) and 
+    `DosesAdministered` (int)
+#004    Sana    bhagya sooraj
+Implement a `Surgery` Class with Comparison Methods in C++
+    `SurgeryID` (string) and 
+    `Duration` (int, in minutes)
+#005    Vinayak Pitchumani Athira
+Implement a `LabTest` Class with Comparison Methods in C++
+    `TestID` (string) and 
+    `ResultValue` (double, indicating the test result)
+#006 Abel 
+Implement a `Doctor` Class with Comparison Methods in C++
+    `DoctorID` (string) and 
+    `YearsOfExperience` (int)
+
+nimisha Sana, Ayisha, Vishakh, Vinayak  2 4 3 1 5
+josh dhaheen bhagya Nayana, Pitchumani  1 3 4 2 5
+minhaj venkatesh sooraj sreya Abel, Athira 3 2 4 1 6 5
