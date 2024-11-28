@@ -1,0 +1,138 @@
+/phase1/learnings/Day16/cpp_v2/ 
+    main01.cpp
+    main02.cpp
+    main03.cpp
+    main04.cpp
+    main04_02.cpp
+    main05.cpp
+
+class HospitalStay{StayID, NumberOfDays}
+HospitalStay hs1("HS001", 5); HospitalStay hs2("HS002", 7);
+1. compare two "HospitalStay" objects.
+    By: `Object Memeber function ` `bool LessThan(HospitalStay& other);`
+    Use Case: cout << hs1.LessThan(hs2);
+==============================================
+2. compare two "HospitalStay" objects.
+    By:` Non-Memeber function`  `bool LessThan(const HospitalStay& first, const HospitalStay& second);`
+    Note: if non-member accesses private members of "HospitalStay" object, 
+          then mark `Non-Memeber function ie LessThan` as friend 
+          inside "HospitalStay" class definition.
+    Note: To mark a non-function as friend, use declaration of the non-member function. 
+        class HospitalStay {
+            // ...
+            `friend bool LessThan(const HospitalStay& first, const HospitalStay& second);`
+            //...
+        }
+    Use Case: cout << LessThan(hs1, hs2);
+==============================================
+class Medication {MedicationID, DosagePerDay}
+Medication m1("M001", 100.0); Medication m2("M002", 150.0);
+3. Function Overloading
+    compare two "HospitalStay" objects.
+    By: Non-Memeber function `bool LessThan(const HospitalStay& first, const HospitalStay& second);`
+   compare two Medication objects.
+    By: Non-Memeber function `bool LessThan(const Medication& first, const Medication& second);`    
+    Use Case: cout << LessThan(hs1, hs2); cout << LessThan(m1, m2);
+==============================================
+4. compare two "HospitalStay" objects.
+    By: Another class "Comparisons" static function `bool LessThan(const HospitalStay& first, const HospitalStay& second);`
+        class Comparisons {
+            // ...
+            static bool LessThan(const HospitalStay& first, const HospitalStay& second);
+            //...
+        }
+        //Definition of static LessThan
+        bool Comparisons::LessThan(const HospitalStay& first, const HospitalStay& second) { }
+    Note: if "Comparisons" class functions accesses private members of "HospitalStay" object, 
+          then mark "Comparisons" class as friend 
+          inside HospitalStay class definition.
+    Note: To mark a non-function as friend, use declaration of the non-member function. 
+        class HospitalStay {
+            // ...
+            `friend class Comparisons;`
+            //...
+        }
+    Use Case: cout << Comparisons::LessThan(hs1, hs2);
+==============================================
+4.2. compare two "HospitalStay" objects.
+    By: Another class "Comparisons" function `bool LessThan(const HospitalStay& first, const HospitalStay& second);`
+        class Comparisons {
+            // ...
+            bool LessThan(const HospitalStay& first, const HospitalStay& second);
+            //...
+        }
+        //Definition of static LessThan
+        bool Comparisons::LessThan(const HospitalStay& first, const HospitalStay& second) { }
+    Note: if "Comparisons" class functions accesses private members of "HospitalStay" object, 
+          then mark "Comparisons" class as friend 
+          inside HospitalStay class definition.
+    Note: To mark a non-function as friend, use declaration of the non-member function. 
+        class HospitalStay {
+            // ...
+            `friend class Comparisons;`
+            //...
+        }
+    Use Case: Comparisons comparisons; cout << comparisons.LessThan(hs1, hs2);
+==============================================
+5. Access two `"HospitalStay" objects` from `array of "HospitalStay" objects`.
+    //Declaration of `array of "HospitalStay" objects`.
+    HospitalStay stays[] = { HospitalStay("HS001", 5), HospitalStay("HS002", 7) };
+    // Use two `"HospitalStay" objects` from `array of "HospitalStay" objects`
+    cout << stays[0].LessThan( stays[1] ) ;
+==============================================
+
+
+# to learn about static members of the class:
+    #to declare static attributes (data members) of the class:
+        Use Cases: 1. To keep application level configuration
+                      ie. global data 
+                   2. To count number of objects 
+                      created for class 
+    #to define static functions of the class: 
+        Use Cases: 1. If no instance attributes 
+                      then functions will not operate on object attributes
+                      so, functions defined will be general purpose functions 
+                      now, we can mark those functions as static functions.
+
+
+# to learn constructor and destructor:
+    constructor:
+        initializer [attribute, resource]
+        no arg constructor 
+        args constructor 
+        copy constructor 
+            for copy semantics 
+                [along with copy assignment]
+        move constructor 
+            for move semantics 
+                [along with move assignment]
+    destructor: 
+        destroyer [resource]   
+
+# this pointer 
+
+# Initializing an object using Constructor
+
+# The const data members
+
+# Array of objects
+# to learn array as data member 
+    Example: 1
+        Class SalaryProcessor 
+            salaries 
+            FindAverage
+    Example: 2
+        class HospitalStayAggregators
+            HospitalStay stays[];
+
+
+# has-a 
+    An object as the data member of a class
+    Aggregation and “has-a” relationship
+
+# pointer 
+    pointer to data member
+# Dynamic memory allocation
+            Creating and destroying objects dynamically 
+
+

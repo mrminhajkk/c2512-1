@@ -32,7 +32,8 @@
     ComplexNumber s = c1.findSum(c2);
     ComplexNumber d = c3.findDiff(c4);
 
-4. To operate the data of the objects outside the class:
+4. who will access the private members of the object?  
+To operate the data of the objects outside the class:
 4.1 objects with members functions:
 -----------------------------------------
    HospitalStay { StayID, NumberOfDays}
@@ -74,8 +75,8 @@
 How Equals(..) or GreaterThan(..) will operates 
 on StayID and NumberOfDays?
 
-
-5. who will access the private members of the object? 
+Answer To  `who will access the private members of the object? `:
+    who will access the private members of the object? 
     1. member functions of the object 
         MAHESH RECOMMENDATION: to use getter / setter
     2. friend function (outside the object) of the object 
@@ -84,8 +85,37 @@ on StayID and NumberOfDays?
         MAHESH RECOMMENDATION: to use getter / setter
 
 
-function Overloading:
-    Equals(hs1, hs2)
-    Equals(hs1, hs2, hs3)
-    Equals(p1, p2)
+5. what are all the members of the class? 
+    object members      [members of the object | instance members | non-static members]
+        object members will be accessed via object name 
+        - non-static member data 
+        - non-static member function 
+        - constructor ?? [initilalizer]
+        - destructor ?? [destoryer]
+    class-level members [static members]
+        class members will be accessed via class name 
+        - static member data 
+        - static member function 
+
+    5.1. why static member function?
+        - to operate on static member data
+            if there is/are static member data 
+        - to behave as general purpose function 
+            it operates only on arguments of the function 
+        - it cannot operate on non-static member data - illegal - syntax err 
+            ie object data 
+    5.2. why non-static member function? [object function]
+        - to operate on non-static member data
+            if there is/are non-static member data 
+        - to operate on static member data also if they exist
+        - to behave as general purpose function 
+            so that it operates only on arguments of the function 
+
+
+6. what is function overloading?
+    - To have more than one functions having same name 
+    - Examples of function Overloading:
+        Equals(hs1, hs2)            -- 1    name resolution by two stay objects 
+        Equals(hs1, hs2, hs3)       -- 2    name resolution by three stay objects 
+        Equals(p1, p2)              -- 3    name resolution by two patient objects 
 

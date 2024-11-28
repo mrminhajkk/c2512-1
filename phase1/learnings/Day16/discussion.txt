@@ -60,5 +60,8 @@ Next tasks:
     3. Individual comparison functions as non-member functions [friends to class, outside the object functions]
             + 
             comparison functions of hospital stay together in the main function to test 
-    4. comparison functions in another class which is friend to object class 
+    4.i. comparison functions in another class which is friend to object class 
+        via static function 
+    4.ii 
+        ii. via object function 
     5. Solving min, max, 2nd min, 2nd max on array of objects 
