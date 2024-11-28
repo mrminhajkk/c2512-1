@@ -80,9 +80,16 @@ Medication m1("M001", 100.0); Medication m2("M002", 150.0);
     // Use two `"HospitalStay" objects` from `array of "HospitalStay" objects`
     cout << stays[0].LessThan( stays[1] ) ;
 ==============================================
+class members (class-level members, object-members)
+friend class, friend function, function overloading,
+array of objects 
+
 
 
 # to learn about static members of the class:
+Task: #7 To Define static and non-static data, static funtion, non-static function 
+            ie class-level members and object-level members
+//phase1/learnings/Day17/cpp/main07.cpp
     #to declare static attributes (data members) of the class:
         Use Cases: 1. To keep application level configuration
                       ie. global data 
@@ -96,6 +103,8 @@ Medication m1("M001", 100.0); Medication m2("M002", 150.0);
 
 
 # to learn constructor and destructor:
+Task: #6 To Define all types of constructors and destructors
+//phase1/learnings/Day17/cpp/main06.cpp
     constructor:
         initializer [attribute, resource]
         no arg constructor 
@@ -110,18 +119,29 @@ Medication m1("M001", 100.0); Medication m2("M002", 150.0);
         destroyer [resource]   
 
 # this pointer 
+Task: #8
+//phase1/learnings/Day17/cpp/main08.cpp
 
 # Initializing an object using Constructor
+Task: #9
+//phase1/learnings/Day17/cpp/main09.cpp
+    Member Initializer in the constructor 
+        - to initialize the member data (attr)              
+        - to call same class another constructor 
+        - to inialize and call the base class constructor  -- LATER 
+
 
 # The const data members
+Task: #10 (using Circle class)
 
 # Array of objects
+
 # to learn array as data member 
-    Example: 1
+    Example: 1  Task: #11
         Class SalaryProcessor 
             salaries 
             FindAverage
-    Example: 2
+    Example: 2 Task: #12
         class HospitalStayAggregators
             HospitalStay stays[];
 
@@ -130,8 +150,20 @@ Medication m1("M001", 100.0); Medication m2("M002", 150.0);
     An object as the data member of a class
     Aggregation and “has-a” relationship
 
+    Patient has HospitalStay, Medications, has assigned a Doctor etc 
+
 # pointer 
-    pointer to data member
+  
+    21 - pointer to single data 
+    22 - dynamic memory single data 
+pointer to data member  
+    23 - patient class has pointer to hospitalstay (dynamic memory)
+    124 - linked list 
+        Just Example 
+    125 - binary tree 
+        Just Example 
+
+         
 # Dynamic memory allocation
             Creating and destroying objects dynamically 
 

@@ -119,3 +119,81 @@ Answer To  `who will access the private members of the object? `:
         Equals(hs1, hs2, hs3)       -- 2    name resolution by three stay objects 
         Equals(p1, p2)              -- 3    name resolution by two patient objects 
 
+
+7. what is constructor? 
+    - intializer code at the time of object is mem allocated [mem allocs]
+        - the code will run after object creation
+   why constructor? 
+    - to aquire resource 
+        dynamic memory, file, network, server connection, database connection
+    - to initalize attributes of the object 
+       
+
+   what is destructor? 
+    - cleanup code at the time of object is memdeallocteed [free]
+         
+   why destructor? 
+    - to release resource 
+        dynamic memory, file, network, server connection, database connection
+        cleaning up the resources we initialized during in the constructor
+
+   how to define the constructor in C++?
+        - constructor will take the same name as class name 
+        - constructor may take the arguments also 
+        - return type is not possible because constructor will be called at the time object creation 
+
+        if classname is "Rectangle"
+            Rectange([argments])
+            {
+                //code the for constructor
+            }
+   how to define the destructor in C++? 
+        - destructor has the class name and prefixed with ~ symbol 
+        - destructor should not have any args or return type 
+        if classname is "Rectangle"
+            ~Rectange()
+            {
+                //code the for destructor 
+            }
+8. what are the types of the constructor? 
+    1. no arg constructor   | by default, no arg constructor is defined 
+    2. args constructor 
+    3. copy constructor : arg is the same class object which will be copied in copy constructor 
+        taking the copy of the argument object to the newly constructed object 
+        and keeping the argument object as it is 
+        patient :
+            id, name, etc 
+            stay 
+            medications[]
+            doctor 
+    4. move constructor : arg is the same class object which will be moved in move constructor 
+        taking the copy of the argument object to the newly constructed object 
+        then argument object is cleaned up, cleared etc. 
+
+9. what is lvalue and rvalue?
+    int x = 10;
+    int y = 20;
+    int z = 0;
+
+    z = (x + y);
+    //here z is lvalue 
+    //     right side evaluvated value is the rvalue 
+
+10. what is this pointer? 
+    In the member function of the object, 
+    'this' is the pointer to the called object. 
+
+    object      | intance -- synonymous 
+    creation      instantiation 
+
+
+    called  invoked     -- synonumous 
+
+    Now, we can use 'this' pointer to refer the members of the object 
+    using arrow operator (->)
+
+    this->member_data 
+    this->member_fn([...]) 
+
+11. what is member initializer in the constructor? 
+    Answer: 
