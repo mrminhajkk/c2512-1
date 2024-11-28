@@ -197,3 +197,19 @@ Answer To  `who will access the private members of the object? `:
 
 11. what is member initializer in the constructor? 
     Answer: 
+    The member initializer list is written 
+    after the constructor's parameter list and 
+    before the constructor body, 
+    separated by a colon (:). 
+    Each member is initialized with a value or an expression.
+
+    ClassName(parameter_list) : member1(value1), member2(value2), ... {
+        // Constructor body
+    }
+
+    A member initializer list is a powerful and 
+    efficient way to initialize class members 
+    in C++. 
+    It ensures correct initialization of 
+    const members, references, and base classes 
+    while improving code clarity and performance.
