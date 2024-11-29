@@ -1,0 +1,110 @@
+Linux                           C++ 
+
+C++ 
+#001
+    Single program crud operations on bookings 
+    /phase1/learnings/Day18/cpp/crud01.cpp 
+
+Sana    + Josh      + Abel      +   Vishak   
+Ayisha  + Bhagya    + Athira    +   Dhaheen
+
+#002
+    Existing system: 
+    - for our bookings crud operations 
+    -       all the functions operate on same data.
+    -       all the data are passed as arguments.
+    Propsed system:
+    - the data we put as class members 
+    - the functions now will receive any arguments 
+    - so the functions will operate on data which are now members of the class       
+    /phase1/learnings/Day18/cpp/crud01.cpp 
+BookingManager 
+    - int booking_ids[], 
+    - int ticket_amounts[], 
+    - int food_amounts[], 
+    - int numBookings
+    + create();
+    + display();
+    + findIndexById(id);
+    + editById();
+    + deleteById();
+
+#003
+    Existing system: 
+    - for our bookings crud operations 
+    -       all the functions operate on different array each represent single data.
+    -       if we go many such data, there will so many arrays we have to manage 
+    Propsed system:
+    - we will define a class for all single data, so that the class is becoming the composite data 
+    - we will do the crud operations on composite data 
+        so taht we will manage only bookings arrays where booking is the object. 
+Booking:
+    - id
+    - ticket_amount
+    - food_amount
+    + Booking
+    
+BookingManager
+    - Booking bookings[]
+    - int numBookings
+
+#004
+    Solve problem:
+        We have the hospital stay. 
+        We have some aggregators operations like min, max, 2nd min, 2nd max 
+            - all aggregators operates on parameters which are arrays 
+            
+    To do: 
+        use stays array.
+            to manage crud operations on hospital stay. 
+            +
+            to do aggregators on entire stays  
+
+                4 crud operations menus 
+                4 aggregators menus 
+        menu driven program 
+            
+                                           owner  group  other
+#005 :                          [file/dir][rwx]   [rwx]  [rwx]
+    crud01.cpp  root                
+    crud02.cpp  abelteam:abel       
+    crud03.cpp  joshteam:josh
+    crud04.cpp  sanateam:sana 
+
+    root:                       crud01.out 
+    abelteam : usergroup [6]    crud02.out - abel  
+        abel 
+        ...
+    joshteam : usergroup [5]
+        josh 
+        ...
+    sanateam : usergroup [5]
+        sana 
+        ...
+
+-- to create group named 'abelteam'
+$ groupadd abelteam 
+-- to create user 'abel' and to assign group as 'abelteam'
+--      and also to create defualt home dir "/home/abel"
+$ useradd -m -g abelteam abel 
+-- to set password 
+$ passwd abel 
+Password: 
+Retype Password: 
+
+-- to switch to the user 
+$ su abel 
+Password: 
+
+-- to change owner and group to file
+$ mv /path/crud02.cpp /home/abel 
+$ cd /home/abel  
+$ chown abel:abelteam crud02.cpp 
+
+-- to give permissions to the other user to remove read and executable permission 
+$ chmod o-r-x a.out 
+
+-- to give permissions to the other users via hexadecimal [only executable]
+$ chmod 751 a.out 
+
+
