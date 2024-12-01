@@ -1,0 +1,664 @@
+======================================
+001 "Script to say Hello World"
+======================================
+``` bash 
+#!/bin/bash
+echo "Hello World"
+```
+
+``` output
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Hello World
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+``` 
+======================================
+001 - 02 "Script to say Hello to name"
+    Enter your name:Mahesh
+    Hello Mahesh
+======================================
+```bash 
+#!/bin/bash
+echo -n "Enter your name:"
+read name
+echo "Hello $name"
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter your name:Mahesh
+Hello Mahesh
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+======================================
+001 - 03 "Script to say Greetings to name"
+    Enter greetings text:Good morning
+    Enter your name:Mahesh
+    Good morning Mahesh
+======================================
+```bash 
+#!/bin/bash
+echo -n "Enter greetings text:"
+read greetings
+echo -n "Enter your name:"
+read name
+echo "$greetings $name"
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter greetings text:Good morning
+Enter your name:Mahesh
+Good morning Mahesh
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+======================================
+002 "Script to raise 10% for given a number"
+    Enter a number:200
+    10 percentage = 20
+    new num = 220
+======================================
+```bash 
+#!/bin/bash
+echo -n "Enter a number:"
+read num
+
+tenPercent=$(($num * 10 / 100))
+echo "10 percentage = $tenPercent"
+
+newNum=$(($num + $tenPercent))
+echo "new num = $newNum"
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter a number:200
+10 percentage = 20
+new num = 220
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+======================================
+003 - "Check a given number is odd or even"
+    Enter a number:20
+    20 is even
+======================================
+```bash
+#!/bin/bash
+echo -n "Enter a number:"
+read num
+
+if [ $(($num % 2)) -eq 0 ]; then
+    echo "$num is even"
+else
+    echo "$num is odd"
+fi
+```
+
+```output 
+Enter a number:20
+20 is even
+```
+
+```output 
+Enter a number:21
+21 is even
+```
+
+======================================
+/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02
+003 - 02 "Check count number of odd number of 
+        given three numbers"
+    Enter first number: 21
+    Enter second number: 22
+    Enter third number: 23
+    There are 2 odd numbers
+======================================
+```bash 
+#!/bin/bash
+read -p "Enter first number: " num1
+read -p "Enter second number: " num2
+read -p "Enter third number: " num3
+
+count=0 
+if [ $(($num1 % 2)) -eq 1 ]; then
+    count=$((count+1))
+fi
+
+if [ $(($num2 % 2)) -eq 1 ]; then
+    count=$((count+1))
+fi
+
+if [ $(($num3 % 2)) -eq 1 ]; then
+    count=$((count+1))
+fi
+
+echo "There are $count odd numbers"
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter first number: 21
+Enter second number: 22
+Enter third number: 23
+There are 2 odd numbers
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+
+======================================
+004 - "Script to print N natural numbers"
+    Enter first number: 5
+    Natural numbers:
+    1 2 3 4 5
+    Note: use for loop 
+======================================
+```bash 
+#!/bin/bash
+read -p "Enter first number: " N
+echo "Natural numbers:"
+for I in $(seq 1 $N); do
+    echo -n "$I "
+done
+echo ""
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter first number: 5
+Natural numbers:
+1 2 3 4 5
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+
+Note:
+Print numbers from N till it is 1
+```bash 
+#!/bin/bash
+read -p "Enter first number: " N
+echo "Natural numbers:"
+for I in $(seq 1 $N); do
+    echo -n "$I "
+done
+echo ""
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter first number: 5
+Natural numbers:
+5 4 3 2 1
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+======================================
+004 - 02 "Script to print N natural numbers"
+    Enter first number: 5
+    Natural numbers:
+    1 2 3 4 5
+    Note: use while loop 
+======================================
+```bash 
+#!/bin/bash
+read -p "Enter first number: " N
+echo "Natural numbers:"
+I=1
+while [ $I -le $N ]; do
+    echo -n "$I "
+    I=$(( $I + 1 ))
+done
+echo ""
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter first number: 5
+Natural numbers:
+1 2 3 4 5
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+
+Note:
+Print numbers from N till it is 1
+
+```bash 
+#!/bin/bash
+read -p "Enter first number: " N
+echo "Natural numbers:"
+I=$N
+while [ $I -ge 1 ]; do
+    echo -n "$I "
+    I=$(( $I - 1 ))
+done
+echo ""
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter first number: 5
+Natural numbers:
+5 4 3 2 1
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+======================================
+004 - 03 "Script to print N natural numbers"
+    Enter first number: 5
+    Natural numbers:
+    1 2 3 4 5
+    Note: use until loop 
+======================================
+```bash 
+#!/bin/bash
+read -p "Enter first number: " N
+echo "Natural numbers:"
+I=1
+until [ $I -gt $N ]; do
+    echo -n "$I "
+    I=$(( $I + 1 ))
+done
+echo ""
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter first number: 5
+Natural numbers:
+1 2 3 4 5
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+
+
+Note:
+Print numbers from N till it is 1
+
+```bash 
+#!/bin/bash
+read -p "Enter first number: " N
+echo "Natural numbers:"
+I=$N
+until [ $I -lt 1 ]; do
+    echo -n "$I "
+    I=$(( $I - 1 ))
+done
+echo ""
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter first number: 5
+Natural numbers:
+5 4 3 2 1
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+======================================
+005 "Print the pattern"
+    1
+    1 2 
+    1 2 3 4 
+    1 2 3 4 5
+    for given N number of lines 
+======================================
+```bash 
+#!/bin/bash
+read -p "Enter first number: " N
+echo "Pattern:"
+for I in $(seq 1 $N); do
+    for J in $(seq 1 $I); do
+        echo -n "$J "
+    done
+    echo
+done
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter first number: 5
+Pattern:
+1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+======================================
+006 - "Find sum of given three Command Line Args"
+    Printing 
+        script name 
+        process id 
+        number of CL args 
+    using special variables $0 $$ $# respectively 
+======================================
+```bash 
+#!/bin/bash
+if [ $# -ne 3 ]; then
+    echo "Usage: $0 a b c"
+    echo " Here a is first number"
+    echo "      b is second number"
+    echo "      c is second number"
+    echo "Process ID: $$"
+    exit 1
+fi
+s=$(( $1 + $2 + $3))
+echo "Sum of $1 $2 $3 is $s"
+echo "Process ID: $$"   
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh 2 3 4
+Sum of 2 3 4 is 9
+Process ID: 36
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh 2 3
+Usage: test.sh a b c
+ Here a is first number
+      b is second number
+      c is second number
+Process ID: 37
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+======================================
+007 - "Find month name for given month number"
+======================================
+```bash 
+#!/bin/bash
+read -p "Enter month number:" month_number
+case $month_number in
+    1) month_name="January" ;;
+    2) month_name="February" ;;
+    3) month_name="March" ;;
+    4) month_name="April" ;;
+    5) month_name="May" ;;
+    6) month_name="June" ;;
+    7) month_name="July" ;;
+    8) month_name="August" ;;
+    9) month_name="September" ;;
+    10) month_name="October" ;;
+    11) month_name="November" ;;
+    12) month_name="December" ;;
+    *) 
+        echo "Invalid month number" 
+        exit
+    ;;
+esac
+echo "Month name is $month_name"
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter month number:3
+Month name is March
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter month number:13
+Invalid month number
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+
+======================================
+008 - "Read CL args options"
+    -f first_number 
+    -s second_number 
+    -t third_number 
+    Find sum of those three numbers
+======================================
+```bash 
+#!/bin/bash
+while getopts "f:s:t:" opt; do
+    case $opt in
+        f) num1=$OPTARG ;;
+        s) num2=$OPTARG ;; 
+        t) num3=$OPTARG ;;
+        *) 
+            echo "Invalid option"
+            echo "Usage: $0 -f first_number -s second_number -t third_number"
+            exit
+        ;;
+    esac
+done
+
+echo "num1: $num1"
+echo "num2: $num2"
+echo "num3: $num3"
+result=$(( $num1 + $num2 + $num3 ))
+echo "sum of $num1, $num2, and $num3 is $result"
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh -f 10 -s 20 -t 30
+num1: 10
+num2: 20
+num3: 30
+sum of 10, 20, and 30 is 60
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+
+
+
+-- For better understanding :
+#!/bin/bash
+getopts "f:s:t:" opt;
+if [ $opt = "f" ]; then
+    num1=$OPTARG;
+else 
+    echo "Error: -f option not found";
+    exit 1;
+fi
+
+getopts "f:s:t:" opt;
+if [ $opt = "s" ]; then
+    num2=$OPTARG;
+else 
+    echo "Error: -s option not found";
+    exit 1;
+fi
+
+getopts "f:s:t:" opt;
+if [ $opt = "t" ]; then
+    num3=$OPTARG;
+else 
+    echo "Error: -t option not found";
+    exit 1;
+fi
+
+s=$((num1 + num2 + num3));
+echo "Sum of $num1, $num2, $num3: $s";
+
+======================================
+009 - "using function"
+======================================
+
+--call find_sum function taking two numbers as arguments 
+    and prints sum of two numbers 
+```bash 
+#!/bin/bash
+find_sum() {
+    sum=$(( $1 + $2 ))
+    echo "Sum: $sum"
+}
+
+read -p "Enter first number: " num1
+read -p "Enter second number: " num2
+find_sum $num1 $num2
+```
+
+```output
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter first number: 2
+Enter second number: 3
+Sum: 5
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# 
+```
+
+--call is_odd function taking an argument and 
+    sends status code 0 for success; 1 for failure; 
+```bash 
+#!/bin/bash
+is_odd() {
+    if [ $(($1 % 2)) -eq 1 ]; then
+        return 0
+    else 
+        return 1
+    fi
+}
+
+read -p "Enter number: " num
+is_odd $num
+if [ $? -eq 0 ]; then 
+    echo "Odd number"
+else 
+    echo "Even number"
+fi
+```
+
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter number: 21
+Odd number
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter number: 22
+Even number
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+
+-- Modular scripting involves splitting a script 
+    into multiple reusable functions or separate files.
+-- Write findSquare, findCube functions 
+
+```bash 
+#!/bin/bash
+findSquare()
+{
+    square=$(($1 * $1))
+    echo $square
+}
+
+findCube()
+{
+    cube=$(($1 * $1 *$1))
+    echo $cube
+}
+
+read -p "Enter a number: " num
+square=$(findSquare $num)
+cube=$(findCube $num)
+echo "Square of $num is $square"
+echo "Cube of $num is $cube"
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter a number: 2
+Square of 2 is 4
+Cube of 2 is 8
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+
+======================================
+010 - "array"
+======================================
+--example for an array 
+```bash  
+#!/bin/bash
+
+# Define an array
+fruits=("apple" "banana" "cherry")
+
+# Access elements of the array
+echo "First fruit: ${fruits[0]}"
+echo "Second fruit: ${fruits[1]}"
+echo "Third fruit: ${fruits[2]}"
+
+echo "Number of fruits: ${#fruits[@]}"
+# Loop through array elements
+for fruit in "${fruits[@]}"; do
+    echo "Fruit: $fruit"
+done  
+```
+
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+First fruit: apple
+Second fruit: banana
+Third fruit: cherry
+Number of fruits: 3
+Fruit: apple
+Fruit: banana
+Fruit: cherry
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+
+-- read N numbers 
+```bash  
+#!/bin/bash
+read -p "Enter size of array: " size
+nums=()
+for (( i=0; i<size; i++ )); do
+    read -p "Enter number: " num
+    nums+=($num)
+done
+
+for (( i=0; i<size; i++ )); do
+    echo ${nums[i]}
+done
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter size of array: 3
+Enter number: 10
+Enter number: 20
+Enter number: 30
+10
+20
+30
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```
+
+
+-- read N numbers and find occurances of the element in the array [frequency]
+```bash  
+#!/bin/bash
+read -p "Enter size of array: " size
+nums=()
+for (( i=0; i<size; i++ )); do
+    read -p "Enter number: " num
+    nums+=($num)
+done
+
+echo "Array: "
+for (( i=0; i<size; i++ )); do
+    echo -n  "${nums[i]} "
+done
+
+declare -A freq
+for (( i=0; i<size; i++ )); do
+    if [[ ${freq[${nums[i]}]} ]]; then
+        freq[${nums[i]}]=$((${freq[${nums[i]}]}+1))
+    else
+        freq[${nums[i]}]=1
+    fi
+done
+
+echo -e "\nFrequency of numbers: "
+for key in ${!freq[@]}; do
+    echo "$key: ${freq[$key]}"
+done
+```
+
+```output 
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh
+Enter size of array: 5
+Enter number: 20
+Enter number: 10
+Enter number: 20
+Enter number: 30
+Enter number: 30
+Array:
+20 10 20 30 30
+Frequency of numbers:
+30: 2
+20: 2
+10: 1
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+```

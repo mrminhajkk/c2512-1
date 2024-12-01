@@ -1,0 +1,115 @@
+Problems :: Linux shell scripting:
+
+---
+
+1. `Hello World Script`
+`Problem`: Write a script that prints "Hello, World!" to the terminal.  
+`Solution`:
+```bash
+#!/bin/bash
+echo "Hello, World!"
+```
+
+---
+
+2. `File Existence Check`
+`Problem`: Check if a file exists.  
+`Solution`:
+```bash
+#!/bin/bash
+echo "Enter the file name:"
+read file
+if [ -f "$file" ]; then
+    echo "File exists."
+else
+    echo "File not found."
+fi
+```
+
+---
+
+3. `Simple Calculator`
+`Problem`: Perform arithmetic operations.  
+`Solution`:
+```bash
+#!/bin/bash
+echo "Enter first number:"
+read num1
+echo "Enter second number:"
+read num2
+echo "Enter the operator (+, -, *, /):"
+read operator
+
+case $operator in
+    +) result=$((num1 + num2)) ;;
+    -) result=$((num1 - num2)) ;;
+    *) result=$((num1 * num2)) ;;
+    /) result=$((num1 / num2)) ;;
+    *) echo "Invalid operator"; exit 1 ;;
+esac
+
+echo "Result: $result"
+```
+
+---
+
+4. `Odd or Even Checker`
+`Problem`: Check if a number is odd or even.  
+`Solution`:
+```bash
+#!/bin/bash
+echo "Enter a number:"
+read number
+if ((number % 2 == 0)); then
+    echo "The number is even."
+else
+    echo "The number is odd."
+fi
+```
+
+---
+
+5. `Directory Listing`
+`Problem`: List all files and directories in the current directory.  
+`Solution`:
+```bash
+#!/bin/bash
+echo "Files and directories in the current directory:"
+ls
+```
+
+---
+
+6. `Counting Lines, Words, and Characters`
+`Problem`: Count lines, words, and characters in a file.  
+`Solution`:
+```bash
+#!/bin/bash
+echo "Enter the file name:"
+read file
+if [ -f "$file" ]; then
+    echo "Lines: $(wc -l < $file)"
+    echo "Words: $(wc -w < $file)"
+    echo "Characters: $(wc -c < $file)"
+else
+    echo "File not found."
+fi
+```
+
+---
+
+7. `Command-line Arguments`
+`Problem`: Print two command-line arguments.  
+`Solution`:
+```bash
+#!/bin/bash
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 arg1 arg2"
+else
+    echo "First argument: $1"
+    echo "Second argument: $2"
+fi
+```
+
+---
+

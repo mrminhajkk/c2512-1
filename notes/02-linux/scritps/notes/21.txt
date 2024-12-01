@@ -1,0 +1,130 @@
+Here’s a list of `Linux shell scripting practice problems` 
+categorized by difficulty levels. 
+These problems are designed 
+to help you build a strong foundation and 
+gradually master shell scripting.
+
+---
+
+`Beginner Problems`
+1. `Hello World Script`  
+   Write a script that 
+   prints "Hello, World!" to the terminal.
+
+2. `File Existence Check`  
+   Create a script that checks 
+   if a file exists. 
+   If it does, 
+   print "File exists"; 
+   otherwise, 
+   print "File not found."
+
+3. `Simple Calculator`  
+   Write a script that takes two numbers and an arithmetic operator as input and performs the operation.
+
+4. `Odd or Even Checker`  
+   Write a script that reads a number and determines if it is odd or even.
+
+5. `Directory Listing`  
+   Write a script that lists all files and directories in the current directory.
+
+6. `Counting Lines, Words, and Characters`  
+   Write a script that reads a file and counts the number of lines, words, and characters in it.
+
+7. `Command-line Arguments`  
+   Write a script that accepts two command-line arguments and prints them.
+
+---
+
+`Intermediate Problems`
+8. `Backup Script`  
+   Write a script to back up a directory. Include the date in the backup file name.
+
+9. `Process Monitor`  
+   Create a script that monitors if a specific process is running and prints a message if it is.
+
+10. `Disk Space Alert`  
+    Write a script that checks disk space usage and sends a warning if it exceeds a certain threshold.
+
+11. `Rename Files`  
+    Write a script to rename all `.txt` files in a directory to `.bak`.
+
+12. `User Information`  
+    Write a script that takes a username as input and displays whether the user is logged in.
+
+13. `Pattern Finder`  
+    Create a script that searches for a specific word in a given file and prints the lines where it appears.
+
+14. `Cron Job Generator`  
+    Write a script that creates a cron job to run a backup script daily.
+
+15. `System Uptime Report`  
+    Write a script that prints the current system uptime in a readable format.
+
+---
+
+`Advanced Problems`
+16. `Log File Analysis`  
+    Write a script that parses a log file and extracts entries based on severity (e.g., ERROR, WARNING).
+
+17. `Archiving and Compression`  
+    Write a script that archives and compresses all `.log` files in a directory and moves them to a backup folder.
+
+18. `Menu-Driven Application`  
+    Create a menu-driven script that allows the user to:
+    - List files in a directory.
+    - Check disk space.
+    - Display the current date and time.
+
+19. `Database Backup and Restore`  
+    Write a script to back up a MySQL database and restore it from the backup.
+
+20. `File Watcher`  
+    Write a script that monitors a directory for changes and logs the changes to a file.
+
+21. `Dynamic IP Updater`  
+    Write a script to check the system's current public IP address and update a DNS record if it changes.
+
+22. `Log Rotation`  
+    Write a script to rotate log files, keeping the last 5 logs and deleting older ones.
+
+23. `Server Health Check`  
+    Create a script that:
+    - Checks CPU and memory usage.
+    - Verifies the status of specific services.
+    - Sends an email alert if any parameter exceeds the defined limits.
+
+24. `Parallel Processing`  
+    Write a script that runs multiple commands simultaneously and logs their output.
+
+25. `Automation with SSH`  
+    Create a script to execute a series of commands on a remote server via SSH.
+
+---
+
+`Bonus Challenges`
+26. `Weather Data Fetcher`  
+    Use `curl` to fetch weather data from an API and display it in a formatted output.
+
+27. `Simple Chat System`  
+    Create a basic chat system using a shared file as the communication medium between users.
+
+28. `Git Automation Script`  
+    Write a script to automate the process of adding, committing, and pushing code to a Git repository.
+
+29. `System Resource Logger`  
+    Create a script that logs CPU, memory, and disk usage to a file every minute.
+
+30. `Dynamic Web Page Generator`  
+    Write a script that generates a simple HTML page displaying system stats (e.g., uptime, memory usage).
+
+---
+
+Tips for Practicing
+- Start with basic problems and gradually move to advanced ones.
+- Use comments in your scripts to explain your logic.
+- Test your scripts in different scenarios to handle edge cases.
+- Explore commands like `awk`, `sed`, `grep`, and `cut` for text processing.
+- Challenge yourself by combining multiple problems into a single project.
+
+Let me know if you'd like solutions or hints for any of these problems!

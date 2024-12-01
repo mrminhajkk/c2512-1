@@ -1,0 +1,178 @@
+`Intermediate Problems` 
+in Linux shell scripting:
+
+---
+
+8. `Backup Script`
+`Problem`: Write a script to back up a directory. Include the date in the backup file name.
+
+`Solution`:
+```bash
+#!/bin/bash
+
+echo "Enter the directory to back up:"
+read dir
+
+if [ -d "$dir" ]; then
+    backup_name="backup_$(date +%Y-%m-%d_%H-%M-%S).tar.gz"
+    tar -czf "$backup_name" "$dir"
+    echo "Backup created: $backup_name"
+else
+    echo "Directory does not exist."
+fi
+```
+
+---
+
+9. `Process Monitor`
+`Problem`: Create a script that monitors if a specific process is running and prints a message if it is.
+
+`Solution`:
+```bash
+#!/bin/bash
+
+echo "Enter the process name:"
+read process
+
+if pgrep "$process" > /dev/null; then
+    echo "The process '$process' is running."
+else
+    echo "The process '$process' is not running."
+fi
+```
+
+---
+
+10. `Disk Space Alert`
+`Problem`: Write a script that checks disk space usage and sends a warning if it exceeds a certain threshold.
+
+`Solution`:
+```bash
+#!/bin/bash
+
+threshold=80
+disk_usage=$(df / | grep / | awk '{ print $5 }' | sed 's/%//g')
+
+if [ "$disk_usage" -gt "$threshold" ]; then
+    echo "Warning: Disk usage is above $threshold%. Current usage is $disk_usage%."
+else
+    echo "Disk usage is under control. Current usage is $disk_usage%."
+fi
+```
+
+---
+
+11. `Rename Files`
+`Problem`: Write a script to rename all `.txt` files in a directory to `.bak`.
+
+`Solution`:
+```bash
+#!/bin/bash
+
+echo "Enter the directory where the .txt files are located:"
+read dir
+
+if [ -d "$dir" ]; then
+    cd "$dir"
+    for file in *.txt; do
+        mv "$file" "${file%.txt}.bak"
+    done
+    echo "Renamed all .txt files to .bak."
+else
+    echo "Directory does not exist."
+fi
+```
+
+---
+
+12. `User Information`
+`Problem`: Write a script that takes a username as input and displays whether the user is logged in.
+
+`Solution`:
+```bash
+#!/bin/bash
+
+echo "Enter the username:"
+read username
+
+if who | grep -q "$username"; then
+    echo "User '$username' is logged in."
+else
+    echo "User '$username' is not logged in."
+fi
+```
+
+---
+
+13. `Pattern Finder`
+`Problem`: Create a script that searches for a specific word in a given file and prints the lines where it appears.
+
+`Solution`:
+```bash
+#!/bin/bash
+
+echo "Enter the word to search for:"
+read word
+
+echo "Enter the file name:"
+read file
+
+if [ -f "$file" ]; then
+    grep -n "$word" "$file"
+else
+    echo "File not found."
+fi
+```
+
+---
+
+14. `Cron Job Generator`
+`Problem`: Write a script that creates a cron job to run a backup script daily.
+
+`Solution`:
+```bash
+#!/bin/bash
+
+# Backup script path (replace with your actual script location)
+backup_script="/path/to/your/backup_script.sh"
+
+# Adding a cron job to run the backup script daily at 2am
+(crontab -l 2>/dev/null; echo "0 2 * * * $backup_script") | crontab -
+
+echo "Cron job added to run the backup script daily at 2am."
+```
+
+---
+
+15. `System Uptime Report`
+`Problem`: Write a script that prints the current system uptime in a readable format.
+
+`Solution`:
+```bash
+#!/bin/bash
+
+uptime -p
+```
+
+---
+
+How to Run These Scripts
+To run any of these intermediate scripts:
+1. Create a new script file using `nano` or your preferred text editor.
+   ```bash
+   nano script_name.sh
+   ```
+2. Copy and paste the script into the file.
+3. Save and close the editor.
+4. Make the script executable:
+   ```bash
+   chmod +x script_name.sh
+   ```
+5. Run the script:
+   ```bash
+   ./script_name.sh
+   ```
+
+---
+
+These scripts help you work with tasks like process management, backups, disk monitoring, and cron jobs. Let me know if you'd like any more explanations or adjustments! 😊

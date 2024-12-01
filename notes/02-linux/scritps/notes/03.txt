@@ -1,0 +1,98 @@
+To run the shell scripts provided, 
+follow these steps:
+
+---
+
+`Steps to Run Shell Scripts`
+
+1. `Open a Terminal`  
+   - On Linux: Open your terminal (Ctrl + Alt + T).
+   - On macOS: Use Spotlight Search and type "Terminal."
+   - On Windows: Use WSL (Windows Subsystem for Linux) or 
+                a terminal emulator like Git Bash.
+
+---
+
+2. `Create the Script File`  
+   - Use any text editor (like `nano`, `vim`, or `gedit`) 
+   to create a shell script file. For example:
+     ```bash
+     nano script.sh
+     ```
+   - Copy and paste the script into the file.
+
+---
+
+3. `Save the File`  
+   - In `nano`, press `Ctrl + O`, then `Enter` 
+    to save, and `Ctrl + X` to exit.
+
+---
+
+4. `Make the Script Executable`  
+   - Use the `chmod` command 
+    to give execution permission to the script:
+     ```bash
+     chmod +x script.sh
+     ```
+
+---
+
+5. `Run the Script`  
+   - Execute the script using:
+     ```bash
+     ./script.sh
+     ```
+   - If the script requires input, follow the prompts.
+
+---
+
+6. `Pass Command-line Arguments (if required)`  
+   - If the script accepts command-line arguments (e.g., Problem 7), 
+    provide them while running:
+     ```bash
+     ./script.sh arg1 arg2
+     ```
+
+---
+
+7. `Debugging (Optional)`  
+   - If the script doesn’t run as expected, 
+    check for errors using:
+     ```bash
+     bash -x script.sh
+     ```
+
+---
+
+Example: Run the "Hello World" Script
+1. `Create the file`:
+   ```bash
+   nano hello.sh
+   ```
+2. `Paste the content`:
+   ```bash
+   #!/bin/bash
+   echo "Hello, World!"
+   ```
+3. `Save and exit`:
+   - Press `Ctrl + O`, then `Enter`, then `Ctrl + X`.
+
+4. `Make it executable`:
+   ```bash
+   chmod +x hello.sh
+   ```
+
+5. `Run the script`:
+   ```bash
+   ./hello.sh
+   ```
+
+   Output:
+   ```
+   Hello, World!
+   ```
+
+---
+
+Let me know if you need help troubleshooting or understanding any of these steps! 😊

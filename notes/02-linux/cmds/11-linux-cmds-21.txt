@@ -156,3 +156,169 @@ umask 022
 File permissions are critical 
 for managing security and access control 
 in Linux systems.
+
+
+=============================================================================================
+
+To `check all permissions` of a file in Linux, 
+you can use several commands. 
+Here’s how to do it:
+
+---
+
+`1. Using `ls -l` Command`
+The `ls -l` command displays detailed information about a file, 
+including its permissions.
+
+`Syntax:`
+
+```bash
+ls -l <filename>
+```
+
+`Example:`
+
+```bash
+ls -l myfile.txt
+```
+
+`Output:`
+```
+-rw-r--r-- 1 user group 1024 Nov 29 12:00 myfile.txt
+```
+
+- `Breakdown:`
+  - `-rw-r--r--`: Permissions
+    - The first `-` indicates it’s a regular file (`d` if it’s a directory).
+    - `rw-`: The owner (user) has `read` and `write` permissions.
+    - `r--`: The group has `read-only` permission.
+    - `r--`: Others (world) have `read-only` permission.
+  - `1`: Number of links to the file.
+  - `user`: The owner of the file.
+  - `group`: The group associated with the file.
+  - `1024`: File size in bytes.
+  - `Nov 29 12:00`: Last modified date and time.
+
+---
+
+`2. Using `stat` Command`
+The `stat` command provides detailed file information, including permissions in multiple formats.
+
+`Syntax:`
+
+```bash
+stat <filename>
+```
+
+`Example:`
+
+```bash
+stat myfile.txt
+```
+
+`Output:`
+```
+  File: myfile.txt
+  Size: 1024       Blocks: 8          IO Block: 4096 regular file
+Device: 802h/2050d   Inode: 123456     Links: 1
+Access: 2024-11-29 12:00:00.000000000 +0000
+Modify: 2024-11-29 12:00:00.000000000 +0000
+Change: 2024-11-29 12:00:00.000000000 +0000
+ Birth: -
+```
+
+Key information includes:
+- `Access`: Shows the file's access permissions.
+- `Modify`: When the file content was last changed.
+- `Change`: When metadata (like permissions) was last changed.
+
+---
+
+`3. Using `getfacl` (Advanced Permissions)`
+The `getfacl` command checks both standard and `Access Control List (ACL)` permissions.
+
+`Syntax:`
+
+```bash
+getfacl <filename>
+```
+
+`Example:`
+
+```bash
+getfacl myfile.txt
+```
+
+`Output:`
+```
+# file: myfile.txt
+# owner: user
+# group: group
+user::rw-
+group::r--
+other::r--
+```
+
+---
+
+`4. Using `lsattr` (Extended Attributes)`
+To check if the file has extended attributes that may restrict actions like deletion:
+
+`Syntax:`
+
+```bash
+lsattr <filename>
+```
+
+`Example:`
+
+```bash
+lsattr myfile.txt
+```
+
+`Output:`
+```
+----i-------- myfile.txt
+```
+
+- The `i` attribute means the file is `immutable` and cannot be modified or deleted.
+
+---
+
+`Explanation of Permission Symbols`
+
+| Symbol | Meaning                     |
+|--------|-----------------------------|
+| `r`    | Read permission             |
+| `w`    | Write permission            |
+| `x`    | Execute permission          |
+| `-`    | No permission               |
+| `d`    | Directory (if present as first character) |
+
+---
+
+`Summary`
+
+- Use `ls -l` for basic permission details.
+- Use `stat` for detailed metadata.
+- Use `getfacl` to check for extended permissions (ACL).
+- Use `lsattr` to check extended attributes.
+
+
+
+====================================================
+Example 
+```
+-----Command-----
+$ stat script02.sh
+
+-----Output-----
+  File: script02.sh
+  Size: 120             Blocks: 0          IO Block: 512    regular file
+Device: 30h/48d Inode: 8162774326256276  Links: 1
+Access: (0777/-rwxrwxrwx)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2024-12-01 08:44:36.087878100 +0530
+Modify: 2024-12-01 08:44:36.045898900 +0530
+Change: 2024-12-01 08:44:36.045898900 +0530
+ Birth: -
+```
