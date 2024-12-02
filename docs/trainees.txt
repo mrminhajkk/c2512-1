@@ -1,5 +1,75 @@
 Trainer: Maheswaran, Whatsapp Number: 9750592159, email: gmaheswaranmca@gmail.com
 -------------------------------------------------------------------------------------------
+Date: Mon, 02/12/2024 evening 
+01 Abel Mathew Simon   02 Athira KS    3 Ayisha Dhiyana PS 
+4 Bhagya S Kumar      5 Dhaheen Rahman 
+6 Josh Danny Alex     7 M Venkatesh         
+8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
+11 Sana E              12 Sooraj M V          13 Sreya K
+14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj
+[lab]
+-------------------------------------------------------------------------------------------
+Date: Mon, 02/12/2024 evening 
+01 Abel Mathew Simon   02 Athira KS    3 Ayisha Dhiyana PS 
+4 Bhagya S Kumar      5 Dhaheen Rahman 
+6 Josh Danny Alex     7 M Venkatesh         
+8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
+11 Sana E              12 Sooraj M V          13 Sreya K
+14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj
+[linux shell scripting]
+-------------------------------------------------------------------------------------------
+Date: Fri, 29/11/2024 evening 
+01 Abel Mathew Simon   02 Athira KS    3 Ayisha Dhiyana PS 
+4 Bhagya S Kumar      5 Dhaheen Rahman 
+6 Josh Danny Alex     7 M Venkatesh         
+8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
+11 Sana E              12 Sooraj M V          13 Sreya K
+14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj
+[lab]
+-------------------------------------------------------------------------------------------
+Date: Fri, 29/11/2024 morning 
+01 Abel Mathew Simon   02 Athira KS    3 Ayisha Dhiyana PS 
+4 Bhagya S Kumar      5 Dhaheen Rahman 
+6 Josh Danny Alex     7 M Venkatesh         
+8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
+11 Sana E              12 Sooraj M V          13 Sreya K
+14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj
+[file permissions, crud ops and aggregotors]
+-------------------------------------------------------------------------------------------
+[constructors, destructor, this, member initializer, 
+static members + data declare/define + usecases]
+Date: Thu, 28/11/2024 evening 
+01 Abel Mathew Simon   02 Athira KS    3 Ayisha Dhiyana PS 
+4 Bhagya S Kumar      5 Dhaheen Rahman 
+6 Josh Danny Alex     7 M Venkatesh         
+8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
+11 Sana E              12 Sooraj M V          13 Sreya K
+14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj
+-------------------------------------------------------------------------------------------
+Date: Thu, 28/11/2024 morning 
+01 Abel Mathew Simon   02 Athira KS    3 Ayisha Dhiyana PS 
+4 Bhagya S Kumar      5 Dhaheen Rahman 
+6 Josh Danny Alex     7 M Venkatesh         
+8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
+11 Sana E              12 Sooraj M V          13 Sreya K
+14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj
+-------------------------------------------------------------------------------------------
+Date: Wed, 27/11/2024 evening 
+01 Abel Mathew Simon   02 Athira KS    3 Ayisha Dhiyana PS 
+4 Bhagya S Kumar      5 Dhaheen Rahman 
+6 Josh Danny Alex     7 M Venkatesh         
+8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
+11 Sana E              12 Sooraj M V          13 Sreya K
+14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj
+-------------------------------------------------------------------------------------------
+Date: Wed, 27/11/2024 morning 
+01 Abel Mathew Simon   02 Athira KS    3 Ayisha Dhiyana PS 
+4 Bhagya S Kumar      5 Dhaheen Rahman 
+6 Josh Danny Alex     7 M Venkatesh         
+8 Nimisha K           9 Pitchumani S M       10 S T Vishakh
+11 Sana E              12 Sooraj M V          13 Sreya K
+14 Vinayak S Kaimal    15 Nayana Haridas    16 minhaj
+-------------------------------------------------------------------------------------------
 Date: Tue, 26/11/2024 evening | ???
 01 Abel Mathew Simon   02 Athira KS    3 Ayisha Dhiyana PS 
 4 Bhagya S Kumar      5 Dhaheen Rahman 

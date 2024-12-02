@@ -1,0 +1,110 @@
+Evaluation 2 (2nd 10 days):
+    highly focus on (1) Linux (2) CPP 
+    and even focus on (3) Intro to Web (4) Software Eng (5) Progr Fundas (6) DBMS and SQL on Oracle 
+
+Today focus:
+    (1) Linux Shell Scripting 
+        -- morning session 
+    (2) Evaluation on OOPs / Linux 
+        -- morning lab, afternoon lab 
+        -- team wise 
+    (3) Further learnings on C++ 
+        pointer, dynamic memory 
+        -- afternoon session 
+
+
+01. Hello World!!! Hello Name!!! Greetings Name!!!
+    #!/bin/bash
+    -- shebang  -- tells about where (path) is the interpreter
+02. variables, data types, operators, expressions 
+    Read a number and raise 10% extra 
+
+    200 -> 200 + 20 = 220
+03. conditional statements 
+    -- braching : if..then..fi,   
+    -- looping 
+
+    if .. else 
+        problem: to check given number is odd or even 
+
+        problem: to find number of odd numbers for given three numbers 
+04. to print natural numbers from 1 to N using for loop [range for loop]
+
+    for I in $(seq 1 N); do 
+        #code 
+    done 
+
+    to print natural numbers from N to 1 using for loop 
+
+    for I in $(seq N -1 1); do 
+        #code 
+    done 
+05. to print natural numbers from 1 to N using while loop
+
+    I=1
+    while [ $I -le $N ]; do 
+        #code 
+        I=$(( I + 1 ))
+    done 
+
+    to print natural numbers from N to 1 using while loop 
+
+    I=$N
+    while [ $I -ge 1 ]; do 
+        #code 
+        I=$(( I - 1 ))
+    done 
+06. to print natural numbers from 1 to N using until loop
+
+    I=1
+    until [ $I -gt $N ]; do 
+        #code 
+        I=$(( I + 1 ))
+    done 
+
+    to print natural numbers from N to 1 using while loop 
+
+    I=$N
+    until [ $I -lt 1 ]; do 
+        #code 
+        I=$(( I - 1 ))
+    done 
+
+07. pattern matching 
+
+    expression and label matching 
+
+    case express in
+        value) 
+            code 
+            ;;
+        value2)
+            code 
+            ;;
+        *)
+            code 
+            ;;
+    esac
+
+    -- to print month name for given month number 
+
+Lab / Home Work: 
+    21. To print a week number for given week name 
+    22. To print the pattern 
+        1
+        1 2 
+        1 2 3 
+        1 2 3 4 
+        1 2 3 4 5 
+        for given Number of Lines ie N = 5 
+    23. for given array of numbers, count number of odd numbers. 
+        use: continue to skip counting 
+    24. check a number is prime number or not 
+        use: break to stop the loop 
+        if number has divisor above 1 and below number 
+        2 to half 
+
+08. array - indexed array 
+    -- to print N numbers from keyboard
+    
+    

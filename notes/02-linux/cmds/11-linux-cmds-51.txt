@@ -1,0 +1,147 @@
+`Linux Environment Variables and Advanced Commands`
+
+---
+
+`1. Environment Variables`
+Environment variables are key-value pairs 
+used by the shell and applications 
+to configure and control system behavior.
+
+`Key Variables`
+- ``PATH``:  
+  - Specifies directories to search for executable files.  
+  - Example: `/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin`.
+
+- ``LD_LIBRARY_PATH``:  
+  - Specifies directories to search 
+  for shared libraries during runtime.  
+  - Example: `/usr/local/lib:/usr/lib`.
+
+`Commands to Manage Environment Variables`
+- `View Variables:`
+  ```bash
+  echo $VARIABLE_NAME
+  ```
+  Example: `echo $PATH`
+
+- `Set or Export Variables:`
+  ```bash
+  export VARIABLE_NAME=value
+  ```
+  Example: `export PATH=$PATH:/opt/myapp/bin`
+
+- `Temporary vs Permanent Changes:`
+  - `Temporary`: Valid for the current shell session.
+  - `Permanent`: Add to files like `~/.bashrc` or `/etc/environment`.
+
+---
+
+`2. Commands Related to Libraries`
+- ``ldconfig`:`  
+  Configures and updates the shared library cache.
+  - Typically run by the system, 
+  but you can use it to update custom library paths.
+  - Example:
+    ```bash
+    sudo ldconfig
+    sudo ldconfig -v  # View the libraries being configured
+    ```
+
+- ``ldd`:`  
+  Lists the shared libraries used 
+  by an executable or shared object.
+  - Example:
+    ```bash
+    ldd /bin/ls
+    ```
+  Output: Shows libraries and their paths.
+
+- ``LD_LIBRARY_PATH`:`  
+  Temporarily adds library paths for a specific session.
+  - Example:
+    ```bash
+    export LD_LIBRARY_PATH=/custom/lib/path:$LD_LIBRARY_PATH
+    ./my_program
+    ```
+
+---
+
+`3. File Inspection Commands`
+- ``file`:`  
+  Identifies the type of a file (binary, text, image, etc.).
+  - Example:
+    ```bash
+    file /bin/ls
+    ```
+
+- ``strings`:`  
+  Extracts and prints human-readable strings from binary files.
+  - Useful for debugging or inspecting binaries.
+  - Example:
+    ```bash
+    strings /bin/ls | less
+    ```
+
+---
+
+`4. Resource Limits`
+- ``ulimit`:`  
+  Controls user-level resource limits (e.g., open files, memory usage).
+  - View current limits:
+    ```bash
+    ulimit -a
+    ```
+  - Set limits:
+    ```bash
+    ulimit -n 1024  # Set maximum open files to 1024
+    ulimit -c 0     # Disable core dumps
+    ```
+
+---
+
+`Examples`
+`Example 1: Adding a Custom Library Path`
+1. Create a directory and add shared libraries.
+   ```bash
+   mkdir /custom/libs
+   cp libmylibrary.so /custom/libs/
+   ```
+
+2. Update `LD_LIBRARY_PATH`:
+   ```bash
+   export LD_LIBRARY_PATH=/custom/libs:$LD_LIBRARY_PATH
+   ```
+
+3. Verify with `ldd`:
+   ```bash
+   ldd ./my_program
+   ```
+
+`Example 2: Modifying `PATH``
+1. Add a custom binary path:
+   ```bash
+   export PATH=$PATH:/opt/myapp/bin
+   ```
+
+2. Verify:
+   ```bash
+   echo $PATH
+   ```
+
+`Example 3: Viewing File Metadata`
+```bash
+file /bin/bash
+```
+Output: `ELF 64-bit LSB executable, x86-64, dynamically linked ...`
+
+---
+
+`When to Use These Commands?`
+- `Debugging Runtime Errors:`  
+  Use `ldd` and `LD_LIBRARY_PATH` to resolve missing shared libraries.
+
+- `Customizing Execution Paths:`  
+  Update `PATH` to include custom binaries.
+
+- `Monitoring Resources:`  
+  Use `ulimit` to ensure resource usage is within bounds.

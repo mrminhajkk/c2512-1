@@ -825,7 +825,7 @@ done
 ```
 
 `Example 2: Using Ranges`
-```bash                     [!!!NOT WORKING!!!]
+```bash                     [!!!NOT WORKING for sh and bash!!!]
 #!/bin/bash
 for i in {1..5}; do
     echo "Number: $i"
@@ -841,6 +841,11 @@ done
 # Loop from 1 to 10 with a step of 2
 for i in $(seq 1 2 10); do
   echo "Number: $i"
+done
+
+# C like for Loop to print nubmers from 1 to size 
+for (( i=1; i<size; i++ )); do
+    echo $I
 done
 
 ``while` Loop`
