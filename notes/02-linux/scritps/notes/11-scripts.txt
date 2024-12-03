@@ -410,7 +410,7 @@ while getopts "f:s:t:" opt; do
         *) 
             echo "Invalid option"
             echo "Usage: $0 -f first_number -s second_number -t third_number"
-            exit
+            exit 1
         ;;
     esac
 done
@@ -429,6 +429,9 @@ num2: 20
 num3: 30
 sum of 10, 20, and 30 is 60
 root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02#
+
+
+root@DESKTOP-E9TJ2O1:/mnt/c/mywork/source/c2512/notes/02-linux/scritps/prg02# bash test.sh -s 10 -t 20 -f 30
 ```
 
 
@@ -634,7 +637,7 @@ done
 declare -A freq
 for (( i=0; i<size; i++ )); do
     if [[ ${freq[${nums[i]}]} ]]; then
-        freq[${nums[i]}]=$((${freq[${nums[i]}]}+1))
+        freq[${nums[i]}]=$(( ${freq[${nums[i]}]} + 1 ))
     else
         freq[${nums[i]}]=1
     fi

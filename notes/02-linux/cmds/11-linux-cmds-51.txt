@@ -145,3 +145,994 @@ Output: `ELF 64-bit LSB executable, x86-64, dynamically linked ...`
 
 - `Monitoring Resources:`  
   Use `ulimit` to ensure resource usage is within bounds.
+
+=========================================================
+
+`What is `ldd`?`
+
+`ldd` is a Linux command 
+used to `display the shared libraries` 
+required by an executable or a shared object file. 
+It is particularly useful for debugging and 
+ensuring that all required dependencies of 
+a program are available on the system.
+
+---
+
+`Purpose of `ldd``
+- Checks the `dynamic dependencies` of a binary or shared library.
+- Displays the paths to the shared libraries or errors if they are missing.
+- Verifies whether the necessary libraries are correctly linked for a program to run.
+
+---
+
+`Usage`
+```bash
+ldd [options] <file>
+```
+
+`Common Options`
+- ``-v``: Displays all shared objects (including indirect dependencies).
+- ``-u``: Shows unused direct dependencies.
+
+---
+
+`Example 1: Checking Dependencies of `ls``
+```bash
+ldd /bin/ls
+```
+
+`Output Example`
+```text
+linux-vdso.so.1 (0x00007ffc729cd000)
+libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f865b03d000)
+libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f865b01a000)
+/lib64/ld-linux-x86-64.so.2 (0x00007f865b241000)
+```
+
+Explanation:
+1. `Shared Libraries (e.g., `libc.so.6`)`: 
+Libraries required by the executable.
+2. `Path to Library`: 
+The location of each library on the system.
+3. `Memory Address (e.g., `0x00007f865b03d000`)`: 
+The memory location where the library is loaded.
+
+---
+
+`Example 2: Verifying Missing Libraries`
+If a library is missing, `ldd` outputs `not found`. For example:
+```text
+libmylibrary.so => not found
+```
+
+To resolve this:
+1. Locate the library on the system.
+2. Add its path to `LD_LIBRARY_PATH` or 
+update the library cache using `ldconfig`.
+
+---
+
+`Example 3: Using `ldd` on a Custom Binary`
+```bash
+gcc -o my_program my_program.c -lmylibrary
+ldd ./my_program
+```
+
+`Output`
+```text
+libmylibrary.so => /usr/local/lib/libmylibrary.so (0x00007f4b8c700000)
+libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f4b8c200000)
+/lib64/ld-linux-x86-64.so.2 (0x00007f4b8c900000)
+```
+
+---
+
+`Security Considerations`
+Running `ldd` on untrusted executables can be dangerous 
+because it indirectly loads the binary, 
+potentially executing malicious code.  
+For safer analysis:
+```bash
+objdump -p <file> | grep NEEDED
+```
+
+---
+
+`When to Use `ldd``
+1. `Debugging Runtime Errors`:  
+   If a program fails to run due to missing dependencies, `ldd` helps identify the issue.
+
+2. `Ensuring Portability`:  
+   Use `ldd` to verify all dependencies are available on a different system.
+
+3. `Dependency Management`:  
+   Check if the correct versions of libraries are being used.
+
+=========================================================
+=========================================================
+`What is `PATH` in Linux?`
+=========================================================
+=========================================================
+
+
+`PATH` is an `environment variable` 
+in Linux (and other UNIX-like systems) 
+that specifies the directories 
+where the shell looks for executable files when you run a command.
+
+---
+
+`Purpose of `PATH``
+When you type a command like `ls` or `python` in the terminal:
+1. The shell searches for the executable file 
+in the directories listed in the `PATH` variable, 
+in the order they are listed.
+2. If the command is found, it runs the executable.
+3. If not found, you get an error like:
+   ```bash
+   bash: command: command not found
+   ```
+
+---
+
+`Viewing the `PATH` Variable`
+To see your current `PATH`, run:
+```bash
+echo $PATH
+```
+
+`Example Output`
+```text
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+```
+
+- Each directory is separated by a colon (`:`).
+- The shell checks these directories one by one for the requested command.
+
+---
+
+`Modifying `PATH``
+You can add custom directories to the `PATH` variable, 
+making your scripts or programs executable from anywhere.
+
+`Temporary Changes (For Current Session Only)`
+```bash
+export PATH=$PATH:/path/to/your/directory
+```
+- `export` makes the variable available to child processes.
+- `$PATH` appends the existing directories to the new ones.
+
+Example:
+```bash
+export PATH=$PATH:/home/user/scripts
+```
+
+`Permanent Changes`
+To make changes persistent:
+1. Edit the shell configuration file (e.g., `.bashrc`, `.bash_profile`, or `.zshrc`).
+2. Add the line:
+   ```bash
+   export PATH=$PATH:/path/to/your/directory
+   ```
+3. Save the file and reload it:
+   ```bash
+   source ~/.bashrc
+   ```
+
+---
+
+`How `PATH` Affects Command Execution`
+- If two executables with the same name exist 
+in different directories, 
+the shell runs the one located 
+in the directory listed `first` in `PATH`.
+- Example:
+  ```bash
+  echo $PATH
+  /usr/local/bin:/usr/bin:/bin:/home/user/bin
+  ```
+  If `my_command` exists 
+  in both `/usr/bin` and `/home/user/bin`, 
+  the one in `/usr/bin` will be executed.
+
+---
+
+`Adding Current Directory to `PATH``
+To include the current directory (`.`):
+```bash
+export PATH=$PATH:.
+```
+However, it's generally discouraged for security reasons, 
+as it can lead to accidental execution of malicious files.
+
+---
+
+`Common Issues with `PATH``
+1. `Command Not Found Error`:
+   - The command’s directory is not in `PATH`.
+   - Fix: Add the directory to `PATH` or 
+   specify the full path when running the command.
+
+2. `Order of Directories in `PATH``:
+   - If a custom version of a command is shadowed 
+   by a system version, adjust the order:
+     ```bash
+     export PATH=/custom/dir:$PATH
+     ```
+
+---
+
+`Best Practices`
+1. Keep system directories like `/usr/bin` and 
+`/bin` at the start of `PATH`.
+2. Avoid including directories 
+with untrusted executables.
+3. Use absolute paths when modifying `PATH`.
+
+=========================================================
+=========================================================
+`What is `LD_LIBRARY_PATH` in Linux?`
+=========================================================
+=========================================================
+`LD_LIBRARY_PATH` is an `environment variable` 
+in Linux that specifies a list of directories 
+where the system should look for shared libraries (`.so` files) at runtime.
+
+Shared libraries are dynamically linked libraries 
+used by executables, and 
+they are typically located in standard directories 
+like `/lib`, `/usr/lib`, or `/usr/local/lib`. 
+The `LD_LIBRARY_PATH` variable allows 
+you to specify additional directories 
+for the runtime linker to search.
+
+---
+
+`Why Use `LD_LIBRARY_PATH`?`
+
+1. `Custom Library Locations`: 
+If your program depends on shared libraries 
+that are not in standard directories, 
+you can use `LD_LIBRARY_PATH` 
+to tell the system where to find them.
+2. `Testing and Debugging`: 
+It helps in testing different versions of a shared library 
+without installing them system-wide.
+3. `Temporary Overrides`: 
+To use a specific version of a library 
+for a program without affecting the rest of the system.
+
+---
+
+`Viewing the Current `LD_LIBRARY_PATH``
+
+To check the current value of `LD_LIBRARY_PATH`:
+```bash
+echo $LD_LIBRARY_PATH
+```
+
+`Example Output`
+```text
+/usr/local/lib:/opt/mylibs
+```
+- Each directory is separated by a colon (`:`).
+
+---
+
+`Setting `LD_LIBRARY_PATH``
+
+`Temporary Changes (For Current Session Only)`
+```bash
+export LD_LIBRARY_PATH=/path/to/your/libs:$LD_LIBRARY_PATH
+```
+- `$LD_LIBRARY_PATH` appends the existing directories to the new ones.
+
+Example:
+```bash
+export LD_LIBRARY_PATH=/home/user/customlibs:$LD_LIBRARY_PATH
+```
+
+`Permanent Changes`
+1. Edit your shell configuration file (e.g., `.bashrc`, `.bash_profile`, or `.zshrc`).
+2. Add the line:
+   ```bash
+   export LD_LIBRARY_PATH=/path/to/your/libs:$LD_LIBRARY_PATH
+   ```
+3. Save the file and reload it:
+   ```bash
+   source ~/.bashrc
+   ```
+
+---
+
+`Using `LD_LIBRARY_PATH` with Executables`
+
+When running a program that depends on a specific library location, 
+you can prepend the `LD_LIBRARY_PATH` for that session only:
+```bash
+LD_LIBRARY_PATH=/path/to/your/libs ./your_program
+```
+
+---
+
+`Common Commands Related to `LD_LIBRARY_PATH``
+
+1. ``ldd``: Checks the shared libraries required by an executable.
+   ```bash
+   ldd ./your_program
+   ```
+
+2. ``ldconfig``: Updates the linker cache for system-wide shared libraries. 
+Directories in `/etc/ld.so.conf` are used instead of `LD_LIBRARY_PATH`.
+
+---
+
+`Issues and Best Practices`
+
+`1. Overriding System Libraries`
+- Using `LD_LIBRARY_PATH` to override system libraries 
+can lead to unexpected behavior.
+- Example: Setting `LD_LIBRARY_PATH` 
+with incompatible libraries may cause system tools to fail.
+
+`2. Dependency Hell`
+- Avoid hardcoding `LD_LIBRARY_PATH` in scripts for portability.
+
+`3. Prefer `ldconfig` for Permanent Changes`
+- Instead of relying on `LD_LIBRARY_PATH` for permanent changes, 
+add your library directories to `/etc/ld.so.conf` and run `ldconfig`.
+
+`4. Debugging with `LD_DEBUG``
+- For debugging library loading issues, use:
+   ```bash
+   LD_DEBUG=libs ./your_program
+   ```
+
+---
+
+`Example`
+Program Requiring a Custom Library:
+Suppose you have:
+- `my_program` in `/home/user/bin`.
+- A library `libcustom.so` in `/home/user/lib`.
+
+`Steps:`
+1. Add `/home/user/lib` to `LD_LIBRARY_PATH`:
+   ```bash
+   export LD_LIBRARY_PATH=/home/user/lib:$LD_LIBRARY_PATH
+   ```
+2. Run the program:
+   ```bash
+   ./my_program
+   ```
+
+=========================================================
+=========================================================
+`What is `ldconfig` in Linux?`
+=========================================================
+=========================================================
+`ldconfig` is a command in Linux used to configure and manage the dynamic linker runtime bindings. Its primary function is to update the cache of shared libraries and ensure that programs can locate and load the correct shared libraries at runtime.
+
+---
+
+`How `ldconfig` Works`
+
+1. `Library Directories`:
+   - `ldconfig` scans standard library directories like `/lib` and `/usr/lib`.
+   - It also scans additional directories specified in `/etc/ld.so.conf` and its associated files.
+
+2. `Updates Cache`:
+   - `ldconfig` creates or updates the `ld.so.cache` file, which is a binary cache of library locations for faster lookups.
+
+3. `Symbolic Links`:
+   - It maintains symbolic links for shared libraries, ensuring that the proper version of a library is used.
+
+---
+
+`Why Use `ldconfig`?`
+
+- To make newly installed shared libraries available to programs.
+- To fix library-related errors like `libxyz.so: cannot open shared object file: No such file or directory`.
+
+---
+
+`Common `ldconfig` Usage`
+
+1. `Run `ldconfig` as Root`:
+   - To update the shared library cache:
+     ```bash
+     sudo ldconfig
+     ```
+
+2. `Specify a Custom Directory`:
+   - If your library is in a non-standard directory:
+     ```bash
+     sudo ldconfig /path/to/your/libs
+     ```
+
+3. `Verify the Cache`:
+   - Check if a specific library is in the cache:
+     ```bash
+     ldconfig -p | grep libname
+     ```
+     Example:
+     ```bash
+     ldconfig -p | grep libcustom
+     ```
+
+4. `Add Permanent Library Path`:
+   - Add your custom library directory to `/etc/ld.so.conf` or a new file in `/etc/ld.so.conf.d/` (e.g., `/etc/ld.so.conf.d/custom-libs.conf`).
+   - Add the line:
+     ```
+     /path/to/your/libs
+     ```
+   - Then run:
+     ```bash
+     sudo ldconfig
+     ```
+
+---
+
+`Files and Locations`
+
+1. `Cache File`:
+   - `/etc/ld.so.cache`: Binary file maintained by `ldconfig` for library paths.
+
+2. `Configuration File`:
+   - `/etc/ld.so.conf`: Text file listing additional library directories to scan.
+
+3. `Default Library Directories`:
+   - `/lib`
+   - `/usr/lib`
+   - `/usr/local/lib`
+
+---
+
+`Examples`
+
+`Add a New Library Directory`
+Suppose you have a library `libcustom.so` in `/opt/customlibs`.
+
+1. Add `/opt/customlibs` to `/etc/ld.so.conf` or create a new file `/etc/ld.so.conf.d/customlibs.conf` with the content:
+   ```
+   /opt/customlibs
+   ```
+
+2. Update the cache:
+   ```bash
+   sudo ldconfig
+   ```
+
+3. Verify the library:
+   ```bash
+   ldconfig -p | grep libcustom
+   ```
+
+`Manually Link a Library`
+If you want to manually create a symbolic link:
+```bash
+sudo ln -s /path/to/libcustom.so /usr/lib/libcustom.so
+sudo ldconfig
+```
+
+---
+
+`Common Issues and Troubleshooting`
+
+1. `Library Not Found Error`:
+   - Add the library path to `/etc/ld.so.conf` or use `LD_LIBRARY_PATH` temporarily.
+   - Run `ldconfig`.
+
+2. `Cache Not Updated`:
+   - Ensure you run `ldconfig` with `sudo` to update the cache.
+
+3. `Library Version Conflict`:
+   - Use `ldconfig -p` to check available library versions and paths.
+
+---
+
+`Key Options for `ldconfig``
+
+- ``-p``: Print the current cache.
+  ```bash
+  ldconfig -p
+  ```
+
+- ``-v``: Verbose mode; displays libraries being processed.
+  ```bash
+  sudo ldconfig -v
+  ```
+
+- ``-n``: Only process directories specified on the command line.
+  ```bash
+  sudo ldconfig -n /custom/dir
+  ```
+
+- ``-X``: Only update links, do not update the cache.
+
+---
+
+`Best Practices`
+
+- Use `ldconfig` for system-wide library configurations rather than relying on `LD_LIBRARY_PATH` for permanent setups.
+- Organize custom libraries in `/usr/local/lib` or `/opt`, and add these paths to `/etc/ld.so.conf`.
+
+
+=========================================================
+=========================================================
+`What is the `file` Command in Linux?`
+=========================================================
+=========================================================
+The `file` command in Linux is used to determine the type of a file. Instead of relying on file extensions, it examines the file's content to provide detailed information about its format.
+
+---
+
+`How `file` Works`
+
+The `file` command performs three tests to determine the file type:
+1. `Filesystem Tests`: Checks for specific file types like directories, symbolic links, and device files.
+2. `Magic Tests`: Examines the file's content against a database of "magic numbers" to identify file formats.
+3. `Language Tests`: Analyzes text files for clues about programming languages or other formats.
+
+---
+
+`Basic Syntax`
+```bash
+file [OPTIONS] FILE_NAME
+```
+
+---
+
+`Examples`
+
+`Identify a File's Type`
+```bash
+file example.txt
+```
+Output:
+```
+example.txt: ASCII text
+```
+
+`Identify Binary File Type`
+```bash
+file program
+```
+Output:
+```
+program: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2
+```
+
+`Check a Directory`
+```bash
+file /home/user
+```
+Output:
+```
+/home/user: directory
+```
+
+`Detect Compressed Files`
+```bash
+file archive.tar.gz
+```
+Output:
+```
+archive.tar.gz: gzip compressed data, original size 10240 bytes
+```
+
+`For Symbolic Links`
+```bash
+file symlink
+```
+Output:
+```
+symlink: symbolic link to '/target/file'
+```
+
+---
+
+`Useful Options`
+
+- ``-b``: Removes the filename from the output, showing only the file type.
+  ```bash
+  file -b example.txt
+  ```
+  Output:
+  ```
+  ASCII text
+  ```
+
+- ``-i``: Displays the file's MIME type.
+  ```bash
+  file -i example.jpg
+  ```
+  Output:
+  ```
+  example.jpg: image/jpeg; charset=binary
+  ```
+
+- ``-L``: Follows symbolic links to show the type of the linked file.
+  ```bash
+  file -L symlink
+  ```
+
+- ``-s``: Analyzes special files (e.g., block devices) instead of skipping them.
+  ```bash
+  file -s /dev/sda
+  ```
+
+---
+
+`Why Use `file`?`
+
+- `To Verify File Types`:
+  - When a file doesn't have an extension, `file` helps identify its format.
+  
+- `For Debugging`:
+  - Check the type of files causing errors in scripts or applications.
+
+- `For System Administration`:
+  - Analyze binary executables, shared libraries, or device files.
+
+---
+
+`Advanced Examples`
+
+`Identify Multiple Files`
+```bash
+file file1.txt file2.jpg file3
+```
+Output:
+```
+file1.txt: ASCII text
+file2.jpg: JPEG image data
+file3: ELF 64-bit LSB executable
+```
+
+`Check Files in a Directory`
+Use a loop to check all files:
+```bash
+for file in /path/to/files/*; do
+    file "$file"
+done
+```
+
+---
+
+`Troubleshooting`
+
+1. `File Not Found Error`:
+   - Ensure the file path is correct and accessible.
+
+2. `Unknown File Type`:
+   - The file might be corrupted or in an unsupported format.
+
+3. `Symbolic Link Issues`:
+   - Use the `-L` option to follow and analyze the target of symbolic links.
+
+---
+
+`Practice`
+- Use `file` on various file types (e.g., text files, images, binaries) to understand its output.
+- Combine `file` with other commands like `find` or `grep` for advanced file analysis.
+
+
+
+=========================================================
+=========================================================
+`What is `strings` in Linux?`
+=========================================================
+=========================================================
+`strings` is a command-line utility in Linux that extracts and displays printable (human-readable) text strings from binary files or data. It is often used to analyze executables, object files, or any binary file to find embedded text, such as error messages, configuration data, or debugging information.
+
+---
+
+`Why Use `strings`?`
+- `Debugging`: Inspect binaries or core dumps for clues about errors.
+- `Reverse Engineering`: Extract human-readable text from executables.
+- `Configuration Analysis`: Locate text-based settings or messages inside compiled files.
+
+---
+
+`Syntax`
+```bash
+strings [OPTIONS] FILE
+```
+- `FILE`: The file to analyze.
+
+---
+
+`Examples`
+
+`Extract Strings from a File`
+```bash
+strings /bin/ls
+```
+Output:
+```
+libc.so.6
+__libc_start_main
+printf
+malloc
+File not found
+```
+Explanation: Extracts readable text from the binary `/bin/ls`.
+
+---
+
+`How It Works`
+- Searches for sequences of printable characters (default: 4 or more) in a file.
+- Printable characters include letters, numbers, punctuation, and spaces.
+
+`Adjusting the Minimum String Length`
+```bash
+strings -n 8 /bin/ls
+```
+This extracts strings with a minimum length of 8 characters.
+
+---
+
+`Common Use Cases`
+
+`Inspecting Executables for Text`
+Analyze an unknown binary:
+```bash
+strings my_program
+```
+
+`Reading Strings from Device Files`
+Extract text from a raw disk or device:
+```bash
+strings /dev/sda
+```
+
+`Analyzing Core Dumps`
+Inspect debugging information from a crash dump:
+```bash
+strings core
+```
+
+`Inspecting Libraries`
+View human-readable strings in shared libraries:
+```bash
+strings /usr/lib/libc.so.6
+```
+
+---
+
+`Advanced Usage`
+
+`Search for Specific Patterns`
+Combine `strings` with `grep`:
+```bash
+strings /bin/ls | grep "error"
+```
+
+`Output with Offsets`
+Display offsets where strings are located in the file:
+```bash
+strings -t x my_program
+```
+Output:
+```
+1030 libc.so.6
+10fa __libc_start_main
+```
+Explanation: Shows the hexadecimal offset of each string.
+
+`Process a Compressed File`
+Extract strings from a compressed file using `zcat`:
+```bash
+zcat file.gz | strings
+```
+
+---
+
+`Options`
+- ``-a``: Scan the entire file (default).
+- ``-t [o|x|d]``: Show offsets in octal (`o`), hexadecimal (`x`), or decimal (`d`).
+- ``-n``: Specify the minimum string length (default: 4 characters).
+- ``-e [b|l|s]``: Specify character encoding: `b` (big-endian), `l` (little-endian), `s` (single-byte).
+
+---
+
+`Examples of Strings Extraction`
+
+1. `Extract Strings from a Script File`
+```bash
+strings script.sh
+```
+Output:
+```
+#!/bin/bash
+echo "Hello, World!"
+```
+
+2. `Extract Strings from a Compiled Program`
+```bash
+gcc -o my_program my_program.c
+strings my_program
+```
+Output:
+```
+libc.so.6
+malloc
+printf
+Error opening file
+```
+
+3. `Analyze ELF Executables`
+```bash
+strings -n 10 /usr/bin/bash
+```
+Output:
+```
+GNU C Library
+bash version 5.1
+```
+
+---
+
+`Security and Debugging`
+- `Reverse Engineering`: Identify potential vulnerabilities by inspecting binary strings.
+- `Finding Hidden Data`: Detect malicious or suspicious embedded text in files.
+- `Forensics`: Recover readable text from corrupted files.
+
+---
+
+`Practice`
+- Run `strings` on various file types like executables, libraries, images, and documents.
+- Combine `strings` with `grep` to extract specific information.
+- Use `strings -t` to analyze offsets in binary files.
+
+=========================================================
+=========================================================
+`What is `ulimit` in Linux?`
+=========================================================
+=========================================================
+`ulimit` is a shell command used to control the resources available to the shell and its child processes. It sets limits on various system resources such as file sizes, memory usage, and CPU time to prevent a single user or process from monopolizing system resources.
+
+---
+
+`Why Use `ulimit`?`
+- `Resource Management`: Avoid excessive resource consumption by applications.
+- `System Stability`: Protect against runaway processes that could degrade performance.
+- `Security`: Limit resources available to potentially malicious processes.
+
+---
+
+`Syntax`
+```bash
+ulimit [OPTION] [LIMIT]
+```
+
+- ``OPTION``: Specifies the resource to limit (e.g., file size, open files).
+- ``LIMIT``: The maximum value for the resource (numerical value or `unlimited`).
+
+---
+
+`Common Usage`
+
+`Display Current Limits`
+```bash
+ulimit -a
+```
+Output:
+```
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+file size               (blocks, -f) unlimited
+max user processes      (-u) 12485
+open files              (-n) 1024
+```
+This displays all current resource limits for the shell session.
+
+---
+
+`Options`
+
+`Key Resources Managed by `ulimit``
+
+| Option   | Resource                     | Description                                   |
+|----------|------------------------------|-----------------------------------------------|
+| `-c`     | Core file size               | Max size of core dump files (in blocks).     |
+| `-d`     | Data segment size            | Max size of the process's data segment.      |
+| `-f`     | File size                    | Max file size that a process can create.     |
+| `-n`     | Number of open files         | Max number of open file descriptors.         |
+| `-s`     | Stack size                   | Max stack size for a process.                |
+| `-t`     | CPU time                     | Max CPU time a process can use (in seconds). |
+| `-u`     | Number of user processes     | Max number of processes a user can spawn.    |
+| `-v`     | Virtual memory size          | Max virtual memory available to processes.   |
+
+---
+
+`Examples`
+
+`Set a Limit on File Size`
+Limit the size of files created by the shell:
+```bash
+ulimit -f 5000
+```
+This sets the maximum file size to 5000 blocks (512 KB per block).
+
+`Set a Limit on Open Files`
+Restrict the number of open files:
+```bash
+ulimit -n 100
+```
+This limits processes to open a maximum of 100 files.
+
+`Set Unlimited Resource`
+Allow unlimited file sizes:
+```bash
+ulimit -f unlimited
+```
+
+`Set a Limit on Stack Size`
+Set a stack size limit for processes:
+```bash
+ulimit -s 8192
+```
+This restricts the stack size to 8 MB.
+
+---
+
+`Changing Limits Permanently`
+
+Limits set by `ulimit` are temporary and apply only to the current shell session. To make limits permanent:
+1. Edit the `/etc/security/limits.conf` file:
+   ```
+   username  soft  nofile  1000
+   username  hard  nofile  2000
+   ```
+2. Modify `/etc/pam.d/common-session` and `/etc/pam.d/common-session-noninteractive`:
+   ```
+   session required pam_limits.so
+   ```
+
+3. Reboot the system or re-login for changes to take effect.
+
+---
+
+`Checking Limits for a User`
+Use the `ulimit` command or the `limits` command:
+```bash
+ulimit -a
+```
+OR:
+```bash
+cat /proc/$(pgrep <process_name>)/limits
+```
+
+---
+
+`Practical Use Cases`
+
+1. `Preventing Large File Creation`
+   Prevent programs from creating excessively large files:
+   ```bash
+   ulimit -f 10000
+   ```
+
+2. `Restricting User Processes`
+   Limit the number of processes a single user can spawn:
+   ```bash
+   ulimit -u 50
+   ```
+
+3. `Debugging Core Dumps`
+   Enable core dumps for debugging:
+   ```bash
+   ulimit -c unlimited
+   ```
+
+---
+
+`Notes`
+- Limits are categorized as `soft` (modifiable at runtime) or `hard` (enforced by the kernel).
+- Superusers can increase hard limits; normal users cannot exceed them.
+
+
+=========================================================

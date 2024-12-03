@@ -1,0 +1,27 @@
+what is function in bash shell scripting?
+    - sub shell script 
+        which is called within main script like in HLL 
+    - we may call the main script 
+        with command line args as positional args or options based args 
+      so that similar way only we can run the sub script (function in scripting)
+        function can receive args as positional or options based 
+    
+      positional args of the function will be read as $1 $2 $3 etc 
+      $# number of positional args 
+
+      what is the return value out of the shell scripting function?
+        exit code 
+            -- success code 
+            -- failure code 
+    - how I will receive the output out of the shell scripting function? 
+        by echo'ing result then read it. enough.
+
+
+    Lab: find factorial using function in shell scripting.
+        function name: findFact
+        receives one arg which is number 
+        sends factorial by echoing / printing
+
+        And conduct call to findFact 
+            for the 1. test case 1: input data 5 
+                    2. test case 2: input data 3
