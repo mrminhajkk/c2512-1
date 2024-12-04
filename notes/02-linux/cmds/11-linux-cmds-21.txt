@@ -1,3 +1,40 @@
+chmod dddd file_or_directory
+      0000 [special bits] [user] [group] [other]     
+      1111     [t][T]     [x/s/-]   [x/s/-]    [x/t/T/-]
+      2222       [s]      [w/-]     [w/-]    [w/-]
+      4444       [s]      [r/-]     [r/]    [r/-]
+
+      chmod u+s file      SUID  or `s` Bit
+      chmod 4777 file                             -rwsrwxrwx
+          a special permission 
+          that allows a file to be executed 
+          with the `permissions of its owner`
+
+                          
+      chmod g+s sharedDir      SGID or `g` Bit
+      chmod 2777 sharedDir                        drwxrwsrwx
+        a special permission 
+        that applies to `files` and `directories`. 
+        It changes how files and directories are 
+        accessed and interacted with by users
+
+        useful 
+        for collaborative work environments 
+        where users share a group
+        who are all sharing shared dir 
+
+      chmod +t directory_name     sticky bit (or T bit)
+      chmod 1777 directory_name                     drwxrwxrwt
+      chmod 1776 directory_name                     drwxrwxrwT
+        a special permission bit in Linux that applies to directories. 
+        When set, 
+        it ensures that only the owner of a file 
+        within a directory can delete or rename that file, 
+        even if other users have write access to the directory
+
+        - `t`: Indicates both execute and sticky bit are set for others.
+        - `T`: Indicates sticky bit is set, but execute is not.
+
 1. `Grant all users execute permission`: chmod a+x script.sh
 2. `Restrict file access to the owner only`: chmod 700 secret.txt
 3. `Allow read/write for the owner, and read-only for others`: chmod 644 document.txt

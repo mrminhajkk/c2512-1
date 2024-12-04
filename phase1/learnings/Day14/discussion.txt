@@ -13,10 +13,32 @@ Question to learn linux:
     10
 
     Participants mail ids:
-    Sana E, Nimisha K, Ayisha Dhiyana PS, S T Vishakh, Vinayak S Kaimal, 3 4 5 1 2
-    Josh Danny Alex, Dhaheen Rahman, Nayana Haridas, Pitchumani S M, Bhagya S Kumar=, 2 1 4 3 5
-    Abel Mathew Simon, M Venkatesh,  Sooraj M V, Athira KS, Sreya K, minhaj 5 4 6 3 1 2
+Sana E, Nimisha K, Ayisha Dhiyana PS, S T Vishakh, Vinayak S Kaimal
+Josh Danny Alex, Dhaheen Rahman, Nayana Haridas, Pitchumani S M, Bhagya S Kumar
+Abel Mathew Simon, M Venkatesh,  Sooraj M V, Athira KS, Sreya K, minhaj 
 
+Presenter     Questioner 
+Ayisha      - Josh
+Dhaheen     - Sreya
+Sreya     - Vinayak
+Vishakh     - Nayana
+Josh     - Athira
+Athira     - Vishakh
+Vinayak     - Bhagya
+Pitchumani     - Sooraj
+minhaj     - Sana
+Sana     - Dhaheen
+Nayana     - Abel
+Sooraj     - Venkatesh
+Nimisha     - Pitchumani
+Bhagya     - minhaj
+Abel     - Ayisha
+Venkatesh     - Nimisha
+
+
+3 4 5 1 2
+2 1 4 3 5
+5 4 6 3 1 2
     Evolution of Linux OS 
     Linux Distributions 
     Features of Linux
