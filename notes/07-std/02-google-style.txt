@@ -138,4 +138,5 @@ Google's C++ Style Guide provides a comprehensive set of rules and best practice
 
 ---
 
-For more detailed rules and rationale, refer to [Google's C++ Style Guide](https://google.github.io/styleguide/cppguide.html).
+For more detailed rules and rationale, 
+refer to [Google's C++ Style Guide](https://google.github.io/styleguide/cppguide.html).

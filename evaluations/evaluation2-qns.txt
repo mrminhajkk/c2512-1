@@ -1,0 +1,128 @@
+1.presenter:vinayak
+	1.What is static variable - Mahesh
+	2.Vim commands - Ayisha
+	3.What is class - Nimisha
+	4.Constructor and its types - Vishakh
+2.presenter:Ayisha
+	1.Define static variable (decleration), grep cmd - Nimisha
+	2.ps cmd - Sana
+	3.Usage of friend int main() - Vinayak
+	4.How encapsulation works in the program - Vishakh
+3.presenter:Nimisha
+	1.Vim editor steps - Vinayak
+	2.head and tail - Sana
+	3.sed - vishakh
+	4.Navigation keys in vim editor - Ayisha
+	5.Difference between encapsulation and abstraction - Mahesh
+4.presenter:Vishakh
+	1.Getter/Setter - Nimisha
+	2.How to find and replace text in vim editor - Vinayak
+	3.Different modes in vim editor - Sana
+	4.Function overloading - Ayisha
+5.presenter:Sana
+	1.What is object - Nimisha
+	2.#pragma once - Vinayak
+	3.How to split screen in vim editor - Vishakh
+	4.Access specifiers - Ayisha
+
+=========================================
+
+presenter:Josh:
+    1. What is encapsulation and where have you used encapsulation in your program? (Bhagya)
+    2. What is the listing command in linux to display the file permissions and last updated date and time? (Dhaheen)
+    3. Types of constructor (Nayana)
+    4. Explain Member functions (static and non static data members and function) (Pitchumani)
+
+presenter:Pitchumani:
+    1. How to set line number in vim editor? (Bhagya)
+    2. What is the objective of using pragma once (Josh)
+    3. What is the use of destructor (Nayana)
+    4. How to save and quit in vim editor in a single command (Dhaheen)
+
+presenter:Bhagya:
+    1. What is the numeric notation for assigning file permissions in linux? (Josh)
+    2. What is grep command? (Nayana)
+    3. What is the concept of friend function (Dhaheen)
+    4. Explain function overloading (Pitchumani)
+
+presenter:Nayana:
+    1. Where is Ctrl + w, w used and why is it used? (Josh)
+    2. Difference between Top and free command in linux (Bhagya)
+    3. Explain Encapsulation in oops (Pitchumani)
+    4. Explain member initialization in cpp (Dhaheen)
+
+presenter:Dhaheen
+    1. What are all commands in vim to create tabs for managing files? (Josh)
+    2. How to open multiple files and navigate bewteen each in vim editor? (Bhagya)
+    3. Explain the abstraction concept in oops (Pitchumani)
+    4. Explain the difference between static and non-static member data (Nayana)
+
+=========================================
+
+To Abel
+    Sreya
+    1: Why do we use the friend keyword between classes?
+    Sooraj
+    2: How are OOP concepts like encapsulation and modularity applied in the program?
+    Minhaj
+    3: How do you search for a specific word in a file using Vim?
+    Venkatesh
+    4: What is a destructor, and how is it different from a constructor?
+    Athira
+    5: How can you perform a case-insensitive search using grep?
+————————————————
+To Minhaj
+    Sooraj: 
+        vim command to replace all occurence of a word to another word in a file. 
+    Venkatesh:
+            why we use pragma once. 
+    Sreya:
+        what is static and non static functions and variable.
+    Athira:
+        why we use friend class.    
+    Abel:
+        how to change permission to a user from not executable to executable for a folder and also for a file.
+——————————————-
+To Sooraj
+    Abel : 
+    why we use pragma once in header functions.
+    Minhaj : 
+    sed,tail,head commands in linux 
+    Sreya : 
+    what are the access specifiers.
+    Vekitesh :
+    what is function overloading.
+    Athira : 
+    what are getter and setter.
+———————————————
+To Sreya
+    Venkatesh : How to split screen in vim editor and how to navigate between files.
+    Abel : Who can access private member datas in a class.
+    Athira : What is function overloading 
+    Sooraj : Explain Class and objects.
+    Minhaj : Explain different types of Constructors.
+———————————————-
+To Venkatesh
+    Sreya:
+    How to print contents inside the file in Linux and what is free command in linux?
+    Sooraj:
+    how to search perticular word inside the Linux file(grep command)?
+    Athira:
+    head, tail in Linux?
+    Minhaj:
+    constror and destructor in oops?
+    Abel:
+    why we use pragma once and access specifiers in oops?
+————————————————
+To Athira
+    Sreya:
+    What are the members of a class?
+    Abel:
+    What is constructor and types?
+    Minhaj:
+    Command to copy, delete, save and exit in vim editor
+    Sooraj:
+    What is friend class?
+    Venkatesh:
+    How to add a user, create a group and how to switch to a user?
+=========================================

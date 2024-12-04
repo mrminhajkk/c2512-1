@@ -322,3 +322,503 @@ Modify: 2024-12-01 08:44:36.045898900 +0530
 Change: 2024-12-01 08:44:36.045898900 +0530
  Birth: -
 ```
+
+=========================================================================
+
+The `chmod` command in Linux is used 
+to `change file permissions` 
+for the owner, group, and others. 
+Permissions include `read (r)`, `write (w)`, and `execute (x)`.
+
+---
+
+`Basic Syntax`
+```bash
+chmod [options] mode file
+```
+
+---
+
+`Permission Breakdown`
+
+`Categories`
+1. `Owner` (`u`)  
+   The user who owns the file.
+2. `Group` (`g`)  
+   Users who belong to the file's group.
+3. `Others` (`o`)  
+   All other users.
+4. `All` (`a`)  
+   Applies to owner, group, and others.
+
+`Permissions`
+- `Read` (`r`): View file contents.
+- `Write` (`w`): Modify file contents.
+- `Execute` (`x`): Run the file as a program/script.
+
+`Numeric Representation`
+| Permission | Numeric Value |
+|------------|---------------|
+| `---`      | 0             |
+| `--x`      | 1             |
+| `-w-`      | 2             |
+| `-wx`      | 3             |
+| `r--`      | 4             |
+| `r-x`      | 5             |
+| `rw-`      | 6             |
+| `rwx`      | 7             |
+
+---
+
+`Examples of `chmod` Use Cases`
+
+`1. Setting Permissions Using Symbols`
+- `Give execute permission to the owner:`
+  ```bash
+  chmod u+x file.sh
+  ```
+- `Remove write permission for others:`
+  ```bash
+  chmod o-w file.txt
+  ```
+- `Grant read permission to everyone:`
+  ```bash
+  chmod a+r file.txt
+  ```
+- `Set exact permissions (e.g., `rw-` for the owner, `r--` for others):`
+  ```bash
+  chmod u=rw,o=r file.txt
+  ```
+
+---
+
+`2. Setting Permissions Using Numeric Values`
+- `Full permissions for the owner, none for group and others:`
+  ```bash
+  chmod 700 script.sh
+  ```
+- `Read and execute for everyone, write for the owner:`
+  ```bash
+  chmod 755 file.txt
+  ```
+- `Read and write for the owner and group, none for others:`
+  ```bash
+  chmod 660 data.csv
+  ```
+
+---
+
+`3. Recursive Permission Change`
+- `Change permissions for all files and directories in a folder:`
+  ```bash
+  chmod -R 755 /path/to/directory
+  ```
+
+---
+
+`4. Practical Use Cases`
+- `Make a script executable:`
+  ```bash
+  chmod +x script.sh
+  ```
+- `Restrict access to sensitive files (e.g., `.env` files):`
+  ```bash
+  chmod 600 .env
+  ```
+- `Allow others to execute but not modify a program:`
+  ```bash
+  chmod 555 program
+  ```
+
+---
+
+`Special Permissions`
+
+`1. Set User ID (`s` bit)`
+Allows a file to run with the permissions of its owner.
+```bash
+chmod u+s program
+```
+
+`2. Set Group ID (`g` bit)`
+Allows files in a directory to inherit the group of the directory.
+```bash
+chmod g+s directory
+```
+
+`3. Sticky Bit (`t`)`
+Prevents others from deleting files in a directory unless they own them.
+```bash
+chmod +t /tmp
+```
+
+---
+
+`Tips and Notes`
+1. `View Current Permissions:`
+   ```bash
+   ls -l file.txt
+   ```
+   Example output:
+   ```
+   -rw-r--r--  1 user group 1234 date file.txt
+   ```
+   - `rw-` → Owner can read and write.
+   - `r--` → Group and others can only read.
+
+2. `Default Permissions:`
+   New files and directories have default permissions controlled by the `umask` value.
+
+3. `Verify Changes:`
+   After modifying permissions, verify using `ls -l`:
+   ```bash
+   ls -l file.txt
+   ```
+
+=========================================================================
+
+`Set User ID (SUID or `s` Bit)`
+
+The `Set User ID` (SUID) bit in Linux is a special permission 
+that allows a file to be executed 
+with the `permissions of its owner`, 
+rather than the user who executes it.
+
+---
+
+`How SUID Works`
+- Typically used on executable files.
+- When a program with SUID is run, 
+the process will have `temporary privileges` of the `file owner` (usually `root`) 
+for the duration of execution.
+- Common use case: Allow non-root users 
+to execute programs that require elevated permissions.
+
+---
+
+`Setting SUID`
+You can set the SUID bit using the `chmod` command.
+
+`Symbolic Mode`
+```bash
+chmod u+s file
+```
+
+`Numeric Mode`
+Add `4000` to the file's permission bits:
+```bash
+chmod 4755 file
+```
+
+---
+
+`Checking SUID`
+Use the `ls -l` command. 
+The presence of an `s` 
+in the owner's execute field indicates 
+that the SUID bit is set.
+
+```bash
+ls -l file
+```
+
+`Example Output (SUID Set):`
+```
+-rwsr-xr-x  1 root root  1234 date file
+```
+- `rws`: `s` indicates SUID is enabled for the owner.
+- The file will execute with the `root's privileges` (file owner).
+
+---
+
+`Examples`
+
+`1. Without SUID`
+If a program requires root permissions, 
+running it as a regular user will fail.  
+For example:
+```bash
+passwd
+```
+The `passwd` command requires root access to update `/etc/passwd`.
+
+`2. With SUID`
+When the `passwd` command is set with SUID:
+```bash
+ls -l /usr/bin/passwd
+```
+Output:
+```
+-rwsr-xr-x  1 root root  1234 /usr/bin/passwd
+```
+- The command runs with `root permissions` 
+even when executed by a regular user.
+
+---
+
+`Security Implications`
+- `Risks`: SUID can be exploited 
+to gain unauthorized root access if the program is vulnerable.
+- `Best Practices`:
+  - Avoid setting SUID on custom scripts or untrusted programs.
+  - Use `chmod u-s file` to remove the SUID bit when not needed.
+
+---
+
+`Removing SUID`
+To remove the SUID bit:
+```bash
+chmod u-s file
+```
+
+---
+
+`Common Use Cases`
+1. `System Utilities` (e.g., `passwd`, `ping`, `sudo`):
+   - These need elevated permissions but are usable by regular users.
+2. `Special Scripts or Applications`:
+   - Temporarily grant access to files or 
+   actions without granting full `sudo` privileges.
+
+=========================================================================
+
+`Set Group ID (SGID or `g` Bit)`
+
+The `Set Group ID` (SGID) bit in Linux is 
+a special permission 
+that applies to `files` and `directories`. 
+It changes how files and directories are 
+accessed and interacted with by users.
+
+---
+
+`How SGID Works`
+
+1. `For Files`:
+   - When a file with the SGID bit is executed, 
+   the process will run 
+   with the `permissions of the file's group` 
+   instead of the user's primary group.
+
+2. `For Directories`:
+   - When SGID is set on a directory, 
+   `new files created inside it inherit the directory's group` 
+   rather than the user's primary group.  
+   - This is useful 
+   for collaborative work environments 
+   where users share a group.
+
+---
+
+`Setting SGID`
+
+#`Symbolic Mode`:
+```bash
+chmod g+s file_or_directory
+```
+
+#`Numeric Mode`:
+Add `2000` to the file or directory's permission bits:
+```bash
+chmod 2755 file_or_directory
+```
+
+---
+
+`Checking SGID`
+
+Use `ls -l`. When the SGID bit is set:
+- For `files`: An `s` appears in the group’s execute field.
+- For `directories`: An `s` appears in the group’s execute field.
+
+```bash
+ls -l file_or_directory
+```
+
+`Example Output (SGID Set)`:
+```
+-rwxr-sr-x  1 user group  1234 file
+drwxr-sr-x  2 user group  4096 directory
+```
+
+---
+
+`Examples`
+
+#`1. SGID on Files`
+```bash
+chmod g+s script.sh
+```
+Now, when anyone executes `script.sh`, 
+the process will run 
+with the `group permissions` of the file 
+instead of the user's group.
+
+---
+
+#`2. SGID on Directories`
+```bash
+chmod g+s /shared_directory
+```
+- Any file or subdirectory created 
+inside `/shared_directory` 
+will inherit the `group ownership` of `/shared_directory`.
+
+---
+
+`Removing SGID`
+
+To remove the SGID bit:
+```bash
+chmod g-s file_or_directory
+```
+
+---
+
+`Use Cases`
+
+#`1. Shared Directories`
+- When multiple users collaborate, 
+SGID ensures that all files 
+in a shared directory are owned by the same group:
+  ```bash
+  mkdir /shared
+  chgrp developers /shared
+  chmod g+s /shared
+  ```
+- Any files created in `/shared` will belong to the `developers` group.
+
+#`2. Group-Based Execution`
+- Set SGID on a script or binary so it runs with the group's permissions:
+  ```bash
+  chmod g+s /usr/local/bin/myscript
+  ```
+
+---
+
+`Security Implications`
+- `For Files`:
+  - Use SGID cautiously to avoid unintended privilege escalation.
+- `For Directories`:
+  - Helpful in collaboration but ensure proper group membership to avoid misuse.
+  
+=========================================================================
+
+The sticky bit (or T bit) is 
+a special permission bit in Linux that applies to directories. 
+When set, 
+it ensures that only the owner of a file 
+within a directory can delete or rename that file, 
+even if other users have write access to the directory.
+
+---
+
+Sticky Bit Details
+
+- Symbol in File Permissions: 
+  - Appears as a `t` or `T` 
+  in the execute position of 
+  the others section of a directory's permissions.
+    - `t`: Indicates both execute and sticky bit are set for others.
+    - `T`: Indicates sticky bit is set, but execute is not.
+
+- Primary Use Case: 
+  - Commonly used on shared directories like `/tmp`, where multiple users have write access, but they can only delete or modify their own files.
+
+---
+
+How to Set the Sticky Bit
+
+1. Using `chmod`:
+   - Set the sticky bit:
+     ```bash
+     chmod +t directory_name
+     ```
+   - Alternatively, set using octal mode (e.g., for `1777`):
+     ```bash
+     chmod 1777 directory_name
+     ```
+
+2. To Remove the Sticky Bit:
+   - Remove the sticky bit:
+     ```bash
+     chmod -t directory_name
+     ```
+   - Using octal mode (e.g., for `0777`):
+     ```bash
+     chmod 0777 directory_name
+     ```
+
+---
+
+How to Check for Sticky Bit
+
+- Use `ls -ld` to view permissions:
+  ```bash
+  ls -ld /tmp
+  ```
+  Output:
+  ```
+  drwxrwxrwt 10 root root 4096 Dec  4 08:00 /tmp
+  ```
+  - `t` in the last position indicates the sticky bit is set.
+
+---
+
+Example Usage
+
+#Without Sticky Bit:
+1. Create a shared directory:
+   ```bash
+   mkdir shared_dir
+   chmod 777 shared_dir
+   ```
+2. User A creates a file:
+   ```bash
+   touch shared_dir/file_A
+   ```
+3. User B deletes the file:
+   ```bash
+   rm shared_dir/file_A
+   ```
+   - This will succeed because write permission allows any user to delete files in the directory.
+
+---
+
+#With Sticky Bit:
+1. Enable the sticky bit:
+   ```bash
+   chmod +t shared_dir
+   ```
+2. User A creates a file:
+   ```bash
+   touch shared_dir/file_A
+   ```
+3. User B tries to delete the file:
+   ```bash
+   rm shared_dir/file_A
+   ```
+   - Permission Denied error occurs because only the file's owner (User A) or the root user can delete it.
+
+---
+
+Common Directories Using the Sticky Bit
+
+1. `/tmp`:
+   - Temporary files are stored here, accessible by all users.
+   - Sticky bit ensures users cannot delete each other’s files.
+
+2. Shared Project Folders:
+   - Ensures integrity in directories with shared write access.
+
+---
+
+Sticky Bit vs Other Permission Bits
+
+| Feature          | Behavior                                                                                     |
+|-------------------|----------------------------------------------------------------------------------------------|
+| Sticky Bit    | Prevents users from deleting files they don't own in shared writable directories.            |
+| Setuid        | Allows executable files to run with the file owner's privileges (applies to executables).    |
+| Setgid        | Ensures new files in a directory inherit the group's ownership from the directory.           |
+
+=========================================================================

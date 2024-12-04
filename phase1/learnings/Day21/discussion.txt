@@ -1,0 +1,223 @@
+
+// union Employee {                // class/struct Employee ob = 24 bytes | union Employee ob = 20 bytes
+union Employee {                // class/struct Employee ob = 24 bytes | union Employee ob = 20 bytes
+    int id;         // 4 bytes
+    char name[20];  // 20 bytes Maheswaran Govindar\0
+};
+int main() {
+    Employee employee;
+    
+    strcpy(employee.name, "Maheswaran Govindar");
+    employee.id = 1001;
+
+    cout << "Employee ID: " << employee.id << endl;
+    cout << "Employee Name: " << employee.name << endl;
+
+    cout << "Employee Addr: " << &employee << endl;
+    cout << "Employee ID Addr: " << &employee.id << endl;
+    cout << "Employee Name Addr: " << &employee.name << endl;
+    return 0;
+}
+
+
+gate keeper log app :
+    student :   phone, name, from where, student, batch number, college      = 480
+                                                        10      200
+    staff   :          name,                        1001             = 204
+                                                     4                          
+    guest   :   phone, name, from where, trainer                    = 270 
+                  20    200    100         50       
+
+
+    Log { person_type, student, staff, guest } = 480 + 204 + 270 + 4 = 958      x 1000 x 30 = 28,740,000 = ~28MB 
+            4          480      204      270        
+    Log { person_type, [student / staff / guest]} = 480 + 4 = 484     x 1000 x 30 = 14,520,000 = ~14MB
+            4          480  
+
+
+    union Person {
+        Student staff;
+        Staff staff;
+        Guest guest;
+    };
+    struct Log 
+    {
+        int person_type;
+        Person person;
+    };
+           
+    Log log1;  //   484
+    class person {
+        Student staff;
+        Staff staff;
+        Guest guest;
+    };
+    struct Log 
+    {
+        int person_type;
+        Person person;
+    };
+    Log log1;  // 958
+
+
+
+I like to add two matrix:
+
+const int MAX_ROWS = 10, MAX_COLS = 10;
+class Matrix {
+    private: 
+        int matrix[MAX_ROWS][MAX_COLS];
+        int rows;
+        int cols;
+    public:
+        void read(); // define 
+        void display(); // define 
+        Matrix Add(const Matrix& other)
+        {
+            Matrix third(this->rows, this->cols);
+            for(int I = 0; I < rows; I++)
+            {
+                for(int J = 0; J < cols; J++)
+                {
+                    third.matrix[I,J] = this->matrix[I,J] + other.matrix[I,J];
+                }
+            }
+            return third;
+        }
+        Matrix(int rows, int cols) : rows(rows), cols(cols) { }
+};
+
+
+what is operator overloading?
+    to give defintion of the operator to the user objects 
+    for instance 
+        to add two fractions, we will define + operator for fraction objects.
+        to overload ostream operator << for fractions, we can print the fraction using 'cout'.
+        to overload istream operator >> for fractions, we can read the fraction using 'cin'.
+
+    Fraction f1(1, 2); // Represents 1/2
+    Fraction f2(2, 3); // Represents 2/3
+
+    Fraction f3 = f1.Add(f2);
+    //OR 
+    Fraction sum1 = f1 + f2;
+
+    cout << "sum of " << f1 << " and " << f2 << " is " << sum1 << "." << endl;
+
+
+    operator+
+    operator<<
+
+    member operator         +   
+    OR 
+    non-member operator     +   <<  >>
+
+
+    Fraction operator+(const Fraction& other); // member operator 
+
+    Fraction f3 = f1.operator+(f2);
+    Fraction f3 = f1 + f2;
+
+    Fraction operator+(const Fraction& frist, const Fraction& second); // non-member operator (friend)
+
+    Fraction f3 = operator+(f1, f2);
+    Fraction f3 = f1 + f2;
+
+
+
+void display() {
+            cout << this->numerator << "/" << this->denominator;
+        }
+
+
+
+// driver code 
+cout << "sum of ";
+f1.display();
+cout << " and ";
+f2.display();
+cout << " is ";
+result.display();
+cout << "." << endl;
+
+
+cout << "sum of " << f1 << " and " << f2 << " is " << result << "." << endl; // "sum of "
+cout << f1 << " and " << f2 << " is " << result << "." << endl;  // "sum of " f1 
+cout << " and " << f2 << " is " << result << "." << endl; // "sum of " f1 " and " 
+cout << f2 << " is " << result << "." << endl; // "sum of " f1 " and " f2 
+cout << " is " << result << "." << endl;
+
+
+operator<<(
+    operator<<(
+        operator<<(
+            operator<<(
+                operator<<(
+                    operator<<(
+                        operator<<(
+                                operator<<(cout,"sum of "),f1
+                        ),  " and "
+                    ), f2
+                ), " is 
+            ), result
+        ), "."
+    ), endl
+);
+.....
+
+// driver code // if 'operator<<' for fraction return value is void then calls:
+cout << "sum of ";
+cout << f1; // cout.operator<<f1()
+cout << " and ";
+cout << f2;
+cout << " is ";
+cout << result;
+cout << "." << endl;
+
+
+=====================================
+
+
+Matrix operator+(const Matrix& other)
+{
+    Matrix third(this->rows, this->cols);
+    for(int I = 0; I < rows; I++)
+    {
+        for(int J = 0; J < cols; J++)
+        {
+            third.matrix[I,J] = this->matrix[I,J] + other.matrix[I,J];
+        }
+    }
+    return third;
+}
+
+Lab: 
+    for fractions:
+        implement :
+            + 
+            <<
+            ==
+            !=
+            < 
+            <= 
+            > 
+            >=
+        ----------
+            >>
+        ----------
+            result = ++f;
+            result = f++;
+        ----------
+    list of operators:
+        both member operator and non-member 
+        only non-member
+
+    generally understand the BODMAS     
+        B: Brackets (Parentheses)
+        O: Orders (Exponents and Roots, i.e., powers and square roots, etc.)
+        D: Division
+        M: Multiplication
+        A: Addition
+        S: Subtraction 
+    precedence of operators. 
+        (Precedence Level, Associativity)
