@@ -14,9 +14,190 @@ C++
 =========================================================================
 
 alloc, de'alloc 
+=========================================================================
+#include <iostream>
+#include <string>
+using namespace std;
+
+string username = "Sooraj";
+int main() {
+    int id = 100;
+
+    return 0;
+}
+============================================================
+// user_mgr.h
+void display_username();
+============================================================
+// user_mgr.cpp
+#include <iostream>
+#include "user_mgr.h"
+using namespace std;
+
+extern string username;
+void display_username() {
+    cout << "Username: " << username << endl;
+}
+============================================================
+
+what is local variable?
+    "
+    the variable declared inside the function 
+    and 
+    arguments of the function 
+    are called 
+    local variables. "
+
+    visibility: only within the function  
+    life-time: only within the function
+    definition of local variable without initialization: 
+            by defualt the value is garbage 
+    is there declaration for local variable? 
+        No. Declaration and Definition are at a time. 
+
+what is global variable?
+    "
+    the variable common to all the functions 
+    whose memory allocated only once 
+    and alive throughout the program 
+    "
+    visibility: througout entire the program  ie every function 
+    life-time: througout entire the program
+    definition of global variable without initialization: 
+            by defualt the value is 0
+            (all the bits of memory are 0)
+    is there declaration for global variable? 
+        Yes. 
+        There is declaration of global variable by extern keyword. 
+        Then the global variable will be defined later in any module. 
+
+what is variable declaration?
+    "introduce the identifier name for the variable" variable declaration 
+    so that compiler aware the identifier 
+
+    Number of time to declare the variable? 
+        Only one time 
+
+    1. static member data of class is declared in the class definition 
+       static member data will be defined outside the class definition 
+    2. global variable can be declared in many modules using extern keyword
+       global variable can be defined later in one of modules 
+            generally it is main module 
+what is variable definition?
+    memory allocation of the variable 
+    is variable definition 
+what is function declaration? Number of time declartion: only one time 
+    "introduce the identifier name for the function
+    with signature
+    such return type and args types of fn" variable declaration
+what is function definition? 
+    "implementation of the code of the function" 
+what is variable memory allocation? 
+    variable definition 
+what is extern keyword?
+    global variable declaration 
+what are all storage classes in C++?
+
+    What was there in C lang? 
+                                     local              global              local to vis 
+                                                                            global to life time 
+                                  ---------------   ----------------     ----------
+    in C lang:: storage classes : auto, register,   external(global),      static 
+                    declaration   fn     fn              outside all fns      fn 
+                    visibility    fn     fn             throughout prg        fn       
+                    life-time     fn     fn             throughout prg        throughout prg
+                    memory        stack  cpu register   global section        global section   
+                                  addr   no addr        addr                  addr 
+
+    Now what is in C++ lang? 
+        register storage class is removed from c++ 11.
+        keyword auto was used in C for automatic storage class. 
+        Now, no need to use auto keyword for the variables
+
+        Now, from C++ 11, the keyword auto takes different meaning 
+        not for storage class ****
+
+        auto takes the meaning "automatic type deducer".
+
+                                     local              global              local to vis 
+                                                                            global to life time 
+                                  ---------------   ----------------     ----------
+  in C++ lang::storage classes :                      external(global),      static 
+                    declaration   fn                  outside all fns        fn 
+                    visibility    fn                  throughout prg         fn       
+                    life-time     fn                  throughout prg         throughout prg
+                    memory        stack                 global section        global section   
+                                  addr                  addr                  addr 
+    
+
+What is usage of static keyword in C language? 
+    In C lang, 
+    1. static keyword used for static storage class variable 
+    2. static keyword used to specify the function as private to the module 
+
+    C lang :
+        1. Hospital Management System 
+            Patient.h 
+                void patient_create();
+            Doctor.h 
+                void doctor_create();
+            Patient Management (Patient.c)
+                #include "Patient.h"
+                static void _create() {
+                    //actual code for patient create functionality 
+                }
+
+                void patient_create()
+                {
+                   _create();     
+                }
+            Doctor Management (Doctor.c)
+                #include "Doctor.h"
+                static void _create() {
+                    //actual code for doctor create functionality 
+                }
+
+                void doctor_create()
+                {
+                   _create();     
+                }
+What is usage of static keyword in C++ language? 
+    In C lang, 
+    1. static keyword used for static storage class variable 
+    2. static keyword used to specify the function as private to the module 
+    3. static keyword used to specify class level members 
+        we call it as "static members of the class" 
 
 
+Talk about memory layout of C++ program/process.
+    1. CL args + env vars 
+    2. stack                            : arg, local vars 
+    3. heap                             : dynamic mem 
+    4. global                           : global vars = external + static 
+        4.1. unintialized data (bss)    
+        4.2. intialized data 
+    5. text                             : main, functions etc code 
+
+    stack and heap grows opposite direction. 
+
+============================================================
+memory 
+pointer 
+dynamic memory 
 
 
-
+void f(int index)
+{
+    cout << "index=" << index << endl;
+    int id = 100                                    // value 
+    cout << "id=" << id << endl;                    // value 
+    cout << "size of id=" << sizeof(id) << endl;    
+    cout << "addr of id=" << (&id) << endl;         // reference of id: addr
+    cout << "value of id=" << (*(&id)) << endl;     // dereference the reference : value 
+    cout << "addr of id=" << (&(*(&id))) << endl;   // reference of value : addr 
+    cout << "value of id=" << (*(&(*(&id)))) << endl; // dereference the ref : value 
+}
      
+
+//pointer | dynamic memory 
+// c dynamic memory vs c++ dynamic memory 
