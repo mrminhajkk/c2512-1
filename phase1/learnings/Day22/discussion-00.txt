@@ -1,0 +1,90 @@
+C++ 
+    class, object 
+    constructor, destructor
+
+    class Car {
+        private: 
+            string model;
+            string brand;
+            int yearOfManufacturing;
+        public: 
+            void read() { /* code here to read data from keyboard */ }
+            void print() { /* code here to print member data on console */ }
+            Car() {  }  
+            ~Car() { }
+    };
+
+    //driver code | user code 
+
+    int main() {
+        Car car1;
+        car1.read();
+        car1.print();
+
+        Car car2;
+        car2.read();
+        car2.print();
+
+        return 0;
+    }
+    Option A: 
+    // car1 construction car1 fns car1 destruction 
+    // car2 construction car2 fns car2 destruction 
+
+    Option B: 
+    // car1 construction car1 fns  
+    // car2 construction car2 fns 
+    // car1 destruction
+    // car2 destruction 
+
+    Option C: 
+    // car1 construction car1 fns  
+    // car2 construction car2 fns 
+    // car2 destruction 
+    // car1 destruction
+
+    Option D: 
+    I dont know 
+
+======================================
+N-tier architecture 
+    1. 1-tier 
+    2. 2-tier 
+    3. N-tier 
+    4. N-tier 
+======================================
+
+file permission :
+    executable 
+        root user 
+
+        abelteam group | abel, sreya, athira, sooraj, minhaj, venkatesh 
+
+        $su minhaj 
+
+        /home/root      home dir of root user 
+
+        crud02.out      ---x--x--x              
+        script.sh
+
+        statements
+        (i) if you run at root user: It will run. 
+        (ii) if you run at abelteam group user for example minhaj: It will run. 
+
+        Options: 
+        A) i and ii are correct
+        B) i may be correct and ii is right 
+        C) i and ii are wrong 
+        D) i may be correct and ii is wrong 
+        E) I dont know 
+======================================
+        sudo ? 
+
+
+        sudo ./script11.sh 
+
+
+SUID            s bit       =====  u+s          WHY?  file (executable). sudo 
+SGID            g bit       =====  g+s          WHY?  dir "abelteamshared" - dev team [abelteam]  
+sticky bit      t/T bit     =====  +t +T        WHY?  dir "abelteamshared" - abelteam dont want to delete the files in dir   
+                                                    abelteamshared      drwxrws--T

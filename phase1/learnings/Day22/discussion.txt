@@ -1,0 +1,22 @@
+C++ 
+    class, object
+    constructor, destructor = resource init, resource release[/destroy]
+
+    operator overloading : to give definition of the particular operator 
+                           to operate on objects of user defined data type 
+
+    one operator operates different types of data: overloading op 
+    samed named many functions                   : overloading fn 
+        having different types of args 
+                         order of args 
+                         number of args 
+    more than one constructor                   : overloading constructor 
+=========================================================================
+
+alloc, de'alloc 
+
+
+
+
+
+     
