@@ -201,3 +201,116 @@ void f(int index)
 
 //pointer | dynamic memory 
 // c dynamic memory vs c++ dynamic memory 
+
+
+
+C code for dynamic memory 
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+
+int main() {
+    //int* ptrId;//WILD PTR 
+    int* ptrId = NULL;//WILD behaviour is not there
+    //cout << "dyn mem=" << *ptrId << endl;
+    ptrId = (int*)malloc(sizeof(int));//void*
+    *ptrId = 100;
+    cout << "addr of dyn mem=" << ptrId << endl;
+    cout << "dyn mem=" << *ptrId << endl;
+
+    //free(ptrId);
+    //cout << "dyn mem=" << *ptrId << endl;//Dangling PTR
+
+    free(ptrId);
+    ptrId = NULL; //No dangling 
+    //cout << "dyn mem=" << *ptrId << endl;//Dangling PTR access is not possible 
+    return 0;
+}
+
+
+//
+1. Dont declare pointer with garbage 
+   OR 
+   Declare pointer with NULL / nullptr 
+    to avoid WILD ptr 
+2. After dealloc make poiter as NULL 
+ to avoid dangling pointer
+
+3. what is dynamic memory management? 
+    every alloc' there must be dealloc'. - dynamic memory management 
+    "every 'new' op there must be call for 'delete' op'" - memory management 
+
+    what is memory dismanagement? 
+    all alloc' mem blocks to be dealloc'ed. 
+    If such thing is not happening, 
+    then we call it as memory dismanagement.
+
+    what is memory leak / memory hole? 
+    Program some functions 
+        if alloc'ted mem blocks are not dealloc'ed 
+        and no longer used also 
+        and they will not be used further also 
+        then it is called memory hole. 
+4. what is option available nowaday to do mem mgment or 
+ non-mem dismgmt?
+
+    using smartpointers in C++.
+
+
+5. diff bt c and c++ dynamic mem:
+
+points                  C                       c++ 
+--------------------------------------------------------------------
+alloc'                  malloc / calloc         new operator 
+                        mem mgnt fns            keyword 
+--------------------------------------------------------------------
+dealloc'                free                    delete operator 
+                        mem mgnt fns            keyword 
+--------------------------------------------------------------------
+init                    calloc init as 0        initialize the value        ***
+                        malloc will not init        
+--------------------------------------------------------------------
+return type             void*                   data type given new operator 
+                        manual cast             automatic casting to type given     *** 
+                                                in new operator 
+--------------------------------------------------------------------
+size                    mention size of         size is calculated using    ***
+                        mem blcok manually      type in new operator 
+--------------------------------------------------------------------
+constructor             not called              called              ************
+of an object    
+--------------------------------------------------------------------
+destructor             not called              called               ************
+of an object              
+--------------------------------------------------------------------
+
+what is array? 
+    "array is variable to hold multiple data 
+        and each data is accessed index number"
+
+    "
+    indexed sequencial multiple data 
+    "
+
+    "
+    built-in data type to hold multiple data of same type 
+    we declare array to hold multiple data 
+    as 
+        TYPE arr[SIZE];
+
+        Here, arr is name of the array. 
+    "
+
+    int ids[4];
+
+    here ids is the array of size 4.
+
+    to access elements of the array 
+    ids[0] to access first element 
+    ids[1] to access second element 
+    etc 
+
+
+    array is constant pointer
+    which holds base address. 
