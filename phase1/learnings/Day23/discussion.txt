@@ -1,0 +1,187 @@
+O[O]P - inheritance 
+
+1. Abel, Josh, Vishak, Daheen 
+
+Abel: 
+What is inheritance? 
+    Inheritance is a fundamental concept in object-oriented programming (OOP) 
+    that allows a class to inherit 
+        properties and 
+        behaviors (methods) 
+        from another class. 
+        
+    The class that inherits is called the subclass or derived class or child class, and 
+    the class being inherited from is called the superclass or base class or parent class. 
+    This promotes 
+        code reusability and 
+        establishes a natural hierarchy between classes.
+
+What is inheritance in C++? 
+    In C++, inheritance is implemented using the `:` symbol followed by the access specifier (public, protected, or private) and the name of the base class. For example:
+
+    ```cpp
+    class Base {
+    public:
+        void display() {
+            cout << "Base class display function" << endl;
+        }
+    };
+
+    class Derived : public Base {
+    public:
+        void show() {
+            cout << "Derived class show function" << endl;
+        }
+    };
+
+    int main() {
+        Derived obj;
+        obj.display(); // Calls Base class function
+        obj.show();    // Calls Derived class function
+        return 0;
+    }
+    ```
+
+    In this example, `Derived` class inherits from `Base` class. 
+    The `Derived` class can access the public members of the `Base` class.
+
+
+C++ inheritance syntax: private, public, protected
+    class Animal {
+        //
+    };
+
+    class Lion : virtual public Animal { //here public is type of inheritance 
+        //
+    };
+
+    class Lioness : virtual public Animal {     //diamond problem
+        //
+    };
+
+    class Cub : public Lion, public Lioness {
+        //
+    };
+
+Some of classes we will plan: [categorization]
+    Animal -> Lion      -> CubLion 
+           -> Lioness   -> CubLioness 
+
+                                    props        behaviors 
+                Animal              name, age  | walk, eat, sound 
+                /    \                           ==================
+            Lion      Lioness       *weight      [polymorphic] behavior are overridable [changeable] 
+               \      /                           many forms   
+                 Cub 
+                /   \                               - totally redefine [newly defined behavior]
+            CubLion  CubLioness                     - modify [parent + child]
+
+
+            Smell behaviour for the cat is 
+                type of the smell 
+                    1. rat  (arg)
+                    2. milk (arg)
+
+                    smell(rat)      overloading 
+                    smell(milk)
+Case #0 : Talk about Lion and Lioness eat() behavior 
+            Animal : eat() 
+            Lion: eat() 
+            Lioness: eat() 
+
+            Lion kopa; //c++ allows parent class ptr to hold addr of child class obj 
+            Lioness nala;
+
+            kopa.eat(); // call to Lion eat()
+            nala.eat(); // call to Lioness eat()
+
+Case #1 : Talk about Lion and Lioness eat() behavior 
+            Animal : eat() 
+            Lion: eat() 
+            Lioness: eat() 
+
+            Animal* kopa = &Lion(); //c++ allows parent class ptr to hold addr of child class obj 
+            Animal* nala = &Lioness();
+
+            kopa->eat(); // call to Animal eat()
+            nala->eat(); // call to Animal eat()
+
+Case #2 : Talk about Lion and Lioness eat() behavior 
+            Animal :virtual  eat()              [vtable, vptr]
+            Lion: eat() override 
+            Lioness: eat() override
+
+            Animal* kopa = &Lion();
+            Animal* nala = &Lioness();
+
+            kopa->eat(); // call to Lion eat()
+            nala->eat(); // call to Lioness eat()
+
+Case #3: Order of constr, destr of the object 
+        inheritance in C++ order of constr, destr calls: 
+            Animal 
+            Lion 
+
+            Lion kopa("kopa", 5, 200);
+                here kopa is of type Lion. 
+                1. kopa Animal constr code block 
+                2. kopa Lion constr code block
+                ... kopa's behaviors  
+                3. kopa Lion destr code block 
+                4. kopa Animal destr code block 
+            
+
+Case #4: Order of constr, destr of parent ptr to child object             
+           
+            Animal* kopa = new Lion("kopa", 5, 200);
+                here kopa is of type Animal*. 
+                1. kopa Animal constr code block 
+                2. kopa Lion constr code block
+                ... kopa's behaviors  
+                //3. kopa Lion destr code block 
+                4. kopa Animal destr code block will not be called
+
+                Here, to make "kopa Lion destr code block  to get called"
+                    we have to specify Animal destr as "virtual" 
+
+                delete kopa;
+
+
+==========================================================================
+
+what is inheritance? 
+what is parent class? 
+what is child class? 
+what is the order of constr and destr for parent-child inheritance? 
+what is polymorphism? 
+    - overloading
+        - function overloading 
+        - operator overloading 
+        - constructor overloading  
+    - overriding 
+        static binding: parent-child same named polymorphic behavior via child object directly 
+            compile-time polymorphism/overriding/binding
+        dynamic binding: parent-child same named polymorphic behavior via parent ref to child object 
+            run-time polymorphism/overriding/binding
+            -- virtual+override combo by prgr && vtable+vptr by compiler 
+what is pure virtual function? 
+what is virtual destructor?
+what is private/protected/public inheritance? 
+what is diamond problem?
+    what is virtual inheritance?
+what is vtable + vptr?
+
+==========================================================================
+                Animal -> Dog       [single level inheritance]
+relationship    parent    child 
+behaviors       Eat()     Bar() 
+
+
+
+==========================================================================
+OOP types of inheritance:
+    1. single level inheritance: Animal -> Lion 
+    2. multi level inheritance: Animal -> Lion -> Cub -> CubLion
+    3. multiple inheritance: {Lion, Lioness} -> Cub 
+    4. hierachical inheritance: Animal -> Lion, Animal -> Lioness 
+    5. hybrid : Animal -> Lion, Animal -> Lioness, {Lion, Lioness} -> Cub

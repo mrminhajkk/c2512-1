@@ -1,0 +1,100 @@
+Syntax for declare / define variable (object): [static/compile-time/stack block]
+    T v = data; 
+    T v {data};
+
+    Here, T is the data type.  T::int, float, double etc struct / class / union / enum etc 
+          v is variable / object name.
+          data is of T which is initial data, optional wrt compiler,
+          mandatory wrt coding std. 
+
+    a int block to be alloc'ed:
+        int num;
+        OR 
+        int num = 10;
+        OR 
+        int num {10};
+
+    Employee { id, name, age, salary, job_title } object 
+    an Employee block to be alloc'ed:
+        Employee minhaj; 
+        Employee minhaj(101, "Minhaj", 23, 10000, "Software Eng.");
+        mployee minhaj {101, "Minhaj", 23, 10000, "Software Eng."};
+
+Syntax for defining dynamic mem: [dynamic/run-time/heap block]
+    T* p = new T {data};
+    Here, T is the data type.  T::int, float, double etc struct / class / union / enum etc 
+          p is pointer to created.
+          data is of T which is initial data, optional wrt compiler,
+          mandatory wrt coding std. 
+
+    a int block to be alloc'ed:
+        int* pnum = new int;
+        OR 
+        int* pnum = new int {10};
+
+    Employee { id, name, age, salary, job_title } object 
+    an Employee block to be alloc'ed:
+        Employee* pminhaj = new Employee(101, "Minhaj", 23, 10000, "Software Eng.");
+        OR
+        Employee* pminhaj = new Employee {101, "Minhaj", 23, 10000, "Software Eng."};
+
+    Point to note for heap block:
+        We must dealloc' the heap block. 
+
+        delete pnum;
+        pnum = nullptr;
+
+        delete pminhaj; 
+        pminhaj = nullptr;
+
+
+
+Syntax for static array: [static/compile-time/stack blocks]
+    T a[size]; 
+    T a[size] {data-as-initializer};
+
+    Here, T is the data type.  T::int, float, double etc struct / class / union / enum etc 
+          a is array name which is the constant pointer ie holds the base addr ie addr of first element.
+          data is of T which is initial data, optional wrt compiler,
+          mandatory wrt coding std. 
+
+    a int array to be alloc'ed:
+        int nums[4];
+        OR 
+        int nums[4] {10,20,30,40};
+
+    Employee { id, name, age, salary, job_title } object 
+    an Employee array to be alloc'ed:
+        Employee employees[3] {Employee(101, "Minhaj", 23, 10000, "Software Eng."), 
+                              Employee(101, "Josh", 22, 8000, "Software Eng."),
+                              Employee(101, "Sooraj", 23, 11000, "Software Eng.")} ;
+
+
+Syntax for dynamic array: [dynamic/run-time/heap blocks
+    T* a = new T[size]; 
+    T* a = new T[size] {data-as-initializer};
+
+    Here, T is the data type.  T::int, float, double etc struct / class / union / enum etc 
+          a is pointer to blocks which holds base block addr.
+          data is of T which is initial data, optional wrt compiler,
+          mandatory wrt coding std. 
+
+    a int dynamic array to be alloc'ed:
+        int* nums = new int[4];
+        OR 
+        int* nums = new int[4] {10,20,30,40};
+
+    Employee { id, name, age, salary, job_title } object 
+    an Employee dynamic array to be alloc'ed:
+        Employee* employees = new Employee[3] {Employee(101, "Minhaj", 23, 10000, "Software Eng."), 
+                              Employee(101, "Josh", 22, 8000, "Software Eng."),
+                              Employee(101, "Sooraj", 23, 11000, "Software Eng.")} ;
+
+    Point to note for heap blocks:
+        We must dealloc' the heap blocks. 
+
+        delete[] nums;
+        nums = nullptr;
+
+        delete[] employees; 
+        employees = nullptr;

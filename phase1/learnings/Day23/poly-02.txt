@@ -1,0 +1,142 @@
+`Method Overloading`
+
+`Definition:`  
+Method overloading occurs when two or more methods 
+in the same class have the same name 
+but different parameter lists (i.e., different number, types, or both of parameters). 
+It allows you to define multiple methods that perform similar tasks, 
+but on different types or numbers of parameters.
+
+`Conditions for Method Overloading:`
+1. `Same method name`: 
+The methods must have the same name.
+2. `Different parameter list`: 
+The methods must have different parameters (either in number, order, or type).
+3. `Return type can be same or different`: 
+The return type is not considered when overloading methods. 
+It can be the same or different but does not play a role in overloading.
+4. `It occurs within the same class`: 
+Method overloading happens within the same class. 
+If methods with the same name and 
+different parameters exist in different classes, 
+it is not considered overloading.
+
+`Example:`
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class MathOperations {
+public:
+    // Method to add two integers
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    // Overloaded method to add three integers
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Overloaded method to add two doubles
+    double add(double a, double b) {
+        return a + b;
+    }
+};
+
+int main() {
+    MathOperations math;
+    cout << "Sum of 2 integers: " << math.add(10, 20) << endl;         // Calls add(int, int)
+    cout << "Sum of 3 integers: " << math.add(10, 20, 30) << endl;      // Calls add(int, int, int)
+    cout << "Sum of 2 doubles: " << math.add(10.5, 20.5) << endl;       // Calls add(double, double)
+
+    return 0;
+}
+```
+
+`Method Overriding`
+
+`Definition:`  
+Method overriding occurs when a derived class 
+provides a specific implementation of a method 
+that is already defined in its base class. 
+The method signature in the derived class 
+must be the same as in the base class.
+
+`Scenario for Overriding:`
+- It is used when you want the derived class 
+to change or extend the behavior of a method defined 
+in the base class.
+- The base class method should be marked as `virtual`, 
+and the derived class method 
+should use the `override` keyword (in modern languages like C++11 and beyond).
+
+`Key Conditions for Method Overriding:`
+1. `Same method signature`: 
+The method in the base class and derived class 
+must have the same name, return type, and parameter list.
+2. `Access modifiers`: 
+The access modifier in the derived class 
+should be the same or more permissive (e.g., public or protected). 
+It cannot be more restrictive.
+3. `Virtual keyword`: 
+The method in the base class must be declared 
+with the `virtual` keyword to allow overriding in the derived class.
+4. `Use of `override` keyword (in some languages)`: 
+In modern C++, we can use the `override` keyword 
+to indicate that the method is meant to override a base class method.
+
+`Example:`
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// Base class
+class Animal {
+public:
+    // Virtual method to allow overriding in derived classes
+    virtual void sound() {
+        cout << "Animal makes a sound." << endl;
+    }
+};
+
+// Derived class
+class Dog : public Animal {
+public:
+    // Overriding the sound method in the derived class
+    void sound() override {
+        cout << "Dog barks!" << endl;
+    }
+};
+
+int main() {
+    Animal* animal = new Dog(); // Polymorphism: base class pointer to derived class object
+    animal->sound(); // Calls Dog's sound method (overridden)
+
+    delete animal;
+    return 0;
+}
+```
+
+`Difference Between Method Overloading and Method Overriding`
+
+| `Criteria`                   | `Method Overloading`                                         | `Method Overriding`                                               |
+|---------------------------------|----------------------------------------------------------------|--------------------------------------------------------------------|
+| `Definition`                  | Multiple methods with the same name but different parameters. | A method in a derived class that has the same signature as in base class. |
+| `Occurrence`                  | Happens within the same class.                                | Happens between base class and derived class.                     |
+| `Method Signature`            | Must differ in number, type, or order of parameters.         | Must have the same method signature (name, return type, parameters). |
+| `Return Type`                 | Return type can be the same or different.                    | Return type must be the same in both base and derived classes.     |
+| `Polymorphism`                | Does not support runtime polymorphism.                       | Supports runtime polymorphism (dynamic dispatch).                 |
+| `Access Modifier`             | No restrictions; any access level can be used.               | Derived class method must have the same or less restrictive access than the base class method. |
+| `Binding Type`                | Static Binding (early binding).                              | Dynamic Binding (late binding).                                    |
+| `Purpose`                      | To create multiple methods performing similar tasks for different parameters. | To change or extend the behavior of a base class method in the derived class. |
+
+`Summary:`
+
+- `Overloading` is a compile-time concept where you have multiple methods 
+with the same name but different parameters in the same class.
+- `Overriding` is a runtime concept that occurs 
+when a derived class provides a specific implementation 
+for a method already defined in its base class.

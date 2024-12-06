@@ -1,0 +1,189 @@
+`Polymorphism`
+
+`Definition:`  
+Polymorphism is one of the core concepts of Object-Oriented Programming (OOP) 
+that allows objects to be treated as instances of their parent class. 
+The term polymorphism means "many forms," and 
+it refers to the ability of one function, method, or operator 
+to work in multiple ways depending on the context.
+
+In simple terms, polymorphism allows you 
+to perform a single action in different ways.
+
+`Advantages of Polymorphism:`
+1. `Code Reusability`: Polymorphism allows for reusing code and methods. 
+A common interface is defined, 
+and the implementation can differ based on the type of object being used.
+2. `Maintainability`: It makes the code more maintainable and flexible. 
+Changes to the base class can propagate to derived classes 
+without changing the entire code.
+3. `Extensibility`: New classes can be added with minimal changes to existing code. 
+This is particularly useful in large systems 
+where new features or functionality need to be added.
+4. `Dynamic Behavior`: Polymorphism enables dynamic method binding at runtime, 
+allowing the behavior of the method to be decided 
+at runtime based on the object type.
+5. `Cleaner Code`: It helps reduce complexity 
+by allowing similar actions on objects of different types, 
+improving the readability and simplicity of the code.
+
+---
+
+`Types of Polymorphism`
+
+1. `Compile-time Polymorphism (Static Polymorphism)`:
+   - This type of polymorphism is resolved during compile time.
+   - It occurs when a function or method can behave 
+   in multiple ways based on its parameters, 
+   but this is determined at compile time.
+   - `Method Overloading` and `Operator Overloading` 
+   are examples of compile-time polymorphism.
+
+   `Example:`
+
+   ```cpp
+   #include <iostream>
+   using namespace std;
+
+   class Calculator {
+   public:
+       int add(int a, int b) {
+           return a + b;
+       }
+
+       double add(double a, double b) {
+           return a + b;
+       }
+   };
+
+   int main() {
+       Calculator calc;
+       cout << "Sum of integers: " << calc.add(5, 10) << endl;     // Calls add(int, int)
+       cout << "Sum of doubles: " << calc.add(5.5, 10.5) << endl;   // Calls add(double, double)
+       return 0;
+   }
+   ```
+
+2. `Runtime Polymorphism (Dynamic Polymorphism)`:
+   - This type of polymorphism is resolved at runtime, 
+   usually when the exact method to be called is determined 
+   based on the object type at runtime.
+   - It is achieved through `method overriding` 
+   (inheritance) and `virtual functions`.
+   - It is commonly used with base class pointers or references 
+   that point to derived class objects.
+   
+   `Example:`
+
+   ```cpp
+   #include <iostream>
+   using namespace std;
+
+   class Animal {
+   public:
+       virtual void sound() {  // Virtual function for dynamic binding
+           cout << "Animal makes a sound." << endl;
+       }
+   };
+
+   class Dog : public Animal {
+   public:
+       void sound() override {
+           cout << "Dog barks!" << endl;
+       }
+   };
+
+   class Cat : public Animal {
+   public:
+       void sound() override {
+           cout << "Cat meows!" << endl;
+       }
+   };
+
+   int main() {
+       Animal* animal1 = new Dog();  // Base class pointer to derived class object
+       Animal* animal2 = new Cat();
+
+       animal1->sound();  // Dog's sound() method
+       animal2->sound();  // Cat's sound() method
+
+       delete animal1;
+       delete animal2;
+
+       return 0;
+   }
+   ```
+
+---
+
+`Types of Binding`
+
+1. `Early Binding (Static Binding)`:
+   - `Definition:` Early binding occurs 
+   when the method to be called is determined at compile time.
+   - `Characteristics:`
+     - The method or function is bound to the object at compile time.
+     - It is usually associated with method overloading or 
+     function calls with fixed parameters.
+     - It is faster because the compiler already knows which method to call.
+   
+   `Example:`
+   ```cpp
+   class Animal {
+   public:
+       void sound() {
+           cout << "Animal makes a sound." << endl;
+       }
+   };
+   ```
+
+2. `Late Binding (Dynamic Binding)`:
+   - `Definition:` Late binding occurs 
+   when the method to be called is determined at runtime.
+   - `Characteristics:`
+     - It is typically used with virtual functions.
+     - The method call is resolved based on the actual object type at runtime, 
+     not the reference or pointer type.
+     - This is more flexible but slightly slower 
+     due to the runtime overhead of determining which method to call.
+   
+   `Example:`
+   ```cpp
+   class Animal {
+   public:
+       virtual void sound() {  // Virtual function
+           cout << "Animal makes a sound." << endl;
+       }
+   };
+
+   class Dog : public Animal {
+   public:
+       void sound() override {  // Override the virtual function
+           cout << "Dog barks!" << endl;
+       }
+   };
+   ```
+
+---
+
+`Summary of Differences Between Early and Late Binding:`
+
+| `Criteria`              | `Early Binding (Static Binding)`                                   | `Late Binding (Dynamic Binding)`                                       |
+|---------------------------|----------------------------------------------------------------------|-------------------------------------------------------------------------|
+| `Time of Resolution`     | Determined at compile time.                                          | Determined at runtime.                                                   |
+| `Speed`                  | Faster due to compile-time resolution.                               | Slower due to runtime resolution.                                        |
+| `Flexibility`            | Less flexible, because methods are resolved during compilation.      | More flexible, as methods are resolved at runtime based on object type. |
+| `Functionality`          | Used in function overloading, method invocation, etc.                | Used in method overriding, virtual functions, polymorphism, etc.        |
+| `Memory Usage`           | Uses less memory as the binding is done at compile time.            | Requires extra memory to store function pointers for dynamic resolution. |
+
+---
+
+`Summary:`
+- `Polymorphism` enables methods to behave differently 
+based on the type of object they are acting on, 
+and it comes in two types: compile-time polymorphism 
+(method overloading) and runtime polymorphism (method overriding).
+- `Early Binding` occurs at compile time and is faster, 
+while `Late Binding` happens at runtime and is used 
+in scenarios like dynamic method invocation 
+with virtual functions.

@@ -1,0 +1,143 @@
+Here’s a visualization of how `vtable` and `vptr` 
+work in the context of your C++ code 
+with dynamic binding. 
+
+We'll look at how the `vptr` (virtual pointer) and 
+`vtable` (virtual table) enable the correct function 
+to be called at runtime.
+
+Code Overview:
+```cpp
+#include <iostream>
+#include <string>
+
+class Bird {
+public:
+    virtual void Sound() = 0; // Pure virtual function (abstract)
+    virtual ~Bird() {}  // Virtual destructor
+};
+
+class Crow : public Bird {
+public:
+    void Sound() override { 
+        std::cout << "Crow caws..." << std::endl;
+    }
+};
+
+class Parrot : public Bird {
+public:
+    void Sound() override { 
+        std::cout << "Parrot squawks..." << std::endl;
+    }
+};
+
+int main() {
+    Bird* crow = new Crow();   // Create Crow object
+    Bird* parrot = new Parrot(); // Create Parrot object
+
+    crow->Sound();  // Calls Crow's Sound
+    parrot->Sound(); // Calls Parrot's Sound
+
+    delete crow;  // Cleanup
+    delete parrot; // Cleanup
+
+    return 0;
+}
+```
+
+Step-by-Step Visualization:
+
+#1. `Object Creation`
+When you create objects of `Crow` and `Parrot` 
+using `new`, the `vptr` is set up 
+inside each object to point to the correct `vtable`.
+
+`Memory Layout`:
+- `Crow Object`:
+  - vptr points to `Crow`'s vtable.
+  - vtable for `Crow` has a pointer to `Crow::Sound`.
+
+- `Parrot Object`:
+  - vptr points to `Parrot`'s vtable.
+  - vtable for `Parrot` has a pointer to `Parrot::Sound`.
+
+```
++-------------------+       +---------------------+
+|     Crow Object   |       |     Parrot Object   |
++-------------------+       +---------------------+
+| vptr → [vtable]   |       | vptr → [vtable]     |
++-------------------+       +---------------------+
+```
+
+#2. `Vtable for Crow and Parrot`
+
+- `Crow's vtable`:
+  ```
+  vtable_Crow:  [Crow::Sound]
+  ```
+
+- `Parrot's vtable`:
+  ```
+  vtable_Parrot: [Parrot::Sound]
+  ```
+
+#3. `Virtual Function Call (`crow->Sound()`)`
+When you call `crow->Sound()`, C++ uses the `vptr` 
+in the `Crow` object to find the `vtable` for `Crow`. 
+
+It then looks up `Sound()` in that vtable and calls `Crow::Sound()`.
+
+- The `vptr` of the `Crow` object points to `vtable_Crow`.
+- The `vtable` contains a pointer to `Crow::Sound()`, 
+which is then executed.
+
+#4. `Virtual Function Call (`parrot->Sound()`)`
+When you call `parrot->Sound()`, C++ uses the `vptr` 
+in the `Parrot` object to find the `vtable` for `Parrot`. 
+It then looks up `Sound()` in that vtable and calls `Parrot::Sound()`.
+
+- The `vptr` of the `Parrot` object points to `vtable_Parrot`.
+- The `vtable` contains a pointer to `Parrot::Sound()`, 
+which is then executed.
+
+#5. `Destruction (delete crow, delete parrot)`
+When you delete `crow` and `parrot`, 
+the `virtual destructor` (`~Bird()`) is invoked. 
+The `vptr` will again ensure the correct destructor is called.
+
+Visualization Diagram:
+
+```
++------------------+     +---------------------+
+|   Crow Object    |     |   Parrot Object     |
+|------------------|     |---------------------|
+| vptr → [vtable]  |---->| vptr → [vtable]     |
++------------------+     +---------------------+
+
+vtable_Crow:  [Crow::Sound]      vtable_Parrot: [Parrot::Sound]
+
+crow->Sound() → [vptr] → vtable_Crow → Crow::Sound()
+parrot->Sound() → [vptr] → vtable_Parrot → Parrot::Sound()
+
+```
+
+Dynamic Dispatch Process:
+1. `crow->Sound()`:
+   - `vptr` of the `crow` object points to `vtable_Crow`.
+   - `vtable_Crow` contains a pointer to `Crow::Sound`.
+   - The function `Crow::Sound` is called.
+
+2. `parrot->Sound()`:
+   - `vptr` of the `parrot` object points to `vtable_Parrot`.
+   - `vtable_Parrot` contains a pointer to `Parrot::Sound`.
+   - The function `Parrot::Sound` is called.
+
+Conclusion:
+- The `vptr` ensures 
+that the correct version of the virtual function is called 
+by pointing to the appropriate `vtable`.
+- The `vtable` contains pointers to the overridden functions, and 
+when a virtual function is called, 
+the program follows the `vptr` to find the correct function in the `vtable`.
+
+This is how dynamic dispatch works using `vtable` and `vptr` in C++.
