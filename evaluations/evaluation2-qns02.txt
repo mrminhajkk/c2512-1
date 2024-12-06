@@ -1,0 +1,113 @@
+01 Vinayak by Bhagya
+    1. How do you create a nested directory structure in Linux.
+    2. How do you move a file from one directory 
+    to another and rename it at the same time?
+    3. How do you search for a specific word and 
+    replace it in a file while editing it in Vim?
+    4. What is the difference between Nano and Vim editors?
+    5. How do you split windows in the Vim editor, 
+    explain the types of splits, and 
+    how to navigate between splits?
+02 Abel : presenter
+Ayisha : Questioner 
+    1)Expression to grant all permission to everyone:
+    A) a+rwx
+    2) what does a top command do?
+    A) display the real-time process and system usage
+    3) how do i move to the Beginning of the file in vim?
+    A) gg 
+    4)How can we extract the lines from 5-10 from a file 
+    A) head -n 10 <filename> | tail -n 6
+    5) Inside the nano editor what is the key to copy a selected line?
+    A)Alt+6 
+03 Pitchumani to Nimisha
+    1.If the folder containing N number of files means. 
+    which command is used to delete the all files in the folder? 
+    2.explain the grep command
+    3.which command is used for 1page up and 1page down in vim editor
+    4.which command is used to find and 
+    replace the text and explain the command? 
+    5.Explain the mode of vim editor.
+04 Minhaj to BHAGYA (Answerer) :
+    1)Change permission to  all files in a directory? 
+    2)Numeric notation for permission values? and 
+    give an example to change permission using this? 
+    3)Find and replace all word in a file in Vim? 
+    4)Linux command to view processs by a user?
+    5)Linux command to add new user ? And switch to that user?
+05 Questioner (Dhaheen to Sana):
+    1. Open multiple files in vim and navigate bw different files.
+    2. How to copy and paste some lines in vim. 
+    (add on: copy number of lines from current position)
+    3. How to vertically split windows and navigate between splits.
+    4. How to create user and set password together. 
+    5. How to create and assign a user to a group.
+06 Sreya to Dhaheen
+    1) How we can give file permissions using numericals? 
+    2) How to delete a particular line in Vim? 
+    3) Explain different modes in vim editor? 
+    4) Two commands to save and exit from vim? 
+    5) How to select range of lines from a file and 
+       write it to a file?
+07 Vinayak to Sreya:
+    1. How do you delete a line in Vim, and which mode should you be in?
+    2. What are the 3 different modes in Vim editor?
+    3. How do you undo and redo changes in Vim?
+    4. What is a buffer in Vim, and how does it relate to the files you edit? How do you navigate between buffers in Vim?
+    5. How is the echo command used in shell scripting?
+08 Sana -> Minhaj
+    1. find and replace a word in vim
+    2. How to go to end and beginning of the line in vim editor
+    3. In a file containing 30 line using cat display from line 10 to 20
+    4. The purpose of $?,  in shell
+    5. Why we use #!/bin/bash in script
+09 Josh to Ayisha: 
+    1. How is sed command used to send data to a file using line numbers?
+    2. Where is Ctrl + w, w used and why is it used?
+    3. What are all the associated commands with regard to tabs in vim editor?
+    4. What is the numeric notation for assigning permissions?
+    5. What are buffers and what are all the associated commands?
+10 Nimisha: questioner
+Venkidesh: presenter
+    1)what is grep command in Linux? 
+    2)what are the different modes of vim editor? 
+    3)what you meant by kernal? 
+    4)what is " {" key in vim editor? 
+    5)what is ls-l command in Linux? 
+11 VENKATESH To SOORAJ 
+    1.What is ps and top commands in Linux ?
+    2.How can you access user input in same line shell scripting?
+    3.what is $$ and $! Command?
+    4.buffers and also how to move to next buffer and 
+    previous buffer commands?
+    5.sed, head and tail commands in Linux?
+12 Asked by Vishakh  to Athira:
+    1. Command to replace a word globally from a file.
+    2. Commands to open file vertically, horizontally.
+    3. Command to add a user
+    4. Create group and add user to group.
+    5. commands to navigate through buffer
+13 Sooraj to Pitchumani. 
+    1.How we use equal and not equal comparison operator differently in comparing integer and string.
+    2.what is $? In script.
+    3.explain the mode of vim editor 
+    4.How to set a number in vim editor.
+    5.grep command.
+14 [Athira] Questions I asked Josh are:
+    1. What does chmod 664 file.cpp  mean?
+    2. How do I display lines 10 to 20 of the file file.cpp?
+    3. What is the command to copy and paste a line in the Vim editor?
+    4. What is the grep command to find the occurrences of a particular word in a file?
+    5. What are all the commands used to navigate through a buffer?
+15 Abel To Nayana
+    1 Command to undo and redo in Vim editor.
+    2 Which command provides a real-time view of system processes and resource usage?
+    3 Which command is used to change file permissions in Linux.
+    4 Different modes in Vim editor 
+    5 Replace all occurrences of the word  with another word in a file in vim editor. 
+16 Nayana to Abel
+    1. Command to undo and redo in Vim editor. 
+    2. Which command provides a real-time view of system processes and resource usage?
+    3. command is used to change file permissions in Linux.
+    4. Different modes in Vim editor.
+    5. Command to replace all occurrences of the word  with another word in a file in vim editor.

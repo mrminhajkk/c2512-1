@@ -1,0 +1,99 @@
+Examples for diamond problem in inheritance:
+=============================================================
+These class structures represent the diamond problem,
+where the `final derived class` 
+inherits ambiguously 
+from two intermediate classes 
+that share a common base class.
+=============================================================
+Create one static object for final-derived class
+and call all behaviours
+and 
+one dynamic object for final-derived class 
+and call all behaviours
+
+Define constructors and destructors for all the classes 
+============================================================= Sana Team (1-5)
+Example 1: `Employee Hierarchy`
+- `Base Class:` Employee `{field: name, behavior: work()}`
+- `Derived Class 1:` Manager `{field: department, behavior: manage()}`
+- `Derived Class 2:` Engineer `{field: specialty, behavior: design()}`
+- `Final Derived Class:` TeamLead `{field: teamSize, behavior: leadTeam()}`
+Example 2: `Animal Classification`
+- `Base Class:` Animal `{field: species, behavior: move()}`
+- `Derived Class 1:` Mammal `{field: furColor, behavior: giveBirth()}`
+- `Derived Class 2:` Bird `{field: wingSpan, behavior: layEggs()}`
+- `Final Derived Class:` Bat `{field: echolocation, behavior: fly()}`
+Example 3: `Vehicle System`
+- `Base Class:` Vehicle `{field: brand, behavior: drive()}`
+- `Derived Class 1:` LandVehicle `{field: numWheels, behavior: steer()}`
+- `Derived Class 2:` WaterVehicle `{field: displacement, behavior: sail()}`
+- `Final Derived Class:` AmphibiousVehicle `{field: mode, behavior: switchMode()}`
+Example 4: `Appliance Types`
+- `Base Class:` Appliance `{field: power, behavior: operate()}`
+- `Derived Class 1:` WashingMachine `{field: drumSize, behavior: wash()}`
+- `Derived Class 2:` Dryer `{field: capacity, behavior: dry()}`
+- `Final Derived Class:` WasherDryer `{field: comboMode, behavior: autoCycle()}`
+Example 5: `Education System`
+- `Base Class:` Person `{field: name, behavior: introduce()}`
+- `Derived Class 1:` Teacher `{field: subject, behavior: teach()}`
+- `Derived Class 2:` Student `{field: grade, behavior: study()}`
+- `Final Derived Class:` TeachingAssistant `{field: hours, behavior: assist()}`
+============================================================= Josh Team (6-10)
+Example 6: `Media Content`
+- `Base Class:` Media `{field: title, behavior: play()}`
+- `Derived Class 1:` Video `{field: resolution, behavior: display()}`
+- `Derived Class 2:` Audio `{field: bitrate, behavior: listen()}`
+- `Final Derived Class:` Movie `{field: duration, behavior: stream()}`
+Example 7: `Electronic Gadgets`
+- `Base Class:` Gadget `{field: brand, behavior: powerOn()}`
+- `Derived Class 1:` Phone `{field: carrier, behavior: makeCall()}`
+- `Derived Class 2:` Camera `{field: resolution, behavior: takePhoto()}`
+- `Final Derived Class:` Smartphone `{field: osVersion, behavior: browseWeb()}`
+Example 8: `Organization Roles`
+- `Base Class:` Employee `{field: empID, behavior: logHours()}`
+- `Derived Class 1:` Developer `{field: programmingLanguage, behavior: writeCode()}`
+- `Derived Class 2:` Tester `{field: testingTools, behavior: runTests()}`
+- `Final Derived Class:` DevTester `{field: skillLevel, behavior: debug()}`
+Example 9: `Gaming Characters`
+- `Base Class:` Character `{field: health, behavior: move()}`
+- `Derived Class 1:` Warrior `{field: weaponType, behavior: attack()}`
+- `Derived Class 2:` Mage `{field: spellType, behavior: castSpell()}`
+- `Final Derived Class:` BattleMage `{field: hybridSkill, behavior: fight()}`
+Example 10: `Food Production`
+- `Base Class:` Food `{field: expirationDate, behavior: consume()}`
+- `Derived Class 1:` Dairy `{field: fatContent, behavior: refrigerate()}`
+- `Derived Class 2:` Bakery `{field: flourType, behavior: bake()}`
+- `Final Derived Class:` Cheesecake `{field: layerCount, behavior: serve()}`
+============================================================= Abel Team (11-16)
+Question 11: `Transportation System`
+- `Base Class:` Transportation `{field: capacity, behavior: transport()}`
+- `Derived Class 1:` RoadVehicle `{field: speed, behavior: drive()}`
+- `Derived Class 2:` RailVehicle `{field: trackType, behavior: moveOnRails()}`
+- `Final Derived Class:` Tram `{field: electrification, behavior: switchModes()}`
+Question 12: `Payment Processing`
+- `Base Class:` PaymentMethod `{field: paymentType, behavior: processPayment()}`
+- `Derived Class 1:` CreditCard `{field: cardNumber, behavior: authorize()}`
+- `Derived Class 2:` DigitalWallet `{field: walletID, behavior: authenticate()}`
+- `Final Derived Class:` HybridPayment `{field: discount, behavior: splitPayment()}`
+Question 13: `Healthcare System`
+- `Base Class:` MedicalProfessional `{field: name, behavior: work()}`
+- `Derived Class 1:` Doctor `{field: specialization, behavior: diagnose()}`
+- `Derived Class 2:` Nurse `{field: department, behavior: assist()}`
+- `Final Derived Class:` PhysicianAssistant `{field: certifications, behavior: treat()}`
+Question 14: `Publishing Workflow`
+- `Base Class:` Document `{field: content, behavior: edit()}`
+- `Derived Class 1:` Article `{field: wordCount, behavior: review()}`
+- `Derived Class 2:` Blog `{field: views, behavior: publish()}`
+- `Final Derived Class:` FeaturedContent `{field: featuredDate, behavior: boost()}`
+Question 15: `Home Automation`
+- `Base Class:` Device `{field: brand, behavior: connect()}`
+- `Derived Class 1:` LightingSystem `{field: color, behavior: adjustBrightness()}`
+- `Derived Class 2:` ClimateControl `{field: temperature, behavior: setTemperature()}`
+- `Final Derived Class:` SmartHomeHub `{field: integrationCount, behavior: automate()}`
+Question 16: `Art Forms`
+- `Base Class:` Artwork `{field: creator, behavior: display()}`
+- `Derived Class 1:` Painting `{field: canvasType, behavior: showcase()}`
+- `Derived Class 2:` Sculpture `{field: material, behavior: sculpt()}`
+- `Final Derived Class:` MixedMediaArt `{field: blendType, behavior: combine()}`
+=============================================================
