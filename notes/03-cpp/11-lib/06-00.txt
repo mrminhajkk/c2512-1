@@ -1,0 +1,143 @@
+static library
+
+Creating and using a `static library` 
+in C++ on Linux involves compiling code 
+into a reusable `.a` archive and 
+linking it during the build of another program. 
+Below are the steps to create and 
+use a static library in Linux:
+
+---
+
+1. `Write and Compile the Library Code`
+
+Suppose we have a utility library for mathematical functions.
+
+Example: `math_utils.cpp`
+```cpp
+// math_utils.cpp
+#include "math_utils.h"
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int subtract(int a, int b) {
+    return a - b;
+}
+```
+
+Example: `math_utils.h`
+```cpp
+// math_utils.h
+#ifndef MATH_UTILS_H
+#define MATH_UTILS_H
+
+int add(int a, int b);
+int subtract(int a, int b);
+
+#endif
+```
+
+Compile the library source file into an object file (`.o`):
+```bash
+g++ -c math_utils.cpp -o math_utils.o
+```
+
+---
+
+2. `Create the Static Library`
+
+Use the `ar` command to bundle the object file into a static library (`.a` file):
+```bash
+ar rcs libmathutils.a math_utils.o
+```
+
+Here:
+- ``ar``: Archiver utility to create static libraries.
+- ``rcs``: 
+  - `r`: Replace or insert files into the archive.
+  - `c`: Create the archive if it doesn’t exist.
+  - `s`: Add an index for faster lookups.
+
+The resulting `libmathutils.a` is your static library.
+
+---
+
+3. `Link the Static Library to Another Program`
+
+Write a program that uses the library.
+
+Example: `main.cpp`
+```cpp
+#include <iostream>
+#include "math_utils.h"
+
+int main() {
+    int a = 5, b = 3;
+    std::cout << "Sum: " << add(a, b) << std::endl;
+    std::cout << "Difference: " << subtract(a, b) << std::endl;
+    return 0;
+}
+```
+
+Compile and link the program with the static library:
+```bash
+g++ main.cpp -L. -lmathutils -o main_program
+```
+
+Explanation:
+- ``-L.``: Specifies the directory (`.`) containing the library.
+- ``-lmathutils``: Links with `libmathutils.a` (the `lib` prefix and `.a` suffix are implicit).
+- ``-o main_program``: Specifies the output executable name.
+
+---
+
+4. `Run the Program`
+
+Execute the resulting program:
+```bash
+./main_program
+```
+
+Output:
+```
+Sum: 8
+Difference: 2
+```
+
+---
+
+5. `Verify the Static Library`
+You can inspect the contents of the static library using the `ar` command:
+```bash
+ar -t libmathutils.a
+```
+
+Output:
+```
+math_utils.o
+```
+
+---
+
+Advantages of Static Libraries:
+1. `Self-contained executables`: All code is bundled into the final executable.
+2. `Faster runtime`: No need to load external shared libraries.
+3. `Portability`: No dependency on external libraries at runtime.
+
+---
+
+Summary of Key Commands:
+1. Compile the library:
+   ```bash
+   g++ -c math_utils.cpp -o math_utils.o
+   ```
+2. Create the static library:
+   ```bash
+   ar rcs libmathutils.a math_utils.o
+   ```
+3. Link the static library with the program:
+   ```bash
+   g++ main.cpp -L. -lmathutils -o main_program
+   ```

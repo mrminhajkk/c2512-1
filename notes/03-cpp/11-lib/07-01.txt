@@ -1,0 +1,75 @@
+```bash
+cd /home/abel 
+mkdir abelteamshared 
+cd abelteamshared
+mkdir app_second
+cd app_second
+mkdir hcfapi
+cd hcfapi 
+touch hcf.h
+touch hcf.cpp 
+```
+
+`hcf.h`
+```cpp
+#ifndef HCF_H
+#define HCF_H
+int findHCF(int a, int b);
+#endif 
+```
+`hcf.cpp`
+```cpp
+#include "hcf.h"
+int findHCF(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+```
+
+```bash
+g++ -c -fPIC hcf.cpp -o hcf.o
+g++ -shared -o libhcf.so hcf.o
+
+cd ..
+mkdir hcf_app 
+cd hcf_app 
+touch Main.cpp 
+```
+
+`Main.cpp`
+```cpp
+#include <iostream>
+#include "./../hcfapi/hcf.h"
+
+int main() {
+    std::cout << findHCF(12,18) << std::endl;
+    return 0;
+}
+```
+
+```bash
+g++ Main.cpp -L./../hcfapi -lhcf -o App.out
+./App.out
+touch mymain.c
+``` 
+
+`mymain.c`
+```c
+#include <stdio.h>
+#include "./../hcfapi/hcf.h"
+extern int findHCF(int a, int b);
+
+int main() {
+    printf("hcf: %d\n", hcf(12, 18));
+    return 0;
+}
+```
+
+```bash
+gcc mymain.c -L./../hcfapi -lhcf -o mymain.out
+./App.out
+```

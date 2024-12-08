@@ -1,0 +1,186 @@
+Creating a `C++ shared library` 
+that can be used by `multiple programming languages` 
+typically involves ensuring a standard interface 
+that other languages can understand. 
+This is achieved using the `C ABI 
+(Application Binary Interface)`, 
+which can be accessed 
+by using `extern "C"` to prevent C++ name mangling.
+
+---
+
+Steps to Create a Shared Library for Multiple Languages
+
+1. `Write the C++ Code with a C-Compatible Interface`
+Use `extern "C"` to ensure the functions are accessible using the C ABI.
+
+Example: `math_utils.cpp`
+```cpp
+#include <cmath>
+
+extern "C" {
+    double add(double a, double b) {
+        return a + b;
+    }
+
+    double subtract(double a, double b) {
+        return a - b;
+    }
+
+    double square_root(double x) {
+        return std::sqrt(x);
+    }
+}
+```
+
+---
+
+2. `Compile the Library`
+Compile the shared library with position-independent code (`-fPIC`) and 
+the `-shared` flag.
+
+```bash
+g++ -c -fPIC math_utils.cpp -o math_utils.o
+g++ -shared -o libmathutils.so math_utils.o
+```
+
+This creates a shared library file, `libmathutils.so`, 
+which adheres to the C ABI.
+
+---
+
+3. `Usage in Other Programming Languages`
+
+1. `C`
+   You can include the header file directly and 
+   link the shared library.
+
+   ```c
+   #include <stdio.h>
+   extern double add(double a, double b);
+
+   int main() {
+       printf("Sum: %f\n", add(5.0, 3.0));
+       return 0;
+   }
+   ```
+
+   Compile and link:
+   ```bash
+   gcc main.c -L. -lmathutils -o main_program
+   ./main_program
+   ```
+
+2. `Python`
+   Use ``ctypes`` to load and call functions 
+   from the shared library.
+
+   ```python
+   import ctypes
+
+   # Load the shared library
+   math_utils = ctypes.CDLL('./libmathutils.so')
+
+   # Define function argument and return types
+   math_utils.add.argtypes = [ctypes.c_double, ctypes.c_double]
+   math_utils.add.restype = ctypes.c_double
+
+   # Call the function
+   result = math_utils.add(5.0, 3.0)
+   print(f"Sum: {result}")
+   ```
+
+3. `Java`
+   Use the `Java Native Interface (JNI)`.
+
+   ```java
+   public class MathUtils {
+       static {
+           System.loadLibrary("mathutils");
+       }
+
+       public native double add(double a, double b);
+
+       public static void main(String[] args) {
+           MathUtils mu = new MathUtils();
+           System.out.println("Sum: " + mu.add(5.0, 3.0));
+       }
+   }
+   ```
+
+   Compile:
+   ```bash
+   javac MathUtils.java
+   java MathUtils
+   ```
+
+4. `C#`
+   Use the ``DllImport`` attribute in a C# program.
+
+   ```csharp
+   using System;
+   using System.Runtime.InteropServices;
+
+   class Program {
+       [DllImport("libmathutils.so", EntryPoint = "add")]
+       public static extern double Add(double a, double b);
+
+       static void Main() {
+           Console.WriteLine($"Sum: {Add(5.0, 3.0)}");
+       }
+   }
+   ```
+
+   Run:
+   ```bash
+   dotnet run
+   ```
+
+5. `Go`
+   Use `cgo` to link with the shared library.
+
+   ```go
+   /*
+   #cgo LDFLAGS: -L. -lmathutils
+   #include "math_utils.h"
+   */
+   import "C"
+   import "fmt"
+
+   func main() {
+       result := C.add(5.0, 3.0)
+       fmt.Printf("Sum: %f\n", result)
+   }
+   ```
+
+   Compile:
+   ```bash
+   go build -o main_program main.go
+   ./main_program
+   ```
+
+---
+
+Considerations:
+1. `Compatibility`: The library must export only functions 
+compatible with the C ABI. Avoid returning C++ objects, 
+templates, or exceptions.
+2. `Dependencies`: If the library depends on other libraries, 
+ensure they are installed and accessible.
+3. `Naming Conventions`: Use consistent and clear function names 
+for cross-language usability.
+
+---
+
+Summary Commands:
+1. Compile the library:
+   ```bash
+   g++ -c -fPIC math_utils.cpp -o math_utils.o
+   g++ -shared -o libmathutils.so math_utils.o
+   ```
+
+2. Use in various languages via their respective FFI 
+(Foreign Function Interface).  
+
+This approach ensures the library is reusable across 
+a broad range of programming environments.

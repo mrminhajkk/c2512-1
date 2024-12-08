@@ -1,0 +1,92 @@
+1. `Difference Between C and C++:`
+   - `C`: 
+     - A procedural programming language.
+     - Focuses on functions and structured programming.
+     - It is often used for system-level programming 
+     (e.g., operating systems, embedded systems).
+     - Lacks support for object-oriented programming (OOP).
+     - Limited standard library compared to C++.
+
+   - `C++`:
+     - A multi-paradigm language (supports procedural, 
+     object-oriented, and generic programming).
+     - Provides features like classes, inheritance, 
+     polymorphism, and encapsulation (OOP).
+     - Includes more powerful features 
+     such as templates and exception handling.
+     - Greater standard library support, 
+     including the Standard Template Library (STL).
+     - Supports both low-level memory manipulation (like C) and 
+     high-level abstractions.
+
+2. `How to Compile C Code within C++:`
+   To compile C code within a C++ program, 
+   you can use the `extern "C"` declaration. 
+   This ensures that the C++ compiler 
+   treats the code as C-style code, 
+   avoiding name mangling, which is specific to C++.
+
+   Example:
+   ```cpp
+   extern "C" {
+       #include "some_c_code.h"
+   }
+   ```
+
+   This will allow you to use C functions 
+   in your C++ program without encountering issues 
+   related to C++ name mangling.
+
+3. `The `extern "C"` Keyword:`
+   - The `extern "C"` keyword is used to tell the C++ compiler 
+   to use C-style linking for a given block of code or function.
+   - This prevents C++ name mangling 
+   (where function names are transformed into unique symbols 
+   to support features like overloading) and allows functions 
+   written in C to be called from C++ code.
+   
+   Example:
+   ```cpp
+   extern "C" {
+       void c_function();  // Declaration of C function
+   }
+   ```
+
+   This is especially useful when mixing C libraries in C++ projects.
+
+4. `The C++ Preprocessor:`
+   - The `C++ preprocessor` is responsible 
+   for handling preprocessor directives 
+   (like `#include`, `#define`, `#ifdef`, etc.).
+   - It operates before actual compilation, 
+   performing tasks such as macro substitution, 
+   file inclusion, conditional compilation, and more.
+   
+   Example:
+   ```cpp
+   #define PI 3.14159
+   #include <iostream>
+   
+   int main() {
+       std::cout << "Value of PI: " << PI << std::endl;
+       return 0;
+   }
+   ```
+   In this case, the preprocessor replaces `PI` 
+   with `3.14159` before the compilation step.
+
+5. `The C++ Linker:`
+   - The `C++ linker` is responsible 
+   for linking compiled object files together 
+   to create an executable. 
+   It resolves symbols 
+   (like function calls and variable references) 
+   to their memory addresses, ensuring all dependencies 
+   between modules are satisfied.
+   - C++ programs often involve multiple source files, and 
+   the linker ensures that all the code is correctly linked and accessible when needed.
+   
+   The linker works after compilation to create the final executable. 
+   It also manages linking external libraries 
+   (like C++ Standard Library or third-party libraries) 
+   by ensuring the appropriate code is linked into the final output.

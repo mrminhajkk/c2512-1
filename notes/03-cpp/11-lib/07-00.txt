@@ -1,0 +1,161 @@
+Creating and using a `shared library` (`.so` file) 
+in Linux with C++ involves several steps. 
+Shared libraries allow code 
+to be shared across multiple programs at runtime, 
+reducing memory usage and making updates easier.
+
+---
+
+Steps to Create and Use a Shared Library
+
+1. Write and Compile the Library Code
+
+Suppose we have utility functions to be included in the library.
+
+Example: `math_utils.cpp`
+```cpp
+// math_utils.cpp
+#include "math_utils.h"
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int subtract(int a, int b) {
+    return a - b;
+}
+```
+
+Example: `math_utils.h`
+```cpp
+// math_utils.h
+#ifndef MATH_UTILS_H
+#define MATH_UTILS_H
+
+int add(int a, int b);
+int subtract(int a, int b);
+
+#endif
+```
+
+---
+
+2. Compile the Library Source Code
+
+Use the ``-fPIC`` (Position Independent Code) flag 
+to ensure the library can be loaded at any memory address:
+```bash
+g++ -c -fPIC math_utils.cpp -o math_utils.o
+```
+
+---
+
+3. Create the Shared Library
+
+Use the ``-shared`` flag to create a shared library:
+```bash
+g++ -shared -o libmathutils.so math_utils.o
+```
+
+The output is the shared library `libmathutils.so`.
+
+---
+
+4. Use the Shared Library in a Program
+
+Write a program that uses the shared library.
+
+Example: `main.cpp`
+```cpp
+#include <iostream>
+#include "math_utils.h"
+
+int main() {
+    int a = 5, b = 3;
+    std::cout << "Sum: " << add(a, b) << std::endl;
+    std::cout << "Difference: " << subtract(a, b) << std::endl;
+    return 0;
+}
+```
+
+---
+
+5. Compile and Link the Program with the Shared Library
+
+Use the ``-L`` option to specify the directory containing 
+the library and the ``-l`` option to link it:
+```bash
+g++ main.cpp -L. -lmathutils -o main_program
+```
+
+Here:
+- ``-L.``: Looks for libraries in the current directory.
+- ``-lmathutils``: Links to `libmathutils.so` 
+(the `lib` prefix and `.so` suffix are implicit).
+
+---
+
+6. Run the Program
+
+Set the `LD_LIBRARY_PATH` environment variable 
+if the shared library is not in a standard location:
+```bash
+export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
+./main_program
+```
+
+---
+
+Debugging and Verifying the Shared Library
+
+1. `Check Library Dependencies`: Use `ldd` to verify 
+that the program is linked correctly:
+   ```bash
+   ldd main_program
+   ```
+   Example output:
+   ```
+   libmathutils.so => ./libmathutils.so (0x00007f...)
+   libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f...)
+   ```
+
+2. `Inspect Symbols`: Use `nm` to list the symbols 
+in the shared library:
+   ```bash
+   nm -D libmathutils.so
+   ```
+
+---
+
+Summary of Key Commands
+1. Compile the library:
+   ```bash
+   g++ -c -fPIC math_utils.cpp -o math_utils.o
+   ```
+
+2. Create the shared library:
+   ```bash
+   g++ -shared -o libmathutils.so math_utils.o
+   ```
+
+3. Compile the program with the library:
+   ```bash
+   g++ main.cpp -L. -lmathutils -o main_program
+   ```
+
+4. Set the library path and run the program:
+   ```bash
+   export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
+   ./main_program
+   ```
+
+---
+
+Advantages of Shared Libraries
+1. `Reduced Executable Size`: 
+Programs use the shared library at runtime.
+2. `Centralized Updates`: 
+Updating the library affects all dependent programs.
+3. `Memory Efficiency`: 
+Shared libraries can be loaded once and 
+used by multiple programs.

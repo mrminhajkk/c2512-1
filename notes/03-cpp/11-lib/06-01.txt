@@ -1,0 +1,57 @@
+```bash
+cd /home/abel 
+mkdir abelteamshared 
+cd abelteamshared
+mkdir app_first
+cd app_first 
+mkdir gcdapi
+cd gcdapi 
+touch gcd.h
+touch gcd.cpp 
+```
+
+`gcd.h`
+```cpp
+#ifndef GCD_H
+#define GCD_H
+int findGCD(int a, int b);
+#endif 
+```
+`gcd.cpp`
+```cpp
+#include "gcd.h"
+int findGCD(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+```
+
+```bash
+g++ -c gcd.cpp -o gcd.o
+ar rcs libgcd.a gcd.o
+
+
+cd ..
+mkdir gcd_app 
+cd gcd_app 
+touch Main.cpp 
+```
+
+`Main.cpp`
+```cpp
+#include <iostream>
+#include "./../gcdapi/gcd.h"
+
+int main() {
+    std::cout << findGCD(12,18) << std::endl;
+    return 0;
+}
+```
+
+```bash
+g++ Main.cpp -L./../gcdapi -lgcd -o App.out
+```

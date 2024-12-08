@@ -239,7 +239,8 @@ ls -l myfile.txt
 ---
 
 `2. Using `stat` Command`
-The `stat` command provides detailed file information, including permissions in multiple formats.
+The `stat` command provides detailed file information, 
+including permissions in multiple formats.
 
 `Syntax:`
 
@@ -760,7 +761,9 @@ Sticky Bit Details
     - `T`: Indicates sticky bit is set, but execute is not.
 
 - Primary Use Case: 
-  - Commonly used on shared directories like `/tmp`, where multiple users have write access, but they can only delete or modify their own files.
+  - Commonly used on shared directories like `/tmp`, 
+  where multiple users have write access, 
+  but they can only delete or modify their own files.
 
 ---
 
@@ -818,7 +821,8 @@ Example Usage
    ```bash
    rm shared_dir/file_A
    ```
-   - This will succeed because write permission allows any user to delete files in the directory.
+   - This will succeed because write permission allows any user 
+   to delete files in the directory.
 
 ---
 
@@ -835,7 +839,9 @@ Example Usage
    ```bash
    rm shared_dir/file_A
    ```
-   - Permission Denied error occurs because only the file's owner (User A) or the root user can delete it.
+   - Permission Denied error occurs 
+   because only the file's owner (User A) or 
+   the root user can delete it.
 
 ---
 

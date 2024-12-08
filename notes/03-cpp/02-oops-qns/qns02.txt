@@ -1,0 +1,71 @@
+single inheritance using static binding:
+=============================================================
+Create two static objects for Both Base and Derived class
+and call all behaviours
+and 
+one two dynamic objects for Base and Derived class 
+and call all behaviours
+
+Define constructors and destructors for all the classes 
+============================================================= Sana Team (1-5)
+Example 1: `Vehicle System`
+- `Base Class:` Vehicle `{field: maxSpeed, behavior: start()}`
+- `Derived Class:` Car `{field: fuelType, behavior: drive()}`
+Define constructors and destructors for all the classes 
+Do function definitions outside the class below main method. 
+Define constructors with member initializers.
+Keep fields of Base class as protected and Deriver class as private.
+Create two static objects for Both Base and Derived class
+and call all behaviours
+and 
+one two dynamic objects for Base and Derived class 
+and call all behaviours.
+Give real-word names for objects.
+
+Example 2: `Academic System`
+- `Base Class:` Person `{field: name, behavior: introduce()}`
+- `Derived Class:` Student `{field: grade, behavior: study()}`
+Example 3: `E-commerce System`
+- `Base Class:` Product `{field: price, behavior: displayInfo()}`
+- `Derived Class:` Electronics `{field: warranty, behavior: powerOn()}`
+Example 4: `Employee Management`
+- `Base Class:` Employee `{field: id, behavior: work()}`
+- `Derived Class:` Manager `{field: teamSize, behavior: plan()}`
+Example 5: `Library System`
+- `Base Class:` Book `{field: title, behavior: read()}`
+- `Derived Class:` EBook `{field: fileSize, behavior: download()}`
+============================================================= Josh Team (6-10)
+Example 8: `Banking System`
+- `Base Class:` Account `{field: accountNumber, behavior: deposit()}`
+- `Derived Class:` SavingsAccount `{field: interestRate, behavior: calculateInterest()}`
+Example 7: `Animal Kingdom`
+- `Base Class:` Animal `{field: species, behavior: eat()}`
+- `Derived Class:` Bird `{field: wingSpan, behavior: fly()}`
+Example 8: `Retail System`
+- `Base Class:` Store `{field: location, behavior: open()}`  
+- `Derived Class:` GroceryStore `{field: inventoryCount, behavior: restock()}`  
+Example 9: `Gaming System`
+- `Base Class:` Character `{field: health, behavior: move()}`
+- `Derived Class:` Warrior `{field: weaponType, behavior: attack()}`
+Example 10: `Transportation Network`
+- `Base Class:` Vehicle `{field: registrationNumber, behavior: refuel()}`  
+- `Derived Class:` Bicycle `{field: gearCount, behavior: pedal()}`  
+============================================================= Abel Team (11-16)
+Problem 11: `Educational Institution`
+- Create a base class `Institution` with fields `institutionName` and `location`, and a behavior `showDetails()`.
+- Derive a class `School` with fields `numberOfStudents` and a behavior `conductClasses()`.
+Problem 12: `Ecosystem Simulation`
+- Create a base class `Plant` with fields `height` and `age`, and a behavior `grow()`.
+- Derive a class `Flower` with fields `color` and a behavior `bloom()`.
+Problem 13: `Healthcare System`
+- Create a base class `Hospital` with fields `hospitalName` and `capacity`, and a behavior `admitPatient()`.
+- Derive a class `Clinic` with fields `doctorSpecialization` and a behavior `scheduleAppointment()`.
+Problem 14: `Publishing System`
+- Create a base class `Publication` with fields `title` and `author`, and a behavior `printDetails()`.
+- Derive a class `Magazine` with fields `issueNumber` and a behavior `publish()`.
+Problem 15: `Sports Management`
+- Create a base class `Player` with fields `name` and `age`, and a behavior `train()`.
+- Derive a class `CricketPlayer` with fields `battingAverage` and a behavior `playMatch()`.
+Problem 16: `E-commerce Cart`
+- Create a base class `Product` with fields `productName` and `price`, and a behavior `addToCart()`.
+- Derive a class `Clothing` with fields `size` and a behavior `applyDiscount()`.

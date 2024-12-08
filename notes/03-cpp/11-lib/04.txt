@@ -1,0 +1,236 @@
+`extern "C"` for C code in C++
+
+To compile `C code` within a `C++ program`, 
+you need to ensure that the C code is treated properly 
+by the C++ compiler to avoid issues like `name mangling`. 
+C++ compilers use name mangling to support function overloading, 
+while C does not. To prevent this, 
+you use the `extern "C"` keyword.
+
+Steps to compile C code within C++:
+
+1. `Use `extern "C"` for C code in C++:`
+   When calling C functions or using C libraries in C++, 
+   the `extern "C"` declaration is necessary. 
+   This tells the C++ compiler 
+   to treat the functions 
+   as if they are written in C, avoiding name mangling.
+
+2. `Structure of code:`
+   - The C code (e.g., functions) is usually placed 
+   in separate C files, but can also be included directly in the C++ file.
+   - The C function headers should be wrapped 
+   with `extern "C"` when included in the C++ code.
+
+Example:
+
+C Code (in a file named `c_code.c`):
+```c
+#include <stdio.h>
+
+void c_function() {
+    printf("This is a C function\n");
+}
+```
+
+Header for C Code (in a file named `c_code.h`):
+```c
+#ifndef C_CODE_H
+#define C_CODE_H
+
+void c_function();  // Declare the C function
+
+#endif
+```
+
+C++ Code (in a file named `main.cpp`):
+```cpp
+#include <iostream>
+
+// Tell the C++ compiler to treat the following code as C code
+extern "C" {
+    #include "c_code.h"  // Include the C header file
+}
+
+int main() {
+    // Call the C function from C++ code
+    c_function();
+    return 0;
+}
+```
+
+Explanation:
+1. ``extern "C"` Block`: 
+   - The `extern "C"` block in the C++ code 
+   tells the C++ compiler 
+   to treat the included header (`c_code.h`) and 
+   the functions declared inside it as C functions. 
+   This prevents C++ name mangling 
+   when linking the C code with the C++ code.
+   
+2. `C++ Code (`main.cpp`)`:
+   - The C function `c_function()` is called 
+   just like any regular C++ function. 
+   Since `extern "C"` is used, 
+   the C++ compiler knows how to link the function properly.
+
+Compilation:
+To compile the C code within C++ code, 
+you should compile both the C file and 
+the C++ file and then link them together.
+
+If you're using a `GCC compiler`, 
+you can compile and link like this:
+
+```bash
+gcc -c c_code.c         # Compile C file
+g++ -c main.cpp          # Compile C++ file
+g++ c_code.o main.o -o program   # Link both object files to create the executable
+```
+
+Alternatively, if you're using an IDE, 
+it will automatically handle the linking of C and C++ files, 
+as long as the `extern "C"` is used correctly.
+
+Key Points:
+- Use `extern "C"` to include C code in C++ without name mangling.
+- Make sure the C code (functions, headers) is written properly and 
+included correctly in the C++ file.
+- Both C and C++ files need to be compiled and linked together.
+
+This allows you to seamlessly integrate C code within a C++ program.
+
+===================================================================
+
+Why is Name Mangling Necessary?
+Function Overloading: 
+C++ supports having multiple functions 
+with the same name but different parameter lists. 
+Name mangling ensures 
+that the linker can uniquely identify 
+each overloaded function.
+
+Namespaces: 
+C++ supports namespaces to avoid name conflicts.
+Name mangling encodes the namespace information 
+into the function name.
+
+
+===================================================================
+
+
+===================================================================
+What is Name Mangling in C++?
+
+`Name mangling` is the process 
+by which the C++ compiler encodes additional information 
+(such as the function name, namespaces, parameter types, etc.) 
+into the name of a function or variable. 
+This is done to support `function overloading` and 
+other C++ features, such as namespaces, 
+which are not present in C.
+
+In C, function names in the compiled code are usually the same 
+as their names in the source code. 
+However, in C++, since functions can be overloaded 
+(i.e., functions with the same name 
+but different parameter types), 
+the compiler needs a way to differentiate these functions internally. 
+This differentiation is achieved through name mangling.
+
+---
+
+Example of Name Mangling
+
+#C Code Example:
+```c
+// C code
+void hello();
+```
+
+In C, the function `hello` will be stored 
+in the compiled object file with the name `hello`.
+
+#C++ Code Example:
+```cpp
+// C++ code
+void hello();
+void hello(int x);
+```
+
+In C++, the two functions `hello()` and `hello(int)` 
+will have different internal names after name mangling. 
+For example:
+- `hello()` might become `_Z5hellov`
+- `hello(int)` might become `_Z5helloi`
+
+Here, the mangled names encode the function's name (`hello`), 
+its parameter types (`v` for `void`, `i` for `int`), 
+and possibly other information like namespaces.
+
+---
+
+Why is Name Mangling Necessary?
+
+1. `Function Overloading`: C++ supports having multiple functions 
+with the same name but different parameter lists. 
+Name mangling ensures 
+that the linker can uniquely identify each overloaded function.
+   
+2. `Namespaces`: C++ supports namespaces to avoid name conflicts. 
+Name mangling encodes the namespace information 
+into the function name.
+
+---
+
+Why is Name Mangling a Problem in C++/C Interoperability?
+
+C does not perform name mangling; 
+it uses plain, unmangled function names. 
+If you try to link a C++ program with a C library, 
+the C++ compiler will expect mangled names for the C functions. 
+Since the C functions don't use mangled names, 
+the linker will fail to match the function calls.
+
+---
+
+How Does `extern "C"` Solve This?
+
+When you use `extern "C"` in your C++ code, 
+you're telling the compiler `not` 
+to mangle the names of the functions 
+inside the `extern "C"` block. Instead, 
+the compiler uses plain C-style names for those functions.
+
+#Example:
+```cpp
+extern "C" {
+    #include "c_code.h" // A header file containing C function declarations
+    void c_function();  // A C function
+}
+```
+
+- Without `extern "C"`, the function `c_function` 
+in C++ might be mangled (e.g., `_Z11c_functionv`).
+- With `extern "C"`, the function name remains `c_function`, 
+making it compatible with the C linker.
+
+---
+
+Summary:
+- `Name Mangling`: A mechanism used by C++ 
+to encode additional information into function names.
+- `Purpose`: To support features 
+like function overloading and namespaces.
+- ``extern "C"``: Disables name mangling for specified functions, 
+enabling compatibility between C and C++ code.
+
+
+=============================================================
+In the context of name mangling in programming, 
+the term refers to how the compiler alters or 
+"distorts" the original function or variable names 
+to encode additional information, 
+such as parameter types or namespace details. 
+This ensures unique identification 
+but makes the names harder to read or recognize directly.

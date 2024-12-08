@@ -1,0 +1,121 @@
+C++ linker
+
+The `C++ linker` on Linux is 
+a critical tool in the compilation and linking process. 
+It combines compiled object files (`.o` files) and 
+libraries into an executable or shared library (`.so` file). 
+The `GNU linker (`ld`)` is commonly used on Linux, 
+along with `gcc` or `g++` 
+to manage the compilation and linking processes.
+
+---
+
+Responsibilities of the Linker:
+1. `Symbol Resolution`: Resolves references 
+to functions and variables 
+between different object files and libraries.
+2. `Code Layout`: Organizes the memory layout of the executable 
+(text, data, and bss sections).
+3. `Library Handling`: Links static libraries (`.a`) or 
+shared libraries (`.so`).
+4. `Relocation`: Adjusts addresses in the code and data 
+to match the memory layout.
+
+---
+
+Common C++ Linker Workflow:
+1. Compilation:
+The `compiler` translates C++ source code (`.cpp`) 
+into object files (`.o`), 
+containing machine code and unresolved references.
+
+2. Linking:
+The `linker` takes object files and combines them 
+into a final executable or shared library:
+- `Static linking`: Combines all required code 
+into the executable.
+- `Dynamic linking`: Links to shared libraries at runtime.
+
+---
+
+Tools for Linking on Linux:
+1. ``g++``: The GCC C++ compiler driver also handles linking. Example:
+   ```bash
+   g++ main.cpp utility.cpp -o my_program
+   ```
+   - Combines `main.o` and `utility.o` into `my_program`.
+
+2. ``ld``: The GNU linker, used directly for more control:
+   ```bash
+   ld -o my_program main.o utility.o -lc++
+   ```
+
+3. ``ar``: Used for creating static libraries:
+   ```bash
+   ar rcs libutility.a utility.o
+   ```
+
+---
+
+Important Linker Concepts:
+1. `Static Libraries (`.a`)`
+- Created using `ar`.
+- Included at link time, increasing the size of the executable.
+
+2. `Shared Libraries (`.so`)`
+- Created using `-shared` flag with `g++`:
+   ```bash
+   g++ -shared -o libutility.so utility.o
+   ```
+- Linked dynamically, reducing executable size 
+but requiring runtime resolution.
+
+---
+
+Common Linker Flags:
+- ``-o``: Specifies the output file name.
+- ``-L``: Adds a search directory for libraries.
+  ```bash
+  g++ main.cpp -L./libs -lutility -o my_program
+  ```
+- ``-l``: Links to a library (e.g., `-lutility` for `libutility.a` or `libutility.so`).
+- ``-rpath``: Adds runtime search paths for shared libraries.
+
+---
+
+Debugging Linker Issues:
+- ``ldd <executable>``: Lists shared library dependencies.
+- ``nm <object_file>``: Displays symbols in an object file.
+- ``strings <file>``: Prints readable strings in a binary 
+(useful for debugging).
+
+---
+
+Example Workflow:
+1. Compile Sources:
+```bash
+g++ -c main.cpp utility.cpp
+```
+Produces `main.o` and `utility.o`.
+
+2. Create a Shared Library:
+```bash
+g++ -shared -o libutility.so utility.o
+```
+
+3. Link Executable with Shared Library:
+```bash
+g++ main.o -L. -lutility -o my_program
+```
+
+4. Run the Program:
+Set the library path if `libutility.so` is not in a standard location:
+```bash
+LD_LIBRARY_PATH=. ./my_program
+```
+
+--- 
+
+The `C++ linker` in Linux is powerful and versatile, 
+supporting both simple and advanced use cases 
+for building efficient, modular programs.

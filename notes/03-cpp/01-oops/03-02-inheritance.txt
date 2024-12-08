@@ -1,0 +1,337 @@
+`Inheritance and its Advantages`
+
+`Inheritance` is a mechanism in object-oriented programming (OOP) 
+where a new class (called a derived or child class) is created 
+based on an existing class (called a base or parent class). 
+The derived class inherits the attributes (fields) and 
+behaviors (methods) of the base class and 
+can also introduce new features or override existing ones.
+
+`Advantages of Inheritance:`
+1. `Code Reusability:` Inheritance allows the derived class 
+to reuse the code of the base class, minimizing redundancy.
+2. `Method Overriding:` Derived classes can provide 
+their own implementation of methods defined in the base class.
+3. `Extensibility:` New functionality can be added 
+by creating new derived classes, 
+without modifying the existing code.
+4. `Maintainability:` Since base class code is reused, 
+changes made in the base class automatically propagate to derived classes, 
+making the system easier to maintain.
+5. `Modularity:` It helps in dividing large applications into smaller, 
+more manageable modules by organizing them in a hierarchical manner.
+
+---
+
+`The Protected Access`
+
+In inheritance, the `protected` access modifier allows 
+derived classes to access members (fields and methods) of 
+the base class, but it restricts direct access from outside the class.
+
+- `Public` members are accessible from anywhere.
+- `Protected` members are accessible 
+within the class, derived classes, and friend classes, 
+but not from outside.
+- `Private` members are accessible only within the class.
+
+`Example:`
+```cpp
+class Base {
+protected:
+    int x;  // Protected member
+
+public:
+    Base() : x(10) {}
+};
+
+class Derived : public Base {
+public:
+    void show() {
+        // Derived class can access protected member of the base class
+        std::cout << "Value of x: " << x << std::endl;
+    }
+};
+```
+
+---
+
+`Calling Super Class Methods`
+
+In inheritance, the `base class` methods can be called 
+from the `derived class` using the `super` keyword 
+(in some languages, like Java or C#) or 
+by directly using the base class method.
+
+`Example in C++ (using `Base::Method()`):`
+```cpp
+class Base {
+public:
+    void show() {
+        std::cout << "Base class method" << std::endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void show() {
+        // Call the base class show() method
+        Base::show();
+        std::cout << "Derived class method" << std::endl;
+    }
+};
+```
+
+---
+
+`Constructors in Inheritance`
+
+When a derived class object is created, 
+the constructor of the `base class` is called first, 
+followed by the constructor of the derived class. 
+This ensures the proper initialization of 
+the base class part of the derived object.
+
+`Example:`
+```cpp
+class Base {
+public:
+    Base() {
+        std::cout << "Base class constructor called." << std::endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    Derived() {
+        std::cout << "Derived class constructor called." << std::endl;
+    }
+};
+```
+
+When a `Derived` object is created, both `Base` and `Derived` constructors are called.
+
+---
+
+`Method Overriding`
+
+`Method Overriding` occurs when a method in 
+a derived class has the same name, return type, and 
+parameters as a method in the base class. 
+This allows the derived class to provide 
+its own implementation of the method, 
+which overrides the base class version.
+
+`Example in C++:`
+```cpp
+class Base {
+public:
+    virtual void display() {
+        std::cout << "Base class display" << std::endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void display() override {
+        std::cout << "Derived class display" << std::endl;
+    }
+};
+```
+
+---
+
+`Pointer to a Base Class`
+
+A `pointer to a base class` 
+can be used to store an object of the derived class. 
+This is useful in cases of polymorphism 
+where the type of object to be used is determined at runtime.
+
+`Example:`
+```cpp
+class Base {
+public:
+    virtual void display() {
+        std::cout << "Base class display" << std::endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void display() override {
+        std::cout << "Derived class display" << std::endl;
+    }
+};
+
+int main() {
+    Base* ptr;
+    Derived obj;
+    ptr = &obj;
+    ptr->display();  // Calls Derived class display
+}
+```
+
+---
+
+`Virtual Functions`
+
+`Virtual functions` allow a function to be overridden in a derived class. 
+The function is called based on the actual object type at runtime, 
+not the pointer type.
+
+- `Virtual` function allows runtime polymorphism.
+- It must be defined with the `virtual` keyword in the base class.
+
+`Example:`
+```cpp
+class Base {
+public:
+    virtual void show() {
+        std::cout << "Base class show" << std::endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void show() override {
+        std::cout << "Derived class show" << std::endl;
+    }
+};
+```
+
+---
+
+`Dynamic/Runtime Binding and Polymorphism`
+
+`Dynamic binding` occurs when the method 
+to be invoked is determined at runtime, 
+based on the actual object type. 
+This is often associated 
+with `polymorphism` and virtual functions.
+
+`Example:`
+```cpp
+class Base {
+public:
+    virtual void sound() {
+        std::cout << "Animal sound" << std::endl;
+    }
+};
+
+class Dog : public Base {
+public:
+    void sound() override {
+        std::cout << "Bark!" << std::endl;
+    }
+};
+
+int main() {
+    Base* basePtr;
+    Dog dog;
+    basePtr = &dog;
+    basePtr->sound();  // Calls Dog's sound, not Base's
+}
+```
+
+---
+
+`Casting a Class`
+
+Class casting refers to converting a pointer or reference 
+from one class type to another. 
+It can be done in two ways:
+1. `Upcasting:` Casting a derived class object 
+to a base class type.
+2. `Downcasting:` Casting a base class pointer 
+to a derived class type (requires `dynamic_cast` in C++).
+
+`Example of Upcasting:`
+```cpp
+Base* basePtr = new Derived();  // Implicit upcast
+```
+
+`Example of Downcasting:`
+```cpp
+Derived* derivedPtr = dynamic_cast<Derived*>(basePtr);
+if (derivedPtr) {
+    // Safe to access Derived class members
+}
+```
+
+---
+
+`Types of Inheritance`
+
+1. `Single Inheritance:`  
+   In single inheritance, a derived class inherits from one base class.
+
+   `Example:`
+   ```cpp
+   class Animal { ... };
+   class Dog : public Animal { ... };
+   ```
+
+2. `Multilevel Inheritance:`  
+   In multilevel inheritance, a derived class inherits from another derived class.
+
+   `Example:`
+   ```cpp
+   class Animal { ... };
+   class Dog : public Animal { ... };
+   class Puppy : public Dog { ... };
+   ```
+
+3. `Multiple Inheritance:`  
+   In multiple inheritance, a class can inherit 
+   from more than one base class. (C++ supports multiple inheritance)
+
+   `Example:`
+   ```cpp
+   class Animal { ... };
+   class Dog { ... };
+   class Puppy : public Animal, public Dog { ... };
+   ```
+
+4. `Hierarchical Inheritance:`  
+   In hierarchical inheritance, 
+   multiple derived classes inherit from a single base class.
+
+   `Example:`
+   ```cpp
+   class Animal { ... };
+   class Dog : public Animal { ... };
+   class Cat : public Animal { ... };
+   ```
+
+5. `Hybrid Inheritance:`  
+   Hybrid inheritance is a combination of two or more types of inheritance.
+
+   `Example:`
+   ```cpp
+   class Animal { ... };
+   class Dog { ... };
+   class Puppy : public Animal, public Dog { ... };
+   ```
+
+---
+
+`Difference between "is-a" and "has-a" Relationship`
+
+1. `"Is-a" Relationship:`
+   - Represents inheritance 
+   where the derived class is a specialized version of the base class.
+   - It indicates that an object of the derived class `is` an object of the base class.
+   - Example: A `Dog` `is a` `Animal`.
+
+2. `"Has-a" Relationship:`
+   - Represents composition, 
+   where a class contains instances of another class as part of its attributes.
+   - It indicates that an object of the class `has` an object of another class.
+   - Example: A `Car` `has a` `Engine`.
+
+In summary:
+- `"Is-a"` is used for inheritance 
+(like a dog is an animal).
+- `"Has-a"` is used for composition 
+(like a car has an engine).
