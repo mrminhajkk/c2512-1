@@ -14,12 +14,15 @@ touch hcf.cpp
 ```cpp
 #ifndef HCF_H
 #define HCF_H
+extern "C" {
 int findHCF(int a, int b);
+}
 #endif 
 ```
 `hcf.cpp`
 ```cpp
 #include "hcf.h"
+extern "C" {
 int findHCF(int a, int b) {
     while (b != 0) {
         int temp = b;
@@ -27,6 +30,7 @@ int findHCF(int a, int b) {
         a = temp;
     }
     return a;
+}
 }
 ```
 
@@ -60,7 +64,6 @@ touch mymain.c
 `mymain.c`
 ```c
 #include <stdio.h>
-#include "./../hcfapi/hcf.h"
 extern int findHCF(int a, int b);
 
 int main() {
@@ -71,5 +74,16 @@ int main() {
 
 ```bash
 gcc mymain.c -L./../hcfapi -lhcf -o mymain.out
-./App.out
+./mymain.out
 ```
+
+ldd /home/abel/abelteamshared/app_second/hcf_app/mymain.out
+export LD_LIBRARY_PATH=/home/abel/abelteamshared/app_second/hcfapi:$LD_LIBRARY_PATH
+mymain.out
+export PATH=$PATH:/home/abel/abelteamshared/app_second/hcf_app
+ldd /home/abel/abelteamshared/app_second/hcf_app/mymain.out
+strings /home/abel/abelteamshared/app_second/hcf_app/mymain.out
+strings /home/abel/abelteamshared/app_second/hcfapi/hcf.o
+file /home/abel/abelteamshared/app_second/hcfapi/hcf.o
+file /home/abel/abelteamshared/app_second/hcfapi/libhcf.so
+file /home/abel/abelteamshared/app_second/hcf_app/mymain.out

@@ -45,7 +45,7 @@ Key Features of the C++ Preprocessor:
    #define SQR(x) x*x
 
    int main() {
-        int p = SQR(SUM(2,3), SUM(3,4)); // 2+3*3+4 
+        int p = SQR(SUM(2,3)); //SUM(2,3)*SUM(2,3)//2+3*2+3 
    }
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    //case 2
@@ -53,7 +53,7 @@ Key Features of the C++ Preprocessor:
    #define SQR(x) (x*x)
 
    int main() {
-        int p = SQR(SUM(2,3), SUM(3,4)); // ((2+3)*(3+4)) 
+        int p = SQR(SUM(2,3)); // ((2+3)*(2+3)) 
    }
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    //case 3
@@ -61,7 +61,7 @@ Key Features of the C++ Preprocessor:
    #define SQR(x) x*x
 
    int main() {
-        int p = SQR(SUM(2,3), SUM(3,4)); // 2+3*3+4 
+        int p = SQR(SUM(2,3)); // 2+3*3+4 
    }
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    //case 4
@@ -69,7 +69,7 @@ Key Features of the C++ Preprocessor:
    #define SQR(x) (x*x)
 
    int main() {
-        int p = SQR(2+3, 3+4)); // (2+3*3+4) 
+        int p = SQR(2+3); // (2+3*2+3) 
    }
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    //case 5
@@ -77,7 +77,7 @@ Key Features of the C++ Preprocessor:
    #define SQR(x) ((x)*(x))
 
    int main() {
-        int p = SQR(SUM(2,3), SUM(3,4)); // (((2)+(3))*((3)+(4))) 
+        int p = SQR(SUM(2,3)); // (((2)+(3))*((2)+(3))) 
    } 
 ------------------------------
 3. Conditional Compilation
@@ -264,7 +264,7 @@ Key Features of the C++ Preprocessor:
    ```
 
    ```cpp
-//f.h 
+f.h 
 void f();
 //f.cpp
 #include<iostream>

@@ -1,0 +1,60 @@
+C++ linker
+--------------------------------------------------------
+category of                 category of 
+Library                     Build                               Points 
+--------------------------------------------------------
+static                      single-build                        1
+--------------------------------------------------------
+dynamic [so/dll]            build [with external dependency]    2            
+shared 
+dynamic link library 
+-------------------------------------------------------- 
+
+1. static library 
+    - build static library
+        $ ar rcs libgcd.a gcd.o 
+    - use static library 
+        in the build [app(main) build]
+        $ g++ Main.out -L./../gcdapi -lgcd -o App.out 
+2. shared library 
+    - build shared libary 
+        $ g++ -c -fPIC hcf.cpp -o hcf.o 
+        $ g++ -shared hcf.o -o libhcf.so 
+    - use shared library 
+        in the build [App(main c++) build]
+            $ g++ Main.cpp -L./../hcfapi -lhcf -o App.out 
+            $ ./App.out 
+            -- Now we will not get the output -- err we will have 
+            $ ldd App.out 
+                libhcf.so not found 
+            -- this means libhcf.so not available in LD_LIBRARY_PATH 
+        in the build [mymain(main c) build]
+            $ gcc mymain.c -L./../hcfapi -lhcf -o mymain.out 
+            $ ./mymain.out 
+            -- Now we will not get the output -- err we will have 
+            $ ldd App.out 
+                libhcf.so not found 
+            -- this means libhcf.so not available in LD_LIBRARY_PATH 
+    - as .so file is not in the path of env variable LD_LIBRARY_PATH
+        $ echo $LD_LIBRARY_PATH
+        -- to add temperorily (only for current session) in LD_LIBRARY_PATH
+            $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/abel/abelteamshared/app_second/hcfapi
+    - outiside build path
+        $ mymain.out 
+        -- to add temperorily (only for current session) in PATH
+            $ export PATH=$PATH:/home/abel/abelteamshared/app_second/hcf_app
+--------------------------------------------------------
+
+double findSum(double x, double y)
+double findSum(double x, double y, doulbe z)
+double findSum(double x, double y, doulbe z, double p)
+
+
+#define DSUM(...)  findSum(__VAR_ARGS)
+
+int main()
+{
+    cout << DSUM(2,3) << endl;
+    cout << DSUM(2,3,5) << endl;
+    cout << DSUM(2,3,5,6) << endl;
+}
