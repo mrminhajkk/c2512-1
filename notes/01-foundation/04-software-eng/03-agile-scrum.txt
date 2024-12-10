@@ -8,7 +8,8 @@ frequent feedback.
 Scrum divides the project 
 into manageable chunks called `sprints`, 
 which typically last 2–4 weeks. 
-Each sprint delivers a potentially shippable product increment.
+Each sprint delivers 
+a potentially shippable product increment.
 
 ---
 
