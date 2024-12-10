@@ -1,0 +1,188 @@
+#001 Abel Mathew Simon to Athira	
+    "1.You are tasked with designing a simple ""calculator"" program 
+        using only a switch-case statement and 
+        relational/logical operators. 
+        The program should take two integers and a 
+        single character operator (+, -, *, /)
+        as input. 
+        However, it must also handle an error condition 
+        where division by zero is attempted, 
+        and it should display an appropriate error message in that case. 
+        Write the program.
+    2.You have a table named Orders with the following structure:
+    |OrderID | CustomerID | OrderDate | TotalAmount|
+        Write a SQL query to find the CustomerID 
+        that has placed exactly 3 orders 
+        with a total amount greater 
+        than 500 each. 
+        Ensure the solution uses aggregate functions and a subquery.
+    3.You have a directory named /projects that contains several files and subdirectories. 
+        Manually set the following permissions for the directory and all its contents:
+        Owner: Read, write, and execute permissions.
+        Group: Read and execute permissions.
+        Others: Read-only permissions.
+        How would you achieve this using Linux commands 
+        for a single file and a directory
+    4. class Base {
+        public:
+        virtual void display() { cout << ""Base Display"" << endl; }
+        };
+        class Derived : public Base {
+        public:
+        void display() override { cout << ""Derived Display"" << endl; }
+        };
+        int main() {
+        Base *b = new Derived();
+        b->display();
+        }
+        What will be the output of the above program and why?"	
+#002 Athira K S to Sooraj	
+    "1. What is inheritance, and what are its types? Please explain each with examples.
+    2. Identify and explain this SQL query:
+        ```
+        SELECT parent.* 
+        FROM employees parent 
+        WHERE salary = (
+        SELECT MAX(salary) AS second_max_salary 
+        FROM employees 
+        WHERE department_id = parent.department_id 
+        AND salary < (
+        SELECT MAX(salary) AS first_max_salary 
+        FROM employees 
+        WHERE department_id = parent.department_id
+        )
+        )
+        ```
+    3 . Why do we use OOPs concepts in C++?
+    4 . What is the Linux command used to replace all occurrences of a word with a new word?"
+#003 Ayisha Dhiyana Ps to Vishak	"
+    1) There is a function to check the whitespace name the function and the header also ?
+    2) SQL is split into 4 sub languages what are they explain?
+    3) Difference between Drop table and truncated table?
+    4) Which are the 2 shell scripting arrays?
+    5) What does the file permission mode 777 represent in Linux ?"    
+#004 Bhagya S Kumar to Pitchumani	
+    "1.Shell scripting to find square of a number.
+    2.Explain linux architecture 
+    3.what is dangling pointer and how can we avoid it
+    4. Explain the types of inheritance 
+    5. Major Diff between struct class and union."	
+#005 Dhaheen Rahman P to Nayana	
+    "1. What is switch case & usage.
+    2. second largest salary from an employee table.
+    3. Steps to write, compile and run a greeting program in vim.
+    4. 3 ways to access private member data of a class.
+    5. Use of suid bit in Linux file permission."	
+#006 Josh Danny Alex to Dhaheen	
+    "1. According to Google's C++ Style Guide, 
+    what are all the rules to be followed 
+    while defining constants and enum?
+    2. Explain the Syntax for Creating a Stored Procedure
+    3. Who will access the private members of the object? 
+    4. What is shebang in shell scripting?
+    5. What are the types of inheritance?
+    "	
+#007 Minhaj Kk to Abel	
+    "1.You are tasked with designing a simple ""calculator"" 
+        program using only a switch-case statement and 
+        relational/logical operators. 
+        The program should take two integers and 
+        a single character operator (+, -, *, /)
+        as input. However, it must also handle an error condition where division by zero is attempted, 
+        and it should display an appropriate error message in that case. Write the program.
+    2.You have a table named Orders with the following structure:
+        |OrderID | CustomerID | OrderDate | TotalAmount|
+        Write a SQL query to find the CustomerID that has placed exactly 3 orders with a total amount greater 
+        than 500 each. Ensure the solution uses aggregate functions and a subquery.
+    3.You have a directory named /projects that contains several files and subdirectories. 
+        Manually set the following permissions for the directory and all its contents:
+        Owner: Read, write, and execute permissions.
+        Group: Read and execute permissions.
+        Others: Read-only permissions.
+        How would you achieve this using Linux commands for a single file and a directory
+    4. class Base {
+        public:
+        virtual void display() { cout << ""Base Display"" << endl; }
+        };
+        class Derived : public Base {
+        public:
+        void display() override { cout << ""Derived Display"" << endl; }
+        };
+        int main() {
+        Base *b = new Derived();
+        b->display();
+        }
+        What will be the output of the above program and why?"	
+#008 Muddam Venkatesh to Minhaj	
+    "1) take any one scenario of method overriding in oops and explain it?
+    2) explain the 3 steps in the normalisation?
+    3) explain the 3-tier architecture and its control flow?
+    4) what are assaignment operators, binary operators and 
+    explain what are the difference 
+    between the while and do while loops?"	    
+#009 Nayana Haridas to Bhagya S Kumar	
+    "1. Explain the types of access specifier. 
+    2. Difference between Bourne and bash shell. 
+    3. Comparison operator in shell scripting
+    4. Vim command to go to the start of the previous paragraph. 
+    5. What is Shebang In shell scripting."	  
+#010 Nimisha K to Vinayak	
+    "Nimisha to vishakh 
+    1)what you meant by operator overloading? Give syntax?
+    2)how to avoid memory leakage?
+    3)what is inline elements? Give 3 examples
+    4)what are the disadvantages of procedural programming language?
+    5)what are the constraints associated with primary key? 
+    "
+#011 Pitchumani S M to Josh	
+    "1. Explain assembly language,high level language,machine language.
+    2. Normalization with example
+    3. Explain sdlc
+    4. Explains types of joins 
+    5. Three tier architecture
+#012 S T Vishakh to Nimisha	
+    "1) Explain 2-tier architecture and explain how the network call occur?
+    2) what are the storage class in C and C++ ?
+    3) How to convert bool value(1 or 0) to string ( true or false) in c++ ?
+    4) Explain about Rollback 
+    5) Explain copy and move constructor ? How & and && works in it ?    
+#013 Sana E to Ayisha	
+    "Sana to Vinayak
+    1. Explain briefly about file permissions in Linux.
+    How would you change file permissions using the chmod command? 
+    2. What does ON DELETE CASCADE do?
+    3. What is the role of an IDE (Integrated Development Environment)? 
+    4. Now that auto has been removed from C++, what is auto used for?
+    5. What is the role of static members in a C++ class?"	
+#014 Sooraj M V to Sreya	
+    "1. What are the set operators in sql why it is used.
+    2. Explain briefly the process of Waterfall Model.
+    3. Encapsulation inn oop and its usage .
+    4. Given a table name : Employees
+        The attributes are : 
+        EmpID, Department, Salary 
+        Question 1:
+        Find the employees in the IT department 
+        who earn more than the average salary of all employees
+        Question 2 :
+        Find the average salary for each department."	
+#015 Sreya K to Venkatesh M	
+    "1) Explain the different steps in problem solving techniques. 
+    2) What are the Storage classes in C++? 
+    Tell about the declaration, Visibility, Lifetime in each.
+    3) Difference in Dynamic memory allocation and deallocation in C and C++ . 
+    4) Explain operator overloading."	
+#016 Vinayak S Kaimal to Sana	
+    "1.How does the if condition in shell scripting handle 
+        complex logical expressions involving multiple conditions?
+    2.Explain the responsibilities of each layer 
+        in a 3-tier architecture and how they communicate with one another.
+    3.How does responsive design ensures the best user experience 
+        across a wide range of devices, 
+        is there need of using any extra tools or 
+        frameworks are commonly used to implement it?
+    4.Discuss function overloading in C++, 
+        and also give example how they identify each other.
+    5.Compare the WHERE and HAVING queries in SQL with examples, 
+        particularly focusing on how they interact 
+        with GROUP BY and aggregate functions."	
