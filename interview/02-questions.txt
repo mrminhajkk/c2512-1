@@ -1,0 +1,215 @@
+Student 1
+1.What is virtual function and pure virtual function.
+2.Explain oops concepts like inheritance, polymorphism, encapsulation, abstraction.
+3.Why do we need run time polymorphism. 
+4.Write a class Shape and find out the area and 
+using inheritance take three classes Rectangle, triangle, Square.
+Do using run time polymorphism.
+5.Difference between compile time polymorphism and run time polymorphism.
+Student 2
+1. Self Introduction
+2. What all learnt from training
+3. Oops concepts with real world example
+4. How pointer works
+5. What is dynamic memory allocation
+6. New & delete
+7. What happens if delete is not done?
+8. What is memory leak
+9. How compiler works
+10. Structure and union
+11. What is threading
+12. Logic of the program:
+        Find a particular word in a string and replace it with another word.
+13. Implementation of any one program done during training. 
+14. Abstract class and pure virtual Function
+
+Student 3
+1. What is OOPs
+2. What is inheritance
+3. What is polymorphism
+4. Write a code using dynamic polymorphism
+5. Dynamic mem allocation vs Static mem allocation
+
+Student 4
+1.What did you study in phase 1?
+2.Explain oops concept
+3.What is the difference between class and structure?
+4.What are pointers?
+5.Explain memory allocation of pointers.
+6.What is array of pointers?
+7.Explain the logic of writing a code to replace a word in string 
+
+Student 5
+1. On which oops concepts are you more familiar with?
+2. Explain inheritance with an example?what is its use?
+3. What is encapsulation?
+4. Do a real life program to show inheritance (Parent          class Suzuki, subclasses Swift, Alto)
+    -Use method override 
+    -Use dynamic memory allocation 
+5. Which other programming language are you familiar with?
+6. Explain malloc and calloc?
+7. Program to find the average of n even numbers ?
+   - modify the program by changing the condition 
+     if(i%2==0).
+
+Student 6
+Write the codes of topics that was covered last week. 
+- Abstract Classes 
+- Virtual Function
+- Code - Run time polymorphism
+
+Student 7
+1. Difference between built-in datatypes and user defined datatypes. 
+2. Difference between class and structure. 
+3. How can you explain what is a structure and class. Explain to someone who doesn't know anything about programming or computers
+4. What is a class and why are we using a class. What is the advantages of using a class. Explain to someone who doesn't know anything about programming or computers.
+5. Why do we need overloading. If we can do the same with normal functions with unique names. Explain to someone who doesn't know anything about programming or computers.
+6. What are run-time polymorphisms and compile time polymorphisms. Why are we using it. What is it advantages. Explain to someone who doesn't know anything about programming or computers.
+
+Student 8
+1.What is the role of a software engineer?
+2.Which phase is the most time-consuming in the Software Development Life Cycle (SDLC)?
+3 .What is the difference between int a = 10; and int a(10); 
+4.oops concepts with real world examble
+5.Write a program to reverse a string.
+
+Student 9
+1. What is Inheritance.
+2. Code to pass a value to a function by pass bypointer method.
+3. Allocate dynamic memory to an integer variable using new
+4. What is a structure.
+5. Logic of code to find whether a string is palindromeor not .
+
+
+
+Student 10
+Explain OOPS concepts
+Inheritance 
+Constructor inheritance coding
+Fibonacci series 
+
+Student 11
+1. What is exe?
+2. What is dll?
+3. Explain a program which was already done and asked asked to make a bug and told to resolve it. (For example, When an integer value is asked and user inputs float value, what happens in the code, how it can be rectified).
+4. How to use debugger. Debug a program and show the values coming for a value in for lloop.
+5. What is stl?
+
+Student 12
+1.	Self Introduction
+2.	College Project Explanation
+3.	What did you learn in phase-1
+4.	Virtual Function
+5.	Inheritance
+6.	Programs-Runtime polymorphism and fibonacci series
+7.	SDLC
+8.	Polymorphism
+Student 13
+1. About Oops concept,object class,abstraction.
+2.Pointer
+3.Constructor 
+4.new delete keyword
+5.Write simple code in notepad with class,pointer ,constructor.
+6.Write code for  number is prime or not.
+7.Accademic project explanation.
+
+Student 14
+Palindrome program
+Class
+Structure 
+Friend function
+Static var static function
+Constructor 
+Desctructor 
+Inheritance 
+Virtual function
+Overloading 
+Overriding 
+Pure virtual function
+Abstract function
+Pass by pointer
+Polymorphism 
+Compilation process
+
+Student 15
+How was the training?
+What did you learn from the training?
+Any suggestions for the training?
+Technical Questions:
+What is HLL?
+What is an EXE?
+Explain about SDLC life cycle?
+What is a compiler?
+How does a program run?
+Do you know how to host a website?
+Basic OOP concepts.
+Syntax of the new operator.
+Programs:
+1. Reverse a string using recursion.
+2. Swap two numbers without using a temporary variable.
+3. Sorting
+
+
+Student 16
+1. Self introduction 
+2. What is smart pointer?
+3. Swap two numbers without temp ?
+4. What is the use of standard library template in c++?
+5. What is namespace ?
+
+Student 17
+1) What are the things that studied in the phase 1 training.
+2) Explain function with example.
+3)What is recursive function? Why we use it.
+4) Explain oops concepts with example.
+5) Why we use class instead of normal method method?
+6)What is pointer and why we use pointer?
+7) What is virtual function?
+8) What is method overriding?
+9)Explain academic project.
+10)Why we use inheritance?
+
+Student 18
+1)What is oops , inheritance, polymorphism
+2)Write a class with data members and member function
+3)Add inheritance to this class 
+4)What is pointer
+5)Using pointer declare a object (dynamic)
+6)Write a code to check if a number is pallindrome or not
+Student 19
+1. Self Intro.
+2. Which all topics were covered in the first phase of training and which was your favourite?
+3. Final Year Project Details.
+4. A sample code showing how inheritance works.
+5. A program to print Fibonacci series until n.
+
+Student 20
+1) Asked me about my project.
+2)What you have learned in this 30days.
+3)Quick sort,Bubble sort ,Insertion sort(explain without showing the code)
+4)Asked about pointers.
+5)New and delete 
+6) What happens when new is used but delete is not
+7) Advantages of OOPs
+
+Student 21
+1.Oops concepts with real world example.
+2.Overriding program.Use of virtual keyword.Add constructor to the program.
+3.Programs - Fibonacci series, Prime or not, find duplicate elements in an array.
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
