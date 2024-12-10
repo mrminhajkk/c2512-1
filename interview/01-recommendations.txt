@@ -1,0 +1,41 @@
+---The coding best practices---
+--- to ensure these practices need 
+    to be incorporated as part of our foundation training.---
+
+1. Lazy programming style:
+   - Avoid relying heavily on cin/cout in every class.
+   - Focus on clean code practices and avoid code duplication.
+    -Separate user input/output from other parts of the program 
+    by using dedicated classes or functions. 
+
+2. Initialization of variables:
+   - Always initialize variables and class members.
+   - Use constructors to properly initialize class member variables. 
+
+3. Parameter-less functions and void return types:
+   - Use function parameters and return types 
+   to make code more modular and reusable.
+   - Provide meaningful return types instead of using void. 
+
+4. Dynamic memory allocation:
+   - Learn how to use new and delete correctly, especially with inheritance.
+   - Use smart pointers (e.g., std::unique_ptr, std::shared_ptr) 
+   to manage dynamic memory safely. 
+
+5. Multi-dimensional arrays and pointers:
+   - Understand how to use multi-dimensional arrays and arrays of pointers.
+   - Know when these data structures are useful. 
+
+6. Encapsulation and data flow:
+   - Use encapsulation to hide data and control access.
+   - Pass data by reference and use getter/setter methods to manage data flow. 
+
+7. Collection classes and dictionaries:
+   - Use the Standard Template Library (STL) for collection classes 
+   (e.g., std::vector, std::map).
+   - Store and manage data using these collections or similar classes. 
+
+8. Debugging and problem-solving:
+   - Learn debugging techniques and tools 
+   (e.g., using a debugger, logging).
+   - Approach problem-solving systematically rather than using trial and error.

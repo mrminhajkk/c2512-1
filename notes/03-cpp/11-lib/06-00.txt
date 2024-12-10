@@ -141,3 +141,112 @@ Summary of Key Commands:
    ```bash
    g++ main.cpp -L. -lmathutils -o main_program
    ```
+
+
+===================================================
+
+
+Yes, the `ar` command supports 
+several other flags 
+in addition to `r`, `c`, and `s`. 
+Below is a list of common flags and their explanations:
+
+Common `ar` Flags
+
+1. ``r``: `Replace or Add` files in the archive.
+   - If the file already exists in the archive, 
+   it will be replaced. 
+   If it does not exist, it will be added.
+   - Example: `ar rcs libmath.a file1.o file2.o`
+
+2. ``c``: `Create` the archive if it doesn’t exist.
+   - If the archive file does not exist, 
+   `ar` will create it. 
+   If the file exists, 
+   it won’t be overwritten unless you use `r`.
+   - Example: `ar c libmath.a file1.o file2.o`
+
+3. ``s``: `Create/Update the Symbol Table`.
+   - Adds a symbol table to the archive, 
+   allowing the linker to locate symbols efficiently.
+   - Example: `ar rcs libmath.a file1.o file2.o`
+
+4. ``t``: `Display the contents` of an archive.
+   - Lists the files inside the archive without extracting them.
+   - Example: `ar t libmath.a`
+
+5. ``x``: `Extract` files from the archive.
+   - This command extracts the contents of the archive and 
+   places them in the current directory.
+   - Example: `ar x libmath.a`
+
+6. ``d``: `Delete` files from the archive.
+   - Removes files from the archive.
+   - Example: `ar d libmath.a file1.o`
+
+7. ``v``: `Verbose` output.
+   - Lists the actions that `ar` performs, 
+   such as adding files or creating the archive.
+   - It is typically used with other flags like `r` or `x`.
+   - Example: `ar rv libmath.a file1.o file2.o`
+
+8. ``A``: `Add all object files` to the archive.
+   - This flag adds all object files found 
+   in the directory to the archive. 
+   It's not commonly used but can be helpful 
+   when you want to include everything.
+   - Example: `ar A libmath.a *.o`
+
+9. ``m``: `Move files from the current directory` 
+    into the archive.
+   - This command moves the object files 
+   into the archive rather than copying them.
+   - Example: `ar mv libmath.a file1.o`
+
+Combining Flags:
+
+You can combine multiple flags in a single command. 
+For example:
+- `ar rcs` creates or updates an archive, 
+adds a symbol table, and 
+ensures the archive is created if it doesn't exist.
+- `ar xv` extracts the contents of the archive 
+while showing verbose output.
+
+Example of Combined Use:
+
+```bash
+ar rcv libmath.a file1.o file2.o
+```
+
+This command:
+- ``r``: Replaces or adds `file1.o` and `file2.o` 
+in the `libmath.a` archive.
+- ``c``: Creates `libmath.a` if it doesn't exist.
+- ``v``: Outputs verbose details 
+about the files being added to the archive.
+
+---
+
+Summary of Flags
+|----------|-------------------------------------------------|
+| `Flag` | `Description`                                     |
+|----------|-------------------------------------------------|
+| `r`      | Replace or add files to the archive             |
+| `c`      | Create the archive if it doesn't exist          |
+| `s`      | Create/update the symbol table                  |
+| `t`      | Display the contents of the archive             |
+| `x`      | Extract files from the archive                  |
+| `d`      | Delete files from the archive                   |
+| `v`      | Verbose output, displays actions performed      |
+| `A`      | Add all object files in the directory           |
+|          | to the archive                                  |
+| `m`      | Move files into the archive (instead of copying)|
+|----------|-------------------------------------------------|
+
+
+By using these flags, 
+you can customize the behavior of the `ar` command 
+to manage archives efficiently.
+
+===================================================
