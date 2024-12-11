@@ -1,0 +1,22 @@
+Abel: #001
+    1)How linker is working in compilation of a file
+    2)What is Static function
+    3) 2 types of polymorphism 
+    4)What is Virtual keyword 
+    5)Compare Agile and waterfall 
+    6)Use of Cat command
+    7)Command to change permissions in a file or directory 
+    8)Static library and Shared library
+    9)STL
+    10)Abstract class
+    11)How to deallocate the dynamic memory we used
+    12)There is a copy constructor by default so when we the copy constructor manually
+
+    PROGRAM:
+        •Define a class named student
+        •Define a char pointer variable as member variable with any one access specifier
+        •Define a constructor with this char pointer variable as parameter 
+        •close the class
+        •Define a main method
+        •initialize a char array with a string value
+        •Create an object for the class and pass this array as argument
