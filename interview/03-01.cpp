@@ -21,5 +21,9 @@ class Student {
 int main() {
     Student s1("Kim");
     s1.show();
+
+    char name[255] = "Raj";
+    Student s2(name);
+    s2.show();
     return 0;
 }

@@ -20,3 +20,8 @@ Abel: #001
         •Define a main method
         •initialize a char array with a string value
         •Create an object for the class and pass this array as argument
+
+        Program from Maheswaran:
+        -----------------------------------------------------------------------------
+            
+        -----------------------------------------------------------------------------
