@@ -62,7 +62,7 @@ vector<double>:
                 int _new_capacity = 2 * _capacity;
                 //validate and set proper capacity //code here 
                 if(_new_capacity > _max_size && _capacity < _max_size) {
-                    _capacity = _max_size;
+                    _new_capacity = _max_size;
                 } else if(_new_capacity > _max_size) { 
                     throw "Err";
                 }

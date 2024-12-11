@@ -1,0 +1,1170 @@
+In C++, ``std::unique_ptr``, ``std::shared_ptr``, and 
+``std::weak_ptr`` are smart pointers 
+that manage dynamic memory and 
+avoid manual memory management pitfalls 
+like 
+    memory leaks and 
+    dangling pointers. 
+Here's a detailed comparison:
+
+---
+
+`1. `std::unique_ptr``
+- `Definition`: A smart pointer 
+that uniquely owns a resource (e.g., dynamically allocated memory).
+- `Ownership`: Only one `std::unique_ptr` can own the resource at a time.
+- `Copying`: Not copyable but can be moved using `std::move`.
+- `Use Case`: When a resource should have a single owner.
+
+`Example`:
+```cpp
+#include <iostream>
+#include <memory>
+using namespace std;
+
+unique_ptr<int> uptr = make_unique<int>(10);  // Creates a unique pointer
+// uptr2 = uptr;  // Error: cannot copy
+unique_ptr<int> uptr2 = move(uptr);  // Transfers ownership
+```
+
+`Key Features`:
+- Lightweight and fast (no reference counting).
+- Automatically deletes the resource when it goes out of scope.
+- Ideal for single ownership and non-shared resources.
+
+---
+
+`2. `std::shared_ptr``
+- `Definition`: A smart pointer 
+that allows multiple `shared_ptr` instances to share ownership of a single resource.
+- `Ownership`: Multiple `std::shared_ptr` can own the same resource.
+- `Copying`: Copyable and maintains reference counting.
+- `Reference Counting`: Automatically deletes the resource when the last `shared_ptr` pointing to it is destroyed.
+- `Use Case`: When a resource needs shared ownership.
+
+`Example`:
+```cpp
+#include <iostream>
+#include <memory>
+using namespace std;
+
+shared_ptr<int> sptr1 = make_shared<int>(10);  // Creates a shared pointer
+shared_ptr<int> sptr2 = sptr1;  // Shared ownership
+cout << *sptr1 << ", " << *sptr2 << endl;
+```
+
+`Key Features`:
+- Uses reference counting to manage lifetime.
+- Slightly slower than `unique_ptr` due to reference management.
+- Ideal for shared ownership scenarios.
+
+---
+
+`3. `std::weak_ptr``
+- `Definition`: A non-owning smart pointer 
+that works with `std::shared_ptr`.
+- `Ownership`: Does not own the resource but refers to a resource managed by a `std::shared_ptr`.
+- `Reference Counting`: Does not affect the reference count.
+- `Use Case`: To break circular references or to observe a resource managed by `std::shared_ptr`.
+
+`Example`:
+```cpp
+#include <iostream>
+#include <memory>
+using namespace std;
+
+shared_ptr<int> sptr = make_shared<int>(10);
+weak_ptr<int> wptr = sptr;  // Weak pointer to the resource
+
+if (auto temp = wptr.lock()) {  // Checks if the resource is still valid
+    cout << *temp << endl;
+} else {
+    cout << "Resource no longer available." << endl;
+}
+```
+
+`Key Features`:
+- Prevents circular reference issues in `std::shared_ptr`.
+- Used to observe or check the validity of shared resources without extending their lifetime.
+
+---
+
+`Summary Table`
+|-------------------|---------------------|---------------------|--------------------|
+| Feature           | `unique_ptr`        | `shared_ptr`        | `weak_ptr`         |
+|-------------------|---------------------|---------------------|--------------------|
+| `Ownership`       | Single              | Shared              | Non-owning         |
+| `Copyable`        | No                  | Yes                 | No                 |
+| `Reference Count` | No                  | Yes                 | No                 |
+| `Overhead`        | Low                 | Moderate            | Low                |
+| `Use Cases`       | Single ownership    | Shared ownership    | Observing shared resources (break cycles) |
+|-------------------|---------------------|---------------------|--------------------|
+---
+
+`When to Use`
+- ``std::unique_ptr``: For exclusive ownership of resources.
+- ``std::shared_ptr``: When ownership of a resource needs to be shared.
+- ``std::weak_ptr``: To avoid circular dependencies with `std::shared_ptr`.
+==================================================================================
+Notes on `std::unique_ptr` in C++:
+
+---
+
+`What is `std::unique_ptr`?`
+- `std::unique_ptr` is a `smart pointer` 
+in the C++ Standard Library 
+that manages the lifetime of a dynamically allocated object.
+- Ensures `single ownership`: only one `unique_ptr` can own a particular resource.
+- Automatically deletes the managed object when the `unique_ptr` goes out of scope.
+
+---
+
+`Key Characteristics`
+1. `Exclusive Ownership`:
+   - No two `unique_ptr` instances can own the same resource.
+2. `Automatic Deletion`:
+   - When a `unique_ptr` is destroyed, the resource it owns is automatically deallocated.
+3. `Non-Copyable`:
+   - Copying a `unique_ptr` is not allowed to ensure unique ownership.
+
+---
+
+`Basic Syntax`
+```cpp
+#include <memory>
+
+// Create a unique_ptr
+std::unique_ptr<int> ptr1 = std::make_unique<int>(10);
+
+// Access the resource
+std::cout << *ptr1 << std::endl;
+
+// Transfer ownership
+std::unique_ptr<int> ptr2 = std::move(ptr1);
+
+// ptr1 is now empty; ptr2 owns the resource
+if (!ptr1) std::cout << "ptr1 is null\n";
+
+// No need to delete; ptr2 will automatically clean up
+```
+
+---
+
+`Features`
+1. `Factory Function: `std::make_unique``:
+   - Recommended way to create a `unique_ptr` to avoid manual `new`:
+   ```cpp
+   auto ptr = std::make_unique<int>(42);
+   ```
+
+2. `Custom Deleter`:
+   - Allows custom cleanup logic:
+   ```cpp
+   std::unique_ptr<int, void(*)(int*)> ptr(new int(10), [](int* p) {
+       std::cout << "Deleting resource\n";
+       delete p;
+   });
+   ```
+
+3. `Release Ownership`:
+   - Releases ownership without deallocating the resource:
+   ```cpp
+   int* rawPtr = ptr1.release();
+   delete rawPtr; // Manual cleanup
+   ```
+
+4. `Reset Ownership`:
+   - Assigns a new resource, deleting the old one:
+   ```cpp
+   ptr1.reset(new int(20));
+   ptr1.reset(); // Deletes current resource and sets to nullptr
+   ```
+
+5. `Move Semantics`:
+   - Ownership can be transferred using `std::move`:
+   ```cpp
+   std::unique_ptr<int> ptr2 = std::move(ptr1);
+   ```
+
+6. `null unique_ptr`:
+   - A `unique_ptr` can be empty:
+   ```cpp
+   std::unique_ptr<int> ptr;
+   if (!ptr) std::cout << "ptr is empty\n";
+   ```
+
+---
+
+`Advantages`
+- Eliminates manual memory management.
+- Prevents memory leaks by ensuring proper cleanup.
+- Provides exception safety by automatically cleaning up during stack unwinding.
+
+---
+
+`Use Cases`
+1. Managing dynamically allocated objects in a safe and RAII-compliant manner.
+2. Implementing pimpl idiom (pointer to implementation).
+3. Replacing raw pointers in single-ownership scenarios.
+
+---
+
+`Comparison with `std::shared_ptr``
+|-----------------------|---------------------------|---------------------------|
+| Feature               | `std::unique_ptr`         | `std::shared_ptr`         |
+|-----------------------|---------------------------|---------------------------|
+| Ownership             | Single                   | Shared                   |
+| Copyable              | No                       | Yes                      |
+| Performance           | Faster                   | Slightly slower (ref count overhead) |
+| Use Case             | Exclusive ownership       | Shared ownership         |
+|-----------------------|---------------------------|---------------------------|
+
+==================================================================================
+
+Notes on `std::shared_ptr` in C++:
+
+---
+
+`What is `std::shared_ptr`?`
+- `std::shared_ptr` is a `smart pointer` 
+in the C++ Standard Library 
+that manages the lifetime of a dynamically allocated object.
+- Implements `shared ownership`, 
+allowing multiple `shared_ptr` instances 
+to share ownership of the same resource.
+- The resource is deallocated 
+when the last `shared_ptr` owning it is destroyed or reset.
+
+---
+
+`Key Characteristics`
+1. `Shared Ownership`:
+   - Multiple `shared_ptr` instances can own the same resource.
+2. `Reference Counting`:
+   - Maintains a reference count to track 
+   how many `shared_ptr` instances own the resource.
+   - Deallocates the resource 
+   when the reference count drops to zero.
+3. `Thread-Safe Reference Count`:
+   - The reference count is updated 
+   in a thread-safe manner.
+
+---
+
+`Basic Syntax`
+```cpp
+#include <memory>
+
+// Create a shared_ptr
+std::shared_ptr<int> ptr1 = std::make_shared<int>(10);
+
+// Access the resource
+std::cout << *ptr1 << std::endl;
+
+// Share ownership
+std::shared_ptr<int> ptr2 = ptr1;
+
+// Both ptr1 and ptr2 now share ownership
+std::cout << "Use count: " << ptr1.use_count() << std::endl;
+
+// Reset one shared_ptr
+ptr1.reset();
+std::cout << "Use count after reset: " << ptr2.use_count() << std::endl;
+
+// ptr2 cleans up automatically when it goes out of scope
+```
+
+---
+
+`Features`
+1. `Factory Function: `std::make_shared``:
+   - Recommended way to create a `shared_ptr` to minimize overhead:
+   ```cpp
+   auto ptr = std::make_shared<int>(42);
+   ```
+
+2. `Reference Count`:
+   - Track the number of owners using `use_count`:
+   ```cpp
+   std::cout << ptr.use_count() << std::endl;
+   ```
+
+3. `Custom Deleter`:
+   - Define a custom cleanup function:
+   ```cpp
+   std::shared_ptr<int> ptr(new int(10), [](int* p) {
+       std::cout << "Deleting resource\n";
+       delete p;
+   });
+   ```
+
+4. `Reset Ownership`:
+   - Replace the managed object:
+   ```cpp
+   ptr.reset(new int(20)); // Assigns a new resource
+   ptr.reset(); // Deletes the current resource
+   ```
+
+5. `Aliasing Constructor`:
+   - Share ownership of the same resource with a different pointer:
+   ```cpp
+   auto base = std::make_shared<std::vector<int>>(10);
+   std::shared_ptr<int> alias(base, &(*base)[0]); // Points to an element in base
+   ```
+
+6. `Interoperability with `weak_ptr``:
+   - Used to create a non-owning reference 
+   to avoid circular references (see below).
+
+---
+
+`Advantages`
+- Manages shared resources safely and 
+avoids manual memory management.
+- Prevents memory leaks even with multiple owners.
+- Thread-safe reference count ensures safe use 
+in multithreaded programs.
+
+---
+
+`Disadvantages`
+- `Overhead`:
+  - Additional memory and runtime overhead 
+  for maintaining the reference count.
+- `Circular References`:
+  - Can cause memory leaks 
+  when two or more `shared_ptr` instances form a cycle.
+
+---
+
+`Use Cases`
+1. Shared ownership of resources 
+(e.g., shared buffers, data structures).
+2. Dynamically allocated objects used in multiple parts of a program.
+3. Avoiding manual reference counting.
+
+---
+
+`Circular Reference Problem`
+- Occurs when two `shared_ptr` instances reference each other 
+directly or indirectly, forming a cycle.
+- `Solution`: Use `std::weak_ptr` for one of the references 
+to break the cycle.
+
+---
+
+`Comparison with `std::unique_ptr``
+|-------------------------|---------------------------|---------------------------|
+| Feature               | `std::unique_ptr`         | `std::shared_ptr`         |
+|-----------------------|---------------------------|---------------------------|
+| Ownership             | Single                   | Shared                   |
+| Copyable              | No                       | Yes                      |
+| Performance           | Faster                   | Slightly slower (ref count overhead) |
+| Use Case              | Exclusive ownership       | Shared ownership         |
+|-------------------------|---------------------------|---------------------------|
+---
+
+`Comparison with `std::weak_ptr``
+|-------------------------|---------------------------|---------------------------|
+| Feature                 | `std::shared_ptr`         | `std::weak_ptr`           |
+|-------------------------|---------------------------|---------------------------|
+| Ownership               | Yes                      | No                        |
+| Reference Count Affects | Yes                      | No                        |
+| Use Case                | Shared ownership         | Avoid circular references |
+|-------------------------|---------------------------|---------------------------|
+---
+
+`Example of Circular Reference`
+```cpp
+struct Node {
+    std::shared_ptr<Node> next;
+    ~Node() { std::cout << "Node destroyed\n"; }
+};
+
+void circular_reference_demo() {
+    auto node1 = std::make_shared<Node>();
+    auto node2 = std::make_shared<Node>();
+
+    // Circular reference
+    node1->next = node2;
+    node2->next = node1;
+
+    // Memory leak! Nodes are never destroyed.
+}
+```
+
+`Solution`: Use `std::weak_ptr`:
+```cpp
+struct Node {
+    std::weak_ptr<Node> next; // Break circular reference
+    ~Node() { std::cout << "Node destroyed\n"; }
+};
+```
+
+
+==================================================================================
+
+Notes on `std::weak_ptr` in C++:
+
+---
+
+`What is `std::weak_ptr`?`
+- `std::weak_ptr` is a `non-owning smart pointer` 
+in the C++ Standard Library.
+- Provides a way to reference a resource managed 
+by `std::shared_ptr` `without affecting its reference count`.
+- Primarily used to `prevent circular references` 
+when working with `std::shared_ptr`.
+
+---
+
+`Key Characteristics`
+1. `Non-Owning`:
+   - Does not take ownership of the resource.
+   - Does not increment or decrement the reference count of the associated `std::shared_ptr`.
+
+2. `Lifespan Awareness`:
+   - Can check if the resource it points to has been deallocated (`expired()`).
+   - Can safely access the resource by converting to `std::shared_ptr` (`lock()`).
+
+---
+
+`Basic Syntax`
+```cpp
+#include <memory>
+#include <iostream>
+
+std::shared_ptr<int> shared = std::make_shared<int>(42);
+
+// Create a weak_ptr from a shared_ptr
+std::weak_ptr<int> weak = shared;
+
+// Check if the resource is still available
+if (auto locked = weak.lock()) {
+    std::cout << "Resource is available: " << *locked << "\n";
+} else {
+    std::cout << "Resource has expired.\n";
+}
+```
+
+---
+
+`Key Functions`
+1. `Constructor`:
+   - Default constructor creates an empty `weak_ptr`:
+     ```cpp
+     std::weak_ptr<int> weak;
+     ```
+
+   - Can be constructed from a `std::shared_ptr`:
+     ```cpp
+     std::shared_ptr<int> shared = std::make_shared<int>(42);
+     std::weak_ptr<int> weak(shared);
+     ```
+
+2. ``lock()``:
+   - Returns a `std::shared_ptr` if the resource is still available, 
+   or `nullptr` if it has expired:
+     ```cpp
+     auto shared = weak.lock();
+     if (shared) {
+         std::cout << "Resource is available: " << *shared << "\n";
+     }
+     ```
+
+3. ``expired()``:
+   - Returns `true` if the resource has been deallocated:
+     ```cpp
+     if (weak.expired()) {
+         std::cout << "Resource has expired.\n";
+     }
+     ```
+
+4. ``use_count()``:
+   - Returns the number of `std::shared_ptr` instances 
+   sharing ownership of the resource:
+     ```cpp
+     std::cout << "Shared count: " << weak.use_count() << "\n";
+     ```
+
+5. ``reset()``:
+   - Clears the `weak_ptr`, making it empty:
+     ```cpp
+     weak.reset();
+     ```
+
+---
+
+`Why Use `std::weak_ptr`?`
+1. `Prevent Circular References`:
+   - Breaks ownership cycles between `std::shared_ptr` instances.
+2. `Non-Owning Access`:
+   - Allows observing or accessing a resource 
+   without prolonging its lifetime.
+3. `Efficient Memory Usage`:
+   - Avoids unnecessary increments 
+   to the reference count of `std::shared_ptr`.
+
+---
+
+`Example: Breaking Circular References`
+```cpp
+#include <memory>
+#include <iostream>
+
+struct Node {
+    int value;
+    std::shared_ptr<Node> next;
+    std::weak_ptr<Node> prev; // Use weak_ptr to prevent circular reference
+
+    Node(int val) : value(val) { }
+};
+
+int main() {
+    auto node1 = std::make_shared<Node>(1);
+    auto node2 = std::make_shared<Node>(2);
+
+    node1->next = node2;
+    node2->prev = node1; // Prevent circular reference
+
+    // Nodes are automatically destroyed when no shared_ptr owns them
+    return 0;
+}
+```
+
+---
+
+`Advantages`
+1. Prevents memory leaks caused by circular references.
+2. Lightweight and does not impact the reference count.
+3. Provides safe access to resources 
+without extending their lifetime.
+
+---
+
+`Disadvantages`
+1. `Access Requires `lock()``:
+   - Cannot directly access the managed object; 
+   must convert to `std::shared_ptr`.
+2. `Cannot Own Resources`:
+   - Only observes the resource; cannot manage its lifetime.
+
+---
+
+`Use Cases`
+1. Observing objects without affecting their lifetime.
+2. Avoiding circular references in data structures 
+like graphs, trees, and doubly linked lists.
+3. Providing weak links in an observer pattern implementation.
+
+==================================================================================
+
+
+C++ program 
+that demonstrates the use of 
+    `std::unique_ptr`, 
+    `std::shared_ptr`, and 
+    `std::weak_ptr`:
+
+---
+
+`Program Explanation`
+This program simulates a hierarchical structure 
+(e.g., a company) where:
+1. `std::unique_ptr` is used 
+for managing unique ownership of `Manager` objects.
+2. `std::shared_ptr` is used 
+for shared ownership of `Employee` objects by multiple managers.
+3. `std::weak_ptr` is used to reference a `Manager` 
+from an `Employee` without creating a cyclic dependency.
+
+---
+
+`Code Example`
+```cpp
+#include <iostream>
+#include <memory>
+#include <vector>
+#include <string>
+using namespace std;
+
+// Forward declaration
+class Manager;
+
+// Employee Class
+class Employee {
+    string name;
+    weak_ptr<Manager> manager; // Weak reference to Manager to avoid cyclic dependency
+public:
+    Employee(const string& name) : name(name) {
+        cout << "Employee " << name << " created.\n";
+    }
+    ~Employee() {
+        cout << "Employee " << name << " destroyed.\n";
+    }
+
+    void setManager(shared_ptr<Manager> mgr) {
+        manager = mgr; // Assign manager using weak_ptr
+    }
+
+    void showManager() {
+        if (auto mgr = manager.lock()) { // Check if Manager is still alive
+            cout << "Employee " << name << "'s manager is " << mgr->getName() << ".\n";
+        } else {
+            cout << "Employee " << name << " has no manager (Manager destroyed).\n";
+        }
+    }
+};
+
+// Manager Class
+class Manager {
+    string name;
+    vector<shared_ptr<Employee>> employees; // Shared ownership of employees
+public:
+    Manager(const string& name) : name(name) {
+        cout << "Manager " << name << " created.\n";
+    }
+    ~Manager() {
+        cout << "Manager " << name << " destroyed.\n";
+    }
+
+    string getName() const {
+        return name;
+    }
+
+    void addEmployee(shared_ptr<Employee> emp) {
+        employees.push_back(emp); // Manager owns Employee
+        emp->setManager(shared_from_this()); // Employee references Manager
+    }
+
+    void showEmployees() {
+        cout << "Manager " << name << "'s employees: ";
+        for (const auto& emp : employees) {
+            cout << emp->getName() << " ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    {
+        // Step 1: Unique ownership of Manager
+        unique_ptr<Manager> manager1 = make_unique<Manager>("Alice");
+
+        // Step 2: Shared ownership of Employees
+        shared_ptr<Employee> emp1 = make_shared<Employee>("Bob");
+        shared_ptr<Employee> emp2 = make_shared<Employee>("Charlie");
+
+        // Step 3: Adding Employees to Manager
+        manager1->addEmployee(emp1);
+        manager1->addEmployee(emp2);
+
+        // Show Employees of Manager
+        manager1->showEmployees();
+
+        // Step 4: Weak reference from Employee to Manager
+        emp1->showManager();
+        emp2->showManager();
+
+        // Manager goes out of scope here
+    }
+
+    // Step 5: Checking dangling weak_ptr
+    cout << "\nAfter Manager destruction:\n";
+    emp1->showManager(); // Should indicate no manager
+    emp2->showManager();
+
+    return 0;
+}
+```
+
+---
+
+`Output`
+```plaintext
+Manager Alice created.
+Employee Bob created.
+Employee Charlie created.
+Manager Alice's employees: Bob Charlie
+Employee Bob's manager is Alice.
+Employee Charlie's manager is Alice.
+
+After Manager destruction:
+Employee Bob has no manager (Manager destroyed).
+Employee Charlie has no manager (Manager destroyed).
+Employee Bob destroyed.
+Employee Charlie destroyed.
+```
+
+---
+
+`Explanation`
+1. ``std::unique_ptr``:
+   - Used for `manager1`. Ownership of the `Manager` is unique and cannot be shared or copied.
+   - When `manager1` goes out of scope, the `Manager` is automatically destroyed.
+
+2. ``std::shared_ptr``:
+   - Used for `emp1` and `emp2` to allow shared ownership between the `main` function and the `Manager`.
+   - Both `Manager` and `main` share ownership of employees.
+
+3. ``std::weak_ptr``:
+   - Used in the `Employee` class to hold a non-owning reference to the `Manager`.
+   - Prevents cyclic dependencies between `Manager` and `Employee`.
+   - Allows safely accessing the `Manager` only if it still exists (`lock()`).
+
+---
+
+`Use Cases`
+- `Unique Ownership (`std::unique_ptr`)`: For resources like a single manager that is not shared.
+- `Shared Ownership (`std::shared_ptr`)`: For resources like employees shared among multiple owners.
+- `Non-Ownership (`std::weak_ptr`)`: For references to resources where lifetime management is handled by another owner.
+
+
+==================================================================================
+``std::shared_ptr`` is useful in real-world scenarios 
+when multiple parts of a program need `shared ownership` of a resource. 
+
+This means that as long as one part of the program still needs access, 
+the resource will not be destroyed. 
+
+Once all owners release it, 
+the resource is automatically deallocated. 
+
+Here are `real-time use cases` where `std::shared_ptr` shines:
+
+---
+
+1. `Observer Pattern (Publisher-Subscriber Model)`
+In scenarios where multiple components (subscribers) 
+need access to shared data (published by a single source).
+
+Example:
+In a `chat application`, multiple users (subscribers) 
+might need access to the same chatroom object.
+
+```cpp
+#include <iostream>
+#include <memory>
+#include <vector>
+using namespace std;
+
+class Chatroom {
+public:
+    void sendMessage(const string& message) {
+        cout << "Message sent: " << message << endl;
+    }
+};
+
+void userJoin(shared_ptr<Chatroom> chatroom, const string& userName) {
+    cout << userName << " joined the chatroom." << endl;
+    chatroom->sendMessage(userName + " says Hello!");
+}
+
+int main() {
+    shared_ptr<Chatroom> chatroom = make_shared<Chatroom>();
+    userJoin(chatroom, "Alice");
+    userJoin(chatroom, "Bob");
+    return 0;
+}
+```
+
+Here, multiple users share ownership of the `Chatroom` instance, 
+and it will be destroyed only after all references are gone.
+
+---
+
+2. `Shared Resource Management`
+In a `threaded application`, 
+multiple threads might work on a shared resource, 
+like a large dataset or a configuration object.
+
+Example:
+Imagine a `web server` where multiple threads 
+need access to shared configuration data.
+
+```cpp
+#include <iostream>
+#include <memory>
+#include <thread>
+#include <vector>
+using namespace std;
+
+class Config {
+public:
+    void show() const {
+        cout << "Configuration data is being accessed.\n";
+    }
+};
+
+void accessConfig(shared_ptr<Config> config) {
+    config->show();
+}
+
+int main() {
+    shared_ptr<Config> config = make_shared<Config>();
+
+    vector<thread> threads;
+    for (int i = 0; i < 5; ++i) {
+        threads.emplace_back(accessConfig, config);
+    }
+
+    for (auto& t : threads) {
+        t.join();
+    }
+
+    return 0;
+}
+```
+
+The `Config` object is shared among all threads, and 
+`std::shared_ptr` ensures proper cleanup once no thread uses it.
+
+---
+
+3. `Graph or Tree-like Data Structures`
+In complex data structures like graphs, cycles can occur. 
+You might use `shared_ptr` 
+for nodes and `weak_ptr` to break cycles.
+
+Example:
+A `social network` graph 
+where users are represented as nodes, 
+and connections (edges) are shared by multiple nodes.
+
+```cpp
+#include <iostream>
+#include <memory>
+#include <vector>
+using namespace std;
+
+class User;
+
+class Connection {
+public:
+    weak_ptr<User> user1, user2;
+    Connection(shared_ptr<User> u1, shared_ptr<User> u2) : user1(u1), user2(u2) {}
+};
+
+class User {
+public:
+    string name;
+    vector<shared_ptr<Connection>> connections;
+
+    User(const string& name) : name(name) {}
+    void addConnection(shared_ptr<Connection> connection) {
+        connections.push_back(connection);
+    }
+};
+
+int main() {
+    auto alice = make_shared<User>("Alice");
+    auto bob = make_shared<User>("Bob");
+
+    auto connection = make_shared<Connection>(alice, bob);
+    alice->addConnection(connection);
+    bob->addConnection(connection);
+
+    cout << alice->name << " and " << bob->name << " are connected.\n";
+    return 0;
+}
+```
+
+Here, `shared_ptr` is used for users and connections, 
+while `weak_ptr` prevents a circular dependency 
+between `Connection` and `User`.
+
+---
+
+4. `Plugin Systems`
+For applications like `media players or CAD software`, 
+plugins can share access to a common framework.
+
+Example:
+A `video player` where multiple plugins 
+(like subtitle renderers, video filters, etc.) 
+share access to the video stream.
+
+---
+
+5. `Game Development`
+In a game, multiple objects like players or enemies might 
+share access to a common resource, such as the game world or textures.
+
+---
+
+`When to Use `std::shared_ptr``
+- When multiple owners need to share responsibility for an object’s lifetime.
+- When an object’s lifetime needs to be extended dynamically based on shared usage.
+
+---
+
+`Key Real-World Concepts`
+1. `Shared Ownership`: `std::shared_ptr` allows multiple parts of 
+your code to access and modify a single object without duplicating it.
+2. `Thread Safety`: If reference count is used across threads, 
+`std::shared_ptr` provides a safe way to manage resources.
+3. `Automatic Deallocation`: Ensures that cleanup happens only 
+after all shared owners are done with the object.
+
+==================================================================================
+
+`std::weak_ptr` is used in`real-world scenarios` 
+to prevent`cyclic dependencies` when using `std::shared_ptr`. 
+It provides a way to hold a`non-owning reference` 
+to an object that is managed by a `std::shared_ptr`. 
+This is particularly useful in situations 
+where you want to observe or reference an object 
+without affecting its lifetime.
+
+Here are some`real-time use cases` for `std::weak_ptr`:
+
+---
+
+1.`Breaking Circular Dependencies`
+In a graph or tree structure where nodes can reference each other, 
+circular dependencies can occur. 
+Using `std::weak_ptr` helps 
+to avoid memory leaks by breaking these cycles.
+
+#Example:`Graph Representation`
+```cpp
+#include <iostream>
+#include <memory>
+#include <vector>
+using namespace std;
+
+class Node {
+public:
+    int value;
+    vector<shared_ptr<Node>> neighbors;
+    Node(int val) : value(val) {}
+    ~Node() {
+        cout << "Node " << value << " destroyed\n";
+    }
+};
+
+class Graph {
+public:
+    vector<shared_ptr<Node>> nodes;
+
+    void addNode(int value) {
+        nodes.push_back(make_shared<Node>(value));
+    }
+
+    void connectNodes(shared_ptr<Node> a, shared_ptr<Node> b) {
+        a->neighbors.push_back(b);
+        b->neighbors.push_back(a); // Circular reference
+    }
+};
+
+int main() {
+    shared_ptr<Graph> graph = make_shared<Graph>();
+    graph->addNode(1);
+    graph->addNode(2);
+    graph->connectNodes(graph->nodes[0], graph->nodes[1]);
+
+    return 0; // Memory leak because of circular references
+}
+```
+
+Fix using `std::weak_ptr`:
+```cpp
+class Node {
+public:
+    int value;
+    vector<weak_ptr<Node>> neighbors; // Non-owning reference
+    Node(int val) : value(val) {}
+    ~Node() {
+        cout << "Node " << value << " destroyed\n";
+    }
+};
+
+class Graph {
+public:
+    vector<shared_ptr<Node>> nodes;
+
+    void addNode(int value) {
+        nodes.push_back(make_shared<Node>(value));
+    }
+
+    void connectNodes(shared_ptr<Node> a, shared_ptr<Node> b) {
+        a->neighbors.push_back(b);
+        b->neighbors.push_back(a); // No memory leak now
+    }
+};
+```
+
+Here, `std::weak_ptr` ensures that a `Node` 
+does not increase the reference count of its neighbor, 
+preventing a memory leak.
+
+---
+
+2.`Observer Pattern`
+In the`observer pattern`, `std::weak_ptr` is used 
+to prevent observers from keeping the subject alive 
+when they only observe it.
+
+#Example:`Event System`
+```cpp
+#include <iostream>
+#include <memory>
+#include <vector>
+using namespace std;
+
+class Event;
+
+class Listener {
+public:
+    void onEvent() {
+        cout << "Event received\n";
+    }
+    ~Listener() {
+        cout << "Listener destroyed\n";
+    }
+};
+
+class Event {
+    vector<weak_ptr<Listener>> listeners; // Non-owning references
+public:
+    void addListener(shared_ptr<Listener> listener) {
+        listeners.push_back(listener);
+    }
+
+    void notify() {
+        for (auto it = listeners.begin(); it != listeners.end();) {
+            if (auto listener = it->lock()) { // Check if the listener still exists
+                listener->onEvent();
+                ++it;
+            } else {
+                it = listeners.erase(it); // Remove expired listener
+            }
+        }
+    }
+};
+
+int main() {
+    auto listener1 = make_shared<Listener>();
+    auto event = make_shared<Event>();
+
+    event->addListener(listener1);
+
+    event->notify();
+    listener1.reset(); // Destroy the listener
+    event->notify(); // No crash because weak_ptr prevents dangling references
+
+    return 0;
+}
+```
+
+---
+
+3.`Cache Systems`
+In a caching mechanism, `std::weak_ptr` can be used 
+to reference cached objects without preventing them 
+from being garbage-collected when they are no longer needed.
+
+#Example:
+```cpp
+#include <iostream>
+#include <memory>
+#include <unordered_map>
+using namespace std;
+
+class Data {
+public:
+    int value;
+    Data(int val) : value(val) {}
+    ~Data() {
+        cout << "Data " << value << " destroyed\n";
+    }
+};
+
+class Cache {
+    unordered_map<int, weak_ptr<Data>> cache; // Weak references
+public:
+    shared_ptr<Data> getData(int key) {
+        auto it = cache.find(key);
+        if (it != cache.end()) {
+            if (auto data = it->second.lock()) {
+                return data; // Return existing shared_ptr
+            }
+        }
+        // Create new Data and store it in the cache
+        auto newData = make_shared<Data>(key);
+        cache[key] = newData;
+        return newData;
+    }
+};
+
+int main() {
+    Cache cache;
+    {
+        auto data1 = cache.getData(1);
+        auto data2 = cache.getData(1);
+    } // Data 1 is destroyed because no shared_ptr holds it
+
+    auto data3 = cache.getData(1); // Re-creates Data 1
+    return 0;
+}
+```
+
+---
+
+4.`Parent-Child Relationships`
+In a hierarchical data structure, 
+such as a GUI framework, `std::weak_ptr` 
+is used to let children reference their parent 
+without keeping the parent alive unnecessarily.
+
+#Example:`GUI Framework`
+```cpp
+#include <iostream>
+#include <memory>
+#include <vector>
+using namespace std;
+
+class Widget {
+    weak_ptr<Widget> parent; // Non-owning reference to parent
+public:
+    void setParent(shared_ptr<Widget> p) {
+        parent = p;
+    }
+    shared_ptr<Widget> getParent() {
+        return parent.lock(); // Returns a shared_ptr if parent is still alive
+    }
+    ~Widget() {
+        cout << "Widget destroyed\n";
+    }
+};
+
+int main() {
+    auto parent = make_shared<Widget>();
+    auto child = make_shared<Widget>();
+
+    child->setParent(parent);
+
+    parent.reset(); // Parent is destroyed
+    if (child->getParent() == nullptr) {
+        cout << "Parent no longer exists\n";
+    }
+
+    return 0;
+}
+```
+
+---
+
+`When to Use `std::weak_ptr``
+1.`Breaking Cyclic Dependencies`: For scenarios like doubly-linked lists, graphs, and observer patterns.
+2.`Non-owning References`: When you need a reference to an object without influencing its lifetime.
+3.`Conditional Access`: When you need to access an object if it is still alive but don’t want to keep it alive artificially.
+4.`Efficient Caching`: To allow resources to expire when not in use.
+
+---
+
+`Key Benefits`
+- Prevents memory leaks in `std::shared_ptr` cycles.
+- Lightweight reference without increasing the reference count.
+- Safeguards against dangling pointers via `lock()`.
+==================================================================================
