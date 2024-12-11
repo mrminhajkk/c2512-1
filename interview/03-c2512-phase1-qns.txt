@@ -52,3 +52,63 @@ Minhaj:#002
     -----------------------------------------------------------------------------
             in the folder : /interview/03-02-00.cpp 
     -----------------------------------------------------------------------------
+Athira#003
+    THEORY QUESTIONS
+        1) Self introduction
+        2) What you think about your training?
+        3) When you first heard about C++, what was your first strike in your mind?
+        4) What is programming?
+        5) what is compiler?
+        6) what is interpreter?
+        7) what is the importance of pseudocode?
+        8) what is algorithm?
+        9) What is the need for a loop in a program and explain its types.
+        10) What is a break statement in switch case?
+        11) What is Database?
+        12) What is a view?
+        13) What is the major difference between desktop applications and web applications?
+        14) What is SDLC?
+        15) What is Agile?
+        16) What is the use of sed command?
+        17) Command ps
+        18) What is Environmental variable?
+        19) What is Oops?
+        20) What is constructor?
+        21) What is static function?
+        22) What is virtual function?
+        23) What is pointer?
+        24) Difference between int a and int* a .
+        25) What is Exception Handling?
+        26) C++ 11 , 14, 17 features.
+        27) Explain polymorphism.
+        28) What you think about this 30min interview?
+        29) A snail is trying to climb a tree. 
+        If the snail climbs 5 feet in a day 
+        but falls 4 feet back, 
+        how many days will it take to climb 20 feet?
+    PROGRAM QUESTION
+        1) Write a program to print alternative numbers.
+        -----------------------------------------------------------------------------
+        -----------------------------------------------------------------------------
+Ayisha#004
+    =========Theory=========
+        Ask about what all topics covered in 26 days
+        Explain OOPs
+        Dynamic memory allocation
+        New delete
+        Calling order of constructors and destructor 
+        Private, public, protected 
+        What is Linker
+        What is Template
+        4 Steps in compilation
+    ===========Code========
+        Using the While loop print name 10 times
+        For Class College :
+            (Declare attributes, functions, constructor destructor)
+        Swap 2  numbers code
+        For Class XYZ :
+            declare private, public, protected variables (int x, int y , int z)
+            how we can access them
+            assign value 20 to y
+        -----------------------------------------------------------------------------
+        -----------------------------------------------------------------------------
