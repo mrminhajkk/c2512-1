@@ -11,31 +11,31 @@ Define all the fields as dynamic fields in each class
 If you use string, use c-string (don't use string class)
         ie. dynamic c-string [dynamic char array]
 ============================================================= Sana Team (1-5)
-Example 1: `Shape and Rectangle`
+Example 1: `Shape and Rectangle`  | Ayisha 
 - `Base Class:` `Shape`  
   - Fields: None  
   - Pure Virtual Behaviors: `calculateArea()`, `calculatePerimeter()`  
 - `Derived Class:` `Rectangle`  
   - Fields: `length`, `breadth`  
-Example 2: `Animal and Dog`
+Example 2: `Animal and Dog` | Nimisha
 - `Base Class:` `Animal`  
   - Fields: `species`  
   - Pure Virtual Behaviors: `makeSound()`, `move()`  
 - `Derived Class:` `Dog`  
   - Fields: `breed`  
-Example 3: `Account and SavingsAccount`
+Example 3: `Account and SavingsAccount` | Sana
 - `Base Class:` `Account`  
   - Fields: `accountNumber`, `balance`  
   - Pure Virtual Behaviors: `deposit()`, `withdraw()`  
 - `Derived Class:` `SavingsAccount`  
   - Fields: `interestRate`  
-Example 4: `Device and Smartphone`
+Example 4: `Device and Smartphone` | Vinayak 
 - `Base Class:` `Device`  
   - Fields: `brand`, `model`  
   - Pure Virtual Behaviors: `powerOn()`, `powerOff()`  
 - `Derived Class:` `Smartphone`  
   - Fields: `operatingSystem`  
-Example 5: `Tool and Hammer`
+Example 5: `Tool and Hammer` | Vishak
 - `Base Class:` `Tool`  
   - Fields: `toolName`, `weight`  
   - Pure Virtual Behaviors: `use()`, `repair()`  

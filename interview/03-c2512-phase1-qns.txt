@@ -25,3 +25,30 @@ Abel: #001
         -----------------------------------------------------------------------------
             in the folder : /interview/03-01.cpp 
         -----------------------------------------------------------------------------
+
+Minhaj:#002
+    THEORY QUESTIONS:
+    1) Explain steps in SDLC and STLC?
+    2) Explain inheritance and types of inheritance 
+        (like public, private and protected)?
+    3) What is smart pointer and why we use it?
+    4) What are the class relationships? (Composition and Aggregation).
+    5) What is thread? What is multi threading and 
+    what are the advantages of using multi threading?
+    6) Do you know about inter process communication?
+    7) What is exception handling and 
+        how can we implement exception handling.
+        give example (Real life example also)?
+    8) Explain conditional compilation?
+    9) What is memory leak?    
+    PROGRAM QUESTIONS:
+        1) Define an abstract class.
+        2) Add a pure virtual function in that.
+        3) Create a Derived class which inherit the base class.
+        4) Override that base class function.
+        5) In the main function create an object of the derived class. 
+            Dynamically allocate memory.
+        6) Also can we make object of abstract class?
+    -----------------------------------------------------------------------------
+            in the folder : /interview/03-02-00.cpp 
+    -----------------------------------------------------------------------------

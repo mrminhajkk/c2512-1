@@ -1,0 +1,35 @@
+// 1. complete Stack implementation 
+// 1.2. Exceptions Overflow ex, Underflow ex 
+// 2. convert Stack as generic Stack 
+// 3. dynamic array 
+// DONT DO::4. smart pointer [unique_ptr]
+
+class C2512Stack 
+{
+    private:
+        const int _size = 100;
+        double arr[_size];
+        int _top;
+    public: 
+        mystack();//_top=0;
+        void push(double data);//Validation;arr[_top]=data;_top++;
+        void pop();//Validation;_top--;
+        double top();
+};
+
+
+// driver code 
+
+
+C2512Stack stack; 
+stack.push(10.0);
+stack.push(12.0);
+stack.push(11.0);
+cout << stack.top() << endl; //11.0
+stack.pop();
+cout << stack.top() << endl; //12.0
+stack.pop();
+cout << stack.top() << endl; //10.0
+stack.pop();
+cout << stack.top() << endl; //Err/Underflow
+stack.pop();
