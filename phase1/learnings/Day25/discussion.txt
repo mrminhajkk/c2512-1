@@ -32,3 +32,69 @@ float salaries_sum = findSum<float>(salaries, 4, 0.0f);
 
 template <class T, 
 int findProduct(float x, double y)
+
+
+=======================================================
+sequential containers: vector, list, deque, forward_list, array 
+associative containers: set, map 
+adaptive containers: stack, queue, priority_queue
+    string
+    pair  
+    tuple 
+=======================================================
+vector<double>:
+    private:
+        double* arr;
+        int _size;     //user data size   2 ie number of elements
+        int _capacity; //actual_size 10 | 8 blocks [reservations for storage]
+        const int _max_size = 1000; //will not grow after max_size ie size <= capacity & capacity <= max_size 
+    public:
+        vector() {
+            _capacity = 10;
+            _size = 0;
+            arr = new double[_capacity];
+        }
+        ~vector() {
+            delete[] arr;
+        }
+        void push_back(double& data) {
+            if(_size == _capacity) {
+                int _new_capacity = 2 * _capacity;
+                //validate and set proper capacity //code here 
+                if(_new_capacity > _max_size && _capacity < _max_size) {
+                    _capacity = _max_size;
+                } else if(_new_capacity > _max_size) { 
+                    throw "Err";
+                }
+                double* new_arr = new double[_new_capacity]; // new array is created
+                for(int I = 0; I < _size; I++) {             // copy existing data 
+                    new_arr[I] = arr[I];
+                }
+                delete[] arr;                                // release the old array 
+                arr = new_arr;                               // copy addr of new_arr to arr // arr is newly created copied array
+                new_arr = nullptr;
+                _capacity = _new_capacity;
+            }
+            arr[_size] = data;
+            _size++;
+        }
+        operator[]  -- overloaded 
+deque<double>: random-access                    | doule ended queue 
+    [0:0,5:1]               index table 
+    [arr1[4] -> arr2[6]]    sequential access 
+    operator[]  -- overloaded 
+list<double>: sequential access, not allowed index | doubly linked list 
+
+    forward_list 
+    array 
+
+
+
+vector<float> v;
+    v.begin()+2
+
+
+    arr is name of the array 
+    arr -> base addr 
+    &arr -> addr of entire array 
+    (&arr) + 1 -> addr of after array
