@@ -55,3 +55,13 @@ types of lvalue reference wrt accessbility: int num = 10;
 types of rvalue reference: 
     1. reference                       int&& anum = 11+2;         // anum = 11; /*VALID*/ 
     2. reference to const              const int&& bnum = 11+2;   // bnum = 11; /*ERR*/
+
+
+==============================================================================
+
+        Student 
+        |
+        |--> HighSchoolStudent 
+        |--> JEEStudent             <-- JEECourse 
+        |--> NEETStudent            <-- NEETCourse
+        |--> NEETPlusJEEStudent     <-- JEECourse, NEETCourse

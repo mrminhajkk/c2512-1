@@ -158,16 +158,22 @@ int main() {
 
     HighSchoolStudent student1("Alice", marks1, 5);
     HighSchoolStudent student2("Bob", marks2, 5);
+
     NEETStudent student3("Charlie", marks3, 5, 92);
     NEETStudent student4("Diana", marks4, 5, 90);
     NEETStudent student5("Eve", marks5, 5, 84);
+
     JEEStudent student6("Frank", marks6, 5, 88, 90, 85);
     JEEStudent student7("Grace", marks7, 5, 93, 95, 94);
+
     NEETPlusJEEStudent student8("Hannah", marks8, 5, 88, 90, 92, 93);
     NEETPlusJEEStudent student9("Ian", marks9, 5, 85, 87, 89, 90);
     NEETPlusJEEStudent student10("Kate", marks10, 5, 99, 97, 96, 95);
 
-    Student students[] = {student1, student2, student3, student4, student5, student6, student7, student8, student9, student10};
+    Student students[] = {student1, student2, 
+            student3, student4, student5, 
+            student6, student7, 
+            student8, student9, student10};
 
     // Display students
     for (int i = 0; i < size; ++i) {
