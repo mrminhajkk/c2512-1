@@ -132,11 +132,6 @@ public:
 
 // Derived class: NEETPlusJEEStudent
 class NEETPlusJEEStudent : public HighSchoolStudent, public JEECourse, public NEETCourse  {
-private:
-    double biologyMarks;
-    double physicsMarks;
-    double chemistryMarks;
-    double mathMarks;
 
 public:
     NEETPlusJEEStudent(const char* name, double* marks, int numMarks, 
@@ -145,7 +140,7 @@ public:
         {}
 
     double findTotalMarks() const override {
-        return Student::findTotalMarks() + biologyMarks + physicsMarks + chemistryMarks + mathMarks;
+        return HighSchoolStudent::findTotalMarks() + getBiologyMarks() + getPhysicsMarks() + getChemistryMarks() + getMathMarks() ;
     }
 
     void display() const override {
@@ -199,7 +194,9 @@ int main() {
 
     // Display students
     for (int i = 0; i < size; ++i) {
-        students[i]->display(); cout << endl;
+        students[i]->display(); 
+        cout << "Total Marks:" << students[i]->findTotalMarks() << endl;
+        cout << endl;
     }
 
     // Calculate and display the average total marks
