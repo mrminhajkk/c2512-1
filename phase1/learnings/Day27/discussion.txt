@@ -62,6 +62,6 @@ types of rvalue reference:
         Student 
         |
         |--> HighSchoolStudent 
-        |--> JEEStudent             <-- JEECourse 
-        |--> NEETStudent            <-- NEETCourse
-        |--> NEETPlusJEEStudent     <-- JEECourse, NEETCourse
+                |--> JEEStudent             <-- JEECourse 
+                |--> NEETStudent            <-- NEETCourse
+                |--> NEETPlusJEEStudent     <-- JEECourse, NEETCourse
