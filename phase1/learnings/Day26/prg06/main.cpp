@@ -1,11 +1,9 @@
 #include<iostream>
+#include <stdexcept> // For exception handling
 using namespace std;
 
-#ifndef C2512STACK_H
-#define C2512STACK_H
-    #include <stdexcept> // For exception handling
 
-    class C2512Stack {
+class C2512Stack {
     private:
         static const int _size = 3; // Fixed size for the stack
         double arr[_size];           // Array to store stack elements
@@ -23,8 +21,8 @@ using namespace std;
         // Utility Functions
         bool isEmpty() const;    // Checks if the stack is empty
         bool isFull() const;     // Checks if the stack is full
-    };
-#endif // C2512STACK_H
+};
+
 
 
 int main() {
@@ -36,7 +34,7 @@ int main() {
         stack.push(10.0);
         stack.push(12.0);
         stack.push(11.0);
-        stack.push(12.0);
+        stack.push(13.0);
     } catch (const overflow_error& e) {
         cerr << "Error: " << e.what() << endl;
     }   
@@ -69,7 +67,7 @@ C2512Stack::C2512Stack() : _top(0) {}
 
 // Push method: Adds an element to the stack
 void C2512Stack::push(double data) {
-    if (_top >= _size) {
+    if (isFull()) {
         throw overflow_error("Stack overflow: Cannot push more elements.");
     }
     arr[_top] = data; // Add data to the stack
@@ -78,7 +76,7 @@ void C2512Stack::push(double data) {
 
 // Pop method: Removes the top element from the stack
 void C2512Stack::pop() {
-    if (_top <= 0) {
+    if (isEmpty()) {
         throw underflow_error("Stack underflow: Cannot pop from an empty stack.");
     }
     _top--; // Decrement the top
@@ -86,7 +84,7 @@ void C2512Stack::pop() {
 
 // Top method: Returns the element at the top of the stack
 double C2512Stack::top() const {
-    if (_top <= 0) {
+    if (isEmpty()) {
         throw underflow_error("Stack underflow: Cannot access the top of an empty stack.");
     }
     return arr[_top - 1]; // Return the top element

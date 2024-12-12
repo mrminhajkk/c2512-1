@@ -1,0 +1,57 @@
+
+
+
+int num = 10;
+int* pnum = &num;//pnum is ptr to int 
+*pnum = 20; // num = 20 
+
+const int* qnum = &num;//qnum is ptr to 'const int'
+*qnum = 30; // num = 30 
+
+==============================================================================
+#include <iostream>
+using namespace std;
+int main()
+{
+    int num = 10;
+    int* pnum = &num;//pnum is ptr to int (1)
+    *pnum = 20; // num = 20 
+    cout << num << endl;
+    
+    const int* qnum = &num;//qnum is ptr to 'const int' (2)
+    //*qnum = 30; // num = 30 
+    cout << *qnum << endl;
+
+    int other_num = 70;
+    qnum = &other_num;//qnum is not 'const' but it 'points to' is 'const' 
+    cout << *qnum << endl;
+    
+    int* const rnum = &num;//const ptr to int (3)
+    cout << *rnum << endl;
+    *rnum = 21;
+    cout << num << endl;
+    
+    //rnum = &other_num;//ERR
+    
+    const int* const snum = &num;//const ptr to const (4)
+    //*snum = 31;//ERR. why? ptr to const, we cannot change the value pointed by ptr 
+    //snum = &other_num;//ERR. why? const ptr, so we cannot change the pointer addr 
+    cout << *snum << endl;
+    return 0;
+}
+==============================================================================
+
+
+types of pointer wrt accessbility:      int num = 10;
+    1. pointer                          int* pnum = &num;           // *pnum = 11; /*VALID*/ pnum = &other_num; /*VALID*/
+    2. pointer to const                 const int* rnum = &num;     // *rnum = 11; /*ERR*/ rnum = &other_num; /*VALID*/
+    3. const pointer                    int* const qnum = &num;     // *qnum = 11; /*VALID*/ qnum = &other_num; /*ERR*/
+    4. const poitner to const           const int* const snum = &num; // *snum = 11; /*ERR*/ snum = &other_num; /*ERR*/
+
+types of lvalue reference wrt accessbility: int num = 10;
+    1. reference                       int& anum = num;         // anum = 11; /*VALID*/ 
+    2. reference to const              const int& bnum = num;         // bnum = 11; /*ERR*/ 
+
+types of rvalue reference: 
+    1. reference                       int&& anum = 11+2;         // anum = 11; /*VALID*/ 
+    2. reference to const              const int&& bnum = 11+2;   // bnum = 11; /*ERR*/

@@ -23,10 +23,15 @@ class C2512Stack {
         bool isFull() const;     // Checks if the stack is full
 };
 
+class DoubleStack : public C2512Stack<double> {
+    public:
+        //my additional behaviours 
+};
+
 
 int main() {
    
-    C2512Stack<double> stack;
+    DoubleStack stack;
 
     try {
         // Push elements onto the stack
@@ -58,42 +63,11 @@ int main() {
         cerr << "Error: " << e.what() << endl;
     }
 
-    cout << endl << endl;
-    cout << "---------------------------String stack-----------------" << endl;
-    C2512Stack<string> names;
 
-    try {
-        // Push elements onto the stack
-        names.push("Athira");
-        names.push("Abel");
-        names.push("Minhaj");
-        names.push("Raj");
-    } catch (const overflow_error& e) {
-        cerr << "Error: " << e.what() << endl;
-    }   
-
-    
-    try {    
-        // Access and pop elements
-        cout << "Top:" << names.top() << endl; // Output: 11.0
-        names.pop();
-
-        cout << "Top:" << names.top() << endl; // Output: 12.0
-        names.pop();
-
-        cout << "Top:" << names.top() << endl; // Output: 10.0
-        names.pop();
-
-        // Attempting to access or pop an element from an empty stack
-        cout << "Top:" << names.top() << endl; // Should throw an exception
-        names.pop();                          // Should throw an exception
-
-    } catch (const underflow_error& e) {
-        cerr << "Error: " << e.what() << endl;
-    }
 
     return 0;
 }
+
 
 
 

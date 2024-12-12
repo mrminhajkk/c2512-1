@@ -2,7 +2,10 @@
 #include <stdexcept> // For exception handling
 using namespace std;
 
-template<class T>
+//typedef float T;    //alias for data type 'float'
+using T = float;      //alias for data type 'float'  
+
+
 class C2512Stack {
     private:
         static const int _size = 3; // Fixed size for the stack
@@ -24,16 +27,17 @@ class C2512Stack {
 };
 
 
+
 int main() {
    
-    C2512Stack<double> stack;
+    C2512Stack stack;
 
     try {
         // Push elements onto the stack
         stack.push(10.0);
         stack.push(12.0);
         stack.push(11.0);
-        stack.push(12.0);
+        stack.push(13.0);
     } catch (const overflow_error& e) {
         cerr << "Error: " << e.what() << endl;
     }   
@@ -58,52 +62,14 @@ int main() {
         cerr << "Error: " << e.what() << endl;
     }
 
-    cout << endl << endl;
-    cout << "---------------------------String stack-----------------" << endl;
-    C2512Stack<string> names;
-
-    try {
-        // Push elements onto the stack
-        names.push("Athira");
-        names.push("Abel");
-        names.push("Minhaj");
-        names.push("Raj");
-    } catch (const overflow_error& e) {
-        cerr << "Error: " << e.what() << endl;
-    }   
-
-    
-    try {    
-        // Access and pop elements
-        cout << "Top:" << names.top() << endl; // Output: 11.0
-        names.pop();
-
-        cout << "Top:" << names.top() << endl; // Output: 12.0
-        names.pop();
-
-        cout << "Top:" << names.top() << endl; // Output: 10.0
-        names.pop();
-
-        // Attempting to access or pop an element from an empty stack
-        cout << "Top:" << names.top() << endl; // Should throw an exception
-        names.pop();                          // Should throw an exception
-
-    } catch (const underflow_error& e) {
-        cerr << "Error: " << e.what() << endl;
-    }
-
     return 0;
 }
 
-
-
 // Constructor: Initialize stack
-template<class T>
-C2512Stack<T>::C2512Stack() : _top(0) {}
+C2512Stack::C2512Stack() : _top(0) {}
 
 // Push method: Adds an element to the stack
-template<class T>
-void C2512Stack<T>::push(T data) {
+void C2512Stack::push(T data) {
     if (isFull()) {
         throw overflow_error("Stack overflow: Cannot push more elements.");
     }
@@ -112,8 +78,7 @@ void C2512Stack<T>::push(T data) {
 }
 
 // Pop method: Removes the top element from the stack
-template<class T>
-void C2512Stack<T>::pop() {
+void C2512Stack::pop() {
     if (isEmpty()) {
         throw underflow_error("Stack underflow: Cannot pop from an empty stack.");
     }
@@ -121,8 +86,7 @@ void C2512Stack<T>::pop() {
 }
 
 // Top method: Returns the element at the top of the stack
-template<class T>
-T C2512Stack<T>::top() const {
+T C2512Stack::top() const {
     if (isEmpty()) {
         throw underflow_error("Stack underflow: Cannot access the top of an empty stack.");
     }
@@ -130,13 +94,11 @@ T C2512Stack<T>::top() const {
 }
 
 // Utility function: Check if the stack is empty
-template<class T>
-bool C2512Stack<T>::isEmpty() const {
+bool C2512Stack::isEmpty() const {
     return _top == 0;
 }
 
 // Utility function: Check if the stack is full
-template<class T>
-bool C2512Stack<T>::isFull() const {
+bool C2512Stack::isFull() const {
     return _top == _size;
 }

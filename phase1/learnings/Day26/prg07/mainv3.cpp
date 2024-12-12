@@ -4,7 +4,7 @@ using namespace std;
 
 template<class T>
 class C2512Stack {
-    private:
+    protected:
         static const int _size = 3; // Fixed size for the stack
         T arr[_size];           // Array to store stack elements
         int _top;                    // Tracks the current top of the stack
@@ -22,17 +22,27 @@ class C2512Stack {
         bool isEmpty() const;    // Checks if the stack is empty
         bool isFull() const;     // Checks if the stack is full
 };
+template<class T>
+class SpecialStack : public C2512Stack<T> {
+    public:
+        using C2512Stack<T>::push;
+        using C2512Stack<T>::pop;
+        using C2512Stack<T>::top;
+        using C2512Stack<T>::isEmpty;
+        using C2512Stack<T>::isFull;
+        // Stack Operations
+        void push(T data1, T data2);  // Pushes an element onto the stack 
+};
 
 
 int main() {
    
-    C2512Stack<double> stack;
+    SpecialStack<double> stack;
 
     try {
         // Push elements onto the stack
         stack.push(10.0);
-        stack.push(12.0);
-        stack.push(11.0);
+        stack.push(12.0, 11.0);
         stack.push(12.0);
     } catch (const overflow_error& e) {
         cerr << "Error: " << e.what() << endl;
@@ -58,42 +68,11 @@ int main() {
         cerr << "Error: " << e.what() << endl;
     }
 
-    cout << endl << endl;
-    cout << "---------------------------String stack-----------------" << endl;
-    C2512Stack<string> names;
 
-    try {
-        // Push elements onto the stack
-        names.push("Athira");
-        names.push("Abel");
-        names.push("Minhaj");
-        names.push("Raj");
-    } catch (const overflow_error& e) {
-        cerr << "Error: " << e.what() << endl;
-    }   
-
-    
-    try {    
-        // Access and pop elements
-        cout << "Top:" << names.top() << endl; // Output: 11.0
-        names.pop();
-
-        cout << "Top:" << names.top() << endl; // Output: 12.0
-        names.pop();
-
-        cout << "Top:" << names.top() << endl; // Output: 10.0
-        names.pop();
-
-        // Attempting to access or pop an element from an empty stack
-        cout << "Top:" << names.top() << endl; // Should throw an exception
-        names.pop();                          // Should throw an exception
-
-    } catch (const underflow_error& e) {
-        cerr << "Error: " << e.what() << endl;
-    }
 
     return 0;
 }
+
 
 
 
@@ -139,4 +118,11 @@ bool C2512Stack<T>::isEmpty() const {
 template<class T>
 bool C2512Stack<T>::isFull() const {
     return _top == _size;
+}
+
+
+template<class T>
+void SpecialStack<T>::push(T data1, T data2){
+    if(!isFull()) { push(data1); }
+    if(!isFull()) { push(data2); }
 }
