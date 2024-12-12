@@ -51,7 +51,7 @@ int main()
     ITER = salaries.begin(); 
     advance(ITER, 2);
     salaries.erase(ITER);
-    print<list<double>>(salaries, "After remove at index 1,\n\tSalaries");
+    print<list<double>>(salaries, "After remove at index 2,\n\tSalaries");
 
     cout << endl;
     cout << "salaries(using iterator):";

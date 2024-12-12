@@ -14,12 +14,12 @@ void print(T container, const char* caption) {
 
 int main() 
 {
-    vector<double> salaries;
-    salaries.push_back(10000.0);
-    salaries.push_back(20000.0);
-    salaries.push_back(30000.0);
-    salaries.push_back(10000.0);      
-    salaries.push_back(20000.0);
+    vector<double> salaries;    
+    salaries.push_back(10000.0); 
+    salaries.push_back(20000.0); 
+    salaries.push_back(30000.0); 
+    salaries.push_back(10000.0); 
+    salaries.push_back(20000.0); 
 
     print<vector<double>>(salaries, "Salaries");
 
@@ -41,7 +41,7 @@ int main()
     print<vector<double>>(salaries, "After insert 500.0 at index 1,\n\tSalaries");
 
     salaries.erase(salaries.begin()+2);
-    print<vector<double>>(salaries, "After remove at index 1,\n\tSalaries");
+    print<vector<double>>(salaries, "After remove at index 2,\n\tSalaries");
 
     cout << endl;
     cout << "salaries(using iterator):";

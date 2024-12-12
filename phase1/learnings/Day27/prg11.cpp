@@ -29,7 +29,7 @@ int main()
     cout << endl;
     
 
-    auto ITER =find(salaries.begin(),salaries.end(),30000.0);    
+    auto ITER =salaries.find(30000.0);    
     salaries.erase(ITER);
     print<set<double>>(salaries, "After remove 30000.0,\n\tSalaries");
 

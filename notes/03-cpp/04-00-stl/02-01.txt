@@ -1,0 +1,359 @@
+Table that summarizes the key differences between 
+`vector`, `list`, `deque`, `forward_list`, `array`, `set`, and `map` in C++:
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|-------------------------------------------|-------------------------------------------|
+| `Feature`               | `vector`                                  | `list`                                    | `deque`                                   | `forward_list`                            | `array`                                 | `set`                                     | `map`                                     |
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|-------------------------------------------|-------------------------------------------|
+| `Underlying Structure`  | Dynamic array                             | Doubly linked list                        | Double-ended queue (deque)                | Singly linked list                        | Static array                            | Balanced tree (usually Red-Black Tree)    | Balanced tree (usually Red-Black Tree)    |
+| `Access Time`           | O(1) for random access                    | O(n) for random access                    | O(1) for random access                    | O(n) for random access                    | O(1) for random access                  | O(log n) for search and access            | O(log n) for search and access            |
+| `Insertion Time`        | O(1) at end, O(n) at front or middle      | O(1) at front/back, O(n) in middle        | O(1) at both ends, O(n) in middle         | O(1) at front, O(n) in middle             | O(n) for insertion (due to fixed size)  | O(log n) for insert                       | O(log n) for insert                       |
+| `Deletion Time`         | O(1) at end, O(n) at front or middle      | O(1) at front/back, O(n) in middle        | O(1) at both ends, O(n) in middle         | O(1) at front, O(n) in middle             | O(n) for deletion (due to fixed size)   | O(log n) for erase                        | O(log n) for erase                        |
+| `Memory Overhead`       | Low (only for elements)                   | High (pointers for each element)          | Moderate (multiple blocks of memory)      | Low (single pointer for each element)     | None (fixed size)                       | Moderate (nodes with links)               | Moderate (nodes with key-value pairs)     |
+| `Resizing`              | Automatic (may involve reallocation)      | Not resizable                             | Automatic (may involve reallocation)      | Not resizable                             | Fixed size (cannot grow/shrink)         | Dynamic (increases with more elements)    | Dynamic (increases with more elements)    |
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|-------------------------------------------|-------------------------------------------|
+| `Use Case`              | Dynamic arrays, when random access        | When frequent insertions and deletions    | Double-ended operations are needed,       | When only forward traversal and           | Fixed-size collections                  | Unique elements with fast search and      | Key-value pairs with fast lookup by key   |
+|                         | is needed and growth at the end is common | at both ends are needed                   | especially when frequent modifications    | insertion/removal at the front            |  where the size is known in advance     |   no duplicates allowed                   |                                           |
+|                         |                                           |                                           | happen at both ends                       | are required                              |                                         |                                           |                                           |
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|-------------------------------------------|-------------------------------------------|                                                                                                                    
+| `Element Uniqueness`    | Can have duplicate elements               | Can have duplicate elements               | Can have duplicate elements               | Can have duplicate elements               | Can have duplicate elements             | No duplicates (unique keys)               | No duplicate keys,                        |
+|                         |                                           |                                           |                                           |                                           |                                         |                                           | but values can be duplicated              |     
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|-------------------------------------------|-------------------------------------------|       
+| `Iterator Type`         | Bidirectional iterator                    | Bidirectional iterator                    | Bidirectional iterator                    | Forward iterator                          | Random access iterator                  | Bidirectional iterator                    | Bidirectional iterator                    |
+| `Sorting`               | Not automatically sorted                  | Not automatically sorted                  | Not automatically sorted                  | Not automatically sorted                  | Not sorted                              | Sorted automatically by key               | Sorted automatically by key               |
+| `Thread Safety`         | Not thread-safe                           | Not thread-safe                           | Not thread-safe                           | Not thread-safe                           | Not thread-safe                         | Not thread-safe                           | Not thread-safe                           |
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|-------------------------------------------|-------------------------------------------|
+| `Examples of Use`       | Storing large datasets,                   | Linked list operations,                   | Queue-like or deque-like structures,      | Efficient insertion/removal               | Arrays of fixed sizes, static containers| Storing unique elements,                  | Associating keys with values              |
+|                         | vector manipulations                      | real-time processing of data              | when operations at both ends are needed   | at the front (singly linked)              |                                         | such as sets of items                     |  (e.g., dictionaries, maps)               |
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|-------------------------------------------|-------------------------------------------|                            
+Explanation:
+
+- `vector`: 
+    Best for when you need a dynamic array 
+    with fast access to elements by index, and 
+    you only need to add/remove elements at the end. 
+    
+    Its resizing is efficient when done infrequently.
+  
+- `list`: 
+    A doubly linked list, 
+    where insertion and removal from both ends are efficient. 
+    
+    Random access is slow because of the linked structure, 
+    making it suitable for applications 
+    requiring frequent modifications in the middle or at both ends.
+
+- `deque`: 
+    A double-ended queue, 
+    optimized for operations at both ends (front and back), 
+    making it more versatile than `vector` 
+    for applications where you need 
+    to manipulate both ends efficiently.
+
+- `forward_list`: 
+    A singly linked list with minimal memory overhead. 
+    It supports efficient insertions/removals 
+    at the front but does not provide random access. 
+    
+    Suitable for forward traversal-only needs.
+
+- `array`:
+    A static collection with a fixed size, 
+    providing efficient random access 
+    but lacking flexibility in size. 
+    
+    Ideal for when you know the exact size ahead of time.
+
+- `set`: 
+    A container of unique elements, 
+    sorted in order (usually by keys) and 
+    allows fast lookup, insertion, and deletion with no duplicates. 
+
+    It uses a balanced tree structure 
+    (e.g., Red-Black tree) for automatic sorting.
+
+- `map`: 
+    A container that holds key-value pairs with unique keys. 
+    Keys are sorted (automatically), and 
+    it allows for fast access based on keys. 
+    
+    It’s implemented as a balanced tree structure.
+
+This table should help you understand the major differences and 
+the use cases for each of these container types.
+
+============================================================================================
+
+Comparison table focusing only on 
+`vector`, `list`, `deque`, `forward_list`, and `array` in C++:
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
+| `Feature`               | `vector`                                  | `list`                                    | `deque`                                   | `forward_list`                            | `array`                                 |
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
+| `Underlying Structure`  | Dynamic array                             | Doubly linked list                        | Double-ended queue (deque)                | Singly linked list                        | Static array                            |
+| `Access Time`           | O(1) for random access                    | O(n) for random access                    | O(1) for random access                    | O(n) for random access                    | O(1) for random access                  |
+| `Insertion Time`        | O(1) at end, O(n) at front or middle      | O(1) at front/back, O(n) in middle        | O(1) at both ends, O(n) in middle         | O(1) at front, O(n) in middle             | O(n) for insertion (due to fixed size)  |
+| `Deletion Time`         | O(1) at end, O(n) at front or middle      | O(1) at front/back, O(n) in middle        | O(1) at both ends, O(n) in middle         | O(1) at front, O(n) in middle             | O(n) for deletion (due to fixed size)   |
+| `Memory Overhead`       | Low (only for elements)                   | High (pointers for each element)          | Moderate (multiple blocks of memory)      | Low (single pointer for each element)     | None (fixed size)                       |
+| `Resizing`              | Automatic (may involve reallocation)      | Not resizable                             | Automatic (may involve reallocation)      | Not resizable                             | Fixed size (cannot grow/shrink)         |
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
+| `Use Case`              | Dynamic arrays, when random access is     | When frequent insertions and deletions    | Double-ended operations are needed,       | When only forward traversal and           | Fixed-size collections where the size   |
+|                         | needed and growth at the end is common    |    at both ends are needed                | especially when frequent modifications    | insertion/removal at the front            |   is known in advance                   |
+|                         |                                           |                                           | happen at both ends                       | are required                              |                                         |
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
+| `Element Uniqueness`    | Can have duplicate elements               | Can have duplicate elements               | Can have duplicate elements               | Can have duplicate elements               | Can have duplicate elements             |
+| `Iterator Type`         | Random access iterator                    | Bidirectional iterator                    | Bidirectional iterator                    | Forward iterator                          | Random access iterator                  |
+| `Sorting`               | Not automatically sorted                  | Not automatically sorted                  | Not automatically sorted                  | Not automatically sorted                  | Not sorted                              |
+| `Thread Safety`         | Not thread-safe                           | Not thread-safe                           | Not thread-safe                           | Not thread-safe                           | Not thread-safe                         |
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|
+| `Examples of Use`       | Storing large datasets,                   | Linked list operations,                   | Queue-like or deque-like structures,      | Efficient insertion/removal at the front  | Arrays of fixed sizes, static containers|
+|                         | vector manipulations                      | real-time processing of data              | when operations at both ends are needed   |  (singly linked)                          |                                         |
+|-------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-------------------------------------------|-----------------------------------------|                            
+Explanation:    
+
+- ``vector``: 
+    A `dynamic array` that provides fast random access to elements. 
+    It is ideal when the size may change, and 
+    you mostly need to append to the end. 
+    
+    The downside is that insertions or deletions 
+    at the beginning or middle can be costly 
+    because elements need to be shifted.
+  
+- ``list``: 
+    A `doubly linked list` 
+    that allows efficient insertions and deletions 
+    from both ends (front and back). 
+    
+    However, accessing elements is slower (O(n)) 
+    because it doesn’t support random access, 
+    making it less suitable for random access or 
+    searching for specific elements.
+
+- ``deque``: 
+    A `double-ended queue`, 
+    which is similar to a vector 
+    but allows efficient insertion and deletion 
+    at both the front and back. 
+
+    It’s a good choice 
+    when you need frequent operations at both ends 
+    but still want efficient random access. 
+
+- ``forward_list``: 
+    A `singly linked list` 
+    that provides efficient insertions/removals 
+    at the front but lacks the ability 
+    to access elements randomly or traverse backwards. 
+    
+    It has lower memory overhead compared to a `list` 
+    but is more limited in functionality.
+
+- ``array``: 
+    A `static array` with a fixed size. 
+    Once the array is declared, its size cannot be changed. 
+
+    It's ideal for cases where you know the number of elements 
+    ahead of time and require efficient access, 
+    but it lacks flexibility for dynamic data.
+
+This table highlights the major differences and 
+usage scenarios for these five container types, 
+helping you choose the appropriate one 
+based on your needs in C++.
+
+============================================================================================
+
+Table comparing the `iterators` of 
+``vector``, ``list``, ``deque``, 
+``forward_list``, and ``array`` in C++:
+|-----------------|------------------------------|--------------------------------------------|-------------------------------|-----------------------------------------------------------------------------------|
+| `Container`     | `Iterator Type`              | `Iterator Operations`                      | `Support for Random Access`   | `Key Characteristics`                                                             |
+|-----------------|------------------------------|--------------------------------------------|-------------------------------|-----------------------------------------------------------------------------------|
+| `vector`        | Random access iterator       | Supports `+`, `-`, `++`, `--`, `*`, `[]`   | Yes                           | Supports fast random access, allows direct element access via pointer arithmetic. |
+| `list`          | Bidirectional iterator       | Supports `++`, `--`, `*`                   | No                            | Cannot perform random access; only allows forward and backward traversal.         |
+| `deque`         | Random access iterator       | Supports `+`, `-`, `++`, `--`, `*`, `[]`   | Yes                           | Supports random access and bidirectional traversal, efficient at both ends.       |
+| `forward_list`  | Forward iterator             | Supports `++`, `*`                         | No                            | Supports only forward traversal, no backward or random access.                    |
+| `array`         | Random access iterator       | Supports `+`, `-`, `++`, `--`, `*`, `[]`   | Yes                           | Fixed size, supports fast random access and allows direct element access.         |
+|-----------------|------------------------------|--------------------------------------------|-------------------------------|-----------------------------------------------------------------------------------|
+
+Explanation of Key Characteristics:
+
+- ``vector``: 
+  - Provides `random access iterators`, 
+  meaning you can use iterator arithmetic (`+`, `-`) and 
+  index-style access (`[]`). 
+  
+  These iterators allow fast and efficient access to elements 
+  at any position in the container.
+  
+- ``list``:
+  - Provides `bidirectional iterators` 
+  that allow you to traverse the container forward and backward 
+  using `++` and `--`, 
+  but `do not support random access`. 
+  
+  You cannot use `+` or `[]` to directly access elements, 
+  and instead, you must manually move the iterator step by step.
+
+- ``deque``:
+  - Like `vector`, `deque` provides `random access iterators` 
+  that support `iterator arithmetic` (`+`, `-`), as well as 
+  the ability to use `[]` for element access. 
+  
+  This makes it more flexible than `list` 
+  in terms of accessing elements directly by index.
+
+- ``forward_list``:
+  - `Forward iterators` only allow forward traversal, 
+  using `++` and `*`, 
+  but `do not support random access` or reverse traversal. 
+  
+  Therefore, you cannot use `+` or `[]`, and 
+  you must traverse the list from front to back.
+
+- ``array``:
+  - Similar to `vector`, `array` provides `random access iterators`, 
+  allowing for fast and direct access to elements 
+  using both iterator arithmetic and `[]`.
+
+Summary:
+
+- ``vector``, ``deque``, and ``array`` provide `random access iterators` and 
+support direct element access and iterator arithmetic.
+
+- ``list`` provides `bidirectional iterators` 
+that allow traversal in both directions but not random access.
+
+- ``forward_list`` provides `forward iterators`, 
+which only allow forward traversal. 
+It is the most limited in terms of iterator functionality.
+
+============================================================================================
+
+Comparison of the C++ Standard Template Library (STL) container types: 
+`set`, `map`, `multiset`, `multimap`, `unordered_set`, `unordered_map`, `unordered_multiset`, and `unordered_multimap`:
+|-----------------------|---------|----------------|--------------------|-----------------------|-------------------------------------|----------------------|--------------------------|---------------------------------------------------------------------------------------------------|
+| `Container`           | `Key`   | `Value`        | `Order`            | `Duplicates`          | `Underlying Data Structure`         | `Search Complexity`  | `Insertion Complexity`   | `Use Case`                                                                                        |
+|-----------------------|---------|----------------|--------------------|-----------------------|-------------------------------------|----------------------|--------------------------|---------------------------------------------------------------------------------------------------|
+| `set`                 | Yes     | No             | Sorted             | No                    | Balanced BST (e.g., Red-Black Tree) | O(log n)             | O(log n)                 | Use when you need unique, sorted elements.                                                        |
+| `multiset`            | Yes     | No             | Sorted             | Yes                   | Balanced BST                        | O(log n)             | O(log n)                 | Use when duplicates are allowed but elements need to be sorted.                                   |
+| `map`                 | Yes     | Yes (key-value)| Sorted by key      | No                    | Balanced BST                        | O(log n)             | O(log n)                 | Use for key-value pairs where keys must be unique and sorted.                                     |
+| `multimap`            | Yes     | Yes (key-value)| Sorted by key      | Yes                   | Balanced BST                        | O(log n)             | O(log n)                 | Use for key-value pairs with sorted keys and duplicate keys allowed.                              |
+| `unordered_set`       | Yes     | No             | No (unordered)     | No                    | Hash Table                          | O(1) (average)       | O(1) (average)           | Use for unique elements with no need for order.                                                   |
+| `unordered_multiset`  | Yes     | No             | No (unordered)     | Yes                   | Hash Table                          | O(1) (average)       | O(1) (average)           | Use for duplicate elements with no need for order.                                                |
+| `unordered_map`       | Yes     | Yes (key-value)| No (unordered)     | No                    | Hash Table                          | O(1) (average)       | O(1) (average)           | Use for key-value pairs with unique keys and no need for order.                                   |
+| `unordered_multimap`  | Yes     | Yes (key-value)| No (unordered)     | Yes                   | Hash Table                          | O(1) (average)       | O(1) (average)           | Use for key-value pairs with duplicate keys allowed and no need for order.                        |
+|-----------------------|---------|----------------|--------------------|-----------------------|-------------------------------------|----------------------|--------------------------|---------------------------------------------------------------------------------------------------|
+---
+
+Key Insights:
+
+1. `Ordered Containers`:
+   - `set`, `multiset`, `map`, and `multimap` store elements in `sorted order` based on a comparator (default: `<`).
+   - Insertion and search have `O(log n)` complexity due to the underlying balanced tree structure.
+
+2. `Unordered Containers`:
+   - `unordered_set`, `unordered_multiset`, `unordered_map`, and `unordered_multimap` use `hash tables`, offering `average O(1)` complexity for insertion and search.
+   - Ordering of elements is `not guaranteed`.
+
+3. `Duplicates`:
+   - `set` and `unordered_set` allow only `unique elements`.
+   - `multiset`, `unordered_multiset`, `multimap`, and `unordered_multimap` allow `duplicate elements` or keys.
+
+4. `Key-Value Pairs`:
+   - `map` and `unordered_map` store `unique keys` and associated values.
+   - `multimap` and `unordered_multimap` allow `duplicate keys` with associated values.
+
+5. `When to Use`:
+   - Use `ordered containers` when sorted order is important for iteration or lookup.
+   - Use `unordered containers` for faster average-time access when order doesn't matter.
+
+Example Use Cases:
+
+1. `set`: Store unique sorted student IDs.
+2. `multiset`: Store grades where duplicates (e.g., `90, 90, 85`) are allowed and sorted.
+3. `map`: Store student ID (key) and name (value) with sorted IDs.
+4. `multimap`: Store student grades (key) and names (value), allowing multiple names for the same grade.
+5. `unordered_set`: Store unique hashed student IDs with no particular order.
+6. `unordered_map`: Fast lookup of student names using hashed IDs as keys.
+7. `unordered_multiset`: Store duplicate hash values for frequent items in a hash-based system.
+8. `unordered_multimap`: Handle multiple entries for the same hashed key efficiently.
+
+============================================================================================
+
+Comparison of the `iterators` for 
+`set`, `map`, `multiset`, `multimap`, `unordered_set`, 
+`unordered_map`, `unordered_multiset`, and `unordered_multimap` in C++:
+|-----------------------|-----------------------|----------------------------|---------------------------|--------------------------------------------|---------------------------------------------------------------------------------|
+| `Container`           | `Iterator Type`       | `Supports Random Access`   | `Supports Modification`   | `Order of Iteration`                       | `Other Notes`                                                                   |
+|-----------------------|-----------------------|----------------------------|---------------------------|--------------------------------------------|---------------------------------------------------------------------------------|
+| `set`                 | Bidirectional         | No                         | No (modifies keys invalid)| Sorted by key                              | Keys are immutable; iterator modification is not allowed to maintain order.     |
+| `multiset`            | Bidirectional         | No                         | No                        | Sorted by key                              | Allows duplicates; no modification of elements allowed via iterators.           |
+| `map`                 | Bidirectional         | No                         | No (modifies keys invalid)| Sorted by key                              | Iterates over key-value pairs; keys are immutable.                              |
+| `multimap`            | Bidirectional         | No                         | No                        | Sorted by key                              | Supports duplicate keys; iterates over key-value pairs.                         |
+| `unordered_set`       | Forward               | No                         | No                        | No specific order                          | Fast iteration due to hash table; elements cannot be modified through iterators.|
+| `unordered_multiset`  | Forward               | No                         | No                        | No specific order                          | Duplicates allowed; no modification of elements allowed via iterators.          |
+| `unordered_map`       | Forward               | No                         | No (modifies keys invalid)| No specific order                          | Iterates over key-value pairs; keys are immutable.                              |
+| `unordered_multimap`  | Forward               | No                         | No                        | No specific order                          | Supports duplicate keys; iterates over key-value pairs.                         |
+|-----------------------|-----------------------|----------------------------|---------------------------|--------------------------------------------|---------------------------------------------------------------------------------|
+---
+
+Key Points:
+
+1. `Iterator Type`:
+   - `Ordered containers (`set`, `map`, `multiset`, `multimap`)` 
+   have `bidirectional iterators`, allowing iteration 
+   in both forward and backward directions.
+   - `Unordered containers (`unordered_set`, `unordered_map`, etc.)` 
+   use `forward iterators`, 
+   only allowing iteration in the forward direction.
+
+2. `Random Access`:
+   - `None` of these containers support random access 
+   (e.g., `it + 2` is invalid) 
+   due to their non-contiguous memory layouts and 
+   reliance on tree or hash-based structures.
+
+3. `Order of Iteration`:
+   - `Ordered containers`: Elements are iterated in `sorted order`.
+   - `Unordered containers`: Iteration order is `unspecified` and 
+   depends on the hash table implementation.
+
+4. `Modification`:
+   - `Keys are immutable` in containers 
+   where the key affects the structure 
+   (e.g., `set`, `map`, `unordered_set`, `unordered_map`).
+   - Elements in `multiset` and `multimap` 
+   cannot be modified directly 
+   via iterators to maintain their internal order.
+
+5. `Bidirectional vs. Forward Iterators`:
+   - `Bidirectional iterators` allow moving 
+   both forward (`++it`) and backward (`--it`).
+   - `Forward iterators` only allow moving forward (`++it`).
+
+---
+
+Example Usage of Iterators:
+
+1. ``set``:
+   ```cpp
+   std::set<int> s = {1, 2, 3};
+   for (auto it = s.begin(); it != s.end(); ++it) {
+       std::cout << *it << " "; // Output: 1 2 3
+   }
+   ```
+
+2. ``unordered_map``:
+   ```cpp
+   std::unordered_map<int, std::string> um = {{1, "one"}, {2, "two"}};
+   for (auto it = um.begin(); it != um.end(); ++it) {
+       std::cout << it->first << " -> " << it->second << std::endl;
+   }
+   ```
+
+3. `Modification Restriction`:
+   ```cpp
+   std::set<int> s = {1, 2, 3};
+   auto it = s.begin();
+   // *it = 5; // Error: Keys are immutable.
+   ```
+============================================================================================

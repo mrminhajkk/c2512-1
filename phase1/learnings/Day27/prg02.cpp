@@ -48,7 +48,7 @@ int main()
     print<deque<double>>(salaries, "After (pop_front)removed front element,\n\tSalaries");
 
     salaries.erase(salaries.begin()+2);
-    print<deque<double>>(salaries, "After remove at index 1,\n\tSalaries");
+    print<deque<double>>(salaries, "After remove at index 2,\n\tSalaries");
 
     cout << endl;
     cout << "salaries(using iterator):";

@@ -7,7 +7,7 @@ template <class T>
 void print(T container, const char* caption) {
     cout << caption << ":";
     for(auto [k,v] : container) {
-        cout << k << ":" << v;
+        cout << k << ":" << v << ", ";
     }
     cout << endl;
 }
@@ -29,21 +29,23 @@ int main()
     cout << endl;
     
 
-    auto ITER =find(salaries.begin(),salaries.end(),30000.0);    
+    auto ITER =salaries.find(30000.0);    
     salaries.erase(ITER);
     print<map<double,int>>(salaries, "After remove 30000.0,\n\tSalaries");
 
     cout << endl;
     cout << "salaries(using iterator):";
     for( auto ITER = salaries.begin() ; ITER != salaries.end() ; ITER++ ) { 
-        cout << *ITER << " ";
+        auto [k,v] = *ITER;
+        cout << k << " " << v << ", ";
     }
     cout << endl;
 
     cout << endl ;
     cout << "salaries(using reverse iterator):";
     for( auto ITER = salaries.rbegin() ; ITER != salaries.rend() ; ITER++ ) { 
-        cout << *ITER << " ";
+        auto [k,v] = *ITER;
+        cout << k << " " << v << ", ";
     }
     cout << endl;
 

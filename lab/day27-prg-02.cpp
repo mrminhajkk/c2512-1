@@ -71,9 +71,7 @@ protected:
 public:
     NEETCourse(double bioMarks) : biologyMarks(bioMarks) {}
 
-    double getBiologyMarks() const {
-        return biologyMarks;
-    }
+    
 };
 
 // Class: JEECourse
@@ -85,48 +83,41 @@ public:
     JEECourse(double phyMarks, double chemMarks, double mathMarks)
         : physicsMarks(phyMarks), chemistryMarks(chemMarks), mathMarks(mathMarks) {}
 
-    double getPhysicsMarks() const {
-        return physicsMarks;
-    }
-
-    double getChemistryMarks() const {
-        return chemistryMarks;
-    }
-
-    double getMathMarks() const {
-        return mathMarks;
-    }
+    
 };
 
 // Derived Class: NEETStudent
 class NEETStudent : public HighSchoolStudent, public NEETCourse {
 public:
     NEETStudent(const char* studentName, double* studentMarks, int num, double bioMarks)
-        : HighSchoolStudent(studentName, studentMarks, num), NEETCourse(bioMarks) {}
+        : HighSchoolStudent(studentName, studentMarks, num), 
+        NEETCourse(bioMarks) {}
 
     double findTotalMarks() const override {
-        return HighSchoolStudent::findTotalMarks() + getBiologyMarks();  // Sum of high school marks and biology marks
+        return HighSchoolStudent::findTotalMarks() + biologyMarks;  // Sum of high school marks and biology marks
     }
 
     void display() const override {
         HighSchoolStudent::display();
-        cout << "Biology Marks: " << getBiologyMarks() << endl;
+        cout << "Biology Marks: " << biologyMarks << endl;
     }
 };
 
 // Derived Class: JEEStudent
 class JEEStudent : public HighSchoolStudent, public JEECourse {
 public:
-    JEEStudent(const char* studentName, double* studentMarks, int num, double phyMarks, double chemMarks, double mathMarks)
-        : HighSchoolStudent(studentName, studentMarks, num), JEECourse(phyMarks, chemMarks, mathMarks) {}
+    JEEStudent(const char* studentName, double* studentMarks, 
+        int num, double phyMarks, double chemMarks, double mathMarks)
+        : HighSchoolStudent(studentName, studentMarks, num), 
+        JEECourse(phyMarks, chemMarks, mathMarks) {}
 
     double findTotalMarks() const override {
-        return HighSchoolStudent::findTotalMarks() + getPhysicsMarks() + getChemistryMarks() + getMathMarks();  // Sum of high school marks and JEE subject marks
+        return HighSchoolStudent::findTotalMarks() + physicsMarks + chemistryMarks + mathMarks;  // Sum of high school marks and JEE subject marks
     }
 
     void display() const override {
         HighSchoolStudent::display();
-        cout << "Physics Marks: " << getPhysicsMarks() << ", Chemistry Marks: " << getChemistryMarks() << ", Math Marks: " << getMathMarks() << endl;
+        cout << "Physics Marks: " << physicsMarks << ", Chemistry Marks: " << chemistryMarks << ", Math Marks: " << mathMarks << endl;
     }
 };
 
@@ -136,17 +127,19 @@ class NEETPlusJEEStudent : public HighSchoolStudent, public JEECourse, public NE
 public:
     NEETPlusJEEStudent(const char* name, double* marks, int numMarks, 
         double biologyMarks, double physicsMarks, double chemistryMarks, double mathMarks)
-        : HighSchoolStudent(name, marks, numMarks), JEECourse(physicsMarks, chemistryMarks, mathMarks) , NEETCourse(biologyMarks)
+        : HighSchoolStudent(name, marks, numMarks), 
+        JEECourse(physicsMarks, chemistryMarks, mathMarks) , 
+        NEETCourse(biologyMarks)
         {}
 
     double findTotalMarks() const override {
-        return HighSchoolStudent::findTotalMarks() + getBiologyMarks() + getPhysicsMarks() + getChemistryMarks() + getMathMarks() ;
+        return HighSchoolStudent::findTotalMarks() + biologyMarks + physicsMarks + chemistryMarks + mathMarks ;
     }
 
     void display() const override {
         HighSchoolStudent::display();
-        cout << "Physics Marks: " << getPhysicsMarks() << ", Chemistry Marks: " << getChemistryMarks() << ", Math Marks: " << getMathMarks() << endl;
-        cout << "Biology Marks: " << getBiologyMarks() << endl;
+        cout << "Physics Marks: " << physicsMarks << ", Chemistry Marks: " << chemistryMarks << ", Math Marks: " << mathMarks << endl;
+        cout << "Biology Marks: " << biologyMarks << endl;
     }
 };
 

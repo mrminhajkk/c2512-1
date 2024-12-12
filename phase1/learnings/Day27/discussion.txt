@@ -65,3 +65,26 @@ types of rvalue reference:
                 |--> JEEStudent             <-- JEECourse 
                 |--> NEETStudent            <-- NEETCourse
                 |--> NEETPlusJEEStudent     <-- JEECourse, NEETCourse
+==============================================================================
+
+sequence(input order): [elements duplicated] [not sorted] [depends on not key]
+    vector : (1) indexed access    (2) insert/delete at back O(1) 
+    list   : (1) no-indexed access (2) insert/delete at front/back O(1)
+    deque  : (1) indexed access    (2) insert/delete at front/back O(1)
+
+associative: [key] [no duplicates] [sorted keys]
+    set 
+    map 
+
+multi associative: [key] [duplicates] [sorted keys]
+    multiset
+    multimap 
+
+unordered associative: [key] [no duplicates] [no sorted keys]
+    set 
+    map 
+
+unordered multi associative: [key] [duplicates] [no sorted keys]
+    multiset
+    multimap 
+==============================================================================
