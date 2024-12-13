@@ -469,7 +469,7 @@ Inter-Process Communication (IPC) [Day 34..36]
             Hands-on exercises
 
 
-Writing Makefiles and CMakefiles    [Day 31..33]
+Writing Makefiles and CMakefiles    [Day 41]
     Learning Outcomes
         Understand the basics of Makefiles and CMakefiles.
         Write and manage Makefiles for small to medium-sized projects.
@@ -495,7 +495,7 @@ Writing Makefiles and CMakefiles    [Day 31..33]
             Using CMake for complex project structures
 
 
-Unit Testing Framework - GTest
+Unit Testing Framework - GTest [Day 42]
     Learning Outcomes
         Understand the basics of unit testing and its importance.
         Use Google Test (GTest) framework for writing and running unit tests.
@@ -520,7 +520,7 @@ Unit Testing Framework - GTest
             Unit testing sample projects
             Hands-on exercises
 
-Design Patterns
+Design Patterns [Day 37 (Bank Application - Demo for CRUD Ops Day 38 .. 39)]
     Learning Outcomes
         Understand common design patterns and their importance.
         Apply design patterns to solve common software design problems.
@@ -560,7 +560,7 @@ Design Patterns
             Real-world examples and case studies
             Hands-on projects and exercises
 
-Debugging Concepts
+Debugging Concepts [Day 43]
     Learning Outcomes:
         Understand the concept of debugging and debugging process.
         Be able to use the different types of debugging tools(gdb).
@@ -571,7 +571,7 @@ Debugging Concepts
         The debugging process
         Debugging in Linux OS
 
-Static Analysis to Identify Code Issues Using SONAR and Other Tools
+Static Analysis to Identify Code Issues Using SONAR and Other Tools [Day 44]
     Learning Outcomes:
         Understand the concept of static analysis.
         Be able to use  SONAR to identify code issues.
@@ -581,3 +581,6 @@ Static Analysis to Identify Code Issues Using SONAR and Other Tools
         A program with code issues that can be identified by SONAR.
         The output of SONAR on a program with code issues.
         A different static analysis tool and its output.
+
+ [Day 45 .. 49] Case Study 
+ Day 50 - Viva and Test Results 
