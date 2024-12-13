@@ -86,13 +86,13 @@ T maxValue(T a, T b) {
 
 // Specialization for char
 template <>
-char maxValue(char a, char b) {
+char maxValue<char>(char a, char b) {
     return (tolower(a) > tolower(b)) ? a : b;
 }
 
 int main() {
-    cout << maxValue(10, 20) << endl;       // Calls generic version
-    cout << maxValue('a', 'B') << endl;    // Calls specialized version
+    cout << maxValue<int>(10, 20) << endl;       // Calls generic version
+    cout << maxValue<char>('a', 'B') << endl;    // Calls specialized version
     return 0;
 }
 ```

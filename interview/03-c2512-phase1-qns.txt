@@ -112,3 +112,94 @@ Ayisha#004
             assign value 20 to y
         -----------------------------------------------------------------------------
         -----------------------------------------------------------------------------
+Bhagya#005
+    1. What is a deep copy in C++?
+    2. What is a shallow copy in C++?
+    3. What is function overloading? Explain with an example.?
+    4. Write a code snippet demonstrating function overloading.
+    5. What are constructors in C++, and what are their types?
+    6. Write a C++ code using a copy constructor.?
+    7. What is polymorphism in object-oriented programming? 
+    8. What are the types of polymorphism in programming?
+    9. How can we achieve runtime polymorphism from a derived class?
+    10. What is object-oriented programming (OOP)?
+    11. What are the four pillars of object-oriented programming?
+    12. What is runtime polymorphism?
+    13. What is an abstract class in C++?
+    14. What is a pure virtual class in C++?
+    15. How can we achieve runtime polymorphism when calling from a derived class?
+    16. Demonstrate how a derived class can be used with a base class pointer.
+    17. What is the difference between global, local, and static variables in C++?
+    18. What is inheritance in object-oriented programming, and what are its types?
+    19. What is normalization in databases, and why is it important?
+    20. How can you create, insert, and delete records in SQL?
+    21. Why do we use DBMS, and what are its advantages?
+Pitchumani#006
+    Theory question
+        1.self introduction
+        2..0perator overloading
+        3.scp command
+        4.software development life cycle and it's steps
+        5.what is database?
+        6.explain the types of normal forms
+        7.tell the create and insert statement in dbms
+        8.pillar of  oop concept
+        9.sed command
+        10.what is abstract class 
+        11.pure virtual function
+        12.what is constructor
+        13.copy constructor
+        14.explain do while loop
+        15.multithreading concept
+        16.Gtesting
+    problem:
+        1.Define an abstract class
+        2.Add a pure virtual function
+        3.add a destructor
+        4.Create a Derived class inheriting the base class
+        5.override the baseclass function 
+        6.close the child class
+
+Sooraj#007 
+    1.Total covered topics.
+    2.Create class and object.
+    3.Explain class and object.
+    4.virtual function and create it in base class.
+    5.override function and create it in derived class.
+    6.Call the function.
+    7.Create a dynamic object.
+    8.Student table with column Teacher.
+        Fetch studente name with teacher name is "X".
+        Fetch studente name with teacher name are "X" and "Y".
+        Count of students for each teacher "X" and "Y".
+
+Josh#008
+    1. How was the training? Do you have any prior experience in C++ and Linux?
+    2. Write SQL query to select everything from table student 
+       where teacher(column in table student) name is John or James.
+    3. Difference between class and object, explain with a practical example.
+    4. Write a code to implement virtual functions and override them.
+    5. Can pure virtual functions have definition?
+    6. What is this?
+    7. Internally how this pointer works and also 
+        explain the internal working of how this pointer works 
+        while accessing member data.
+    8. Consider a class(class A), 
+        can you use the this pointer 
+        to call another class(class B) while being inside class A? 
+    9. What is the size of the variable which is used to hold addresses?
+    10. When allocating memory either statically or dynamically, 
+        which memory is being used to allocate this memory? 
+        [Hint: not in stack or heap and not directly in hard disk]
+    11. What is while loop and do-while loop? 
+        What are the differences between them?
+    12. If the given check condition for both while and do while loop is 1, 
+        how do the loops work and 
+        what are the changes in their working mechanism?
+    13. What are environment variables in Linux(e.g. PATH) and 
+        why is it used?
+    14. You have studied about various Linux commands 
+        like cat, grep etc, how do these commands work internally? 
+        What happens when you give such commands in the shell?
+    15. What is the difference between vectors and arrays and 
+        how do they work?
