@@ -1,0 +1,179 @@
+A `std::weak_ptr` is a smart pointer in C++ 
+that provides a non-owning reference 
+to an object managed by a `std::shared_ptr`. 
+
+It allows you to safely observe or access the object 
+without affecting its lifetime or reference count.
+
+Here are the `members` of `std::weak_ptr`:
+
+---
+
+`Constructors`
+1. `Default Constructor`
+   - Creates an empty `std::weak_ptr` 
+   that doesn't observe any object.
+   ```cpp
+   std::weak_ptr<int> w;
+   ```
+
+2. `Copy Constructor`
+   - Creates a `std::weak_ptr` 
+   that observes the same object as another `std::weak_ptr`.
+   ```cpp
+   std::weak_ptr<int> w2(w1);
+   ```
+
+3. `Assignment from `std::shared_ptr``
+   - Creates a `std::weak_ptr` 
+   that observes the object managed by a `std::shared_ptr`.
+   ```cpp
+   std::shared_ptr<int> sp = std::make_shared<int>(42);
+   std::weak_ptr<int> w(sp);
+   ```
+
+4. `Move Constructor`
+   - Transfers observation from another `std::weak_ptr` to the new one.
+   ```cpp
+   std::weak_ptr<int> w2(std::move(w1));
+   ```
+
+---
+
+`Member Functions`
+
+1. ``expired()``
+   - Returns `true` if the `std::shared_ptr` 
+   managing the object has been destroyed 
+   (i.e., the object no longer exists).
+   ```cpp
+   if (w.expired()) {
+       std::cout << "The object has been destroyed.\n";
+   }
+   ```
+
+2. ``lock()``
+   - Attempts to create a `std::shared_ptr` 
+   that shares ownership of the object. 
+   
+   If the object no longer exists, 
+   it returns an empty `std::shared_ptr`.
+   ```cpp
+   if (auto sp = w.lock()) {
+       std::cout << "Object value: " << *sp << '\n';
+   } else {
+       std::cout << "The object is no longer available.\n";
+   }
+   ```
+
+3. ``reset()``
+   - Resets the `std::weak_ptr`, 
+   making it empty and no longer observing any object.
+   ```cpp
+   w.reset();
+   ```
+
+4. ``use_count()``
+   - Returns the number of `std::shared_ptr` 
+   instances managing the object.
+   ```cpp
+   std::cout << "Shared ownership count: " << w.use_count() << '\n';
+   ```
+
+5. ``swap()``
+   - Swaps the observed objects 
+   between two `std::weak_ptr` instances.
+   ```cpp
+   w1.swap(w2);
+   ```
+
+6. ``owner_before()``
+   - Compares the ownership of two `std::weak_ptr` objects 
+   to determine their relative order. 
+   It is useful for use in associative containers 
+   like `std::map`.
+   ```cpp
+   if (w1.owner_before(w2)) {
+       std::cout << "w1 is ordered before w2.\n";
+   }
+   ```
+
+---
+
+`Operators`
+
+1. `Assignment Operators`
+   - Assigns a `std::weak_ptr` to another or assigns from a `std::shared_ptr`.
+   ```cpp
+   w1 = w2;        // Copy assignment
+   w1 = std::move(w2); // Move assignment
+   ```
+
+---
+
+`Example`
+
+```cpp
+#include <iostream>
+#include <memory>
+
+int main() {
+    std::shared_ptr<int> sp = std::make_shared<int>(42);
+    std::weak_ptr<int> wp = sp;
+
+    std::cout << "Use count: " << wp.use_count() << '\n'; // 1
+    std::cout << "Expired: " << std::boolalpha << wp.expired() << '\n'; // false
+
+    if (auto sp2 = wp.lock()) {
+        std::cout << "Managed object: " << *sp2 << '\n';
+    } else {
+        std::cout << "The object is no longer available.\n";
+    }
+
+    sp.reset(); // Destroy the shared_ptr and its managed object
+    std::cout << "Expired after reset: " << wp.expired() << '\n'; // true
+
+    return 0;
+}
+```
+
+---
+
+`Output`
+```
+Use count: 1
+Expired: false
+Managed object: 42
+Expired after reset: true
+```
+
+---
+
+`Key Members Summary`
+|-------------------|-------------------------------------------------------|
+| `Member`          | `Purpose`                                             |
+|-------------------|-------------------------------------------------------|
+| `expired()`       | Checks if the managed object has been destroyed.      |
+| `lock()`          | Creates a `shared_ptr` if the managed object exists.  |
+| `reset()`         | Clears the `weak_ptr`, making it empty.               |
+| `use_count()`     | Returns the number of `shared_ptr` instances.         |
+| `swap()`          | Swaps ownership between two `weak_ptr` instances.     |
+| `owner_before()`  | Compares ownership order of two `weak_ptr`s.          |
+|-------------------|-------------------------------------------------------|
+---
+
+`Important Notes`
+1. `Non-owning:` A `weak_ptr` does not contribute 
+to the reference count of the managed object.
+2. `Avoid Cycles:` `weak_ptr` is often used 
+to break circular references between `shared_ptr` instances.
+3. `Safe Access:` Always use `lock()` 
+to safely access the object.
+
+`Common Use Cases`
+- Breaking circular references in data structures 
+like doubly linked lists or graphs.
+- Monitoring the lifetime of a shared object 
+without prolonging it.
+
+=========================================================================

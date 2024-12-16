@@ -1,0 +1,193 @@
+`Parallel Algorithms` in C++ are introduced 
+with the `C++17 Standard Library`, 
+further enhanced in `C++20`. 
+
+They allow developers to execute algorithms 
+in parallel across multiple CPU cores, 
+leveraging modern hardware's computational power 
+to improve performance.
+
+---
+
+`Why Parallel Algorithms?`
+
+1. `Performance`
+   - Take advantage of multi-core processors for faster execution.
+
+2. `Simplicity`
+   - Parallelism is built into the Standard Template Library (STL) algorithms.
+   - No need to manage threads or synchronization manually.
+
+3. `Maintainability`
+   - Clear and readable code compared to explicit threading models.
+
+---
+
+`How Parallel Algorithms Work`
+
+Parallel algorithms use `execution policies` 
+to dictate how the work should be divided across threads.
+
+`Execution Policies`
+
+1. ``std::execution::seq``
+   - Sequential execution (default for STL algorithms).
+   - Executes on a single thread.
+
+2. ``std::execution::par``
+   - Parallel execution.
+   - Divides work among threads but doesn’t guarantee a specific order.
+
+3. ``std::execution::par_unseq``
+   - Parallel and vectorized execution.
+   - Combines parallelism with SIMD 
+   (Single Instruction, Multiple Data) optimizations.
+   - Execution order is undefined.
+
+---
+
+`Syntax`
+
+```cpp
+#include <execution>  // For execution policies
+#include <algorithm>  // For STL algorithms
+#include <vector>
+#include <iostream>
+
+int main() {
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+
+    // Using a parallel execution policy
+    std::for_each(std::execution::par, vec.begin(), vec.end(),
+                  [](int& x) { x *= 2; });
+
+    for (auto x : vec) {
+        std::cout << x << " ";  // Output: 2 4 6 8 10
+    }
+}
+```
+
+---
+
+`Supported Algorithms`
+
+C++ parallel algorithms extend many existing STL algorithms. 
+Some commonly used ones include:
+
+1. ``std::for_each``
+2. ``std::reduce``
+3. ``std::transform``
+4. ``std::sort``
+5. ``std::count``
+6. ``std::find``
+
+
+
+`Examples`
+
+1. `Parallel Sorting`
+```cpp
+#include <execution>
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+int main() {
+    std::vector<int> vec = {5, 3, 8, 1, 2};
+
+    std::sort(std::execution::par, vec.begin(), vec.end());
+
+    for (auto x : vec) {
+        std::cout << x << " ";  // Output: 1 2 3 5 8
+    }
+}
+```
+
+2. `Parallel Reduction`
+`Sum of elements using `std::reduce`:`
+```cpp
+#include <execution>
+#include <numeric>
+#include <vector>
+#include <iostream>
+
+int main() {
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+
+    int sum = std::reduce(std::execution::par, vec.begin(), vec.end(), 0);
+
+    std::cout << "Sum: " << sum << std::endl;  // Output: Sum: 15
+}
+```
+
+3. `Parallel Transform`
+`Apply a transformation (e.g., squaring elements):`
+```cpp
+#include <execution>
+#include <algorithm>
+#include <vector>
+#include <iostream>
+
+int main() {
+    std::vector<int> vec = {1, 2, 3, 4, 5};
+    std::vector<int> result(vec.size());
+
+    std::transform(std::execution::par, vec.begin(), vec.end(), result.begin(),
+                   [](int x) { return x * x; });
+
+    for (auto x : result) {
+        std::cout << x << " ";  // Output: 1 4 9 16 25
+    }
+}
+```
+
+
+`Performance Considerations`
+
+1. `Hardware Requirements`
+   - Parallel execution depends on the availability of multiple CPU cores.
+
+2. `Data Size`
+   - Parallel algorithms are beneficial for large datasets.
+   - Overheads (e.g., thread creation) might make them slower for small datasets.
+
+3. `Race Conditions`
+   - Algorithms must ensure thread safety.
+   - Avoid shared state or use appropriate synchronization mechanisms.
+
+4. `Execution Policy`
+   - Choose the right execution policy based on your use case.
+   - Example: `std::execution::par_unseq` can be faster 
+   for operations that benefit from vectorization.
+
+
+
+`Comparison: Parallel Algorithms vs Threads`
+|------------------------|-------------------------------------|----------------------------------|
+| `Feature`              | `Parallel Algorithms`               | `Threads (e.g., std::thread)`    |
+|------------------------|-------------------------------------|----------------------------------|
+| `Ease of Use`          | Simple and abstracted.              | Requires manual management.      |
+| `Error-Prone`          | Less prone to errors like deadlocks.| High risk of race conditions.    |
+| `Performance`          | Optimized for STL-like tasks.       | Flexible for custom workflows.   |
+| `Scalability`          | Scales well with large datasets.    | Requires manual tuning.          |
+|------------------------|-------------------------------------|----------------------------------|
+
+
+`Comparison with Java Streams`
+|-----------------------|-------------------------------------|---------------------------------------------|
+| `Feature`             | `C++ Parallel Algorithms`           | `Java Streams API`                          |
+|-----------------------|-------------------------------------|---------------------------------------------|
+| `Parallelism`         | Explicit via `std::execution`.      | Implicit via `parallelStream()`.            |
+| `Ease of Use`         | Slightly more verbose.              | More intuitive for functional tasks.        |
+| `Flexibility`         | Can optimize STL-like workflows.    | Geared towards functional programming.      |
+| `Performance`         | Highly efficient with large data.   | Comparable but depends on JVM optimizations.|
+|-----------------------|-------------------------------------|---------------------------------------------|
+
+`Conclusion`
+
+Parallel algorithms in C++ provide a clean, efficient, 
+and powerful way to utilize multi-core processors for STL operations. 
+
+By combining ease of use and high performance, 
+they are a valuable tool for modern C++ developers, 
+especially when dealing with compute-heavy tasks or large datasets.

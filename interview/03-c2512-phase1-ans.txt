@@ -1,0 +1,2299 @@
+Abel: #001
+    1)How linker is working in compilation of a file
+    2)What is Static function
+    3) 2 types of polymorphism 
+    4)What is Virtual keyword 
+    5)Compare Agile and waterfall 
+    6)Use of Cat command
+    7)Command to change permissions in a file or directory 
+    8)Static library and Shared library
+    9)STL
+    10)Abstract class
+    11)How to deallocate the dynamic memory we used
+    12)There is a copy constructor by default so when we the copy constructor manually
+
+    PROGRAM:
+        •Define a class named student
+        •Define a char pointer variable as member variable with any one access specifier
+        •Define a constructor with this char pointer variable as parameter 
+        •close the class
+        •Define a main method
+        •initialize a char array with a string value
+        •Create an object for the class and pass this array as argument
+=========================================================================================
+`1) How Linker Works in Compilation of a File`  
+    The `linker` is responsible for combining object files 
+    (produced by the compiler) 
+    into an executable program. 
+    It performs the following steps:  
+    - `Symbol Resolution:` Matches function calls or variable references 
+    with their definitions across different object files or libraries.  
+    - `Address Binding:` Assigns memory addresses to functions and variables.  
+    - `Combining Object Files:` Links all object files and 
+    libraries into a single executable file.  
+
+---
+
+`2) What is a Static Function?`  
+    A `static function` in C++ is a function defined 
+    within a class but does not operate on an object of the class.  
+    - Can be called using the class name (e.g., `ClassName::functionName()`).
+    - Cannot access non-static members of the class directly.
+
+---
+
+`3) Two Types of Polymorphism`  
+    1. `Compile-Time Polymorphism (Static Binding):`  
+    Achieved using function overloading or operator overloading.  
+    2. `Runtime Polymorphism (Dynamic Binding):`  
+    Achieved using inheritance and virtual functions.  
+
+---
+
+`4) What is the `virtual` Keyword?`  
+    The ``virtual`` keyword in C++ is 
+    used to enable runtime polymorphism. 
+    It ensures that the derived class's method 
+    overrides the base class's method 
+    when accessed through a base class pointer.  
+    `Example:`  
+    ```cpp
+    class Base {
+        public:
+            virtual void show() { cout << "Base Class" << endl; }
+    };
+
+    class Derived : public Base {
+        public:
+            void show() override { cout << "Derived Class" << endl; }
+    };
+    ```
+
+---
+
+`5) Compare Agile and Waterfall` 
+    |----------------|------------------------------|--------------------------------| 
+    | `Feature`      | `Agile`                      | `Waterfall`                    |
+    |----------------|------------------------------|--------------------------------|
+    | `Approach`     | Iterative and incremental    | Sequential                     |
+    | `Flexibility`  | Highly flexible              | Rigid and less flexible        |
+    | `Client Involvement` | Continuous             | At the beginning and end only  |
+    | `Testing`      | Throughout development cycle | After implementation           |
+    | `Best For`     | Dynamic requirements         | Well-defined requirements      |
+    |----------------|------------------------------|--------------------------------|
+---
+
+`6) Use of `cat` Command`  
+    The `cat` command is used to:  
+    1. Display the contents of a file.  
+    ```bash
+    cat filename
+    ```
+    2. Create a new file.  
+    ```bash
+    cat > newfile
+    ```
+    3. Append contents to a file.  
+    ```bash
+    cat >> file
+    ```
+
+---
+
+`7) Command to Change Permissions in a File or Directory`  
+    Use the ``chmod`` command:  
+    - `Change permissions:`  
+    ```bash
+    chmod 755 filename
+    ```  
+    (7 = read, write, execute for owner; 5 = read, execute for group and others.)  
+
+    - `Recursive change (for directories):`  
+    ```bash
+    chmod -R 755 directoryname
+    ```
+
+---
+
+`8) Static Library and Shared Library`  
+    1. `Static Library:`  
+    - Compiled code is directly linked into the executable.  
+    - Increases the executable size but no need for the library at runtime.  
+    - File extension: `.lib` (Windows), `.a` (Linux).  
+
+    2. `Shared Library:`  
+    - Loaded at runtime.  
+    - Reduces executable size but requires the library during execution.  
+    - File extension: `.dll` (Windows), `.so` (Linux).  
+
+---
+
+`9) STL (Standard Template Library)`  
+    The STL provides pre-defined templates for data structures and algorithms.  
+    - `Components:`  
+    - Containers (e.g., `vector`, `list`, `map`).  
+    - Iterators (e.g., `begin()`, `end()`).  
+    - Algorithms (e.g., `sort`, `find`, `binary_search`).  
+
+---
+
+`10) Abstract Class`  
+    An `abstract class` is a class 
+    that cannot be instantiated and usually contains 
+    at least one pure virtual function.  
+    `Example:`  
+    ```cpp
+    class Abstract {
+        public:
+            virtual void show() = 0; // Pure virtual function
+    };
+    ```
+
+---
+
+`11) How to Deallocate Dynamic Memory Used`  
+    Dynamic memory allocated using `new` must be deallocated using `delete`.  
+    - `Single object:`  
+    ```cpp
+    int* ptr = new int;
+    delete ptr;
+    ```  
+    - `Array of objects:`  
+    ```cpp
+    int* arr = new int[5];
+    delete[] arr;
+    ```
+
+---
+
+`12) When Do We Manually Write a Copy Constructor?`  
+    The default copy constructor performs a shallow copy. A manual copy constructor is required when:  
+    - The class manages dynamically allocated memory.  
+    - A deep copy is needed.  
+
+    `Example:`  
+    ```cpp
+    class MyClass {
+        int* ptr;
+    public:
+        MyClass(int val) {
+            ptr = new int(val);
+        }
+        MyClass(const MyClass& obj) {
+            ptr = new int(*obj.ptr); // Deep copy
+        }
+        ~MyClass() {
+            delete ptr;
+        }
+    };
+    ```  
+=========================================================================================        
+
+Minhaj:#002
+    THEORY QUESTIONS:
+    1) Explain steps in SDLC and STLC?
+    2) Explain inheritance and types of inheritance 
+        (like public, private and protected)?
+    3) What is smart pointer and why we use it?
+    4) What are the class relationships? (Composition and Aggregation).
+    5) What is thread? What is multi threading and 
+    what are the advantages of using multi threading?
+    6) Do you know about inter process communication?
+    7) What is exception handling and 
+        how can we implement exception handling.
+        give example (Real life example also)?
+    8) Explain conditional compilation?
+    9) What is memory leak?    
+    PROGRAM QUESTIONS:
+        1) Define an abstract class.
+        2) Add a pure virtual function in that.
+        3) Create a Derived class which inherit the base class.
+        4) Override that base class function.
+        5) In the main function create an object of the derived class. 
+            Dynamically allocate memory.
+        6) Also can we make object of abstract class?
+=========================================================================================
+`1) Steps in SDLC and STLC`
+
+    `SDLC (Software Development Life Cycle)`  
+    The process of software development has the following steps:  
+    1. `Requirement Analysis:` Gathering and understanding project requirements.  
+    2. `System Design:` Creating the architecture and design of the software.  
+    3. `Implementation (Coding):` Writing and implementing code.  
+    4. `Testing:` Verifying the functionality and quality of the software.  
+    5. `Deployment:` Releasing the software for production.  
+    6. `Maintenance:` Updating and fixing issues post-deployment.
+
+    `STLC (Software Testing Life Cycle)`  
+    Steps involved in testing:  
+    1. `Requirement Analysis:` Understanding testing requirements.  
+    2. `Test Planning:` Defining strategy, scope, and resources for testing.  
+    3. `Test Case Development:` Writing test cases and scripts.  
+    4. `Environment Setup:` Preparing the test environment.  
+    5. `Test Execution:` Running test cases.  
+    6. `Test Closure:` Analyzing results and creating a closure report.
+
+---
+
+ `2) Inheritance and Types of Inheritance`  
+    Inheritance allows a class to acquire properties and methods of another class.  
+
+    `Types of Inheritance`  
+    1. `Single Inheritance:` One derived class inherits from one base class.  
+    2. `Multiple Inheritance:` A derived class inherits from multiple base classes.  
+    3. `Multilevel Inheritance:` A derived class acts as a base class for another class.  
+    4. `Hierarchical Inheritance:` Multiple derived classes inherit from a single base class.  
+    5. `Hybrid Inheritance:` Combination of multiple and multilevel inheritance.
+
+    `Access Specifiers in Inheritance`
+    - `Public Inheritance:` Public and protected members remain the same.  
+    - `Private Inheritance:` Public and protected members become private.  
+    - `Protected Inheritance:` Public and protected members become protected.
+
+    `Example:`  
+    ```cpp
+    class Base {
+        public: int x;
+        protected: int y;
+        private: int z;
+    };
+
+    class Derived : public Base {
+        void display() {
+            x = 10;  // Accessible
+            y = 20;  // Accessible
+            // z = 30;  // Not accessible
+        }
+    };
+    ```
+
+---
+
+`3) What is Smart Pointer and Why Use It?`  
+    A `smart pointer` is a class that manages a dynamically allocated object and ensures proper deallocation of memory.  
+
+    `Advantages:`  
+    - Automatically releases memory when the object goes out of scope.  
+    - Prevents memory leaks.  
+    - Improves code safety and clarity.
+
+    `Types:` `unique_ptr`, `shared_ptr`, `weak_ptr`.
+
+    `Example:`  
+    ```cpp
+    #include <memory>
+    std::unique_ptr<int> ptr = std::make_unique<int>(42);
+    ```
+
+---
+
+`4) Class Relationships: Composition and Aggregation`  
+
+    - `Composition:` A "has-a" relationship where the lifetime of the composed object depends on the lifetime of the owner.  
+    `Example:`  
+    ```cpp
+    class Engine {};
+    class Car {
+        Engine engine; // Car owns Engine
+    };
+    ```
+
+    - `Aggregation:` A "has-a" relationship where the composed object has an independent lifecycle.  
+    `Example:`  
+    ```cpp
+    class Team {};
+    class Player {
+        Team* team; // Player refers to Team
+    };
+    ```
+
+---
+
+`5) Thread, Multithreading, and Its Advantages`  
+
+    - A `thread` is the smallest unit of a process that can be executed independently.  
+    - `Multithreading` involves running multiple threads simultaneously.  
+
+    `Advantages:`  
+    1. Efficient CPU utilization.  
+    2. Faster execution through parallelism.  
+    3. Simplified program structure for independent tasks.
+
+---
+
+`6) Do You Know About Inter-Process Communication (IPC)?`  
+    Yes. IPC allows processes to communicate and synchronize their actions. Methods include:  
+    - `Shared Memory.`  
+    - `Message Passing (e.g., pipes, message queues).`  
+    - `Sockets.`
+
+---
+
+`7) Exception Handling`  
+
+    Exception handling manages runtime errors gracefully.  
+
+    `Example:`  
+    ```cpp
+    try {
+        int x = 0;
+        if (x == 0) throw "Divide by zero error";
+    } catch (const char* msg) {
+        cout << msg;
+    }
+    ```
+
+    `Real-Life Example:`  
+    Banking systems handle insufficient balance errors gracefully, showing an error message instead of crashing.
+
+---
+
+`8) Conditional Compilation`  
+    This allows parts of the code to be included or 
+    excluded during compilation using preprocessor directives 
+    like `#ifdef`, `#ifndef`, `#endif`.
+
+    `Example:`  
+    ```cpp
+    #define DEBUG
+    #ifdef DEBUG
+        cout << "Debug mode";
+    #endif
+    ```
+
+---
+
+`9) What is a Memory Leak?`  
+    A `memory leak` occurs 
+    when a program allocates memory 
+    but fails to deallocate it. 
+    This leads to reduced available memory.  
+
+    `Example of Memory Leak:`  
+    ```cpp
+    int* ptr = new int(10);
+    // Forgot to use delete
+    ```  
+    Proper use of smart pointers or 
+    `delete` avoids memory leaks.              
+=========================================================================================
+Athira#003
+    THEORY QUESTIONS
+        1) Self introduction
+        2) What you think about your training?
+        3) When you first heard about C++, what was your first strike in your mind?
+        4) What is programming?
+        5) what is compiler?
+        6) what is interpreter?
+        7) what is the importance of pseudocode?
+        8) what is algorithm?
+        9) What is the need for a loop in a program and explain its types.
+        10) What is a break statement in switch case?
+        11) What is Database?
+        12) What is a view?
+        13) What is the major difference between desktop applications and web applications?
+        14) What is SDLC?
+        15) What is Agile?
+        16) What is the use of sed command?
+        17) Command ps
+        18) What is Environmental variable?
+        19) What is Oops?
+        20) What is constructor?
+        21) What is static function?
+        22) What is virtual function?
+        23) What is pointer?
+        24) Difference between int a and int* a .
+        25) What is Exception Handling?
+        26) C++ 11 , 14, 17 features.
+        27) Explain polymorphism.
+        28) What you think about this 30min interview?
+        29) A snail is trying to climb a tree. 
+        If the snail climbs 5 feet in a day 
+        but falls 4 feet back, 
+        how many days will it take to climb 20 feet?
+    PROGRAM QUESTION
+        1) Write a program to print alternative numbers.
+=========================================================================================
+Here’s an organized breakdown of the topics/questions and their explanations:
+
+---
+
+`1) Self Introduction`  
+    Provide your name, educational background, professional experience, 
+    and any notable achievements or projects.
+
+---
+
+`2) What do you think about your training?`  
+    Discuss your learning experience, skills acquired, and 
+    how the training has prepared you for real-world scenarios.
+
+---
+
+`3) When you first heard about C++, what was your first thought?`  
+    Answer could include excitement 
+    about learning object-oriented programming or 
+    curiosity about solving complex problems.
+
+---
+
+`4) What is Programming?`  
+    Programming is the process of designing and 
+    writing instructions for a computer to execute tasks.
+
+---
+
+`5) What is a Compiler?`  
+    A compiler translates source code written 
+    in a high-level language into machine code before execution.
+
+---
+
+`6) What is an Interpreter?`  
+    An interpreter translates and executes code line-by-line, 
+    rather than compiling it into machine code first.
+
+---
+
+`7) Importance of Pseudocode`  
+    Pseudocode helps in planning and understanding algorithms 
+    by expressing them in a human-readable format before actual coding.
+
+---
+
+`8) What is an Algorithm?`  
+    An algorithm is a step-by-step procedure 
+    for solving a problem.
+
+---
+
+`9) Why are Loops Needed? Explain Types.`  
+    Loops automate repetitive tasks in a program.  
+    `Types:`  
+    - `For Loop:` Predefined number of iterations.  
+    - `While Loop:` Runs while a condition is true.  
+    - `Do-While Loop:` Executes at least once before checking the condition.
+
+---
+
+`10) What is a Break Statement in a Switch Case?`  
+    It exits the switch block, preventing fall-through to subsequent cases.  
+    `Example:`  
+    ```cpp
+    switch(x) {
+        case 1: cout << "One"; break;
+        case 2: cout << "Two"; break;
+    }
+    ```
+
+---
+
+`11) What is a Database?`  
+    A structured collection of data 
+    that can be accessed, managed, and updated.
+
+---
+
+`12) What is a View?`  
+    A view in SQL is a virtual table based on a query.
+
+---
+
+`13) Major Difference Between Desktop and Web Applications`  
+    - `Desktop Applications:` Installed locally, runs on a single device.  
+    - `Web Applications:` Runs on web browsers, accessible through the internet.
+
+---
+
+`14) What is SDLC?`  
+    The Software Development Life Cycle is a process 
+    for developing software in phases like 
+    requirement gathering, design, coding, testing, and maintenance.
+
+---
+
+`15) What is Agile?`  
+    A methodology emphasizing iterative development, 
+    collaboration, and adaptability.
+
+---
+
+ `16) Use of `sed` Command`  
+    The `sed` command is used for stream editing, 
+    like replacing or deleting text in a file.  
+    `Example:`  
+    ```bash
+    sed 's/old/new/' file.txt
+    ```
+
+---
+
+`17) Command `ps``  
+    Displays information about currently running processes.  
+    `Example:`  
+    ```bash
+    ps aux
+    ```
+
+---
+
+`18) What is an Environmental Variable?`  
+    A variable that stores configuration settings 
+    for the operating system or processes, like `PATH`.
+
+---
+
+`19) What is OOPs?`  
+    Object-Oriented Programming is a paradigm 
+    that uses objects and classes to model real-world entities. 
+    Key principles include encapsulation, inheritance, and polymorphism.
+
+---
+
+`20) What is a Constructor?`  
+    A special function in a class automatically called when an object is created.  
+    `Example:`  
+    ```cpp
+    class A {
+        A() { cout << "Constructor called"; }
+    };
+    ```
+
+---
+
+`21) What is a Static Function?`  
+    A function belonging to the class, not its objects. It can only access static members.
+
+---
+
+`22) What is a Virtual Function?`  
+    A function declared in a base class and overridden in a derived class, allowing runtime polymorphism.  
+    `Example:`  
+    ```cpp
+    class Base { virtual void show(); };
+    ```
+
+---
+
+`23) What is a Pointer?`  
+    A variable that stores the memory address of another variable.  
+    `Example:`  
+    ```cpp
+    int x = 5; int* p = &x;
+    ```
+
+---
+
+`24) Difference Between `int a` and `int* a``  
+    - `int a`: Declares an integer variable.  
+    - `int* a`: Declares a pointer to an integer.
+
+---
+
+`25) What is Exception Handling?`  
+    Managing runtime errors using `try`, `catch`, and `throw`.  
+    `Example:`  
+    ```cpp
+    try { throw "Error"; } catch (const char* msg) { cout << msg; }
+    ```
+
+---
+
+`26) C++11, C++14, C++17 Features`  
+    - `C++11:` `auto` keyword, `nullptr`, range-based for loops.  
+    - `C++14:` Binary literals, generic lambdas.  
+    - `C++17:` `if constexpr`, structured bindings.
+
+---
+
+`27) Explain Polymorphism`  
+    Polymorphism allows one function or operator to behave differently based on context.  
+    - `Compile-Time (Static):` Function overloading, operator overloading.  
+    - `Runtime (Dynamic):` Virtual functions.
+
+---
+
+`28) What Do You Think About This 30-Min Interview?`  
+    Share positive feedback, highlight your learning, and 
+    express gratitude for the opportunity.
+
+---
+
+`29) Snail Problem Solution`  
+    Each day the snail climbs 1 foot (5 feet up - 4 feet down).  
+
+    On the `16th day`, it climbs from 15 feet to 20 feet without falling back.  
+    `Answer:` 16 days.              
+=========================================================================================
+Ayisha#004
+    =========Theory=========
+        Ask about what all topics covered in 26 days
+        Explain OOPs
+        Dynamic memory allocation
+        New delete
+        Calling order of constructors and destructor 
+        Private, public, protected 
+        What is Linker
+        What is Template
+        4 Steps in compilation
+    ===========Code========
+        Using the While loop print name 10 times
+        For Class College :
+            (Declare attributes, functions, constructor destructor)
+        Swap 2  numbers code
+        For Class XYZ :
+            declare private, public, protected variables (int x, int y , int z)
+            how we can access them
+            assign value 20 to y
+=========================================================================================
+Topics Covered in 26 Days  
+    Start by listing topics like:  
+    1. Basics of C++ (syntax, variables, data types).  
+    2. Control structures (loops, if-else, switch-case).  
+    3. Functions (inline, friend, and virtual functions).  
+    4. Object-Oriented Programming (classes, objects, inheritance, polymorphism).  
+    5. Memory management (dynamic allocation, smart pointers).  
+    6. Advanced topics (templates, exception handling, STL).  
+    7. Compilation and linking process.  
+
+---
+
+`Explain OOPs`  
+    Object-Oriented Programming (OOP) is 
+    a paradigm based on the concept of "objects" 
+    containing data (attributes) and methods (functions).  
+
+    `Key Features:`  
+    1. `Encapsulation:` Bundling of data and functions 
+    into a single unit (class).  
+    2. `Inheritance:` Ability to create new classes from existing ones.  
+    3. `Polymorphism:` Ability of functions to behave differently 
+    based on input (compile-time and runtime).  
+    4. `Abstraction:` Hiding complex implementation details and 
+    exposing only necessary functionalities.  
+
+---
+
+`Dynamic Memory Allocation`  
+    Dynamic memory allocation allows memory 
+    to be allocated at runtime, 
+    unlike static allocation at compile time.  
+
+    `Functions:`  
+    - `new`: Allocates memory dynamically.  
+    - `delete`: Deallocates memory.  
+
+    `Example:`  
+    ```cpp
+    int* ptr = new int(5);  // Allocate memory
+    delete ptr;            // Deallocate memory
+    ```
+
+---
+
+ ``new` and `delete``  
+    - ``new`:` Allocates memory on the heap and returns a pointer to the allocated memory.  
+    - ``delete`:` Frees memory previously allocated by `new`.  
+
+    `Example:`  
+    ```cpp
+    int* arr = new int[5]; // Allocate array of 5 integers
+    delete[] arr;          // Free allocated memory
+    ```
+
+---
+
+`Calling Order of Constructors and Destructors`  
+    1. `Constructors:`  
+    - Base class constructor is called first, 
+    followed by the derived class constructor.  
+
+    2. `Destructors:`  
+    - Derived class destructor is called first, 
+    followed by the base class destructor.  
+
+    `Example:`  
+    ```cpp
+    class Base {
+    public:
+        Base() { cout << "Base Constructor\n"; }
+        ~Base() { cout << "Base Destructor\n"; }
+    };
+    class Derived : public Base {
+    public:
+        Derived() { cout << "Derived Constructor\n"; }
+        ~Derived() { cout << "Derived Destructor\n"; }
+    };
+    ```
+
+    Output when an object of `Derived` is created:  
+    ```
+    Base Constructor  
+    Derived Constructor  
+    Derived Destructor  
+    Base Destructor  
+    ```
+
+---
+
+`Access Modifiers: Private, Public, Protected`  
+    - `Private:` Accessible only within the class.  
+    - `Public:` Accessible anywhere.  
+    - `Protected:` Accessible within the class and derived classes.  
+
+    `Example:`  
+    ```cpp
+    class Example {
+    private:
+        int a;  // Only accessible within Example
+    protected:
+        int b;  // Accessible in derived classes
+    public:
+        int c;  // Accessible anywhere
+    };
+    ```
+
+---
+
+`What is a Linker?`  
+    A linker combines multiple object files 
+    (generated by the compiler) 
+    into a single executable file. 
+    
+    It resolves function calls and 
+    variable references across files.  
+
+---
+
+`What is a Template?`  
+    A template is a blueprint for creating generic functions or classes.  
+
+    `Example (Function Template):`  
+    ```cpp
+    template <typename T>
+    T add(T a, T b) {
+        return a + b;
+    }
+    cout << add<int>(3, 4);  // Output: 7
+    ```
+
+    `Example (Class Template):`  
+    ```cpp
+    template <typename T>
+    class Box {
+        T data;
+    public:
+        void setData(T d) { data = d; }
+        T getData() { return data; }
+    };
+    Box<int> intBox;
+    intBox.setData(10);
+    ```
+
+---
+
+`4 Steps in Compilation`  
+    1. `Preprocessing:`  
+    - Handles directives like `#include` and `#define`.  
+    2. `Compilation:`  
+    - Converts source code into object code.  
+    3. `Assembly:`  
+    - Translates object code into machine code.  
+    4. `Linking:`  
+    - Combines multiple object files into an executable file.  
+
+    `Commands for Compilation in GCC:`  
+    ```bash
+    g++ -o program source.cpp   // Compile and link
+    ```              
+=========================================================================================
+Bhagya#005
+    1. What is a deep copy in C++?
+    2. What is a shallow copy in C++?
+    3. What is function overloading? Explain with an example.?
+    4. Write a code snippet demonstrating function overloading.
+    5. What are constructors in C++, and what are their types?
+    6. Write a C++ code using a copy constructor.?
+    7. What is polymorphism in object-oriented programming? 
+    8. What are the types of polymorphism in programming?
+    9. How can we achieve runtime polymorphism from a derived class?
+    10. What is object-oriented programming (OOP)?
+    11. What are the four pillars of object-oriented programming?
+    12. What is runtime polymorphism?
+    13. What is an abstract class in C++?
+    14. What is a pure virtual class in C++?
+    15. How can we achieve runtime polymorphism when calling from a derived class?
+    16. Demonstrate how a derived class can be used with a base class pointer.
+    17. What is the difference between global, local, and static variables in C++?
+    18. What is inheritance in object-oriented programming, and what are its types?
+    19. What is normalization in databases, and why is it important?
+    20. How can you create, insert, and delete records in SQL?
+    21. Why do we use DBMS, and what are its advantages?
+=========================================================================================
+`1. What is a Deep Copy in C++?`  
+    A `deep copy` creates a copy of the object along 
+    with dynamically allocated memory it references, 
+    ensuring the new object has its own separate memory.  
+
+    `Example:`  
+    ```cpp
+    class Deep {
+        int* data;
+    public:
+        Deep(int value) { data = new int(value); }
+        Deep(const Deep& other) { data = new int(*other.data); }  // Deep copy
+        ~Deep() { delete data; }
+    };
+    ```
+
+---
+
+`2. What is a Shallow Copy in C++?`  
+    A `shallow copy` copies the values of all member variables, 
+    including pointers, without creating a new memory allocation. 
+    Both objects share the same memory.  
+
+    `Example:`  
+    ```cpp
+    class Shallow {
+        int* data;
+    public:
+        Shallow(int value) { data = new int(value); }
+        ~Shallow() { delete data; }  // Issue: Deleting shared memory
+    };
+    ```
+
+---
+
+`3. What is Function Overloading?`  
+    Function overloading allows multiple functions 
+    with the same name but different parameter lists.  
+
+---
+
+`4. Code Snippet Demonstrating Function Overloading`  
+    ```cpp
+    #include <iostream>
+    using namespace std;
+
+    class Calculator {
+    public:
+        int add(int a, int b) { return a + b; }
+        double add(double a, double b) { return a + b; }
+        int add(int a, int b, int c) { return a + b + c; }
+    };
+
+    int main() {
+        Calculator calc;
+        cout << calc.add(2, 3) << endl;          // Calls add(int, int)
+        cout << calc.add(2.5, 3.5) << endl;      // Calls add(double, double)
+        cout << calc.add(1, 2, 3) << endl;       // Calls add(int, int, int)
+        return 0;
+    }
+    ```
+
+---
+
+`5. What are Constructors in C++, and What are Their Types?`  
+    A `constructor` is a special member function automatically invoked when an object is created.  
+
+    `Types of Constructors:`  
+    1. `Default Constructor`  
+    2. `Parameterized Constructor`  
+    3. `Copy Constructor`  
+
+---
+
+`6. C++ Code Using a Copy Constructor`  
+    ```cpp
+    #include <iostream>
+    using namespace std;
+
+    class Student {
+        string name;
+        int age;
+    public:
+        Student(string n, int a) : name(n), age(a) {}
+        Student(const Student& other) { name = other.name; age = other.age; }  // Copy constructor
+        void display() { cout << "Name: " << name << ", Age: " << age << endl; }
+    };
+
+    int main() {
+        Student s1("Alice", 20);
+        Student s2 = s1;  // Calls copy constructor
+        s2.display();
+        return 0;
+    }
+    ```
+
+---
+
+`7. What is Polymorphism in OOP?`  
+    Polymorphism means "many forms." 
+    It allows one interface to represent different data types or functions.
+
+---
+
+`8. Types of Polymorphism in Programming`  
+    1. `Compile-time Polymorphism`: 
+    Achieved using function overloading and operator overloading.  
+    2. `Runtime Polymorphism`: Achieved using virtual functions.
+
+---
+
+`9. How to Achieve Runtime Polymorphism in a Derived Class?`  
+    Using a `virtual function` in the base class, 
+    overridden by the derived class.
+
+    `Example:`  
+    ```cpp
+    class Base {
+    public:
+        virtual void show() { cout << "Base class\n"; }
+    };
+    class Derived : public Base {
+    public:
+        void show() override { cout << "Derived class\n"; }
+    };
+    ```
+
+---
+
+`10. What is Object-Oriented Programming (OOP)?`  
+    OOP is a paradigm based on classes and objects 
+    to design software with principles 
+    like encapsulation, inheritance, abstraction, and polymorphism.
+
+---
+
+`11. Four Pillars of OOP`  
+    1. Encapsulation  
+    2. Inheritance  
+    3. Abstraction  
+    4. Polymorphism  
+
+---
+
+`12. What is Runtime Polymorphism?`  
+    It allows function behavior to be determined at runtime, 
+    achieved through virtual functions.
+
+---
+
+`13. What is an Abstract Class in C++?`  
+    A class containing at least one pure virtual function. 
+    It cannot be instantiated.
+
+---
+
+`14. What is a Pure Virtual Class in C++?`  
+    A class where all member functions are pure virtual functions.
+
+---
+
+`15. How to Achieve Runtime Polymorphism from a Derived Class?`  
+    Through `base class pointers` or references calling virtual functions.  
+
+---
+
+`16. Code: Using Base Class Pointer for Derived Class`  
+    ```cpp
+    #include <iostream>
+    using namespace std;
+
+    class Base {
+    public:
+        virtual void display() { cout << "Base Class\n"; }
+    };
+    class Derived : public Base {
+    public:
+        void display() override { cout << "Derived Class\n"; }
+    };
+
+    int main() {
+        Base* bptr = new Derived();
+        bptr->display();  // Output: Derived Class
+        delete bptr;
+        return 0;
+    }
+    ```
+
+---
+
+`17. Global, Local, and Static Variables`  
+    - `Global:` Declared outside functions, accessible throughout the program.  
+    - `Local:` Declared within a function, accessible only inside that function.  
+    - `Static:` Retains its value between function calls.
+
+---
+
+`18. Inheritance in OOP and Its Types`  
+    Inheritance allows a class to derive properties and behavior from another.  
+
+    `Types:`  
+    1. Single  
+    2. Multiple  
+    3. Multilevel  
+    4. Hierarchical  
+    5. Hybrid  
+
+---
+
+`19. Normalization in Databases`  
+    A process to eliminate redundancy and improve data integrity by dividing data into smaller tables.  
+
+---
+
+`20. SQL: Create, Insert, Delete`  
+    ```sql
+    -- Create Table
+    CREATE TABLE Students (ID INT, Name VARCHAR(50));
+
+    -- Insert Data
+    INSERT INTO Students (ID, Name) VALUES (1, 'Alice');
+
+    -- Delete Data
+    DELETE FROM Students WHERE ID = 1;
+    ```
+
+---
+
+`21. Why Use DBMS? Advantages`  
+    1. Efficient data management.  
+    2. Improved data security and integrity.  
+    3. Reduced data redundancy.  
+    4. Supports concurrent access.            
+=========================================================================================    
+Pitchumani#006
+    Theory question
+        1.self introduction
+        2..0perator overloading
+        3.scp command
+        4.software development life cycle and it's steps
+        5.what is database?
+        6.explain the types of normal forms
+        7.tell the create and insert statement in dbms
+        8.pillar of  oop concept
+        9.sed command
+        10.what is abstract class 
+        11.pure virtual function
+        12.what is constructor
+        13.copy constructor
+        14.explain do while loop
+        15.multithreading concept
+        16.Gtesting
+    problem:
+        1.Define an abstract class
+        2.Add a pure virtual function
+        3.add a destructor
+        4.Create a Derived class inheriting the base class
+        5.override the baseclass function 
+        6.close the child class
+=========================================================================================
+`1. Self Introduction`  
+    Provide a brief overview of yourself, 
+    including your education, professional experience, technical skills, and 
+    any relevant accomplishments. 
+    Highlight your interest in programming and problem-solving.  
+
+---
+
+`2. Operator Overloading`  
+    `Operator Overloading` allows custom behavior 
+    for operators in user-defined types.  
+
+    `Example in C++:`  
+    ```cpp
+    #include <iostream>
+    using namespace std;
+
+    class Complex {
+        int real, imag;
+    public:
+        Complex(int r, int i) : real(r), imag(i) {}
+        Complex operator+(const Complex& obj) { 
+            return Complex(real + obj.real, imag + obj.imag); 
+        }
+        void display() { cout << real << " + " << imag << "i\n"; }
+    };
+
+    int main() {
+        Complex c1(2, 3), c2(4, 5);
+        Complex c3 = c1 + c2;  // Overloaded + operator
+        c3.display();
+        return 0;
+    }
+    ```
+
+---
+
+`3. SCP Command`  
+    `SCP (Secure Copy Protocol)` is used to securely transfer files between hosts over SSH.  
+
+    `Syntax:`  
+    ```bash
+    scp source_file user@host:destination_path
+    ```
+
+    `Example:`  
+    ```bash
+    scp myfile.txt user@192.168.1.1:/home/user/
+    ```
+
+---
+
+`4. Software Development Life Cycle (SDLC) and Its Steps`  
+    `SDLC` is a systematic approach to developing software.  
+
+    `Steps:`  
+    1. `Requirement Analysis`  
+    2. `Design`  
+    3. `Implementation (Coding)`  
+    4. `Testing`  
+    5. `Deployment`  
+    6. `Maintenance`  
+
+---
+
+`5. What is Database?`  
+    A `database` is an organized collection of data, 
+    enabling efficient storage, retrieval, and management.  
+
+---
+
+`6. Types of Normal Forms`  
+    1. `First Normal Form (1NF):` No repeating groups or arrays.  
+    2. `Second Normal Form (2NF):` Satisfies 1NF and no partial dependency.  
+    3. `Third Normal Form (3NF):` Satisfies 2NF and no transitive dependency.  
+    4. `Boyce-Codd Normal Form (BCNF):` Every determinant is a candidate key.  
+
+---
+
+`7. Create and Insert Statement in DBMS`  
+    ```sql
+    -- Create Table
+    CREATE TABLE Employees (
+        ID INT PRIMARY KEY,
+        Name VARCHAR(50),
+        Salary DECIMAL(10, 2)
+    );
+
+    -- Insert Data
+    INSERT INTO Employees (ID, Name, Salary) VALUES (1, 'Alice', 50000);
+    ```
+
+---
+
+`8. Pillars of OOP Concept`  
+    1. `Encapsulation`  
+    2. `Inheritance`  
+    3. `Polymorphism`  
+    4. `Abstraction`  
+
+---
+
+`9. Sed Command`  
+    `Sed (Stream Editor)` is used for text manipulation in Linux.  
+
+    `Example:`  
+    ```bash
+    sed 's/old/new/g' filename  # Replace "old" with "new" globally in a file
+    ```
+
+---
+
+`10. What is an Abstract Class?`  
+    An `abstract class` is a class 
+    with at least one pure virtual function, 
+    providing a base for inheritance but cannot be instantiated directly.  
+
+---
+
+`11. Pure Virtual Function`  
+    A `pure virtual function` is declared using `= 0` 
+    in a base class and must be overridden in derived classes.  
+    ```cpp
+    class Base {
+    public:
+        virtual void display() = 0;  // Pure virtual function
+    };
+    ```
+
+---
+
+`12. What is Constructor?`  
+    A `constructor` is a special function in C++ automatically invoked 
+    when an object is created, 
+    used for initializing data members.  
+
+---
+
+`13. Copy Constructor`  
+    A `copy constructor` initializes an object by copying another object of the same class.  
+    ```cpp
+    class Example {
+        int x;
+    public:
+        Example(int val) : x(val) {}
+        Example(const Example& obj) { x = obj.x; }
+    };
+    ```
+
+---
+
+ `14. Explain Do-While Loop`  
+    The `do-while loop` executes a block of code at least once, 
+    then repeatedly executes it 
+    as long as the condition is true.  
+    ```cpp
+    int i = 1;
+    do {
+        cout << i << endl;
+        i++;
+    } while (i <= 5);
+    ```
+
+---
+
+`15. Multithreading Concept`  
+    `Multithreading` allows concurrent execution of multiple threads 
+    within a single process, 
+    improving performance for parallel tasks.  
+
+---
+
+`16. GTest`  
+    `Google Test (GTest)` is a C++ testing framework 
+    used to write unit tests.  
+
+    `Example:`  
+    ```cpp
+    #include <gtest/gtest.h>
+
+    TEST(SumTest, Positive) {
+        ASSERT_EQ(2 + 2, 4);
+    }
+
+    int main(int argc, char` argv) {
+        ::testing::InitGoogleTest(&argc, argv);
+        return RUN_ALL_TESTS();
+    }
+    ```              
+=========================================================================================
+Sooraj#007 
+    1.Total covered topics.
+    2.Create class and object.
+    3.Explain class and object.
+    4.virtual function and create it in base class.
+    5.override function and create it in derived class.
+    6.Call the function.
+    7.Create a dynamic object.
+    8.Student table with column Teacher.
+        Fetch studente name with teacher name is "X".
+        Fetch studente name with teacher name are "X" and "Y".
+        Count of students for each teacher "X" and "Y".
+=========================================================================================
+ `1. Total Covered Topics`  
+    Here are the topics that are typically covered:  
+    - Basics of C++ (Syntax, Input/Output, Variables)  
+    - Control Structures (If-Else, Loops)  
+    - Functions (Normal and Overloaded)  
+    - Object-Oriented Programming (Class, Object, Inheritance, Polymorphism)  
+    - Constructors and Destructors (Including Copy Constructor)  
+    - Memory Management (Dynamic Memory, New/Delete)  
+    - Abstract Classes and Virtual Functions  
+    - Exception Handling  
+    - Database Basics (SQL queries, Normalization, CRUD operations)  
+    - Multithreading and GTest  
+
+---
+
+`2. Create Class and Object`  
+    `Example:`  
+    ```cpp
+    #include <iostream>
+    using namespace std;
+
+    class Student {
+        string name;
+        int age;
+    public:
+        void setData(string n, int a) {
+            name = n;
+            age = a;
+        }
+        void displayData() {
+            cout << "Name: " << name << ", Age: " << age << endl;
+        }
+    };
+
+    int main() {
+        Student s1;  // Object creation
+        s1.setData("Alice", 20);
+        s1.displayData();
+        return 0;
+    }
+    ```
+
+---
+
+`3. Explain Class and Object`  
+    - `Class:` A blueprint for creating objects that encapsulates data and methods.  
+    - `Object:` An instance of a class, representing a real-world entity.  
+
+---
+
+`4. Virtual Function in Base Class`  
+    `Example:`  
+    ```cpp
+    #include <iostream>
+    using namespace std;
+
+    class Base {
+    public:
+        virtual void show() {  // Virtual function
+            cout << "Base class show function" << endl;
+        }
+    };
+    ```
+
+---
+
+`5. Override Function in Derived Class`  
+    `Example:`  
+    ```cpp
+    class Derived : public Base {
+    public:
+        void show() override {  // Function overriding
+            cout << "Derived class show function" << endl;
+        }
+    };
+    ```
+
+---
+
+`6. Call the Function`  
+    `Example:`  
+    ```cpp
+    int main() {
+        Base* b;
+        Derived d;
+        b = &d;
+        b->show();  // Calls Derived class's show function (Runtime polymorphism)
+        return 0;
+    }
+    ```
+
+---
+
+`7. Create a Dynamic Object`  
+    `Example:`  
+    ```cpp
+    int main() {
+        Student* s = new Student();  // Dynamic object
+        s->setData("Bob", 22);
+        s->displayData();
+        delete s;  // Free memory
+        return 0;
+    }
+    ```
+
+---
+
+`8. Student Table Queries`  
+
+    `Table Structure:`  
+    ```sql
+    CREATE TABLE Student (
+        ID INT PRIMARY KEY,
+        Name VARCHAR(50),
+        Teacher VARCHAR(50)
+    );
+    ```
+
+    `a. Fetch Student Names Where Teacher Name is "X":`  
+    ```sql
+    SELECT Name 
+    FROM Student 
+    WHERE Teacher = 'X';
+    ```
+
+    `b. Fetch Student Names Where Teacher Name is "X" or "Y":`  
+    ```sql
+    SELECT Name 
+    FROM Student 
+    WHERE Teacher IN ('X', 'Y');
+    ```
+
+    `c. Count of Students for Each Teacher "X" and "Y":`  
+    ```sql
+    SELECT Teacher, COUNT(*) AS StudentCount 
+    FROM Student 
+    WHERE Teacher IN ('X', 'Y') 
+    GROUP BY Teacher;
+    ```            
+=========================================================================================
+Josh#008
+    1. How was the training? Do you have any prior experience in C++ and Linux?
+    2. Write SQL query to select everything from table student 
+       where teacher(column in table student) name is John or James.
+    3. Difference between class and object, explain with a practical example.
+    4. Write a code to implement virtual functions and override them.
+    5. Can pure virtual functions have definition?
+    6. What is this?
+    7. Internally how this pointer works and also 
+        explain the internal working of how this pointer works 
+        while accessing member data.
+    8. Consider a class(class A), 
+        can you use the this pointer 
+        to call another class(class B) while being inside class A? 
+    9. What is the size of the variable which is used to hold addresses?
+    10. When allocating memory either statically or dynamically, 
+        which memory is being used to allocate this memory? 
+        [Hint: not in stack or heap and not directly in hard disk]
+    11. What is while loop and do-while loop? 
+        What are the differences between them?
+    12. If the given check condition for both while and do while loop is 1, 
+        how do the loops work and 
+        what are the changes in their working mechanism?
+    13. What are environment variables in Linux(e.g. PATH) and 
+        why is it used?
+    14. You have studied about various Linux commands 
+        like cat, grep etc, how do these commands work internally? 
+        What happens when you give such commands in the shell?
+    15. What is the difference between vectors and arrays and 
+        how do they work?
+=========================================================================================
+ `1. How was the training? Do you have any prior experience in C++ and Linux?`  
+    This question focuses on gauging your learning experience and 
+    familiarity with the subjects. 
+    Be honest and share your exposure to C++ and Linux, 
+    highlighting key learnings or challenges during the training.
+
+---
+
+ `2. SQL Query: Fetch Data Where Teacher is John or James`  
+    ```sql
+    SELECT * 
+    FROM Student 
+    WHERE Teacher = 'John' OR Teacher = 'James';
+    ```
+
+---
+
+ `3. Difference Between Class and Object (With Example)`  
+    - `Class:` A blueprint for creating objects. 
+    It defines properties and behaviors.  
+    - `Object:` An instance of a class, 
+    representing a specific entity.  
+
+    `Example:`  
+    ```cpp
+    #include <iostream>
+    using namespace std;
+
+    class Car {
+        string brand;
+        int speed;
+    public:
+        void setData(string b, int s) {
+            brand = b;
+            speed = s;
+        }
+        void display() {
+            cout << "Brand: " << brand << ", Speed: " << speed << endl;
+        }
+    };
+
+    int main() {
+        Car c1;  // Object of class Car
+        c1.setData("Toyota", 120);
+        c1.display();
+        return 0;
+    }
+    ```
+
+---
+
+ `4. Code to Implement Virtual Functions and Override Them`  
+    ```cpp
+    #include <iostream>
+    using namespace std;
+
+    class Base {
+    public:
+        virtual void show() {
+            cout << "Base class show function" << endl;
+        }
+        virtual ~Base() {}
+    };
+
+    class Derived : public Base {
+    public:
+        void show() override {
+            cout << "Derived class show function" << endl;
+        }
+    };
+
+    int main() {
+        Base* b = new Derived();
+        b->show();  // Calls Derived's show due to runtime polymorphism
+        delete b;
+        return 0;
+    }
+    ```
+
+---
+
+ `5. Can Pure Virtual Functions Have Definitions?`  
+    Yes, pure virtual functions can have a definition. 
+    However, the derived class must still override the function 
+    to create an object of the derived class.  
+
+    `Example:`  
+    ```cpp
+    #include <iostream>
+    using namespace std;
+
+    class Base {
+    public:
+        virtual void display() = 0;  // Pure virtual function
+        void displayDefinition() {  // Definition of pure virtual function
+            cout << "Definition of pure virtual function in Base" << endl;
+        }
+    };
+
+    class Derived : public Base {
+    public:
+        void display() override {
+            cout << "Override in Derived" << endl;
+            displayDefinition();  // Call base class definition
+        }
+    };
+
+    int main() {
+        Derived d;
+        d.display();
+        return 0;
+    }
+    ```
+
+---
+
+ `6. What is `this`?`  
+    `this` is a pointer available inside a class 
+    that points to the current object. 
+    It is used to access members of the class, 
+    resolve naming conflicts, and 
+    return the current object.
+
+---
+
+ `7. How Does `this` Pointer Work Internally?`  
+    When a non-static member function is called, 
+    the compiler implicitly passes a hidden argument (`this`) 
+    that points to the calling object.  
+    `Usage Example:`  
+    ```cpp
+    class Test {
+        int x;
+    public:
+        void setX(int x) {
+            this->x = x;  // Resolving naming conflict
+        }
+        void display() {
+            cout << "Value of x: " << this->x << endl;
+        }
+    };
+    ```
+
+---
+
+ `8. Can `this` Pointer Be Used to Call Another Class While Inside a Class?`  
+    No, `this` pointer is limited to the current class and 
+    cannot directly call another class. 
+    You need an instance of the other class to call its members.  
+
+---
+
+ `9. Size of Variable Holding an Address`  
+    The size depends on the architecture:  
+    - `32-bit systems:` 4 bytes  
+    - `64-bit systems:` 8 bytes  
+
+---
+
+ `10. Memory Used for Allocation (Other Than Stack/Heap)`  
+    Memory allocation happens in `data segments`:  
+    - `Global/static memory:` Allocated in the data segment.  
+
+---
+
+ `11. While Loop vs. Do-While Loop`  
+    - `While Loop:` The condition is checked first. 
+    If false, the loop does not execute.  
+    - `Do-While Loop:` Executes at least once 
+    as the condition is checked after the loop.  
+
+    `Example:`  
+    ```cpp
+    int i = 0;
+    while (i < 5) {
+        cout << i << " ";
+        i++;
+    }
+
+    do {
+        cout << i << " ";
+        i++;
+    } while (i < 5);
+    ```
+
+---
+
+ `12. Check Condition as 1 in Loops`  
+    If the condition is `1` (true):  
+    - `While Loop:` Executes infinitely as the condition never changes.  
+    - `Do-While Loop:` Executes infinitely as well, but guarantees execution at least once.  
+
+---
+
+`13. Environment Variables in Linux (e.g., PATH)`  
+    Environment variables are dynamic values that affect processes.  
+    - `Example:` `PATH` specifies directories for executable files.  
+    - `Usage:` Allows programs to run without specifying full paths.  
+
+---
+
+`14. Internal Working of Linux Commands (cat, grep)`  
+    - The shell parses and interprets commands.  
+    - It searches executables in `PATH` directories.  
+    - Commands like `cat` and `grep` interact 
+    with kernel-level APIs to access files and streams.  
+
+---
+
+ `15. Vectors vs. Arrays`  
+    | Feature         | Array                      | Vector               |
+    |------------------|----------------------------|----------------------|
+    | Size            | Fixed at compile time      | Dynamic at runtime   |
+    | Memory          | Contiguous                 | Contiguous but resizable |
+    | STL Support     | No                         | Yes                 |
+    | Functions       | No in-built functions      | Rich set of functions |
+    | Example         | `int arr[5];`             | `vector<int> vec;`   |
+
+    `Example:`  
+    ```cpp
+    #include <iostream>
+    #include <vector>
+    using namespace std;
+
+    int main() {
+        vector<int> v = {1, 2, 3};
+        v.push_back(4);  // Adds element to vector
+        for (int i : v) {
+            cout << i << " ";
+        }
+        return 0;
+    }
+    ```            
+=========================================================================================        
+Sana#009
+    Theory
+        1. Self introduction
+        2. Linux commands
+        3. Command to copy a folder to another folder
+        4. What is polymorphism
+        5. What is a constructor and types of constructors
+        6. Exception handling
+        7. Multi threading
+        8. Ipc
+        9. Why we use shell scripting
+        10. How to compile and run a code
+        11. Steps in sdlc
+        12. Advanced feature in c++11 for dynamic memory management
+    Programming qn. 
+        --write a code for run time polymorphism
+=========================================================================================
+ 1. `Self Introduction`  
+    This is a common question in interviews or discussions. 
+    Your self-introduction should briefly include:
+    - Your name and background (education, experience).
+    - Key skills and expertise (C++, Linux, programming languages, etc.).
+    - Any interests or hobbies that may relate to your work or passion.
+
+---
+
+ 2. `Linux Commands`  
+    Linux commands are used for various file management, 
+    process control, and system operations. 
+    Some commonly used Linux commands:
+    - `ls` - List directory contents
+    - `cd` - Change directory
+    - `cp` - Copy files and directories
+    - `mv` - Move files or rename
+    - `rm` - Remove files or directories
+    - `grep` - Search text using patterns
+    - `cat` - Concatenate and display file content
+    - `chmod` - Change file permissions
+
+---
+
+ 3. `Command to Copy a Folder to Another Folder`  
+    To copy a folder (and its contents) to another folder:
+    ```bash
+    cp -r /source_directory /destination_directory
+    ```
+    Where `-r` (recursive) ensures that the contents of the folder are also copied.
+
+---
+
+ 4. `What is Polymorphism?`  
+    Polymorphism is one of the four pillars of OOP (Object-Oriented Programming). 
+    It allows objects of different classes 
+    to be treated as objects of a common base class. 
+    It can take two forms:
+    - `Compile-time (Static) Polymorphism:` 
+    Achieved through function overloading or operator overloading.
+    - `Runtime (Dynamic) Polymorphism:` 
+    Achieved through inheritance and virtual functions, 
+    allowing method overriding.
+
+    `Example of Runtime Polymorphism:`  
+    ```cpp
+    class Base {
+    public:
+        virtual void show() { cout << "Base class show" << endl; }
+    };
+
+    class Derived : public Base {
+    public:
+        void show() override { cout << "Derived class show" << endl; }
+    };
+
+    int main() {
+        Base* b = new Derived();
+        b->show(); // Calls Derived class show
+    }
+    ```
+
+---
+
+ 5. `What is a Constructor and Types of Constructors?`  
+    A constructor is a special class member function 
+    used to initialize objects of a class. 
+    It is automatically called when an object is created. 
+    Types of constructors include:
+    - `Default Constructor:` No parameters. Initializes objects with default values.
+    - `Parameterized Constructor:` Takes arguments to initialize objects with specific values.
+    - `Copy Constructor:` Initializes a new object as a copy of an existing object.
+
+    `Example:`
+    ```cpp
+    class Example {
+    public:
+        int value;
+        Example() { value = 0; }  // Default constructor
+        Example(int val) { value = val; }  // Parameterized constructor
+        Example(const Example &e) { value = e.value; }  // Copy constructor
+    };
+    ```
+
+---
+
+ 6. `Exception Handling`  
+    Exception handling in C++ is done using `try`, `catch`, and `throw`. It helps manage runtime errors.
+    - `try` block: Contains code that might throw an exception.
+    - `throw` keyword: Used to raise an exception.
+    - `catch` block: Catches and handles the exception.
+
+    `Example:`
+    ```cpp
+    try {
+        int x = 0;
+        if (x == 0) throw "Division by zero error!";
+    } catch (const char* e) {
+        cout << e << endl;
+    }
+    ```
+
+---
+
+ 7. `Multithreading`  
+    Multithreading allows a CPU to execute multiple threads simultaneously, 
+    improving efficiency and performance. 
+    Threads in C++ can be created using the C++11 `<thread>` library.
+
+    `Example:`
+    ```cpp
+    #include <iostream>
+    #include <thread>
+    using namespace std;
+
+    void printHello() {
+        cout << "Hello from thread!" << endl;
+    }
+
+    int main() {
+        thread t(printHello);
+        t.join();  // Wait for thread to complete
+        return 0;
+    }
+    ```
+
+---
+
+ 8. `IPC (Inter-process Communication)`  
+    IPC is a mechanism that allows processes 
+    to communicate and share data. 
+    Common IPC methods include:
+    - `Pipes:` Unidirectional communication between processes.
+    - `Message Queues:` Allow processes to send and receive messages.
+    - `Shared Memory:` Allows multiple processes to access the same memory.
+    - `Semaphores:` Synchronization tool for process control.
+
+---
+
+ 9. `Why We Use Shell Scripting?`  
+    Shell scripting is used to automate repetitive tasks, 
+    system administration, file management, and 
+    data processing on Linux/Unix systems. It helps:
+    - Save time and effort for system tasks.
+    - Automate routine processes like backups, installations, and updates.
+    - Enhance productivity by running scripts for complex tasks.
+
+---
+
+ 10. `How to Compile and Run a Code?`  
+    For C++:
+    1. `Compiling the Code:` Use a compiler like `g++` to compile your code.
+    ```bash
+    g++ -o output_file input_file.cpp
+    ```
+    This generates an executable (`output_file`).
+
+    2. `Running the Executable:` Run the compiled code with:
+    ```bash
+    ./output_file
+    ```
+
+    For other languages, the process is similar but might involve different compilers or interpreters.
+
+---
+
+ 11. `Steps in SDLC (Software Development Life Cycle)`  
+    The SDLC process includes the following phases:
+    1. `Requirement Gathering:` Understand and define the project requirements.
+    2. `System Design:` Plan architecture and design systems.
+    3. `Implementation (Coding):` Write the code according to the design.
+    4. `Testing:` Test the system for bugs and errors.
+    5. `Deployment:` Deploy the system to the production environment.
+    6. `Maintenance:` Update and fix issues in the system over time.
+
+---
+
+ 12. `Advanced Features in C++11 for Dynamic Memory Management`  
+    C++11 introduced several features to improve dynamic memory management:
+    1. ``std::unique_ptr``: A smart pointer that ensures exclusive ownership of a dynamically allocated object.
+    2. ``std::shared_ptr``: A smart pointer that allows multiple shared ownership of an object.
+    3. ``std::weak_ptr``: A smart pointer that doesn’t affect the reference count.
+    4. `Move Semantics`: `std::move` allows transferring resources from one object to another, 
+    avoiding unnecessary copies.
+    5. ``std::allocate_shared``: A function to efficiently allocate and create a `shared_ptr`.
+
+    `Example using `std::unique_ptr`:`
+    ```cpp
+    #include <iostream>
+    #include <memory>
+    using namespace std;
+
+    class Test {
+    public:
+        void display() { cout << "Test class" << endl; }
+    };
+
+    int main() {
+        unique_ptr<Test> ptr = make_unique<Test>();
+        ptr->display();
+    }
+```            
+=========================================================================================        
+Vishakh#010
+=========================================================================================
+1. `Self Introduction`
+    This is an introductory question 
+    where you can provide basic information 
+    about yourself, such as your name, 
+    where you're from, your background, and your experience. 
+    For example:
+    "I am [Your Name], from [Location]. 
+    I have a background in [Field/Area of expertise]. 
+    I am currently learning C++ and SQL, and 
+    I enjoy programming and problem-solving."
+
+---
+
+2. `Create 2 Tables. 
+    In the First Table, Columns (name, id, class). 
+    In the Second Table, Columns (mark, id). 
+    Write a Query to Fetch Name and Mark of Students.`
+
+    `SQL to Create Tables:`
+    ```sql
+    CREATE TABLE Students (
+        id INT PRIMARY KEY,
+        name VARCHAR(100),
+        class VARCHAR(50)
+    );
+
+    CREATE TABLE Marks (
+        id INT,
+        mark INT,
+        FOREIGN KEY (id) REFERENCES Students(id)
+    );
+    ```
+
+    `SQL to Fetch Name and Mark of Students:`
+    ```sql
+    SELECT Students.name, Marks.mark
+    FROM Students
+    INNER JOIN Marks ON Students.id = Marks.id;
+    ```
+
+    This query joins the `Students` table 
+    with the `Marks` table using the `id` column and 
+    retrieves the `name` and `mark` for each student.
+
+---
+
+3. `Explain About OOPs Concepts.`
+    OOP (Object-Oriented Programming) is a programming paradigm 
+    that uses objects and classes to organize code. 
+    The key concepts of OOP are:
+
+    - `Class`: A blueprint for creating objects. 
+    It defines properties and methods.
+    - `Object`: An instance of a class that holds data and can perform actions.
+    - `Encapsulation`: Bundling the data (variables) and methods 
+    that operate on the data into a single unit (class) and 
+    restricting direct access to some of the object's components.
+    - `Abstraction`: Hiding the complex implementation details and 
+    exposing only the necessary parts of an object.
+    - `Inheritance`: A mechanism to create a new class 
+    using an existing class, allowing for code reuse and hierarchical relationships.
+    - `Polymorphism`: The ability to use a single interface 
+    to represent different underlying forms 
+    (e.g., method overloading, method overriding).
+
+---
+
+4. `Write a Program to Divide a Number by 2 
+    Using Logical Operator (Hint: Use Left Shift Operator `<<`).`
+
+    In C++, the left shift operator (`<<`) can be used 
+    to divide a number by 2. 
+    This works because shifting the bits of a number to the left 
+    by one position is equivalent to multiplying by 2. 
+    Shifting to the right by one position (`>>`) 
+    divides the number by 2.
+
+    `Example Program:`
+    ```cpp
+    #include <iostream>
+    using namespace std;
+
+    int main() {
+        int num = 10;
+        int result = num >> 1;  // Right shift operator divides by 2
+        cout << "The number divided by 2 is: " << result << endl;
+        return 0;
+    }
+    ```
+    Here, the number `10` is divided by 2 
+    using the right shift operator (`>>`), which gives `5`.
+
+---
+
+5. `Write a Program Using Structure. 
+    Create an Array of Objects Containing Details Like (id, name). 
+    Write a Function to Display the Details.`
+
+    `Example Program:`
+    ```cpp
+    #include <iostream>
+    using namespace std;
+
+    struct Student {
+        int id;
+        string name;
+    };
+
+    void displayDetails(Student students[], int size) {
+        for (int i = 0; i < size; i++) {
+            cout << "ID: " << students[i].id << ", Name: " << students[i].name << endl;
+        }
+    }
+
+    int main() {
+        Student students[3] = {{1, "John"}, {2, "Alice"}, {3, "Bob"}};
+        displayDetails(students, 3);
+        return 0;
+    }
+    ```
+    Here, a structure `Student` is defined 
+    with two members `id` and `name`. 
+    An array of `Student` objects is created, and 
+    the function `displayDetails` is used 
+    to print the details of each student.
+
+---
+
+6. `When to Use For and While Loop.`
+
+    - `For Loop`: Use the `for` loop 
+    when the number of iterations is known in advance, 
+    such as iterating over an array or 
+    when the loop variable increments or decrements in a regular pattern.
+    - `Example`: Iterating over an array or list of a fixed size.
+
+    ```cpp
+    for (int i = 0; i < 10; i++) {
+        // Do something
+    }
+    ```
+
+    - `While Loop`: Use the `while` loop when the number of iterations 
+    is not known in advance, and the loop continues as long as a condition is true. 
+    It's often used when you want to continue processing until a certain condition is met.
+    - `Example`: Reading input until the user enters "quit" or a particular condition is met.
+
+    ```cpp
+    int i = 0;
+    while (i < 10) {
+        // Do something
+        i++;
+    }
+    ```
+
+    `Difference`:
+    - The `for` loop is typically used when you know 
+    how many times you want to repeat a block of code.
+    - The `while` loop is used when the termination condition 
+    depends on dynamic factors 
+    (like user input or a condition that changes during execution).            
+=========================================================================================    
+Venkatesh#011
+    1) where are you from
+    2) how is training session is going
+    3) operator overloading 
+    4) explain polymorphism
+    5) write a program to conduct o overriding using virtual 
+    6) how is memory is behaving behind that virtual overriding program 
+    7) what is the size of class
+    8) what is smart pointer 
+    9) stl (array vs vector)
+    10) tell me which concept you are concept you are comfortable 
+        so that I will ask questions in that concept 
+    11) any questions from your side
+=========================================================================================
+ 1) `Where are you from?`
+    This is a standard introductory question 
+    to learn about someone's background, location, and 
+    possibly their cultural context. 
+    
+    It's important to answer briefly with 
+    where you're currently based or 
+    where you originally come from.
+
+---
+
+ 2) `How is the training session going?`
+    This question typically asks for feedback on the training or learning process. 
+    You could mention how you're finding the training, 
+    what you're enjoying, or 
+    what areas you're focusing on, such as C++ concepts or Linux.
+
+---
+
+ 3) `Operator Overloading`
+    Operator overloading in C++ allows you to define custom behavior 
+    for operators (like `+`, `-`, `*`, etc.) when used with user-defined classes. 
+    It is done by defining a function for an operator.
+
+`Example of Operator Overloading:`
+```cpp
+#include <iostream>
+using namespace std;
+
+class Complex {
+public:
+    int real, imag;
+    
+    Complex(int r = 0, int i = 0) : real(r), imag(i) {}
+    
+    Complex operator + (Complex const &obj) {
+        return Complex(real + obj.real, imag + obj.imag);
+    }
+    
+    void display() { cout << real << " + i" << imag << endl; }
+};
+
+int main() {
+    Complex num1(3, 4), num2(1, 2);
+    Complex num3 = num1 + num2;  // Overloaded + operator
+    num3.display();  // Output: 4 + i6
+}
+```
+
+---
+
+ 4) `Explain Polymorphism`
+    Polymorphism allows one interface to be used for a general class of actions. 
+    In C++, polymorphism can be divided into two types:
+    - `Compile-time (Static) Polymorphism`: Achieved through method overloading or operator overloading.
+    - `Runtime (Dynamic) Polymorphism`: Achieved through inheritance and virtual functions, 
+    where the function that gets called is determined at runtime.
+
+---
+
+ 5) `Write a Program to Conduct Overriding Using Virtual`
+    In C++, virtual functions allow derived classes 
+    to override functions of the base class. 
+    The `virtual` keyword is used in the base class, and 
+    the function in the derived class will override the base class's version.
+
+    `Example:`
+    ```cpp
+    #include <iostream>
+    using namespace std;
+
+    class Base {
+    public:
+        virtual void display() {  // Virtual function
+            cout << "Base class display" << endl;
+        }
+    };
+
+    class Derived : public Base {
+    public:
+        void display() override {  // Override function
+            cout << "Derived class display" << endl;
+        }
+    };
+
+    int main() {
+        Base* basePtr;
+        Derived derivedObj;
+        basePtr = &derivedObj;
+        
+        basePtr->display();  // Calls Derived class display
+    }
+    ```
+    Here, `basePtr->display()` will call the `display` function of the `Derived` class due to runtime polymorphism.
+
+---
+
+ 6) `How is Memory Behaving Behind That Virtual Overriding Program`
+    When a virtual function is invoked, 
+    C++ uses `dynamic dispatch` to determine which function to call at runtime. 
+    This is achieved using a `vtable` (virtual table), 
+    which is created by the compiler for each class that has virtual functions. 
+
+    - The base class object has a `vtable pointer` (`vptr`), which points to the virtual table.
+    - When a virtual function is called, the program looks up the address of the function in the vtable and calls the correct function.
+
+    `Memory Behavior`: 
+    - `Vtable` and `vptr` are used to handle dynamic polymorphism. 
+    The vptr is stored in each object of a class containing 
+    virtual functions and points to the vtable of that class.
+    - This allows the correct overridden function 
+    to be called based on the actual object type 
+    (not the pointer or reference type).
+
+---
+
+ 7) `What is the Size of a Class?`
+    The size of a class in C++ depends on:
+    - The data members (variables) defined in the class.
+    - The alignment and padding added 
+        by the compiler for memory efficiency.
+
+    For example, a class containing an `int` and 
+    a `char` will typically have extra padding 
+    to ensure proper alignment.
+
+    `Example:`
+    ```cpp
+    class Test {
+        int x;   // 4 bytes on most systems
+        char y;  // 1 byte
+    };
+    ```
+    The size will not be exactly `5` bytes 
+    because the compiler may add padding 
+    to align the `int` variable.
+
+    To get the actual size:
+    ```cpp
+    cout << sizeof(Test) << endl;  // Output the size in bytes
+    ```
+
+---
+
+ 8) `What is Smart Pointer?`
+    A `smart pointer` is a wrapper around a raw pointer 
+    that automatically manages memory. 
+    It ensures that memory is properly freed when no longer needed, 
+    helping prevent memory leaks.
+
+    Types of smart pointers:
+    - ``std::unique_ptr``: Represents exclusive ownership of an object. 
+        It automatically deletes the object when it goes out of scope.
+    - ``std::shared_ptr``: Represents shared ownership. 
+        Multiple smart pointers can point to the same object, and 
+        the object is deleted when the last shared pointer goes out of scope.
+    - ``std::weak_ptr``: Similar to `shared_ptr` 
+        but does not affect the reference count, 
+        useful for breaking circular references.
+
+---
+
+ 9) `STL (Array vs Vector)`
+- `Array`: Fixed size, cannot be resized after declaration. 
+The size is known at compile-time.
+- `Vector`: Dynamic array, can resize itself. 
+It grows automatically when more elements are added.
+
+`Array Example:`
+```cpp
+int arr[5] = {1, 2, 3, 4, 5};
+```
+
+`Vector Example:`
+```cpp
+#include <vector>
+std::vector<int> vec = {1, 2, 3, 4, 5};
+vec.push_back(6);  // Dynamically adds element
+```
+
+---
+
+ 10) `Tell Me Which Concept You Are Comfortable With, So That I Can Ask Questions in That Concept`
+You can mention any concept you feel most confident about, such as:
+- Object-Oriented Programming (OOP)
+- C++ STL (Standard Template Library)
+- Polymorphism
+- Smart Pointers
+- Memory Management
+
+---
+
+ 11) `Any Questions from Your Side?`
+This is an opportunity to ask anything 
+about the topic at hand, clarify doubts, or 
+get insights into any areas you're uncertain about. 
+For example:
+- "Can you explain more about the internal working of virtual functions?"
+- "How can I optimize memory usage in large-scale C++ projects?"
+- "What are some real-world applications of polymorphism and smart pointers?"            
+=========================================================================================    

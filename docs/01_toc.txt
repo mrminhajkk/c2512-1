@@ -380,8 +380,8 @@ Advanced C++ (C++11, C++14, C++17, C++20) Features and Concepts [Day 28..29]
             Generic lambdas
             std::make_unique
         C++17 Features
-            std::optional
-            std::variant
+            std::optional   
+            std::variant       
             Structured bindings
             Parallel algorithms
         C++20 Features

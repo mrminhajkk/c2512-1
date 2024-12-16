@@ -1,0 +1,309 @@
+C++ introduced `lambda expressions` starting with `C++11`, and 
+they were improved in `C++14` and `C++17`. 
+
+Here's a detailed overview of 
+how they work and the enhancements in different C++ standards.
+
+---
+
+`C++11: Basic Lambda Syntax`
+A lambda expression is defined as:
+```cpp
+[capture_list] (parameters) -> return_type { body };
+```
+
+Key Components:
+1. `Capture List`: Captures variables from the surrounding scope (e.g., `[x, y]`, `[&x]`, or `[=]`).
+2. `Parameters`: Optional parameters, like a regular function.
+3. `Return Type`: Optional return type (auto-deduced if omitted).
+4. `Body`: The logic executed when the lambda is invoked.
+
+Example:
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    int a = 10, b = 20;
+
+    // A lambda that adds two numbers
+    auto add = [a, b]() -> int { return a + b; };
+    std::cout << "Sum: " << add() << std::endl;  // Output: 30
+
+    // Capturing by reference
+    auto multiply = [&a, &b]() { return a * b; };
+    std::cout << "Product: " << multiply() << std::endl;  // Output: 200
+
+    // Lambda in STL algorithms
+    std::vector<int> nums = {1, 2, 3, 4};
+    std::for_each(nums.begin(), nums.end(), [](int x) {
+        std::cout << x * 2 << " ";  // Output: 2 4 6 8
+    });
+
+    return 0;
+}
+```
+
+---
+
+`C++14: Enhancements`
+C++14 introduced two key improvements:
+1. `Generic Lambdas`: Parameters can now use the `auto` keyword, making lambdas more flexible.
+2. `Return Type Deduction`: The `-> return_type` part is optional even for complex return types.
+
+Example:
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    // Generic lambda
+    auto multiply = [](auto x, auto y) { return x * y; };
+    std::cout << "Product: " << multiply(3, 4.5) << std::endl;  // Output: 13.5
+
+    // No explicit return type
+    auto square = [](int x) { return x * x; };
+    std::cout << "Square: " << square(5) << std::endl;  // Output: 25
+
+    return 0;
+}
+```
+
+---
+
+`C++17: Enhancements`
+C++17 added `lambda capture of `*this`` and allowed lambdas in `constexpr` contexts.
+
+Key Features:
+1. `Capture of `*this``: You can capture the current object by value (`[=*this]`) for use in lambdas.
+2. ``constexpr` Lambdas`: Lambdas can now be declared as `constexpr`, allowing them to be evaluated at compile time.
+
+Example:
+```cpp
+#include <iostream>
+#include <vector>
+
+class Calculator {
+public:
+    int a = 5, b = 10;
+
+    void compute() {
+        auto add = [=, *this]() { return a + b; };  // Captures *this by value
+        std::cout << "Sum (this): " << add() << std::endl;  // Output: 15
+    }
+};
+
+int main() {
+    Calculator calc;
+    calc.compute();
+
+    // constexpr lambda
+    constexpr auto square = [](int x) { return x * x; };
+    static_assert(square(4) == 16, "Square of 4 should be 16");
+
+    return 0;
+}
+```
+
+---
+
+`Summary of Lambda Features Across Standards`
+
+| `Feature`                     | `C++11`        | `C++14`                | `C++17`              |
+|----------------------------------|------------------|--------------------------|------------------------|
+| Basic lambda syntax              | ✅                | ✅                        | ✅                      |
+| Capture by value or reference    | ✅                | ✅                        | ✅                      |
+| Capture of `*this`               | ❌                | ❌                        | ✅                      |
+| Generic lambdas (`auto` params)  | ❌                | ✅                        | ✅                      |
+| Return type deduction            | Limited          | Full                     | Full                   |
+| `constexpr` lambdas              | ❌                | ❌                        | ✅                      |
+
+============================================================
+
+
+In C++, `functional objects` (also called `functors`) are objects 
+that behave like functions. 
+They are instances of classes 
+that have the function call operator (`operator()`) overloaded. 
+
+This allows them to be used in places where a function pointer or 
+callable entity is expected, such as in STL algorithms.
+
+---
+
+Key Features of Functional Objects:
+1. `Stateful`:
+   - Unlike regular functions or lambdas, 
+   functional objects can maintain state between invocations 
+   because they are class instances.
+
+2. `Extensible`:
+   - You can add additional functionality or logic to the functor 
+   by defining other member functions or attributes in the class.
+
+3. `Integrates with STL`:
+   - Many STL algorithms, such as `std::for_each`, `std::sort`, or `std::transform`, 
+   accept functional objects as arguments.
+
+4. `Custom Behavior`:
+   - You can define custom logic in the `operator()` method 
+   for specialized behavior.
+
+---
+
+Creating and Using a Functional Object
+
+Example 1: Basic Functor
+```cpp
+#include <iostream>
+
+// Define a functional object (functor)
+class MultiplyBy {
+    int factor;
+
+public:
+    // Constructor to initialize the multiplier
+    MultiplyBy(int f) : factor(f) {}
+
+    // Overload the function call operator
+    int operator()(int value) const {
+        return value * factor;
+    }
+};
+
+int main() {
+    MultiplyBy multiplyBy3(3);  // Create a functor with factor 3
+
+    int result = multiplyBy3(10);  // Call the functor like a function
+    std::cout << "Result: " << result << std::endl;  // Output: 30
+
+    return 0;
+}
+```
+
+Explanation:
+1. `MultiplyBy` is a class with a state (`factor`).
+2. `operator()` is overloaded to define custom behavior 
+when the object is invoked as a function.
+3. The functor `multiplyBy3` multiplies any number by 3 when called.
+
+---
+
+Advantages of Functional Objects
+
+1. `State Maintenance`:
+   - Functors can carry and use their internal state during execution.
+   - Example: Keep a count of how many times the functor was called.
+
+2. `Reuse in Algorithms`:
+   - Functional objects can be reused in algorithms 
+   like `std::sort`, `std::for_each`, and `std::transform`.
+
+3. `Parameterizable Behavior`:
+   - Behavior can be adjusted by initializing the functor with different arguments.
+
+---
+
+Functional Objects with STL Algorithms
+
+Example 2: Functor with `std::sort`
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+// Functor for custom sorting
+class Compare {
+public:
+    bool operator()(int a, int b) const {
+        return a > b;  // Sort in descending order
+    }
+};
+
+int main() {
+    std::vector<int> numbers = {4, 1, 7, 3, 8};
+
+    // Sort using the Compare functor
+    std::sort(numbers.begin(), numbers.end(), Compare());
+
+    // Print sorted vector
+    for (int num : numbers) {
+        std::cout << num << " ";
+    }
+    // Output: 8 7 4 3 1
+
+    return 0;
+}
+```
+
+Explanation:
+- The `Compare` functor defines a custom comparison logic for sorting in descending order.
+- `std::sort` uses the `Compare` object to compare elements during the sort process.
+
+---
+
+Stateful Functors
+
+Example 3: Functor with Internal State
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+// Functor to count even numbers
+class CountEvens {
+    int count;
+
+public:
+    CountEvens() : count(0) {}
+
+    void operator()(int value) {
+        if (value % 2 == 0) {
+            count++;
+        }
+    }
+
+    int getCount() const { return count; }
+};
+
+int main() {
+    std::vector<int> numbers = {1, 2, 3, 4, 5, 6, 7, 8};
+
+    CountEvens countEvens = std::for_each(numbers.begin(), numbers.end(), CountEvens());
+
+    std::cout << "Number of even numbers: " << countEvens.getCount() << std::endl;
+    // Output: Number of even numbers: 4
+
+    return 0;
+}
+```
+
+Explanation:
+- `CountEvens` is a stateful functor that keeps track of how many even numbers it processes.
+- `std::for_each` invokes the functor for every element in the vector, updating its internal state.
+
+---
+
+Comparison: Functional Objects vs Lambdas
+|----------------------|----------------------------------------|--------------------------------------------|
+| `Feature`            | `Functional Objects`                   | `Lambdas`                                  |
+|----------------------|----------------------------------------|--------------------------------------------|
+| `State Maintenance`  | Stateful with ease                     | Can also capture state, but less flexible. |
+| `Code Complexity`    | More verbose                           | Concise and inline.                        |
+| `Reuse`              | Reusable and extensible                | Mostly used inline for specific purposes.  |
+| `Performance`        | Slightly slower due to object overhead | Faster, especially in simple cases.        |
+|----------------------|----------------------------------------|--------------------------------------------|
+---
+
+Summary
+Functional objects (functors) are a powerful C++ feature 
+that provides stateful and reusable callable objects. 
+They are particularly useful in scenarios 
+requiring state maintenance, extensibility, or 
+frequent use in STL algorithms. 
+
+While lambdas are concise alternatives, 
+functors offer more flexibility 
+for complex or reusable logic.

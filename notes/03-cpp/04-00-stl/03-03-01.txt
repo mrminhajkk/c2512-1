@@ -1,0 +1,156 @@
+`std::optional` and `std::variant` Overview
+
+These two utilities in modern C++ 
+(introduced in `C++17`) offer powerful ways 
+to handle optional values and type-safe unions.
+
+---
+
+`1. `std::optional``
+
+`std::optional` is a utility that represents a value 
+that `might or might not exist`. 
+
+It's essentially a wrapper 
+that can either hold a value or indicate 
+that the value is absent.
+
+Key Features:
+    - Replaces nullable types or pointer-based "optional" semantics.
+    - Avoids the need for `nullptr` or magic return values like `-1`.
+    - Offers a more explicit and type-safe alternative 
+      to using `std::pair<bool, T>` for indicating success or failure.
+
+Use Cases:
+    1. Representing optional values 
+    (e.g., configuration parameters, results of computations).
+    2. Avoiding raw pointers for indicating "no value."
+    3. Making return values more meaningful 
+    by distinguishing between "valid value" and "no value."
+
+Example: Using `std::optional`
+```cpp
+#include <iostream>
+#include <optional>
+
+std::optional<int> findSquare(int n) {
+    if (n >= 0)
+        return n * n; // Return a valid value
+    return std::nullopt; // Indicate no value
+}
+
+int main() {
+    auto result = findSquare(5);
+    if (result.has_value()) {
+        std::cout << "Square: " << result.value() << '\n';
+    } else {
+        std::cout << "Invalid input\n";
+    }
+
+    // Alternative access using value_or
+    std::cout << "Square or default: " << findSquare(-1).value_or(0) << '\n';
+
+    return 0;
+}
+```
+
+`Output:`
+```
+Square: 25
+Square or default: 0
+```
+
+Methods of `std::optional`:
+- `value()` – Access the contained value (throws if no value).
+- `has_value()` – Checks whether the optional contains a value.
+- `value_or(default)` – Returns the contained value or a default if no value exists.
+- `emplace(args...)` – Constructs the contained value in-place.
+- `reset()` – Clears the value, making it empty.
+
+---
+
+`2. `std::variant``
+
+`std::variant` is a type-safe union 
+that can hold `one of several predefined types` at any given time.
+
+Key Features:
+    - Replaces unsafe unions with a type-safe alternative.
+    - Allows for defining a variable that can hold multiple types, but only one type at a time.
+    - Runtime information about which type is active.
+
+Use Cases:
+    1. Handling multiple possible return types from a function.
+    2. Simplifying polymorphism without the need for inheritance.
+    3. Representing data structures like Abstract Syntax Trees (ASTs) or Variant Records.
+
+Example: Using `std::variant`
+```cpp
+#include <iostream>
+#include <variant>
+#include <string>
+
+std::variant<int, std::string> getData(bool returnInt) {
+    if (returnInt)
+        return 42; // Return int
+    return std::string("Hello"); // Return string
+}
+
+int main() {
+    std::variant<int, std::string> value = getData(false);
+
+    // Access value using std::get
+    if (std::holds_alternative<int>(value)) {
+        std::cout << "Integer: " << std::get<int>(value) << '\n';
+    } else if (std::holds_alternative<std::string>(value)) {
+        std::cout << "String: " << std::get<std::string>(value) << '\n';
+    }
+
+    // Access using std::visit
+    std::visit([](auto&& arg) {
+        std::cout << "Value: " << arg << '\n';
+    }, value);
+
+    return 0;
+}
+```
+
+`Output:`
+```
+String: Hello
+Value: Hello
+```
+
+Methods of `std::variant`:
+    - `std::get<T>(variant)` – Access the value of type `T` 
+    (throws `std::bad_variant_access` if `T` is not the active type).
+    - `std::holds_alternative<T>(variant)` – Checks if `T` is the active type.
+    - `std::visit(visitor, variant)` – Applies a callable (visitor) to the currently active value.
+    - `index()` – Returns the zero-based index of the active type.
+
+---
+
+Comparison of `std::optional` vs `std::variant`
+|------------------------|------------------------------------------|-------------------------------------------------|
+| Feature                | `std::optional`                          | `std::variant`                                  |
+|------------------------|------------------------------------------|-------------------------------------------------|
+| Purpose                | Represents an optional single value.     | Represents one of several predefined types.     |
+| Number of types        | One type, or empty (`T` or nothing).     | Multiple types (one active at a time).          |
+| Default state          | `std::nullopt` (no value).               | First type in the list is default active.       |
+| Access methods         | `.value()`, `.value_or()`, `.has_value()`| `std::get<T>`, `std::visit`, `.index()`.        |
+| Complexity             | Simple wrapper around a single type.     | Type-safe runtime polymorphism.                 |
+|------------------------|------------------------------------------|-------------------------------------------------|
+---
+
+Practical Use Cases
+|---------------------------------------|-----------------|------------------------------------------------------------------------|
+| Use Case                              | Utility         | Example                                                                |
+|---------------------------------------|-----------------|------------------------------------------------------------------------|
+| Optional return value                 | `std::optional` | Returning a search result that might not exist.                        |
+| Multi-type return value               | `std::variant`  | Returning a result that could be an error string or a valid number.    |
+| Optional configuration parameters     | `std::optional` | Allowing users to provide or omit configuration fields.                |
+| Representing a union of types         | `std::variant`  | Parsing a JSON value that could be a number, string, or list.          |
+|---------------------------------------|-----------------|------------------------------------------------------------------------|
+---
+
+By using these utilities, you can make your C++ programs more expressive, type-safe, and robust.

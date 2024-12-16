@@ -17,7 +17,7 @@ class HospitalStay {
 class HospitalStayManager {
     private:
         // attributes
-        HospitalStay stays[MAX_HOSPITAL_STAYS];    
+        HospitalStay stays[MAX_HOSPITAL_STAYS]; //vector<HospitalStay>    stays;
         int numHospitalStays;
     public:
         // support

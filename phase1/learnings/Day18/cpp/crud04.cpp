@@ -40,6 +40,7 @@ class HospitalStayManager {
 };
 //*****HospitalStayAggregator.h*****
 class HospitalStayAggregator {
+    
     public:
         int findMin(HospitalStayManager& manager);
         int findMax(HospitalStayManager& manager);

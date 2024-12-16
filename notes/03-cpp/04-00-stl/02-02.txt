@@ -352,7 +352,8 @@ Description:
 
 `1. Concepts and Constraints`
 Description:
-- `Concepts`: A way to specify constraints on template parameters, improving readability and error messages.
+- `Concepts`: A way to specify constraints on template parameters, 
+improving readability and error messages.
 - `Constraints`: Allow checking of template arguments at compile time.
 
 Use Cases:
@@ -385,7 +386,8 @@ void conceptsExample() {
 `2. Ranges`
 Description:
 - Adds a range-based interface for working with sequences of data.
-- Provides lazy evaluation and better composability than standard STL algorithms.
+- Provides lazy evaluation and better composability 
+than standard STL algorithms.
 
 Use Cases:
 - Simplifying code for working with data transformations.
@@ -414,7 +416,8 @@ void rangesExample() {
 
 `3. Coroutines`
 Description:
-- Functions that can suspend and resume execution, enabling asynchronous programming and lazy generators.
+- Functions that can suspend and resume execution, 
+enabling asynchronous programming and lazy generators.
 - Introduced with keywords: `co_await`, `co_yield`, and `co_return`.
 
 Use Cases:

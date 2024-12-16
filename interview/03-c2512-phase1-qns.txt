@@ -203,3 +203,41 @@ Josh#008
         What happens when you give such commands in the shell?
     15. What is the difference between vectors and arrays and 
         how do they work?
+Sana#009
+    Theory
+        1. Self introduction
+        2. Linux commands
+        3. Command to copy a folder to another folder
+        4. What is polymorphism
+        5. What is a constructor and types of constructors
+        6. Exception handling
+        7. Multi threading
+        8. Ipc
+        9. Why we use shell scripting
+        10. How to compile and run a code
+        11. Steps in sdlc
+        12. Advanced feature in c++11 for dynamic memory management
+    Programming qn. 
+        --write a code for run time polymorphism
+Vishakh#010
+    1. Self introduction  
+    2.  Create 2 tables . In First      table,  columns( name, id, class). In second table , columns( mark, id). 
+    Write a query to fetch name and mark of students.
+    3.Explain about OOPs concepts.
+    4.  Write a program to divide a number by 2 using logical operator ( hint : use left shift operator (<<) )
+    5.  Write a program using structure . Create a array of objects containing details like (id, name). Write a fn to display the details .
+    6. When to use for and while loop.
+    
+Venkatesh#011
+    1) where are you from
+    2) how is training session is going
+    3) operator overloading 
+    4) explain polymorphism
+    5) write a program to conduct o overriding using virtual 
+    6) how is memory is behaving behind that virtual overriding program 
+    7) what is the size of class
+    8) what is smart pointer 
+    9) stl (array vs vector)
+    10) tell me which concept you are concept you are comfortable 
+        so that I will ask questions in that concept 
+    11) any questions from your side

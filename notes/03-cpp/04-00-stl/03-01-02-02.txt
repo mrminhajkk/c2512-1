@@ -1,0 +1,186 @@
+A `std::shared_ptr` is a smart pointer in C++ 
+that allows multiple `std::shared_ptr` instances 
+to share ownership of the same dynamically allocated object. 
+
+It uses reference counting to manage the lifetime of the managed object. 
+Below are the key `members` of `std::shared_ptr`:
+
+---
+
+`Member Functions`
+
+1. `Constructor`
+- Creates a `std::shared_ptr` 
+to manage a dynamically allocated object.
+  ```cpp
+  std::shared_ptr<T> p1;                    // Empty shared_ptr
+  std::shared_ptr<T> p2(new T());           // Takes ownership of `new T()`
+  std::shared_ptr<T> p3 = std::make_shared<T>(args...); // Preferred (safer)
+  ```
+
+2. `Destructor`
+- Automatically deletes the managed object 
+when the reference count becomes zero.
+
+3. ``operator=` (Assignment)`
+- `Copy Assignment:` Shares ownership of the managed object.
+  ```cpp
+  std::shared_ptr<T> p1 = std::make_shared<T>();
+  std::shared_ptr<T> p2 = p1; // p1 and p2 share ownership
+  ```
+- `Move Assignment:` Transfers ownership of the managed object.
+  ```cpp
+  std::shared_ptr<T> p3 = std::move(p1); // p3 takes ownership, p1 is empty
+  ```
+
+4. ``reset()``
+- Replaces the managed object 
+with a new one or sets it to `nullptr`. 
+Decrements the reference count for the old object, 
+deleting it if the count reaches zero.
+  ```cpp
+  p.reset();                   // Releases ownership, makes p empty
+  p.reset(new T());            // Replaces the managed object
+  ```
+
+5. ``swap()``
+- Swaps the managed objects and reference counts 
+between two `std::shared_ptr` instances.
+  ```cpp
+  p1.swap(p2);
+  ```
+
+6. ``use_count()``
+- Returns the number of `std::shared_ptr` instances 
+sharing ownership of the managed object.
+  ```cpp
+  std::cout << "Use count: " << p.use_count() << '\n';
+  ```
+
+7. ``unique()``
+- Returns `true` if the `std::shared_ptr` is 
+the only owner of the managed object (use count is 1).
+  ```cpp
+  if (p.unique()) {
+      std::cout << "This is the sole owner.\n";
+  }
+  ```
+
+8. ``get()``
+- Returns a raw pointer to the managed object 
+without affecting ownership.
+  ```cpp
+  T* raw_ptr = p.get();
+  ```
+
+9. ``operator*``
+- Dereferences the managed object.
+  ```cpp
+  *p = 42;                     // Modifies the managed object
+  ```
+
+10. ``operator->``
+- Accesses members of the managed object.
+  ```cpp
+  p->someMethod();
+  ```
+
+11. ``operator bool``
+- Returns `true` if the `std::shared_ptr` is not empty.
+  ```cpp
+  if (p) {
+      std::cout << "p is managing an object\n";
+  }
+  ```
+
+---
+
+`Static Member Functions`
+
+1. ``make_shared``
+- Creates a new `std::shared_ptr` 
+managing a dynamically allocated object. 
+It is safer and more efficient than using `new` directly.
+  ```cpp
+  auto p = std::make_shared<T>(args...); // Allocates and constructs the object
+  ```
+
+---
+
+`Example Code`
+
+```cpp
+#include <iostream>
+#include <memory>
+
+struct MyStruct {
+    int value;
+    MyStruct(int v) : value(v) { std::cout << "MyStruct(" << value << ") created\n"; }
+    ~MyStruct() { std::cout << "MyStruct(" << value << ") destroyed\n"; }
+};
+
+int main() {
+    // Create a shared_ptr
+    std::shared_ptr<MyStruct> p1 = std::make_shared<MyStruct>(10);
+
+    // Use count
+    std::cout << "Use count: " << p1.use_count() << '\n';
+
+    // Create another shared_ptr sharing ownership
+    std::shared_ptr<MyStruct> p2 = p1;
+    std::cout << "Use count after p2: " << p1.use_count() << '\n';
+
+    // Access the managed object
+    std::cout << "Value: " << p1->value << '\n';
+
+    // Reset p2
+    p2.reset();
+    std::cout << "Use count after reset: " << p1.use_count() << '\n';
+
+    return 0;
+}
+```
+
+---
+
+`Output`
+```
+MyStruct(10) created
+Use count: 1
+Use count after p2: 2
+Value: 10
+Use count after reset: 1
+MyStruct(10) destroyed
+```
+
+---
+
+`Key Members Summary`
+|-------------------|-------------------------------------------------------|
+| `Member`          | `Purpose`                                             |
+|-------------------|-------------------------------------------------------|
+| `reset()`         | Releases ownership or assigns a new object.           |
+| `swap()`          | Swaps managed objects between two `std::shared_ptr`s. |
+| `use_count()`     | Returns the number of shared owners.                  |
+| `unique()`        | Checks if it is the sole owner.                       |
+| `get()`           | Accesses the raw pointer.                             |
+| `operator*`       | Dereferences the managed object.                      |
+| `operator->`      | Accesses members of the managed object.               |
+|-------------------|-------------------------------------------------------|
+---
+
+`Key Features`
+- `Reference Counting:` Tracks ownership, 
+deleting the object only 
+when the reference count becomes zero.
+- `Thread-Safe Reference Count:` 
+The reference count is updated atomically.
+- `Shared Ownership:` 
+Multiple `shared_ptr` instances can share the same object.
+
+`Common Use Cases`
+- Shared ownership across multiple parts of a program.
+- Avoiding explicit memory management.
+- Ensuring resource cleanup when all owners go out of scope.
+
+=========================================================================

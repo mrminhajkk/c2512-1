@@ -1,3 +1,5 @@
+Resource Acquisition is Initialization (RAII)
+
 In C++, ``std::unique_ptr``, ``std::shared_ptr``, and 
 ``std::weak_ptr`` are smart pointers 
 that manage dynamic memory and 
@@ -58,7 +60,7 @@ cout << *sptr1 << ", " << *sptr2 << endl;
 - Slightly slower than `unique_ptr` due to reference management.
 - Ideal for shared ownership scenarios.
 
----
+--- 
 
 `3. `std::weak_ptr``
 - `Definition`: A non-owning smart pointer 

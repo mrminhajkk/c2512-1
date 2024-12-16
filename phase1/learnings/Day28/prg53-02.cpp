@@ -150,7 +150,9 @@ void printSortedFrequencyDesc(stack<pair<int,float>> &rsorted_frequencies) {
     while(!rsorted_frequencies.empty())
     { 
         auto [freq, temp] = rsorted_frequencies.top();
-        cout << freq << " times:" << temp << " degree, "; rsorted_frequencies.pop(); 
+        cout << freq << " times:" << temp << " degree, "; 
+        
+        rsorted_frequencies.pop(); 
     }
     cout << endl;
 }

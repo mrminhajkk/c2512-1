@@ -1,0 +1,189 @@
+When you use ``std::sort`` with the ``std::execution::par`` policy, 
+the `parallel execution policy` allows the sorting operation 
+to split the work among multiple threads. 
+Here's a detailed explanation of 
+how the `parallel algorithm for sorting` works under the hood:
+
+---
+
+`Step-by-Step Process`
+
+1. `Input and Problem Breakdown`
+   - The input vector is `vec = {5, 3, 8, 1, 2}`.
+   - Sorting involves rearranging the elements in ascending order: `{1, 2, 3, 5, 8}`.
+   - In parallel sorting, the algorithm breaks the task into 
+   smaller subproblems to sort parts of the vector simultaneously 
+   across multiple threads.
+
+---
+
+2. `Splitting the Work`
+   - The parallel execution policy (`std::execution::par`) 
+   divides the input range (`vec.begin()` to `vec.end()`) into chunks.
+   - Each chunk is assigned to a separate thread 
+   for independent processing.
+   - For instance, the vector might be divided as follows:
+     - Thread 1: `{5, 3}`
+     - Thread 2: `{8, 1, 2}`
+   - The chunk size and division depend on:
+     - The total number of elements in the range.
+     - The number of available hardware threads.
+
+---
+
+3. `Sorting Chunks Independently`
+   - Each thread sorts its assigned chunk independently 
+   using a standard sequential sorting algorithm 
+   (like `QuickSort` or `MergeSort`).
+   - Example:
+     - Thread 1 sorts `{5, 3}` into `{3, 5}`.
+     - Thread 2 sorts `{8, 1, 2}` into `{1, 2, 8}`.
+
+---
+
+4. `Merging the Results`
+   - After the threads complete sorting their chunks, 
+   the results are merged.
+   - The merging process combines the sorted chunks 
+   into a single sorted range:
+     - `{3, 5}` and `{1, 2, 8}` are merged into `{1, 2, 3, 5, 8}`.
+   - The merging step is often implemented 
+   using a `parallel merge` algorithm to further optimize performance.
+
+---
+
+5. `Synchronization`
+   - During and after the merge, the threads synchronize their results.
+   - The algorithm ensures no data races occur, 
+   maintaining the integrity of the final sorted sequence.
+
+---
+
+6. `Result Delivery`
+   - Once all threads complete their work and the merging is done, 
+   the sorted vector `{1, 2, 3, 5, 8}` is returned to the main thread.
+
+---
+
+`Advantages of Parallel Sorting`
+
+- `Speedup for Large Data`
+  - Parallel sorting excels when sorting large datasets 
+  because the workload is distributed, 
+  reducing the time to complete the operation.
+  - Each thread works on a smaller portion, leading to faster overall execution.
+
+- `Scalability`
+  - The algorithm scales well 
+  with the number of available cores/threads on the hardware.
+
+---
+
+`Key Components in Parallel Sorting`
+
+1. `Task Partitioning`
+   - The input is divided into smaller ranges, 
+   with each range assigned to a thread.
+   
+2. `Thread Management`
+   - The `C++ Standard Library` handles thread creation and management.
+   - It uses a thread pool internally 
+   to minimize the overhead of creating and destroying threads.
+
+3. `Load Balancing`
+   - The library ensures efficient load balancing so that 
+   no thread is significantly underutilized or overburdened.
+
+4. `Parallel Merge`
+   - A merging algorithm combines the sorted results 
+   from individual threads efficiently.
+
+---
+
+`Hardware-Level Optimizations`
+
+- `Multithreading`
+  - Parallel sorting leverages multi-core CPUs 
+  to execute threads simultaneously.
+  
+- `Cache Optimization`
+  - Sorting smaller chunks ensures better cache utilization, 
+  as smaller chunks fit in the CPU's cache.
+  
+- `Vectorization (`par_unseq`)`
+  - If you use ``std::execution::par_unseq``, 
+  the algorithm might leverage SIMD 
+  (Single Instruction, Multiple Data) instructions 
+  for further acceleration.
+
+---
+
+`When to Use Parallel Sorting`
+
+- `Large Data Sets`
+  - Sorting small datasets in parallel is inefficient 
+  due to thread management overhead.
+  
+- `Multicore Systems`
+  - Parallel sorting is effective on hardware 
+  with multiple cores or processors.
+
+---
+
+`Example Walkthrough`
+
+For the given example:
+
+`Vector`: `{5, 3, 8, 1, 2}`
+
+1. `Split into Chunks`:
+   - Assume the vector is divided into 
+   `{5, 3}` (Thread 1) and `{8, 1, 2}` (Thread 2).
+
+2. `Sort Independently`:
+   - Thread 1 sorts `{5, 3}` → `{3, 5}`.
+   - Thread 2 sorts `{8, 1, 2}` → `{1, 2, 8}`.
+
+3. `Merge Chunks`:
+   - `{3, 5}` and `{1, 2, 8}` are merged:
+     - Compare smallest elements:
+       - `1` is smaller than `3`.
+     - Continue until all elements are merged → `{1, 2, 3, 5, 8}`.
+
+4. `Output`:
+   - The final sorted vector is printed: `1 2 3 5 8`.
+
+---
+
+`Caveats`
+
+1. `Overhead`
+   - For small datasets, the overhead of managing threads 
+   can outweigh the performance gains.
+   
+2. `Determinism`
+   - While the output is always sorted, 
+   the execution order of operations within threads is not deterministic.
+
+3. `Hardware Dependency`
+   - Performance benefits depend on the number of CPU cores and 
+   the nature of the workload.
+
+---
+
+`Comparison with Sequential Sort`
+|---------------------------|----------------------------------|-----------------------------------|
+| Feature                   | Sequential Sort                  | Parallel Sort                     |
+|---------------------------|----------------------------------|-----------------------------------|
+| `Execution`               | Single thread                    | Multiple threads                  |
+| `Performance`             | Slower for large data            | Faster for large data             |
+| `Thread Safety`           | Not an issue                     | Managed internally by the library |
+| `Use Case`                | Small datasets                   | Large datasets, multi-core CPUs   |
+|---------------------------|----------------------------------|-----------------------------------|
+---
+
+Parallel sorting in C++ is a powerful tool 
+for efficient data processing when combined 
+with the `std::execution` policies, 
+providing a clean and optimized approach 
+to leverage modern hardware.
