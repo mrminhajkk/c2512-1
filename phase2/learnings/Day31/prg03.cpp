@@ -1,48 +1,63 @@
 #include <iostream>
+#include <fstream>
 #include <thread>
 #include <chrono>
 using namespace std;
 
 void geHealthcare() {
+    fstream fout("ge.txt", ios::out | ios::trunc) ;
+    
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "ayisha ";
+    fout << "ayisha ";
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "athira ";
+    fout << "athira ";
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "dhaheen ";
+    fout << "dhaheen ";
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "nayana ";
+    fout << "nayana ";
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "abel ";
+    fout << "abel ";
+    
+    fout.close();
 }
 void mediconnect() {
+    fstream fout("medi.txt", ios::out  | ios::trunc);
+    
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "vnkatesh ";
+    fout << "vnkatesh ";
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "sooraj ";
+    fout << "sooraj ";
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "nimisha ";
+    fout << "nimisha ";
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "vishak ";
+    fout << "vishak ";
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "josh ";
+    fout << "josh ";
+    
+    fout.close();
 }
 void automative() {
+    fstream fout("auto.txt", ios::out | ios::trunc);
+    
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "minhaj ";
+    fout << "minhaj ";
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "vinayak ";
+    fout << "vinayak ";
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "sana ";
+    fout << "sana ";
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "pitchmani ";
+    fout << "pitchmani ";
+    
+    fout.close();
 }
 int main()
 {
     thread thrGeHealthcare(geHealthcare);
     thread thrMediconnect(mediconnect);
+    
     thrGeHealthcare.join();
     thrMediconnect.join();
+    //this_thread::sleep_for(chrono::milliseconds(1));
     automative();
     return 0;
 }
