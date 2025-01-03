@@ -35,7 +35,7 @@ void automative() {
     this_thread::sleep_for(chrono::milliseconds(1));
     cout << "sana ";
     this_thread::sleep_for(chrono::milliseconds(1));
-    cout << "pitchmani ";
+    cout << "pitchumani ";
 }
 int main()
 {

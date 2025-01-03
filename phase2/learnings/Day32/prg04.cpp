@@ -1,28 +1,39 @@
-//race condition example - with fix
+//counter problem
+//race condition example 
 #include <iostream>
 #include <thread>
 using namespace std;
 
 const long long TIMES = 5000000LL;
 
-long long count1, count2;
+long long count;
 
 
 void counter1() {
     for(long long I = 0; I < TIMES; I++) {
-        count1 ++;
+        count ++;
     }
 }
 void counter2() {
     for(long long I = 0; I < TIMES; I++) {
-        count2 ++;
+        count ++;
     }
 }
-int main() {
+int test() {
+    count = 0;
     thread thrCounter1(counter1);
     thread thrCounter2(counter2);
     thrCounter1.join();
     thrCounter2.join();
-    cout << count1 + count2;
+    cout << count;
+    return 0;
+}
+
+int main() {
+    int t = 15;
+    while(t--) {
+        std::cout << endl;
+        test();
+    }
     return 0;
 }
