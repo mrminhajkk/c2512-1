@@ -40,7 +40,9 @@ int main() {
 ---
 
 2. `Parallel File Processing`
-Processing multiple files (e.g., compressing, encrypting, or analyzing them) in parallel can significantly speed up the task.
+Processing multiple files 
+(e.g., compressing, encrypting, or analyzing them) in parallel 
+can significantly speed up the task.
 
 ```cpp
 #include <iostream>
