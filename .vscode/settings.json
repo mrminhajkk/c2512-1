@@ -87,7 +87,9 @@
     "fstream": "cpp",
     "numbers": "cpp",
     "semaphore": "cpp",
-    "shared_mutex": "cpp"
+    "shared_mutex": "cpp",
+    "forward_list": "cpp",
+    "future": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
