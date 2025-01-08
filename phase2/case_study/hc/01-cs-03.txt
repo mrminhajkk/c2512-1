@@ -1,0 +1,179 @@
+Below are the `SQL statements` required 
+for each page of your Hospital Management System 
+using Oracle as the database. 
+
+These statements correspond to the primary operations 
+associated with each page.
+
+---
+
+`1. Patient Management`
+
+a) `Add Patient Page`
+```sql
+INSERT INTO Patients (patient_id, name, age, gender, contact, address, user_id)
+VALUES (:patient_id, :name, :age, :gender, :contact, :address, :user_id);
+```
+
+b) `View Patients Page`
+```sql
+SELECT patient_id, name, age, gender, contact, address
+FROM Patients;
+```
+
+c) `Update Patient Page`
+```sql
+UPDATE Patients
+SET name = :name, age = :age, gender = :gender, contact = :contact, address = :address
+WHERE patient_id = :patient_id;
+```
+
+---
+
+`2. Doctor Management`
+
+a) `Add Doctor Page`
+```sql
+INSERT INTO Doctors (doctor_id, name, specialization, contact, department, user_id)
+VALUES (:doctor_id, :name, :specialization, :contact, :department, :user_id);
+```
+
+b) `View Doctors Page`
+```sql
+SELECT doctor_id, name, specialization, contact, department
+FROM Doctors;
+```
+
+c) `Manage Doctor Page`
+- `Update Doctor Details`:
+```sql
+UPDATE Doctors
+SET name = :name, specialization = :specialization, contact = :contact, department = :department
+WHERE doctor_id = :doctor_id;
+```
+
+- `Delete Doctor`:
+```sql
+DELETE FROM Doctors
+WHERE doctor_id = :doctor_id;
+```
+
+---
+
+`3. Appointment Scheduling`
+
+a) `Schedule Appointment Page`
+```sql
+INSERT INTO Appointments (appointment_id, patient_id, doctor_id, appointment_date, appointment_time, status, reason)
+VALUES (:appointment_id, :patient_id, :doctor_id, :appointment_date, :appointment_time, 'Scheduled', :reason);
+```
+
+b) `Cancel Appointment Page`
+```sql
+UPDATE Appointments
+SET status = 'Cancelled'
+WHERE appointment_id = :appointment_id;
+```
+
+c) `View Appointments for a Patient/Doctor`
+- `For Patients`:
+```sql
+SELECT a.appointment_id, a.appointment_date, a.appointment_time, d.name AS doctor_name, a.status
+FROM Appointments a
+JOIN Doctors d ON a.doctor_id = d.doctor_id
+WHERE a.patient_id = :patient_id;
+```
+
+- `For Doctors`:
+```sql
+SELECT a.appointment_id, a.appointment_date, a.appointment_time, p.name AS patient_name, a.status, a.reason
+FROM Appointments a
+JOIN Patients p ON a.patient_id = p.patient_id
+WHERE a.doctor_id = :doctor_id;
+```
+
+---
+
+`4. Medical History`
+
+a) `Add Medical History Page`
+```sql
+INSERT INTO Medical_History (history_id, patient_id, doctor_id, diagnosis, treatment, prescription, date)
+VALUES (:history_id, :patient_id, :doctor_id, :diagnosis, :treatment, :prescription, SYSDATE);
+```
+
+b) `View Medical History Page`
+```sql
+SELECT mh.history_id, mh.diagnosis, mh.treatment, mh.prescription, mh.date, d.name AS doctor_name
+FROM Medical_History mh
+JOIN Doctors d ON mh.doctor_id = d.doctor_id
+WHERE mh.patient_id = :patient_id;
+```
+
+---
+
+`5. Other Pages`
+
+a) `User Login`
+```sql
+SELECT user_id, role
+FROM Users
+WHERE username = :username AND password = :password;
+```
+
+b) `Add Department (Optional Page)`
+```sql
+INSERT INTO Departments (department_id, name, description)
+VALUES (:department_id, :name, :description);
+```
+
+c) `View Departments`
+```sql
+SELECT department_id, name, description
+FROM Departments;
+```
+
+---
+
+`Table Relationships for Foreign Keys`
+Make sure you establish foreign key relationships in the database schema:
+
+1. `Link Patients and Users`:
+```sql
+ALTER TABLE Patients
+ADD CONSTRAINT fk_user_patient
+FOREIGN KEY (user_id) REFERENCES Users (user_id);
+```
+
+2. `Link Doctors and Users`:
+```sql
+ALTER TABLE Doctors
+ADD CONSTRAINT fk_user_doctor
+FOREIGN KEY (user_id) REFERENCES Users (user_id);
+```
+
+3. `Link Appointments with Patients and Doctors`:
+```sql
+ALTER TABLE Appointments
+ADD CONSTRAINT fk_patient_appointment
+FOREIGN KEY (patient_id) REFERENCES Patients (patient_id);
+
+ALTER TABLE Appointments
+ADD CONSTRAINT fk_doctor_appointment
+FOREIGN KEY (doctor_id) REFERENCES Doctors (doctor_id);
+```
+
+4. `Link Medical History with Patients and Doctors`:
+```sql
+ALTER TABLE Medical_History
+ADD CONSTRAINT fk_patient_history
+FOREIGN KEY (patient_id) REFERENCES Patients (patient_id);
+
+ALTER TABLE Medical_History
+ADD CONSTRAINT fk_doctor_history
+FOREIGN KEY (doctor_id) REFERENCES Doctors (doctor_id);
+```
+
+---
+
+These SQL statements can be used in your backend APIs to interact with the Oracle database for each page's functionality. 

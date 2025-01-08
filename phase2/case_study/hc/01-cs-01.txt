@@ -1,0 +1,35 @@
+Pages List and Explanation for Hospital Management System
+
+1. Patient Management
+- Add Patient Page:
+  Allows admins or staff to add a new patient by entering details like name, age, gender, and contact information.
+- View Patients Page:
+  Displays a list of all patients, including their details, with options to view detailed information.
+- Update Patient Page:
+  Allows updating an existing patient's information (e.g., contact details or other records).
+
+2. Doctor Management
+- Add Doctor Page:
+  Provides a form to add new doctor records, including their name, specialization, and contact details.
+- View Doctors Page:
+  Lists all the doctors along with their specialties and contact information for reference.
+- Manage Doctor Page:
+  Includes options to edit or delete doctor records and assign doctors to departments or specific tasks.
+
+3. Appointment Scheduling
+- Schedule Appointment Page:
+  Enables patients to book appointments with doctors by selecting the doctor, date, time, and reason for the appointment.
+- Cancel Appointment Page:
+  Allows patients to cancel previously scheduled appointments and view the cancellation status.
+
+4. Medical History
+- Add Medical History Page:
+  Allows doctors to add medical notes, diagnoses, prescriptions, and treatment details to a patient's record.
+- View Medical History Page:
+  Displays a patient's complete medical history, accessible to doctors and patients for review.
+
+---
+
+Each page is designed to streamline specific functionalities and 
+ensure seamless interaction between 
+admins, doctors, and patients within the system. 

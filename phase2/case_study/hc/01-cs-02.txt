@@ -1,0 +1,133 @@
+To use Oracle as your database 
+for a `Hospital Management System`, 
+you will need well-structured tables 
+to store and manage your data effectively. 
+
+Below is a list of the tables and their descriptions:
+
+---
+
+`1. `Users` Table`
+- `Purpose`: Stores login and role information 
+for all users (admin, doctors, patients, etc.).
+- `Columns`:
+  - `user_id` (Primary Key): Unique identifier.
+  - `username`: Login name.
+  - `password`: Encrypted password.
+  - `role`: User role (e.g., admin, doctor, patient).
+
+---
+
+`2. `Patients` Table`
+- `Purpose`: Stores details about patients.
+- `Columns`:
+  - `patient_id` (Primary Key): Unique identifier.
+  - `name`: Patient's full name.
+  - `age`: Patient's age.
+  - `gender`: Gender.
+  - `contact`: Contact information (phone/email).
+  - `address`: Address of the patient.
+  - `user_id` (Foreign Key): Links to the `Users` table for patient login.
+
+---
+
+`3. `Doctors` Table`
+- `Purpose`: Stores information about doctors.
+- `Columns`:
+  - `doctor_id` (Primary Key): Unique identifier.
+  - `name`: Doctor's name.
+  - `specialization`: Doctor's field of expertise.
+  - `contact`: Contact information.
+  - `department`: Department the doctor belongs to.
+  - `user_id` (Foreign Key): Links to the `Users` table for doctor login.
+
+---
+
+`4. `Appointments` Table`
+- `Purpose`: Stores appointment details.
+- `Columns`:
+  - `appointment_id` (Primary Key): Unique identifier.
+  - `patient_id` (Foreign Key): Links to the `Patients` table.
+  - `doctor_id` (Foreign Key): Links to the `Doctors` table.
+  - `appointment_date`: Date of the appointment.
+  - `appointment_time`: Time of the appointment.
+  - `status`: Status of the appointment (e.g., scheduled, canceled, completed).
+  - `reason`: Reason for the appointment.
+
+---
+
+`5. `Medical_History` Table`
+- `Purpose`: Stores medical history details for each patient.
+- `Columns`:
+  - `history_id` (Primary Key): Unique identifier.
+  - `patient_id` (Foreign Key): Links to the `Patients` table.
+  - `doctor_id` (Foreign Key): Links to the `Doctors` table.
+  - `diagnosis`: Description of the diagnosis.
+  - `treatment`: Details of the treatment provided.
+  - `prescription`: List of medications prescribed.
+  - `date`: Date when the history was added.
+
+---
+
+`6. `Departments` Table`
+- `Purpose`: Stores details of hospital departments.
+- `Columns`:
+  - `department_id` (Primary Key): Unique identifier.
+  - `name`: Name of the department (e.g., Cardiology, Pediatrics).
+  - `description`: Brief description of the department.
+
+---
+
+`7. `Admin` Table`
+- `Purpose`: Stores details of admin users.
+- `Columns`:
+  - `admin_id` (Primary Key): Unique identifier.
+  - `name`: Admin's name.
+  - `contact`: Contact information.
+  - `user_id` (Foreign Key): Links to the `Users` table.
+
+---
+
+`8. `Prescriptions` Table`
+- `Purpose`: Stores prescription details for patients.
+- `Columns`:
+  - `prescription_id` (Primary Key): Unique identifier.
+  - `appointment_id` (Foreign Key): Links to the `Appointments` table.
+  - `doctor_id` (Foreign Key): Links to the `Doctors` table.
+  - `patient_id` (Foreign Key): Links to the `Patients` table.
+  - `medicines`: List of medicines prescribed.
+  - `notes`: Additional notes from the doctor.
+
+---
+
+`9. `Schedule` Table`
+- `Purpose`: Stores doctors' schedules.
+- `Columns`:
+  - `schedule_id` (Primary Key): Unique identifier.
+  - `doctor_id` (Foreign Key): Links to the `Doctors` table.
+  - `day`: Day of the week (e.g., Monday, Tuesday).
+  - `start_time`: Start time of availability.
+  - `end_time`: End time of availability.
+
+---
+
+`10. `Payments` Table`
+- `Purpose`: Stores payment information for appointments.
+- `Columns`:
+  - `payment_id` (Primary Key): Unique identifier.
+  - `appointment_id` (Foreign Key): Links to the `Appointments` table.
+  - `amount`: Payment amount.
+  - `payment_date`: Date of payment.
+  - `status`: Payment status (e.g., paid, pending).
+
+---
+
+Relationships Between Tables
+- `One-to-Many`:
+  - A patient can have multiple appointments (`Patients` → `Appointments`).
+  - A doctor can have multiple appointments (`Doctors` → `Appointments`).
+  - A patient can have multiple medical history records (`Patients` → `Medical_History`).
+
+- `One-to-One`:
+  - A user can be associated with a single patient, doctor, or admin (`Users` → `Patients`/`Doctors`/`Admin`).
+
