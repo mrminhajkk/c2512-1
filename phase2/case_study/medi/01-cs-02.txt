@@ -1,0 +1,209 @@
+Great choice! If you want to use `MySQL` for your `Medical Inventory Management System`, the structure would change slightly, as MySQL is a relational database. Below are the table designs and relationships for the system based on `MySQL`.
+
+1. `Users Table (for authentication and roles)`
+
+```sql
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    role ENUM('admin', 'manager', 'staff') DEFAULT 'staff',
+    full_name VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    last_login DATETIME,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+
+2. `Inventory Table (for products in inventory)`
+
+```sql
+CREATE TABLE inventory (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    category VARCHAR(255) NOT NULL,
+    quantity INT DEFAULT 0,
+    price DECIMAL(10, 2) NOT NULL,
+    supplier_id INT,
+    expiration_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (supplier_id) REFERENCES suppliers(id)
+);
+```
+
+3. `Suppliers Table (for managing suppliers)`
+
+```sql
+CREATE TABLE suppliers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    contact_person VARCHAR(255),
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    address TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+
+4. `Transactions Table (for tracking stock movements)`
+
+```sql
+CREATE TABLE transactions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    transaction_type ENUM('purchase', 'sale', 'return', 'transfer') NOT NULL,
+    inventory_item_id INT NOT NULL,
+    quantity INT NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    total_amount DECIMAL(10, 2) NOT NULL,
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_by INT NOT NULL,
+    notes TEXT,
+    FOREIGN KEY (inventory_item_id) REFERENCES inventory(id),
+    FOREIGN KEY (created_by) REFERENCES users(id)
+);
+```
+
+5. `Stock Alerts Table (for low stock or expired stock notifications)`
+
+```sql
+CREATE TABLE stock_alerts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    inventory_item_id INT NOT NULL,
+    alert_type ENUM('low-stock', 'expired', 'near-expiration') NOT NULL,
+    threshold INT NOT NULL,
+    alert_message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (inventory_item_id) REFERENCES inventory(id)
+);
+```
+
+6. `Reports Table (for storing generated reports)`
+
+```sql
+CREATE TABLE reports (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    report_type ENUM('inventory-report', 'sales-report', 'stock-report') NOT NULL,
+    generated_by INT NOT NULL,
+    report_data JSON NOT NULL,  -- storing report data as JSON
+    generated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (generated_by) REFERENCES users(id)
+);
+```
+
+7. `Settings Table (for storing application-wide settings)`
+
+```sql
+CREATE TABLE settings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    setting_key VARCHAR(255) NOT NULL UNIQUE,
+    setting_value VARCHAR(255) NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+
+8. `Profiles Table (for storing additional user information)`
+
+```sql
+CREATE TABLE profiles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    address TEXT,
+    phone VARCHAR(20),
+    date_of_birth DATE,
+    gender ENUM('male', 'female', 'other'),
+    profile_picture VARCHAR(255),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+```
+
+---
+
+Relationships Between Tables
+1. ``users`` → ``transactions``:
+   - A user (staff, admin, or manager) can create many transactions.
+2. ``suppliers`` → ``inventory``:
+   - A supplier can supply many inventory items.
+3. ``inventory`` → ``transactions``:
+   - Each inventory item can be involved in many transactions (sales, purchases, etc.).
+4. ``inventory`` → ``stock_alerts``:
+   - Each inventory item can have multiple stock alerts (low stock, expiration warnings).
+5. ``users`` → ``reports``:
+   - A user (typically an admin or manager) generates reports.
+6. ``inventory`` → ``stock_alerts``:
+   - Stock alerts are linked to inventory items to notify about low stock or expiration.
+
+---
+
+Example of Data in Tables
+
+#`users` Table
+```sql
+| id | username | password | email            | role  | full_name   | phone      | last_login         | created_at         |
+|----|----------|----------|------------------|-------|-------------|------------|--------------------|--------------------|
+| 1  | admin    | hashedpw | admin@mail.com   | admin | John Admin  | 1234567890 | 2023-10-01 10:00:00 | 2023-01-01 10:00:00|
+| 2  | manager  | hashedpw | manager@mail.com | manager| Jane Manager| 0987654321 | 2023-10-02 11:00:00 | 2023-01-01 10:00:00|
+```
+
+#`inventory` Table
+```sql
+| id | name     | description        | category  | quantity | price | supplier_id | expiration_date | created_at        |
+|----|----------|--------------------|-----------|----------|-------|-------------|-----------------|-------------------|
+| 1  | Aspirin  | Pain reliever      | Painkiller| 500      | 10.5  | 1           | 2025-12-31      | 2023-01-01 10:00:00|
+| 2  | Bandage  | First-aid bandage  | First Aid | 1000     | 2.5   | 2           | 2024-06-30      | 2023-01-02 12:00:00|
+```
+
+#`transactions` Table
+```sql
+| id | transaction_type | inventory_item_id | quantity | price | total_amount | transaction_date     | created_by | notes    |
+|----|------------------|-------------------|----------|-------|--------------|----------------------|------------|----------|
+| 1  | purchase         | 1                 | 100      | 10.5  | 1050.00      | 2023-01-01 10:00:00  | 1          | Initial purchase |
+| 2  | sale             | 1                 | 50       | 10.5  | 525.00       | 2023-01-05 12:00:00  | 2          | Sold to customer  |
+```
+
+#`suppliers` Table
+```sql
+| id | name           | contact_person | phone      | email            | address      | created_at        |
+|----|----------------|----------------|------------|------------------|--------------|-------------------|
+| 1  | Pharma Supply  | John Supplier  | 1234567890 | pharma@mail.com  | 123 Pharma St| 2023-01-01 10:00:00|
+| 2  | Medico Ltd     | Sarah Supplier | 0987654321 | medico@mail.com  | 456 Medico Rd| 2023-01-02 11:00:00|
+```
+
+#`stock_alerts` Table
+```sql
+| id | inventory_item_id | alert_type    | threshold | alert_message                   | created_at        |
+|----|-------------------|---------------|-----------|----------------------------------|-------------------|
+| 1  | 1                 | low-stock     | 100       | Stock for Aspirin is low!        | 2023-01-02 12:00:00|
+| 2  | 2                 | near-expiration| 200      | Bandage nearing expiration!      | 2023-01-05 14:00:00|
+```
+
+Summary of MySQL Tables
+
+| Table Name        | Description                                                             |
+|-------------------|-------------------------------------------------------------------------|
+| `users`         | Stores user credentials, roles, and login information.                  |
+| `inventory`     | Stores details about medical products (name, category, price, quantity).|
+| `suppliers`     | Stores information about suppliers and their contact details.           |
+| `transactions`  | Tracks inventory movements (purchases, sales, returns).                 |
+| `stock_alerts`  | Stores alerts related to low stock and expired items.                   |
+| `reports`       | Stores generated reports and their data.                                |
+| `settings`      | Stores application-wide settings (like notification preferences).       |
+| `profiles`      | Stores additional profile information about users.                      |
+
+Relationships in MySQL
+1. `Users` ↔ `Transactions` (One-to-many): A user can create many transactions.
+2. `Suppliers` ↔ `Inventory` (
+
+One-to-many): A supplier can supply many inventory items.
+3. `Inventory` ↔ `Transactions` (One-to-many): Each inventory item can be involved in many transactions.
+4. `Inventory` ↔ `Stock Alerts` (One-to-many): Each inventory item can have multiple stock alerts.
+5. `Users` ↔ `Reports` (One-to-many): Users (admin/manager) can generate multiple reports.
+
+---
+
+This structure is now designed for MySQL and incorporates `foreign key relationships`, which is more natural for relational databases. You can create these tables in MySQL and start building your inventory management system based on them.

@@ -1,0 +1,221 @@
+In a Medical Inventory Management System built 
+using the MERN stack 
+(MongoDB, Express, React, Node.js), 
+the front-end React app will consist of several pages 
+that serve different purposes. 
+
+Below is a list of pages that can be designed for the system, 
+along with their basic functionality:
+
+1. Login Page
+   - Purpose: Allow users to log in to the system.
+   - Features:
+     - Form with fields for username and password.
+     - Validation of credentials.
+     - Error messages for incorrect login attempts.
+     - Option to reset password.
+     - Redirect to dashboard upon successful login.
+   
+   Components:
+   - `LoginForm`
+   - `AlertMessage` (for error handling)
+
+---
+
+2. Dashboard Page
+   - Purpose: Provide an overview of the system, displaying key metrics like stock levels, recent activity, etc.
+   - Features:
+     - Graphs or charts to display stock levels, order trends, and expiration dates.
+     - Quick view of recent inventory transactions.
+     - Notifications for low stock or expired items.
+     - Search bar to quickly navigate inventory items.
+
+   Components:
+   - `DashboardCard` (for displaying key metrics like "Low Stock", "Out of Stock", etc.)
+   - `StockChart` (for visualizing inventory levels using charts)
+   - `RecentTransactions`
+
+---
+
+3. Inventory List Page
+   - Purpose: Show a list of all available medical products in the system.
+   - Features:
+     - Table of inventory items with details like product name, quantity, expiration date, and supplier.
+     - Sorting and filtering functionality.
+     - Pagination for long lists of items.
+     - Option to add, update, or delete inventory items.
+
+   Components:
+   - `InventoryTable` (for displaying the list of items)
+   - `InventoryFilter` (for sorting and filtering)
+   - `AddInventoryModal` (to add new items)
+
+---
+
+4. Add/Edit Inventory Item Page
+   - Purpose: Allow users to add or update details of a medical product in the system.
+   - Features:
+     - Form for entering or editing product details such as name, quantity, expiry date, price, etc.
+     - Validation for required fields.
+     - Option to upload product images or barcodes.
+     - Option to assign product categories.
+     - Save or cancel options.
+
+   Components:
+   - `InventoryForm` (for adding/editing items)
+   - `FileUpload` (for images or barcode)
+   - `CategorySelect` (to assign product category)
+
+---
+
+5. Stock Movement / Transaction History Page
+   - Purpose: Track all stock movements (e.g., purchases, sales, returns).
+   - Features:
+     - Display a log of transactions related to the inventory (purchase, sale, transfer).
+     - Ability to filter by date range, product, transaction type.
+     - Show transaction details like quantity added or removed, date, responsible employee, etc.
+
+   Components:
+   - `TransactionTable` (for displaying the list of transactions)
+   - `TransactionFilter` (for filtering by date, type, etc.)
+
+---
+
+6. Supplier Management Page
+   - Purpose: Manage suppliers and their information.
+   - Features:
+     - List of suppliers with details like name, contact, products they supply.
+     - Option to add or edit supplier details.
+     - Ability to link suppliers to specific products.
+
+   Components:
+   - `SupplierTable`
+   - `SupplierForm` (to add/edit suppliers)
+
+---
+
+7. Stock Alerts Page
+   - Purpose: Show alerts for low stock, expired items, or approaching expiration dates.
+   - Features:
+     - Display a list of items that are low in stock or nearing expiration.
+     - Option to sort by urgency.
+     - Ability to mark items as restocked or resolved.
+
+   Components:
+   - `StockAlertTable`
+   - `AlertFilters` (for sorting by type of alert, urgency)
+
+---
+
+8. Reports Page
+   - Purpose: Generate various reports for inventory analysis and audits.
+   - Features:
+     - Option to generate reports such as stock levels, stock movements, supplier reports, and sales performance.
+     - Export reports as CSV or PDF.
+     - Option to select the date range and other filter parameters.
+
+   Components:
+   - `ReportSelect` (to choose the report type)
+   - `ReportDownloadButton` (for exporting)
+   - `ReportChart` (for visualizing report data)
+
+---
+
+9. User Management Page (Admin Only)
+   - Purpose: Manage users and roles in the system (admin functionality).
+   - Features:
+     - List of all users with their roles (admin, manager, staff).
+     - Option to add, edit, or delete users.
+     - Ability to assign roles and permissions.
+     - Reset user passwords.
+
+   Components:
+   - `UserTable`
+   - `UserForm`
+   - `RoleSelect`
+
+---
+
+10. Settings Page
+   - Purpose: Allow system-wide configurations such as default stock levels, notification preferences, etc.
+   - Features:
+     - Update application settings like notification thresholds for low stock, or preferred suppliers.
+     - Set default categories or product attributes.
+     - Modify UI theme preferences (dark mode, light mode).
+
+   Components:
+   - `SettingsForm`
+   - `NotificationSettings`
+   - `ThemeSelector`
+
+---
+
+11. Profile Page
+   - Purpose: Allow users to view and update their profile.
+   - Features:
+     - Display user information like name, email, contact number.
+     - Option to change password.
+     - Ability to update personal details.
+
+   Components:
+   - `ProfileForm`
+   - `PasswordChangeForm`
+
+---
+
+12. Help / FAQ Page
+   - Purpose: Provide support to users with frequently asked questions and troubleshooting tips.
+   - Features:
+     - List of common questions with answers.
+     - Option to submit a support ticket.
+   
+   Components:
+   - `FaqList`
+   - `TicketForm` (for submitting support queries)
+
+---
+
+13. Logout Page (Optional)
+   - Purpose: Allow users to log out of the system.
+   - Features:
+     - Confirmation of logout.
+     - Redirect to the login page after logging out.
+
+   Components:
+   - `LogoutConfirmation`
+
+---
+
+Routing and Navigation
+You would typically use React Router to navigate between these pages. 
+Here's a basic structure for your routes:
+```js
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/inventory" element={<InventoryListPage />} />
+        <Route path="/inventory/add" element={<AddInventoryPage />} />
+        <Route path="/transactions" element={<StockMovementPage />} />
+        <Route path="/suppliers" element={<SupplierManagementPage />} />
+        <Route path="/alerts" element={<StockAlertsPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
+        <Route path="/users" element={<UserManagementPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Routes>
+    </Router>
+  );
+}
+```
+
+Each page is a separate React component 
+that can contain nested components for specific functionality. 
+You can build these pages incrementally and connect them 
+to your backend using APIs (through Axios or Fetch) 
+to handle data like inventory items, transactions, and users.
+

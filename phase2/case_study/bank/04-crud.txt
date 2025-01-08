@@ -1,0 +1,136 @@
+----Bank Management System----
+
+---------------------------------------------------------------
+::Admin Login::
+---------------------------------------------------------------
+    User Name: 
+    Password: 
+
+You have successfully logged in. 
+Press any key to continue...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------------
+::Home:: Welcome Quest!!!
+---------------------------------------------------------------
+Choices
+    1 - Account Management 
+    2 - Transactions 
+    3 - Analytics 
+    4 - Reports
+    5 - Exit 
+Your Choice: 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------------
+Home > Account Management 
+---------------------------------------------------------------
+Choices 
+    1 - Go Back 
+    2 - Create Account 
+    3 - View Account 
+    4 - Display All Active Accounts 
+    5 - Display All Inactive Accounts 
+    6 - Display Active and Inactive Counts 
+Your Choice: 4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------------
+Home > Account Management > Display All Accounts
+---------------------------------------------------------------
+Account     Name          Balance   Trans        
+Number      
+CAN1001     Mahesh         $ 1000   4
+CAN1002     Sumit           $ 800   2
+
+Press any key to continue...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------------
+Home > Account Management 
+---------------------------------------------------------------
+Choices 
+    1 - Go Back 
+    2 - Create Account 
+    3 - View Account 
+    4 - Display All Active Accounts 
+    5 - Display All Inactive Accounts 
+    6 - Display Active and Inactive Counts 
+Your Choice: 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------------------------------------------------------------
+Home > Account Management > View Account
+---------------------------------------------------------------
+Account Number: CAN1001
+
+Details of Account Number `CAN1001`
+    Account Holder Name: Mahesh 
+    Balance: $1000
+    Trans: 2 
+
+Press any key to continue...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+---------------------------------------------------------------
+Home > Account Management 
+---------------------------------------------------------------
+Choices 
+    1 - Go Back 
+    2 - Create Account 
+    3 - View Account 
+    4 - Display All Active Accounts 
+    5 - Display All Inactive Accounts 
+    6 - Display Active and Inactive Counts 
+Your Choice: 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+---------------------------------------------------------------
+Home > Create Account 
+---------------------------------------------------------------
+Account Number: 
+Name: 
+Inital Balance: 
+
+Edit any field? 
+    1 - Account Number : CAN1001 
+    2 - Name : Mahesh
+    4 - Initial Balance : $ 1000
+    3 - (1 - Account Number + 2 - Name)
+    5 - (1 - Account Number + 4 - Initial Balance)
+    6 - (2 - Name + 4 - Initial Balance)
+    7 - (1 - Account Number + 2 - Name + 4 - Initial Balance)
+    8 - I am sure to create account 
+    Your Choice: 2
+    Entered Name : Maheswaran 
+    New Name: G. Maheswaran
+
+Edit any field? 
+    1 - Account Number 
+    2 - Name 
+    4 - Initial Balance 
+    3 - (1 - Account Number + 2 - Name)
+    5 - (1 - Account Number + 4 - Initial Balance)
+    6 - (2 - Name + 4 - Initial Balance)
+    7 - (1 - Account Number + 2 - Name + 4 - Initial Balance)
+    8 - I am sure to create account 
+    Your Choice: 8
+
+Account Created Successfully
+Press any key to continue...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+---------------------------------------------------------------
+Home > Account Management 
+---------------------------------------------------------------
+Choices 
+    1 - Go Back 
+    2 - Create Account 
+    3 - View Account 
+    4 - Display All Active Accounts 
+    5 - Display All Inactive Accounts 
+    6 - Display Active and Inactive Counts 
+Your Choice: 

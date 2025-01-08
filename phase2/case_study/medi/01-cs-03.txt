@@ -1,0 +1,299 @@
+Certainly! Here's a breakdown of `SQL queries` that you will use on each page in your `Medical Inventory Management System` to interact with the `MySQL database`. These queries will cover actions such as fetching, adding, updating, and deleting records based on the pages you've mentioned.
+
+1. `Login Page`
+The login page will validate user credentials and return user information (if valid).
+
+`SQL Statement to Validate User Login`
+```sql
+SELECT id, username, full_name, role 
+FROM users 
+WHERE username = ? AND password = ?;
+```
+- `Inputs`: `username`, `password`
+- This query retrieves the user details for the given `username` and `password` (hashed) combination. If a match is found, it returns the user details.
+
+---
+
+2. `Dashboard Page`
+The dashboard page will display key metrics such as total inventory, transactions, low stock, and expired items.
+
+`SQL Statement to Get Total Inventory Count and Value`
+```sql
+SELECT SUM(quantity) AS total_quantity, SUM(quantity * price) AS total_value
+FROM inventory;
+```
+- `Outputs`: Total quantity of all items in the inventory, total value of all inventory items (based on quantity and price).
+
+`SQL Statement to Get Low Stock Alerts`
+```sql
+SELECT name, quantity, expiration_date
+FROM inventory
+WHERE quantity < 10;  -- or any threshold value
+```
+- `Outputs`: List of products with low stock.
+
+`SQL Statement to Get Expired Items`
+```sql
+SELECT name, expiration_date
+FROM inventory
+WHERE expiration_date < CURDATE();
+```
+- `Outputs`: List of expired items.
+
+---
+
+3. `Inventory List Page`
+This page shows a list of all inventory items.
+
+`SQL Statement to Get Inventory List`
+```sql
+SELECT id, name, description, category, quantity, price, expiration_date
+FROM inventory
+ORDER BY name;
+```
+- `Outputs`: A table of all inventory items, sorted by `name`.
+
+`SQL Statement to Filter Inventory by Category`
+```sql
+SELECT id, name, description, category, quantity, price, expiration_date
+FROM inventory
+WHERE category = ?  -- pass the selected category
+ORDER BY name;
+```
+- `Inputs`: `category`
+- `Outputs`: Filtered inventory list based on category.
+
+`SQL Statement to Search Inventory by Name`
+```sql
+SELECT id, name, description, category, quantity, price, expiration_date
+FROM inventory
+WHERE name LIKE CONCAT('%', ?, '%')
+ORDER BY name;
+```
+- `Inputs`: `name` (search term)
+- `Outputs`: Inventory items where the name matches the search term.
+
+---
+
+4. `Add/Edit Inventory Item Page`
+The page for adding and editing inventory will involve `inserts` and `updates`.
+
+`SQL Statement to Add a New Inventory Item`
+```sql
+INSERT INTO inventory (name, description, category, quantity, price, supplier_id, expiration_date)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+```
+- `Inputs`: `name`, `description`, `category`, `quantity`, `price`, `supplier_id`, `expiration_date`
+- This query inserts a new item into the `inventory` table.
+
+`SQL Statement to Update an Existing Inventory Item`
+```sql
+UPDATE inventory
+SET name = ?, description = ?, category = ?, quantity = ?, price = ?, supplier_id = ?, expiration_date = ?
+WHERE id = ?;
+```
+- `Inputs`: `name`, `description`, `category`, `quantity`, `price`, `supplier_id`, `expiration_date`, `id` (item ID)
+- This query updates the details of an existing inventory item.
+
+---
+
+5. `Stock Movement / Transaction History Page`
+This page will track stock movements, such as purchases, sales, and returns.
+
+`SQL Statement to Get Transaction History`
+```sql
+SELECT t.id, t.transaction_type, t.quantity, t.price, t.total_amount, t.transaction_date, u.full_name AS created_by
+FROM transactions t
+JOIN users u ON t.created_by = u.id
+ORDER BY t.transaction_date DESC;
+```
+- `Outputs`: List of transactions, including the type (purchase, sale, etc.), quantity, price, total amount, date, and the user who created the transaction.
+
+`SQL Statement to Get Transactions by Item`
+```sql
+SELECT t.id, t.transaction_type, t.quantity, t.price, t.total_amount, t.transaction_date, u.full_name AS created_by
+FROM transactions t
+JOIN users u ON t.created_by = u.id
+WHERE t.inventory_item_id = ?
+ORDER BY t.transaction_date DESC;
+```
+- `Inputs`: `inventory_item_id`
+- `Outputs`: All transactions related to a specific inventory item.
+
+---
+
+6. `Supplier Management Page`
+This page will manage suppliers (add, edit, delete suppliers).
+
+`SQL Statement to Get All Suppliers`
+```sql
+SELECT id, name, contact_person, phone, email, address
+FROM suppliers;
+```
+- `Outputs`: List of all suppliers.
+
+`SQL Statement to Add a New Supplier`
+```sql
+INSERT INTO suppliers (name, contact_person, phone, email, address)
+VALUES (?, ?, ?, ?, ?);
+```
+- `Inputs`: `name`, `contact_person`, `phone`, `email`, `address`
+- Adds a new supplier to the system.
+
+`SQL Statement to Update Supplier Information`
+```sql
+UPDATE suppliers
+SET name = ?, contact_person = ?, phone = ?, email = ?, address = ?
+WHERE id = ?;
+```
+- `Inputs`: `name`, `contact_person`, `phone`, `email`, `address`, `id`
+- Updates the supplier details.
+
+`SQL Statement to Delete Supplier`
+```sql
+DELETE FROM suppliers WHERE id = ?;
+```
+- `Inputs`: `id` (supplier ID)
+- Deletes a supplier from the system.
+
+---
+
+7. `Stock Alerts Page`
+This page will show low stock, near-expiry, and expired items.
+
+`SQL Statement to Get Stock Alerts`
+```sql
+SELECT i.name, i.quantity, i.expiration_date, sa.alert_type, sa.alert_message
+FROM stock_alerts sa
+JOIN inventory i ON sa.inventory_item_id = i.id
+ORDER BY sa.created_at DESC;
+```
+- `Outputs`: List of stock alerts (e.g., low stock, near-expiry, expired items).
+
+`SQL Statement to Create a New Stock Alert`
+```sql
+INSERT INTO stock_alerts (inventory_item_id, alert_type, threshold, alert_message)
+VALUES (?, ?, ?, ?);
+```
+- `Inputs`: `inventory_item_id`, `alert_type`, `threshold`, `alert_message`
+- Creates a new stock alert.
+
+---
+
+8. `Reports Page`
+Reports can be related to inventory, sales, stock, etc. They are often generated dynamically and may be saved as JSON.
+
+`SQL Statement to Generate Inventory Report`
+```sql
+SELECT id, name, description, category, quantity, price, expiration_date
+FROM inventory
+ORDER BY name;
+```
+- `Outputs`: List of all inventory items (could be exported to a CSV or PDF).
+
+`SQL Statement to Generate Sales Report`
+```sql
+SELECT t.transaction_date, t.transaction_type, i.name, t.quantity, t.total_amount, u.full_name AS created_by
+FROM transactions t
+JOIN inventory i ON t.inventory_item_id = i.id
+JOIN users u ON t.created_by = u.id
+WHERE t.transaction_type = 'sale'
+ORDER BY t.transaction_date DESC;
+```
+- `Outputs`: List of all sales transactions.
+
+`SQL Statement to Save Generated Report`
+```sql
+INSERT INTO reports (report_type, generated_by, report_data)
+VALUES (?, ?, ?);
+```
+- `Inputs`: `report_type`, `generated_by`, `report_data` (usually in JSON format)
+- Saves the generated report.
+
+---
+
+9. `User Management Page (Admin Only)`
+Admins can manage users (add, edit, delete).
+
+`SQL Statement to Get All Users`
+```sql
+SELECT id, username, full_name, role, email, phone
+FROM users;
+```
+- `Outputs`: List of all users in the system.
+
+`SQL Statement to Add a New User`
+```sql
+INSERT INTO users (username, password, email, role, full_name, phone)
+VALUES (?, ?, ?, ?, ?, ?);
+```
+- `Inputs`: `username`, `password`, `email`, `role`, `full_name`, `phone`
+- Adds a new user to the system.
+
+`SQL Statement to Update User Information`
+```sql
+UPDATE users
+SET username = ?, password = ?, email = ?, role = ?, full_name = ?, phone = ?
+WHERE id = ?;
+```
+- `Inputs`: `username`, `password`, `email`, `role`, `full_name`, `phone`, `id`
+- Updates user details.
+
+`SQL Statement to Delete User`
+```sql
+DELETE FROM users WHERE id = ?;
+```
+- `Inputs`: `id` (user ID)
+- Deletes a user from the system.
+
+---
+
+10. `Settings Page`
+This page will allow for system-wide configuration changes.
+
+`SQL Statement to Get All Settings`
+```sql
+SELECT setting_key, setting_value
+FROM settings;
+```
+- `Outputs`: List of all settings.
+
+`SQL Statement to Update a Setting`
+```sql
+UPDATE settings
+SET setting_value = ?
+WHERE setting_key = ?;
+```
+- `Inputs`: `setting_key`, `setting_value`
+- Updates a specific setting.
+
+---
+
+11. `Profile Page`
+This page allows users to view and update their profile details.
+
+`SQL
+
+ Statement to Get User Profile`
+```sql
+SELECT u.id, u.username, u.full_name, u.email, u.phone, p.address, p.date_of_birth, p.gender, p.profile_picture
+FROM users u
+LEFT JOIN profiles p ON u.id = p.user_id
+WHERE u.id = ?;
+```
+- `Inputs`: `user_id`
+- `Outputs`: User's profile information.
+
+`SQL Statement to Update User Profile`
+```sql
+UPDATE profiles
+SET address = ?, phone = ?, date_of_birth = ?, gender = ?, profile_picture = ?
+WHERE user_id = ?;
+```
+- `Inputs`: `address`, `phone`, `date_of_birth`, `gender`, `profile_picture`, `user_id`
+- Updates the user's profile information.
+
+---
+
+Conclusion
+These SQL queries are designed to support the core features of your `Medical Inventory Management System` based on the pages you've described. You can use them in your backend API (e.g., Node.js with Express) to handle requests from the React frontend. The queries handle `CRUD` operations (Create, Read, Update, Delete) and will allow you to interact with your `MySQL` database efficiently.

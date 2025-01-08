@@ -1,7 +1,10 @@
 `Mini Hackathon Theme: "Medical Inventory Management System in C++"`
 
 `Overview:`
-In this hackathon, trainees will develop a `Medical Inventory Management System` in C++ to manage the stock of medical supplies, medicines, and other healthcare items. The system will allow users to add, view, update, and delete medical items, and track their quantities. The system will also support generating reports for low stock items and expired products.
+In this hackathon, trainees will develop a `Medical Inventory Management System` in C++ 
+to manage the stock of medical supplies, medicines, and other healthcare items. 
+The system will allow users to add, view, update, and 
+delete medical items, and track their quantities. The system will also support generating reports for low stock items and expired products.
 
 ---
 
