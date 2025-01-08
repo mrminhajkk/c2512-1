@@ -1,0 +1,220 @@
+Here are the `SQL statements` 
+for each page of the `Smart Parking System 
+for Connected Vehicles` 
+based on the tables provided earlier.
+
+---
+
+`1. User Management`
+
+a) `Sign Up Page`
+```sql
+INSERT INTO Users (name, email, password, phone, role)
+VALUES (:name, :email, :password, :phone, :role);
+```
+
+b) `Login Page`
+```sql
+SELECT user_id, name, role
+FROM Users
+WHERE email = :email AND password = :password;
+```
+
+c) `Profile Page`
+- `View Profile`:
+```sql
+SELECT name, email, phone, role
+FROM Users
+WHERE user_id = :user_id;
+```
+- `Update Profile`:
+```sql
+UPDATE Users
+SET name = :name, email = :email, phone = :phone
+WHERE user_id = :user_id;
+```
+
+---
+
+`2. Parking Spot Management`
+
+a) `Search Parking Spots Page`
+```sql
+SELECT spot_id, location, latitude, longitude, capacity, price_per_hour, is_available
+FROM Parking_Spots
+WHERE is_available = 1 AND location LIKE :search_location;
+```
+
+b) `Parking Spot Details Page`
+```sql
+SELECT spot_id, location, latitude, longitude, capacity, price_per_hour, is_available
+FROM Parking_Spots
+WHERE spot_id = :spot_id;
+```
+
+c) `Reserve Parking Spot Page`
+1. `Insert Booking`:
+```sql
+INSERT INTO Bookings (user_id, spot_id, vehicle_id, booking_date, start_time, end_time, total_price, status)
+VALUES (:user_id, :spot_id, :vehicle_id, :booking_date, :start_time, :end_time, :total_price, 'Pending');
+```
+
+2. `Update Spot Availability` (if reserved successfully):
+```sql
+UPDATE Parking_Spots
+SET is_available = 0
+WHERE spot_id = :spot_id;
+```
+
+---
+
+`3. Vehicle Management`
+
+a) `Add Vehicle Page`
+```sql
+INSERT INTO Vehicles (user_id, vehicle_number, model, type)
+VALUES (:user_id, :vehicle_number, :model, :type);
+```
+
+b) `View Vehicles Page`
+```sql
+SELECT vehicle_id, vehicle_number, model, type
+FROM Vehicles
+WHERE user_id = :user_id;
+```
+
+c) `Remove Vehicle`:
+```sql
+DELETE FROM Vehicles
+WHERE vehicle_id = :vehicle_id;
+```
+
+---
+
+`4. Parking History and Analytics`
+
+a) `Parking History Page`
+```sql
+SELECT b.booking_id, ps.location, b.booking_date, b.start_time, b.end_time, b.total_price, b.status
+FROM Bookings b
+JOIN Parking_Spots ps ON b.spot_id = ps.spot_id
+WHERE b.user_id = :user_id
+ORDER BY b.booking_date DESC;
+```
+
+b) `Usage Analytics Page` (Optional)
+- `Most Visited Locations`:
+```sql
+SELECT ps.location, COUNT(*) AS visit_count
+FROM Bookings b
+JOIN Parking_Spots ps ON b.spot_id = ps.spot_id
+WHERE b.user_id = :user_id
+GROUP BY ps.location
+ORDER BY visit_count DESC;
+```
+
+- `Total Amount Spent`:
+```sql
+SELECT SUM(total_price) AS total_spent
+FROM Bookings
+WHERE user_id = :user_id AND status = 'Confirmed';
+```
+
+---
+
+`5. Admin Panel`
+
+a) `Dashboard Page`
+```sql
+SELECT 
+    (SELECT COUNT(*) FROM Users WHERE role = 'driver') AS total_users,
+    (SELECT COUNT(*) FROM Parking_Spots) AS total_spots,
+    (SELECT COUNT(*) FROM Bookings WHERE status = 'Confirmed') AS total_bookings,
+    (SELECT SUM(total_price) FROM Bookings WHERE status = 'Confirmed') AS total_revenue;
+```
+
+b) `Manage Parking Spots Page`
+- `Add Parking Spot`:
+```sql
+INSERT INTO Parking_Spots (location, latitude, longitude, capacity, price_per_hour, is_available)
+VALUES (:location, :latitude, :longitude, :capacity, :price_per_hour, :is_available);
+```
+
+- `Update Parking Spot`:
+```sql
+UPDATE Parking_Spots
+SET location = :location, latitude = :latitude, longitude = :longitude, capacity = :capacity, price_per_hour = :price_per_hour, is_available = :is_available
+WHERE spot_id = :spot_id;
+```
+
+- `Remove Parking Spot`:
+```sql
+DELETE FROM Parking_Spots
+WHERE spot_id = :spot_id;
+```
+
+c) `Booking Management Page`
+```sql
+SELECT b.booking_id, u.name AS user_name, ps.location, b.booking_date, b.start_time, b.end_time, b.total_price, b.status
+FROM Bookings b
+JOIN Users u ON b.user_id = u.user_id
+JOIN Parking_Spots ps ON b.spot_id = ps.spot_id;
+```
+
+---
+
+`6. Real-Time Features`
+
+a) `Live Parking Map Page`
+```sql
+SELECT spot_id, location, latitude, longitude, is_available
+FROM Parking_Spots
+WHERE is_available = 1;
+```
+
+b) `Parking Status Page`
+```sql
+SELECT ps.spot_id, ps.location, ps.is_available
+FROM Parking_Spots ps
+WHERE ps.spot_id = :spot_id;
+```
+
+---
+
+`7. Payment Management`
+
+a) `Payment Page`
+```sql
+INSERT INTO Payments (booking_id, user_id, amount, status)
+VALUES (:booking_id, :user_id, :amount, 'Completed');
+```
+
+b) `Invoice Page`
+```sql
+SELECT p.payment_id, b.booking_id, ps.location, b.booking_date, b.start_time, b.end_time, p.amount, p.payment_date
+FROM Payments p
+JOIN Bookings b ON p.booking_id = b.booking_id
+JOIN Parking_Spots ps ON b.spot_id = ps.spot_id
+WHERE p.payment_id = :payment_id;
+```
+
+---
+
+`8. Notifications and Support`
+
+a) `Notifications Page`
+```sql
+SELECT notification_id, message, created_at, is_read
+FROM Notifications
+WHERE user_id = :user_id
+ORDER BY created_at DESC;
+```
+
+b) `Customer Support Page`
+```sql
+INSERT INTO Notifications (user_id, message)
+VALUES (:user_id, :message);
+```
+
+---
+
