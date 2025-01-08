@@ -1,0 +1,29 @@
+auto: c2512auto.git 
+      minhaj, sana, vinayak, mani, mahesh 
+      local                                 remote 
+      /main     10 files                    /main 
+      /minhaj   10 files                    
+      /sana     10 files 
+      /vinayak  10 files + 1 file           /vinayak 
+      /mani 
+      /mahesh
+ge:   c2512ge.git 
+      abel, nayana, dhaheen, athira, ayisha, mahesh 
+      local                                 remote 
+      /main     10                             /main 
+      /abel     10 files + 3 files             /abel 
+      /nayana 
+      /dhaheen 
+      /athira 
+      /ayisha 
+      /mahesh
+medi: c2512medi.git 
+      josh, venkatesh, nimisha, sooraj, vishakh, mahesh 
+      /main 
+bank: c2512bank.git 
+      minhaj, abel, josh, mahesh 
+      /main 
+      /mahesh     +3                /mahesh        
+      /
+
+
