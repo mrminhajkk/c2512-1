@@ -1,0 +1,171 @@
+IPC
+-----------------------------1 Pipe-------------------------------- 
+    int pipe_fd[2];
+    if (pipe(pipe_fd) == -1) {
+        perror("pipe");
+        return 1;
+    }
+    
+    {   //receiver 
+        char buffer[1024];
+        close(pipe_fd[1]); // Close write end
+        read(pipe_fd[0], buffer, sizeof(buffer));
+        std::cout << "Child received: " << buffer << std::endl;
+        close(pipe_fd[0]);
+    }
+
+    {   //sender 
+        close(pipe_fd[0]); // Close read end
+        char buffer[1024] = "Hello from parent!";
+        write(pipe_fd[1], buffer, strlen(buffer) + 1);
+        close(pipe_fd[1]);
+    }
+
+-----------------------------2 Message Queue--------------------------------
+Message Queue
+    """
+    In the context of programmatic message passing, 
+    an object to which messages can be added and removed. 
+    Messages may be removed in the order 
+    in which they were added or in priority order.
+    """
+
+
+    #define MSG_KEY 1234  // Unique key for message queue
+
+    // Structure for message content
+    struct msgbuf {
+        long mtype;  // Message type
+        char mtext[100];  // Message content
+    };
+    sender() {
+        struct msgbuf message;
+        message.mtype = 1;  // Message type
+        strcpy(message.mtext, "Hello!!!");
+        if (msgsnd(msgid, &message, sizeof(message), 0) == -1) {
+            perror("msgsnd failed");
+            exit(1);
+        }
+
+    }
+    receiver() {
+        struct msgbuf message;
+        if (msgrcv(msgid, &message, sizeof(message), 0, 0) == -1) {
+            perror("msgrcv failed");
+            exit(1);
+        }
+        std::cout << "Consumer received: " << message.mtext << std::endl;
+    }
+
+    main() {
+        int msgid = msgget(MSG_KEY, 0666 | IPC_CREAT);
+        if (msgid == -1) {
+            perror("msgget failed");
+            return 1;
+        }
+
+        //...
+
+        // Remove the message queue
+        msgctl(msgid, IPC_RMID, nullptr);
+        std::cout << "Message queue removed." << std::endl;
+    }
+
+-----------------------------3 Shared memory--------------------------------
+    #define SHM_KEY 12345
+    #define SHM_SIZE 1024  // Size of the shared memory segment
+
+    struct SharedData {
+        int flag;         // 0: Empty, 1: Data written
+        char message[100]; // Shared message
+    };
+    sender() {
+        // Create shared memory
+        int shmid = shmget(SHM_KEY, sizeof(SharedData), 0666 | IPC_CREAT);
+        if (shmid == -1) {
+            perror("shmget failed");
+            exit(1);
+        }
+
+        // Attach shared memory
+        SharedData* shared_data = static_cast<SharedData*>(shmat(shmid, nullptr, 0));
+        if (shared_data == reinterpret_cast<SharedData*>(-1)) {
+            perror("shmat failed");
+            exit(1);
+        }
+        while (shared_data->flag == 1) {
+            // Wait for consumer to read
+        }
+        snprintf(shared_data->message, sizeof(shared_data->message), "Message %d", i + 1);
+        std::cout << "Producer wrote: " << shared_data->message << std::endl;
+        shared_data->flag = 1;  // Indicate data is ready
+
+        // Detach and destroy shared memory
+        shmdt(shared_data);
+    }
+    receiver() {
+        // Access shared memory
+        int shmid = shmget(SHM_KEY, sizeof(SharedData), 0666);
+        if (shmid == -1) {
+            perror("shmget failed");
+            exit(1);
+        }
+
+        // Attach shared memory
+        SharedData* shared_data = static_cast<SharedData*>(shmat(shmid, nullptr, 0));
+        if (shared_data == reinterpret_cast<SharedData*>(-1)) {
+            perror("shmat failed");
+            exit(1);
+        }
+        while (shared_data->flag == 0) {
+            // Wait for producer to write
+        }
+
+        if (strcmp(shared_data->message, "END") == 0) {
+            std::cout << "Consumer received END signal. Exiting..." << std::endl;
+            break;
+        }
+
+        std::cout << "Consumer read: " << shared_data->message << std::endl;
+        shared_data->flag = 0;  // Indicate data is read
+
+        // Detach and destroy shared memory
+        shmdt(shared_data);
+        shmctl(shmid, IPC_RMID, nullptr);
+    }
+
+    main() {
+        //
+    }
+
+
+
+
+
+
+
+
+
+void f(int x) {
+
+}
+
+void f(int *x) {
+
+}
+
+f(0) //f(int x)
+f(NULL) //f(int x)
+f(nullptr) //f(int *x)
+
+
+
+
+
+
+
+
+
+
+
+

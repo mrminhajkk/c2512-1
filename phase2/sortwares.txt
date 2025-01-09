@@ -7,3 +7,4 @@
 7. permission to 
    i. github 
    ii. sonarcube official page   
+8. vsc - visual studio code 

@@ -74,3 +74,10 @@ git commit -m "Message"				#to commit to local current branch
 git status 							#to check status of current branch 
 
 -------------------------------------------------------------------------
+
+
+Mahesh workflow from c2512bank.git: 
+    Dated: Jan 8, 2025
+1. https://github.com/abelmathew07/c2512bank.git
+
+-------------------------------------------------------------------------
