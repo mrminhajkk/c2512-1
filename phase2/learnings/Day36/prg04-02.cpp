@@ -66,7 +66,7 @@ int main() {
         if(0 == pid) {
             while(1 != payroll->status) { } // wait till salaries read
             server(shmid);
-            while(3 != payroll->status) { } // wait till salaries read   
+            while(3 != payroll->status) { } // wait till processed salaries read   
             shmctl(shmid, IPC_RMID, nullptr);
             return 0;
         }

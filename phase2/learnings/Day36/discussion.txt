@@ -139,31 +139,14 @@ Message Queue
     }
 
 
+-----------------------------4 Socket--------------------------------
+1. SumCalculatorServer
+2. SquareCalculatorServer
 
 
-
-
-
-
-
-void f(int x) {
-
-}
-
-void f(int *x) {
-
-}
-
-f(0) //f(int x)
-f(NULL) //f(int x)
-f(nullptr) //f(int *x)
-
-
-
-
-
-
-
+3. SortingServer (using bubble sort)    auto team       N double nums 
+4. MinAggregatorServer                  ge team         N double nums 
+5. SortingServer (using quick sort)     medi team       N double nums 
 
 
 
