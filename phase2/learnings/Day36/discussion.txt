@@ -140,8 +140,8 @@ Message Queue
 
 
 -----------------------------4 Socket--------------------------------
-1. SumCalculatorServer
-2. SquareCalculatorServer
+1. SumCalculatorServer              long number 
+2. SquareCalculatorServer           short number 
 
 
 3. SortingServer (using bubble sort)    auto team       N double nums 
