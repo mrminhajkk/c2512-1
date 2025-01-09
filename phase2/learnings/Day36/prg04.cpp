@@ -1,5 +1,5 @@
 //two processing - concurrent programming
-//IPC (inter process communication) via msg queue
+//IPC (inter process communication) via shared mem
 #include<iostream>
 #include<unistd.h>
 #include<sys/ipc.h>
@@ -23,7 +23,7 @@ void server(int& shmid) { //child 2
 }
 
 int main() { 
-    int shmid = shmget(SHM_KEY, 1024 , 0666 | IPC_CREAT);   
+    int shmid = shmget(SHM_KEY, sizeof(char)*1024 , 0666 | IPC_CREAT);   
     
     pid_t pid = -1;
     {   //child 1
