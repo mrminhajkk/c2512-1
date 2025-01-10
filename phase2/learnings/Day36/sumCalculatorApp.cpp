@@ -84,7 +84,8 @@ void serveClient(int& client_socket_fd) {
 
     // send response
     std::string sumStr = std::to_string(sum);
-    send(client_socket_fd, sumStr.c_str(), sumStr.size()+1, 0);
+    strcpy(buffer,sumStr.c_str());
+    write(client_socket_fd, buffer, BUFFER_SIZE);
     std::cout << "\tresponse sent to client" << std::endl;
 
     // release client // Close client socket
@@ -123,6 +124,8 @@ void client(std::string server_ip, int port) {
 }
 
 void requestServer(int& client_socket_fd) {
+    char buffer[BUFFER_SIZE];
+    
     long first;
     long second;
     std::cout << "First Number:"; std::cin >> first;
@@ -130,10 +133,13 @@ void requestServer(int& client_socket_fd) {
     // send numbers
     std::string firstStr = std::to_string(first);
     std::string secondStr = std::to_string(second);
-    send(client_socket_fd, firstStr.c_str(), firstStr.size()+1, 0);
-    send(client_socket_fd, secondStr.c_str(), secondStr.size()+1, 0);
+    strcpy(buffer,firstStr.c_str());
+    write(client_socket_fd, buffer, BUFFER_SIZE);
+
+    strcpy(buffer,secondStr.c_str());
+    write(client_socket_fd, buffer, BUFFER_SIZE);
     // receive response
-    char buffer[BUFFER_SIZE];
+   
     read(client_socket_fd, buffer, BUFFER_SIZE);
     //
     long sum = atol(buffer);
