@@ -12,13 +12,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#include<thread>
-#include<vector>
-#include<mutex>
-
 #define BUFFER_SIZE 1024
 #define MAX_CONNS 5
-std::mutex cout_mutex; // For synchronized console output
 
 void server(int port);
 void serveClient(int&);
@@ -36,9 +31,9 @@ void server(int port) {
     sockaddr_in address; //struct sockaddr_in
     
     // Bind socket to port
-    address.sin_family = AF_INET;
-    address.sin_addr.s_addr = INADDR_ANY;
-    address.sin_port = htons(port);
+    address.sin_family = AF_INET;           // ipv4 | AF_INET6
+    address.sin_addr.s_addr = INADDR_ANY;   // ip addr is not mandatory | auto ip addr detected
+    address.sin_port = htons(port);         // convert port of host byte order to network byte order
 
     if (bind(server_socket_fd, (sockaddr*)&address, sizeof(address)) < 0) {
         perror("Bind failed");
@@ -54,28 +49,16 @@ void server(int port) {
     }
 
     // Accept a connection
-    std::vector<std::thread> threads;
-
-    while (true) {
-        int client_socket_fd;
-        sockaddr_in client_address;
-        socklen_t addrlen = sizeof(client_address);
-
-        // Accept a connection
-        if ((client_socket_fd = accept(server_socket_fd, (sockaddr*)&client_address, &addrlen)) < 0) {
-            perror("Accept failed");
-            continue;
-        }
-
-        // Create a new thread to handle the client
-        threads.emplace_back(std::thread(serveClient, std::ref(client_socket_fd)));
+    int client_socket_fd;
+    int addrlen = sizeof(address);
+    if ((client_socket_fd = accept(server_socket_fd, (sockaddr*)&address, (socklen_t*)&addrlen)) < 0) { //blocked
+        perror("Accept failed");
+        close(server_socket_fd);
+        exit(EXIT_FAILURE);
     }
-    // Clean up threads
-    for (auto& t : threads) {
-        if (t.joinable()) {
-            t.join();
-        }
-    }
+
+    //serve the client
+    serveClient(client_socket_fd);
 
     // Close server socket
     close(server_socket_fd);
@@ -88,28 +71,20 @@ void serveClient(int& client_socket_fd) {
     long second;
     // receive first number
     read(client_socket_fd, buffer, BUFFER_SIZE);
-    first = atol(buffer);
+    memcpy((void*)&first, (void*)buffer, sizeof(long));
     // receive second number 
     read(client_socket_fd, buffer, BUFFER_SIZE);
-    second = atol(buffer);
+    memcpy((void*)&second,(void*)buffer, sizeof(long));
     // process numbers
     long sum = first + second;
+    std::cout << "process:" << first << " + " 
+                            << second << " = " 
+                            << sum << " done." << std::endl;
 
-    {
-        //std::lock_guard<std::mutex> lock(cout_mutex);
-        std::cout << "process:" << first << " + " 
-                                << second << " = " 
-                                << sum << " done." << std::endl;
-    }
     // send response
-    std::string sumStr = std::to_string(sum);
-    strcpy(buffer, sumStr.c_str()); buffer[sumStr.size()] = '\0';
-    send(client_socket_fd, buffer, strlen(buffer)+1, 0);
-
-    {
-        //std::lock_guard<std::mutex> lock(cout_mutex);
-        std::cout << "\tresponse sent to client" << std::endl;
-    }
+    memcpy((void*)buffer, (void*)&sum, sizeof(long));
+    write(client_socket_fd, buffer, BUFFER_SIZE);
+    std::cout << "\tresponse sent to client" << std::endl;
 
     // release client // Close client socket
     close(client_socket_fd);
@@ -126,7 +101,9 @@ void client(std::string server_ip, int port) {
     sockaddr_in server_address; //struct sockaddr_in
     server_address.sin_family = AF_INET;
     server_address.sin_port = htons(port);
-    if (inet_pton(AF_INET, server_ip.c_str(), &server_address.sin_addr) <= 0) {
+    if (inet_pton(AF_INET, server_ip.c_str(), &server_address.sin_addr) <= 0) { 
+        // convert ip addr of host byte order to network byte order, 
+        // and assigning into sin_addr
         perror("Invalid address or address not supported");
         exit(EXIT_FAILURE);
     }
@@ -146,25 +123,23 @@ void client(std::string server_ip, int port) {
 
 void requestServer(int& client_socket_fd) {
     char buffer[BUFFER_SIZE];
-
+    
     long first;
     long second;
     std::cout << "First Number:"; std::cin >> first;
     std::cout << "Second Number:"; std::cin >> second;
     // send numbers
-    std::string firstStr = std::to_string(first);
-    std::string secondStr = std::to_string(second);
+    memcpy((void*)buffer,(void*)&first,sizeof(long));
+    write(client_socket_fd, buffer, BUFFER_SIZE);
 
-    strcpy(buffer, firstStr.c_str()); buffer[firstStr.size()] = '\0';
-    send(client_socket_fd, buffer, strlen(buffer)+1, 0);
-
-    strcpy(buffer, secondStr.c_str()); buffer[secondStr.size()] = '\0';
-    send(client_socket_fd, buffer, strlen(buffer)+1, 0);
+    memcpy((void*)buffer,(void*)&second,sizeof(long));
+    write(client_socket_fd, buffer, BUFFER_SIZE);
     // receive response
    
     read(client_socket_fd, buffer, BUFFER_SIZE);
     //
-    long sum = atol(buffer);
+    long sum {};
+    memcpy((void*)&sum, (void*)buffer, sizeof(long));
     std::cout << "So," << first << " + " 
                             << second << " = " 
                             << sum << std::endl;
@@ -173,7 +148,8 @@ void requestServer(int& client_socket_fd) {
 
 int main(int argc, char* argv[]) {
     if(argc <= 1) {
-        std::cout << "App is not running..." << std::endl;
+        std::cout << "usage:\n\t./sumCalculatorApp.out server 8080" << std::endl;
+        std::cout << "\t./sumCalculatorApp.out client 127.0.0.1 8080" << std::endl;
         return EXIT_FAILURE;
     }
 
