@@ -1,0 +1,54 @@
+``` Initial Design 
+class PaymentProcessor:
+    def process_payment(self, amount: float):
+        raise NotImplementedError("Subclasses must implement this method")
+
+class CreditCardPaymentProcessor(PaymentProcessor):
+    def process_payment(self, amount: float):
+        print(f"Processing credit card payment of ${amount:.2f}")
+
+class CashPaymentProcessor(PaymentProcessor):
+    def process_payment(self, amount: float):
+        print(f"Processing cash payment of ${amount:.2f}")
+        self.calculate_change(amount)
+
+    def calculate_change(self, amount: float):
+        # Example logic for change calculation
+        print("Calculating change... Returning $5.00 in change.")
+
+# Usage
+def process_customer_payment(processor: PaymentProcessor, amount: float):
+    processor.process_payment(amount)
+
+# Processing with different payment methods
+credit_processor = CreditCardPaymentProcessor()
+cash_processor = CashPaymentProcessor()
+
+print("Using Credit Card Processor:")
+process_customer_payment(credit_processor, 50.0)
+
+print("\nUsing Cash Processor:")
+process_customer_payment(cash_processor, 50.0)
+```
+
+``` LSP-Compliant Design 
+from abc import ABC, abstractmethod
+
+class PaymentProcessor(ABC):
+    @abstractmethod
+    def process_payment(self, amount: float):
+        pass
+
+class CreditCardPaymentProcessor(PaymentProcessor):
+    def process_payment(self, amount: float):
+        print(f"Processing credit card payment of ${amount:.2f}")
+
+class CashPaymentProcessor(PaymentProcessor):
+    def process_payment(self, amount: float):
+        print(f"Processing cash payment of ${amount:.2f}")
+        self.calculate_change(amount)
+
+    def calculate_change(self, amount: float):
+        # Logic for change calculation
+        print("Calculating change...")
+```

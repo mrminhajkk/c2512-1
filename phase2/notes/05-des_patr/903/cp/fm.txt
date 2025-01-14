@@ -1,0 +1,44 @@
+What is factory method design pattern? 
+    1. creational pattern 
+    2. factory method design pattern 
+       """
+       provides an interface 
+       for creating objects in a superclass, 
+       but allows subclasses 
+       to alter the type of objects that will be created.
+       """
+       
+       "
+       We have abstract factory (idea about factory)
+       which may produce a abastract product (product is not defined now)
+
+       Then we will have actual factory 
+       which produces actual product 
+       "
+
+       interface IFactory                           interface IProductA
+            + IProductA* createProductA(); 
+       class FactoryOne : IFactory                  class ProductA1 : IProductA 
+            + IProductA* createProductA() {
+                return new ProductA1();   
+              } 
+       class FactoryTwo : IFactory                  class ProductA2 : IProductA 
+            + IProductA* createProductA() {
+                return new ProductA2();   
+              } 
+       //
+       IFactory -> ILogistics                       | IDialog                           ITransport           IButton         
+                   ITransport* createTransport()      IButton* createButton()             + delver()             +Click()
+       FactoryOne -> RoadLogistics                  | WindowsDialog                     Truck                WindowsButton 
+                    ITransport* createTransport()     IButton* createButton()  
+                    { return new Truck();}            { return new WindowsButton(); }
+       FactoryTwo -> SeaLogistics                   | WebDialog                          Ship                  WebButton 
+
+
+       Application 
+            Application(IDialog* dialog)
+                IButton* button = dialog->createButton()
+                render(button);
+
+       main()
+            Application app(new WindowsDialgo()); 

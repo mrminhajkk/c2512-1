@@ -1,0 +1,55 @@
+
+class PatitentController
+    private: 
+        PatientView view;
+        //PatientFileRepo repo;
+        IPatientRepo* repo; // 
+    public:
+        PatitentController(IPatientRepo* repo) : repo(repo) {  }
+        Create
+        ! Patient patient ;
+        ! view.Create(patient); // UI to model object  
+        ! repo.Create(patient); // model object to database 
+
+//user of PatitentController
+//  PatientView view;
+//  PatientFileRepo repo
+//  PatitentController(&fileRepo);
+
+PatientView
+    + void Create(Patient&) : throw Error 
+        
+Patient : {- name, - age, - gender, - ailment}   
+
+
+template<class T>
+class ICreatable 
+    virtual void Create(T&) = 0;        
+    virtual ~ICreatable();
+template<class T>
+class IReadable 
+    virtual T ReadById(int id)  =0 ; 
+    virtual ~IReadable();
+
+template<class T>
+class ICrudRepo : public ICreatable<T>, public IReadable<T>
+    //virtual void Create(T&) = 0;        
+    virtual void Update(int id, T&) = 0; 
+    virtual void Delete(int id) =0 ; 
+    //virtual T ReadById(int id)  =0 ; 
+    virtual vector<T> ReadAll()  =0 ;
+    virtual ~ICrudRepo();                   //?
+
+
+using IPatientRepo = ICrudRepo<Patient>;
+
+class PatientFileRepo : public IPatientRepo //file based database 
+    + void Create(Patient&) {} 
+    + void Update(int id, Patient&) {}
+    + void Delete(int id) {}
+    + Patient ReadById(int id) {}
+    + vector<Patient> ReadAll() {}
+         
+using IDoctorRepo = public ICrudRepo<Doctor>;
+
+class DoctorFileRepo : public IDoctorRepo //filed based database 
