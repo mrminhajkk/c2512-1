@@ -1,0 +1,45 @@
+with minhaj
+
+
+namespace biz_type {
+    using vector_size_t = int;
+    using element_size_t = short; 
+}
+
+char buffer[1024];
+
+Vaccination {id:string, doses:biz_type::element_size_t}
+vector<Vaccination> vaccinations; // 1 00
+// code to add 1 crore vaccinations 
+
+biz_type::vector_size_t numOfVaccinations = vaccinations.size();
+char* ptr_buffer = buffer;
+copy numOfVaccinations to ptr_buffer        at 0 
+ptr_buffer += sizeof(biz_type::vector_size_t);
+for each vaccination 
+    copy vacination dosage to ptr_buffer 
+    ptr_buffer += sizeof(biz_type::element_size_t)
+
+write 
+
+1024 / 8 = 128
+
+==============================================================
+
+reverse process is server end 
+char buffer[1024]
+char* ptr_buffer = buffer
+read 
+
+biz_type::vector_size_t numOfVaccinations;
+memcpy(numOfVaccinations,ptr_buffer, sizeof(biz_type::vector_size_t))
+ptr_buffer += sizeof(biz_type::vector_size_t)
+
+biz_type::element_size_t allDosages[numOfVaccinations];
+for I = 0 .. < numOfVaccinations
+    memcpy(allDosages[I],ptr_buffer, sizeof(biz_type::element_size_t))
+
+array of dosages in the array allDosages
+
+find the sum and write to client 
+

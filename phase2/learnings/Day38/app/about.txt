@@ -1,3 +1,21 @@
+controller: 
+    view 
+    model 
+
+view :              ui 
+
+model:              plain object 
+
+manage model:       model data into / from database
+
+
+-------------------------------------------------------------
+
+
+
+
+
+
 Vendor: {id:id_t, name:string, ratings: short int}
 VendorRepo: Create, ReadById, ReadAll 
 

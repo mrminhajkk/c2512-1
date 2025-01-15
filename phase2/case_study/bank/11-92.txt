@@ -1,0 +1,83 @@
+-----------------type.h-----------------
+#pragma once 
+#include<string>
+namespace dev{
+    namespace biz_type {
+        using identity_t = unsigned long;
+        using name_t = std::string;
+        using user_name_t = std::string;
+        using email_t = std::string;
+        using password_t = std::string;
+        using phone_number_t = std::string;
+        using address_t = std::string;
+        using time_unit_t = short int;
+        using decimal_t = float;
+        using currency_t = double;
+
+        struct date_t {
+            time_unit_t day;   // date number  ie day number of month   1-31
+            time_unit_t month; // month number :: 1-based               1-12
+            time_unit_t year;  // 4-digit year                       ...1900-2100...
+            date_t(time_unit_t day, time_unit_t month, time_unit_t year) : 
+                   day(day), month(month), year(year) { }
+        };
+
+        struct time_t {
+            time_unit_t hour; //24-hour 0-23
+            time_unit_t minute; //minute 0-59
+            time_unit_t second; //second 0-59
+            time_t(time_unit_t hour, time_unit_t minute, time_unit_t second = 0) : 
+                   hour(hour), minute(minute), second(second) { }
+        };
+
+        struct date_time_t : public date_t, public time_t{ 
+            date_time_t(time_unit_t day, time_unit_t month, time_unit_t year, 
+                        time_unit_t hour, time_unit_t minute, time_unit_t second = 0) : 
+                        date_t(day,month,year), time_t(hour, minute, second){ }
+        };
+
+        enum class UserStatus_t {
+            ACTIVE = 1, INACTIVE = 0
+        };
+
+        enum class AdminRole_t {
+            STAFF = 1, MANAGER = 2, SUPERADMIN=3
+        };
+    }
+
+    namespace file_type {
+        using identity_t = biz_type::identity_t;
+        using name_t = char[255];
+        using user_name_t = char[125];
+        using email_t = char[255];
+        using password_t = char[50];
+        using phone_number_t = char[20];
+        using address_t = char[255];
+        using time_unit_t = biz_type::time_unit_t;
+        using date_t = biz_type::date_t;
+        using time_t = biz_type::time_t;
+        using date_time_t = biz_type::date_time_t;
+        using decimal_t = biz_type::decimal_t;
+        using currency_t = biz_type::currency_t;
+        using UserStatus_t = short int;
+        using AdminRole_t = short int;
+    }
+}
+----------------------
+
+----------------------
+UserFileRepo 
+    void Create(dev::biz_type::User& user);
+    void Delete(dev::biz_type::identity_t id);
+    void Activate(dev::biz_type::identity_t id);
+    void Deactivate(dev::biz_type::identity_t id);
+    //
+    dev::biz_type::User ReadById(dev::biz_type::identity_t id);
+    vector<dev::biz_type::User> ReadAll();
+    vector<dev::biz_type::User> Search(dev::tybiz_typepe::name_t searchTerm); //name or email 
+----------------------
+
+----------------------
+AdminFileRepo
+    + Admin
+----------------------

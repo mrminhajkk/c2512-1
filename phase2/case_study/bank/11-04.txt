@@ -1,0 +1,210 @@
+Below are common `Oracle SQL queries and statements` 
+that the admin application might need for various tasks. 
+These queries include CRUD operations, 
+    data analysis, and management tasks.
+
+---
+
+`1. Authentication`
+
+`Admin Login`
+```sql
+SELECT ADMIN_ID, USERNAME, ROLE 
+FROM ADMIN 
+WHERE USERNAME = :username AND PASSWORD = :password;
+```
+
+---
+
+`2. Manage Users`
+
+`List All Users`
+```sql
+SELECT USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, STATUS 
+FROM USERS 
+ORDER BY CREATED_AT DESC;
+```
+
+`Search User by Name or Email`
+```sql
+SELECT USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, STATUS 
+FROM USERS 
+WHERE LOWER(FIRST_NAME) LIKE '%' || LOWER(:search_term) || '%'
+   OR LOWER(LAST_NAME) LIKE '%' || LOWER(:search_term) || '%'
+   OR LOWER(EMAIL) LIKE '%' || LOWER(:search_term) || '%';
+```
+
+`Activate or Deactivate a User`
+```sql
+UPDATE USERS 
+SET STATUS = :status -- 'ACTIVE' or 'INACTIVE'
+WHERE USER_ID = :user_id;
+```
+
+`Delete a User`
+```sql
+DELETE FROM USERS 
+WHERE USER_ID = :user_id;
+```
+
+`Add a New User`
+```sql
+INSERT INTO USERS (FIRST_NAME, LAST_NAME, EMAIL, PASSWORD, PHONE_NUMBER, ADDRESS) 
+VALUES (:first_name, :last_name, :email, :password, :phone_number, :address);
+```
+
+---
+
+`3. Manage Accounts`
+
+`List All Accounts`
+```sql
+SELECT A.ACCOUNT_ID, A.USER_ID, U.FIRST_NAME || ' ' || U.LAST_NAME AS USER_NAME, 
+       A.ACCOUNT_TYPE, A.BALANCE, A.STATUS, A.CREATED_AT 
+FROM ACCOUNTS A
+JOIN USERS U ON A.USER_ID = U.USER_ID 
+ORDER BY A.CREATED_AT DESC;
+```
+
+`Update Account Balance`
+```sql
+UPDATE ACCOUNTS 
+SET BALANCE = :new_balance 
+WHERE ACCOUNT_ID = :account_id;
+```
+
+`Close an Account`
+```sql
+UPDATE ACCOUNTS 
+SET STATUS = 'CLOSED' 
+WHERE ACCOUNT_ID = :account_id;
+```
+
+`Add a New Account for a User`
+```sql
+INSERT INTO ACCOUNTS (USER_ID, ACCOUNT_TYPE, BALANCE, INTEREST_RATE) 
+VALUES (:user_id, :account_type, :balance, :interest_rate);
+```
+
+---
+
+`4. Manage Transactions`
+
+`View All Transactions`
+```sql
+SELECT T.TRANSACTION_ID, T.ACCOUNT_ID, U.FIRST_NAME || ' ' || U.LAST_NAME AS USER_NAME, 
+       T.TRANSACTION_TYPE, T.AMOUNT, T.STATUS, T.TRANSACTION_DATE 
+FROM TRANSACTIONS T
+JOIN ACCOUNTS A ON T.ACCOUNT_ID = A.ACCOUNT_ID
+JOIN USERS U ON A.USER_ID = U.USER_ID 
+ORDER BY T.TRANSACTION_DATE DESC;
+```
+
+`Search Transactions by Date Range`
+```sql
+SELECT * 
+FROM TRANSACTIONS 
+WHERE TRANSACTION_DATE BETWEEN TO_DATE(:start_date, 'YYYY-MM-DD') AND TO_DATE(:end_date, 'YYYY-MM-DD');
+```
+
+`Approve or Reject a Transaction`
+```sql
+UPDATE TRANSACTIONS 
+SET STATUS = :status -- 'APPROVED' or 'REJECTED'
+WHERE TRANSACTION_ID = :transaction_id;
+```
+
+`Add a Manual Transaction`
+```sql
+INSERT INTO TRANSACTIONS (ACCOUNT_ID, TRANSACTION_TYPE, AMOUNT, STATUS, DESCRIPTION) 
+VALUES (:account_id, :transaction_type, :amount, 'SUCCESS', :description);
+```
+
+---
+
+`5. Manage Loans`
+
+`View All Loan Applications`
+```sql
+SELECT L.LOAN_ID, U.FIRST_NAME || ' ' || U.LAST_NAME AS USER_NAME, 
+       L.LOAN_TYPE, L.LOAN_AMOUNT, L.INTEREST_RATE, L.TENURE_MONTHS, 
+       L.LOAN_STATUS, L.APPLICATION_DATE 
+FROM LOANS L
+JOIN USERS U ON L.USER_ID = U.USER_ID 
+ORDER BY L.APPLICATION_DATE DESC;
+```
+
+`Approve or Reject a Loan`
+```sql
+UPDATE LOANS 
+SET LOAN_STATUS = :status, -- 'APPROVED' or 'REJECTED'
+    APPROVED_AMOUNT = CASE WHEN :status = 'APPROVED' THEN LOAN_AMOUNT ELSE NULL END 
+WHERE LOAN_ID = :loan_id;
+```
+
+`Add a New Loan Application`
+```sql
+INSERT INTO LOANS (USER_ID, LOAN_TYPE, LOAN_AMOUNT, INTEREST_RATE, TENURE_MONTHS) 
+VALUES (:user_id, :loan_type, :loan_amount, :interest_rate, :tenure_months);
+```
+
+---
+
+`6. Generate Reports`
+
+`User Activity Report`
+```sql
+SELECT U.USER_ID, U.FIRST_NAME || ' ' || U.LAST_NAME AS USER_NAME, 
+       COUNT(T.TRANSACTION_ID) AS TRANSACTION_COUNT, 
+       SUM(T.AMOUNT) AS TOTAL_AMOUNT 
+FROM USERS U
+LEFT JOIN ACCOUNTS A ON U.USER_ID = A.USER_ID
+LEFT JOIN TRANSACTIONS T ON A.ACCOUNT_ID = T.ACCOUNT_ID 
+GROUP BY U.USER_ID, U.FIRST_NAME, U.LAST_NAME;
+```
+
+`Loan Disbursement Report`
+```sql
+SELECT LOAN_TYPE, COUNT(*) AS TOTAL_LOANS, SUM(APPROVED_AMOUNT) AS TOTAL_DISBURSED 
+FROM LOANS 
+WHERE LOAN_STATUS = 'APPROVED' 
+GROUP BY LOAN_TYPE;
+```
+
+`Transaction Summary`
+```sql
+SELECT TRANSACTION_TYPE, COUNT(*) AS TOTAL_TRANSACTIONS, SUM(AMOUNT) AS TOTAL_AMOUNT 
+FROM TRANSACTIONS 
+WHERE STATUS = 'SUCCESS' 
+GROUP BY TRANSACTION_TYPE;
+```
+
+---
+
+`7. Notifications`
+
+`Send a Notification to a User`
+```sql
+INSERT INTO NOTIFICATIONS (USER_ID, MESSAGE, STATUS) 
+VALUES (:user_id, :message, 'UNREAD');
+```
+
+`Mark a Notification as Read`
+```sql
+UPDATE NOTIFICATIONS 
+SET STATUS = 'READ' 
+WHERE NOTIFICATION_ID = :notification_id;
+```
+
+`View All Notifications`
+```sql
+SELECT N.NOTIFICATION_ID, U.FIRST_NAME || ' ' || U.LAST_NAME AS USER_NAME, 
+       N.MESSAGE, N.STATUS, N.NOTIFICATION_DATE 
+FROM NOTIFICATIONS N
+LEFT JOIN USERS U ON N.USER_ID = U.USER_ID 
+ORDER BY N.NOTIFICATION_DATE DESC;
+```
+
+---
+
+Let me know if you need additional queries, procedures, or trigger examples!

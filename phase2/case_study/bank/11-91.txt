@@ -1,0 +1,18 @@
+Class Design: (models)
+1. dev::type::User 
+    - id        : dev::biz_type::identity_t 
+    - firstName : dev::biz_type::name_t
+    - lastName  : dev::biz_type::name_t 
+    - email     : dev::biz_type::email_t 
+    - password  : dev::biz_type::password_t 
+    - phoneNumber  : dev::biz_type::phone_number_t 
+    - address   : dev::biz_type::address_t
+    - createdAt : dev::biz_type::date_time_t
+    - status    : dev::biz_type::UserStatus_t
+    
+2. Admin 
+    - id        : dev::biz_type::identity_t 
+    - userName  : dev::biz_type::user_name_t
+    - password  : dev::biz_type::password_t
+    - role      : dev::biz_type::AdminRole_t
+    - createdAt : dev::biz_type::date_time_t
