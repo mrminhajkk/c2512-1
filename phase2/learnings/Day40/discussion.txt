@@ -1,4 +1,34 @@
-with minhaj
+==============================================================
+abel challenge:
+    template<class T> 
+    sum as accumulate : first arg vector of doctors 
+    second arg : function<T(T,Doctor)> elementOperation
+                
+    third arg: init value of T
+        T result = init; 
+        for doctor in doctors:
+            result = elementOperation(result, doctor);
+        return result 
+
+    auto sumOp = [](T sum, Doctor doctor) -> {
+                    return sum + doctor.getYearOfExperience();
+                };
+    int sum = accumulate(doctors, sumOp, 0);
+
+    auto minOp = [](T min, Doctor doctor) -> {
+                    return doctor.getYearOfExperience() < min ? 
+                        doctor.getYearOfExperience() : min;
+                };
+    int min = accumulate(doctors, minOp, MAX_INT);
+==============================================================
+
+
+
+
+
+
+==============================================================
+minhaj challenge:
 
 
 namespace biz_type {
@@ -24,7 +54,7 @@ write
 
 1024 / 8 = 128
 
-==============================================================
+......
 
 reverse process is server end 
 char buffer[1024]
@@ -43,3 +73,4 @@ array of dosages in the array allDosages
 
 find the sum and write to client 
 
+==============================================================
