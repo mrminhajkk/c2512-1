@@ -74,3 +74,20 @@ array of dosages in the array allDosages
 find the sum and write to client 
 
 ==============================================================
+
+
+josh challenge: 
+slices_count we may have bt 10 and 200 <- ranges for random number 
+
+auto slices_count_by_5= vec_size / 5 
+    case 1: 100 / 5 = 20 
+    case 2: 1 00 00 000 / 5 = 20 00 000
+    case 3: 10/5   = 2
+if slices_count_by_5 == 0:
+    slices_count = 1
+else if(slices_count_by_5 < 10)
+    slices_count = slices_count_by_5 
+else 
+    slices_count = rand number from 10 to min(slices_count_by_5, 200)
+
+
