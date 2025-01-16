@@ -1,63 +1,64 @@
-### **Admin Login**
-| **Option**                  | **Description**                                             |
-|-----------------------------|-------------------------------------------------------------|
-| Add Patient                 | Add a new patient to the system.                           |
-| Edit Patient                | Edit existing patient details.                             |
-| View Patient                | View patient details.                                      |
-| Add Doctor                  | Add a new doctor to the system.                            |
-| Edit Doctor                 | Edit existing doctor details.                              |
-| View Doctor                 | View doctor details.                                       |
-              -| Add Department              | Add a new department to the system.                        |
-              -| Edit Department             | Edit existing department details.                          |
-              -| View Department             | View department details.                                   |
-| Schedule Appointment        | Schedule appointments for patients with doctors.           |
-| View Appointments           | View all scheduled appointments.                           |
-| Add Medical History         | Add medical history to a patient.                          |
-| View Medical History        | View a patient's medical history.                          |
-| Cancel Appointment          | Cancel an existing appointment.                            |
-| View Payment                | View all payment details.                           |
-| Monthly Report              | Monthly report of the Hospital.                            |
-| Exit                        | Exit the system.                                           |
+Hospital Management System 
+Admin App
+    Login 
+        Fields: Username (email), Password 
+        During Login: 
+            Is Username, Password? 
+            Yes: One of the Patient / Doctor / Help Desk / Admin Page   
+            No: Invalid Username / Password 
+    Patient Registration 
+      id, 
+      name, age, gender, phone, email, location, address,  
+      created_at,  updated_at 
 
----
+      phone number exist 
+      email exist
 
-### **Front Desk Login**
-| **Option**                  | **Description**                                             |
-|-----------------------------|-------------------------------------------------------------|
-| Add Patient                 | Add a new patient to the system.                           |
-| Edit Patient                | Edit existing patient details.                             |
-| View Patient                | View patient details.                                      |
-| View Doctor                 | View doctor details.                                       |
-           -| View Department             | View department details.                                   |
-| Schedule Appointment        | Schedule appointments for patients with doctors.           |
-| View Appointments           | View all scheduled appointments.                           |
-| Cancel Appointment          | Cancel an existing appointment.                            |
-| Exit                        | Exit the system.                                           |
+      patient number will be generated which will be used as username 
+
+      editable fields : phone, email, address, location
+      after consultation non editable fields: name, age 
+    Patient Management 
+      [1] create [2] edit [3] delete [4] search [99] exit 
+      delete they may do if no consulation there 
+
+    Department Management 
+      id, 
+      name, description 
+      [1] create [2] edit [3] delete [4] search [99] exit 
+
+    Doctor Management 
+      id, 
+      name, department_id, doctor_number, 
+      phone, email, location, address
+      [1] create [2] edit [3] delete [4] search [5] deactive [99] exit
+    
+    Schedule Doctor
+      id, 
+      doctor_id, 
+      day, start_time, end_time 
+
+    Appointment 
+      id, patient_id, 
+      doctor_id, 
+      date, time, reason, status 
+
+    Consulation 
+      id, 
+      patient_id, doctor_id, 
+      date, diagnosis, treatement, prescription
+    
+    Payment 
+      history_id, patient_id, 
+      date, amount, status
+
+     
+      
 
 
 
----
-### **Patient Login**
-| **Option**                  | **Description**                                             |
-|-----------------------------|-------------------------------------------------------------|
-| View Profile                | View personal details (name, age, ailment, etc.).          |
-| View Appointment Details    | View the details of scheduled appointments.                |
-| Book Appointment            | Schedule a new appointment with a doctor.                  |
-| View Medical History        | View personal medical history.                             |
-| Cancel Appointment          | Cancel an existing appointment.                            |
-| Payment                     | Payment after consultation.                                |
-| Prescription                | Detailed priscription after consultation.                  |
-| Report                      | Can see report for each consultation.                      |
-| Exit                        | Exit the system.                                           |
 
----
 
-### **Doctor Login**
-| **Option**                  | **Description**                                             |
-|-----------------------------|-------------------------------------------------------------|
-| View Patient Details        | View details of patients assigned to the doctor.           |
-| Add Medical History /       | Add each patient consultation details.                     |
-  Constultation details          
-| View Medical History        | View the medical history of assigned patients.             |
-| View Appointments           | View scheduled appointments with patients.                 |
-| Exit                        | Exit the system.                                           |
+    
+
+    
