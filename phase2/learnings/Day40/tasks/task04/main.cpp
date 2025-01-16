@@ -1,7 +1,24 @@
+// mix 
+// array of doctors
+// findSum, findMinInFirstHalf, findMaxInSecondHalf
+//    +
+// array of doctors
+// multi-threaded "findSum, findMinInFirstHalf, findMaxInSecondHalf"
+
+// driver code: array of doctors, EXECUTION_POLICY = 1 (SEQ), 2 (PAR)
+
+#include <climits>
+
 #include <iostream>
+
 #include <string>
 #include <vector>
-#include <climits>
+#include <tuple>
+
+#define EXECUTION_POLICY 1 //= 1 (SEQ), 2 (PAR)
+#if EXECUTION_POLICY == 2
+#include <thread>
+#endif
 
 using identity_t = std::string;
 using years_t = short;
@@ -45,6 +62,36 @@ years_t findMaxInSecondHalf(std::vector<Doctor>& doctors) {
     return max;
 }
 
+std::tuple<years_t, years_t, years_t>  compute(std::vector<Doctor>& doctors) {
+    years_t sum;
+    years_t min; 
+    years_t max; 
+
+#if EXECUTION_POLICY == 1
+    sum = findSum(doctors);
+    min = findMinInFirstHalf(doctors);
+    max = findMaxInSecondHalf(doctors);
+#elif EXECUTION_POLICY == 2
+    std::thread thrSum([](std::vector<Doctor>& doctors, years_t& sum) -> void 
+        { 
+            sum = findSum(doctors);
+        }, std::ref(doctors), std::ref(sum));
+    std::thread thrMin([](std::vector<Doctor>& doctors, years_t& min) -> void 
+        { 
+            min = findMinInFirstHalf(doctors);
+        }, std::ref(doctors), std::ref(min));
+    std::thread thrMax([](std::vector<Doctor>& doctors, years_t& max) -> void 
+        { 
+            max = findMaxInSecondHalf(doctors);
+        }, std::ref(doctors), std::ref(max));
+    thrSum.join();
+    thrMax.join();
+    thrMin.join();
+#endif
+
+    return {sum, min, max};
+}
+
 int main() {
     std::vector<Doctor> doctors {        
         Doctor("D001", 5),
@@ -54,9 +101,7 @@ int main() {
         Doctor("D005", 1)
     };
 
-    years_t sum = findSum(doctors);
-    years_t min = findMinInFirstHalf(doctors);
-    years_t max = findMaxInSecondHalf(doctors);
+    auto [sum, min, max] = compute(doctors);
 
     std::cout << "Sum = " << sum << std::endl;
     std::cout << "Min = " << min << std::endl;

@@ -1,3 +1,9 @@
+// array of doctors
+// IPC client-server communcation
+//      client: requests the findSum of array of doctors (each doctor is of fixed sized) 
+//      server: 
+//          request: receives array of doctors
+//          response:sends sum
 #include <iostream>
 #include <string>
 #include <vector>
@@ -5,7 +11,7 @@
 #include <unistd.h>
 #include <cstring>
 
-using identity_t = std::string;
+using identity_t = char[20];//std::string;
 using years_t = short;
 using field_size_t = short;
 
@@ -14,14 +20,16 @@ class Doctor {
         identity_t id;
         years_t yearsOfExperience;
     public: 
-        Doctor(identity_t id, years_t yearsOfExperience) : id(id), yearsOfExperience(yearsOfExperience) { }
+        Doctor(const identity_t id, years_t yearsOfExperience) : yearsOfExperience(yearsOfExperience) { 
+            strcpy(this->id, id);
+        }
         years_t getYearsOfExperience() { return this->yearsOfExperience; }
 };
 
-years_t findSum(years_t* years, field_size_t size) {
+years_t findSum(std::vector<Doctor>& doctors) {
     years_t sum = 0;
-    for(int I = 0; I < size; I++) {
-        sum += years[I];
+    for(auto doctor : doctors) {
+        sum += doctor.getYearsOfExperience();
     }
     return sum;
 }
@@ -29,15 +37,15 @@ years_t findSum(years_t* years, field_size_t size) {
 void server(int read_pipe_fd, int write_pipe_fd)
 {
     const int BUFFER_SIZE = 1024;
-    int buffer[BUFFER_SIZE];
+    char buffer[BUFFER_SIZE];
 
     read(read_pipe_fd, buffer, BUFFER_SIZE);
     field_size_t size;
     memcpy((char*)&size, buffer, sizeof(field_size_t));
-    years_t years[size];
-    memcpy((char*)years, (char*)(buffer + sizeof(field_size_t)),sizeof(years_t)*size);
+    std::vector<Doctor> doctors(size, Doctor("",0));
+    memcpy((char*)(doctors.data()), (char*)(buffer + sizeof(field_size_t)),sizeof(Doctor)*size);
     
-    years_t sum = findSum(years, size); 
+    years_t sum = findSum(doctors); 
     memcpy(buffer, (char*)(&sum), sizeof(years_t));
     write(write_pipe_fd, buffer, BUFFER_SIZE);
 
@@ -48,17 +56,11 @@ void server(int read_pipe_fd, int write_pipe_fd)
 void client(std::vector<Doctor>& doctors, int read_pipe_fd, int write_pipe_fd)
 {
     const int BUFFER_SIZE = 1024;
-    int buffer[BUFFER_SIZE];
+    char buffer[BUFFER_SIZE];
 
-    field_size_t size = doctors.size();
-    years_t years[size];
-    
-    for(int I = 0; I < size; I++) {
-        years[I++] = doctors[I].getYearsOfExperience();
-    }
-    
+    field_size_t size = doctors.size();    
     memcpy(buffer, (char*)(&size), sizeof(field_size_t));    
-    memcpy(buffer + sizeof(field_size_t), (char*)(years), sizeof(years_t) * size);
+    memcpy(buffer + sizeof(field_size_t), (char*)(doctors.data()), sizeof(Doctor) * size);
     write(write_pipe_fd, buffer, BUFFER_SIZE);
 
     years_t sum; 

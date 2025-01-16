@@ -1,0 +1,123 @@
+App
+    Login 
+        Fields: Username (email), Password 
+        During Login: 
+            Is Username, Password? 
+            Yes: One of the Admin / Manager / Pharmacist Page  
+            No: Invalid Username / Password 
+
+    Admin Page 
+        [1] users [2] suppliers [3] products [4] sales [5] purchases [99] logout
+        Choice: 1
+
+    Manager Page 
+        [2] suppliers [3] products [4] sales [5] purchases [99] logout
+    Pharmacist Page 
+        [3] products [4] sales [99] logout 
+
+    User Management 
+        [1] create [2] edit [3] delete [4] display all [99] exit 
+        id, 
+        name, email, password, phone, role 
+        create_at, updated_at 
+
+    User Management > Create User 
+        Name: 
+        Email: 
+            Email Exist.
+        Alternate Email: 
+        Password: 
+        Phone: 
+            Email Exist.
+        Alternate Phone: 
+        Role (1-Admin, 2-Manager, 3-Pharmacist):  
+        [1] edit...
+        [99] Confirm To Create
+        Option: 99
+        User Created Successfully.
+        Press any key to continue...
+    
+    User Management > Edit User
+        Search By Email / Phone:   
+        If Exist: 
+            Editing....
+            Name: 
+            Email:
+            Password:
+            Phone: 
+            Role:  
+            [1] edit...
+            [99] Confirm To Update 
+            Option: 99
+            User Updated Successfully 
+            Press any key to continue...
+        If Not Exist: 
+            Email / Phone does not exist. (3 times allowed for wrong search)
+            OR 
+            Your limit to search reached 3 times. Sorry...
+            Press any key to continue...
+        
+    User Management > Delete User
+        Search By Email / Phone:
+        If Exist:    
+            Name: 
+            Email:
+            Password:
+            Phone: 
+            Role:  
+            [99] Confirm To Delete 
+            Option: 99
+            User Deleted Successfully.
+            Press any key to continue...
+        If Not Exist: 
+            Email / Phone does not exist. 
+            Press any key to continue...
+    
+    User Management > Display All 
+        Name        Email           Phone           Role 
+        ...
+        [1] Prev Page [2] Next Page [99] Exit (20 items per page) 
+
+    Supplier Management 
+        [1] create [2] edit [3] delete [4] display all [99] exit 
+        id, 
+        name, phone, email, address, 
+        create_at, updated_at
+
+        name            exist checking 
+        phone number    exist checking 
+        email           exist checking 
+
+    Product Management 
+        [1] create [2] edit [3] delete [4] display all [99] exit 
+        id, 
+        name, description, category, quantity, 
+        supplier_id, expiration_date, cost, price, mrp, 
+        created_at,
+        updated_at 
+
+        Supplier
+            search by name: 
+            not exist [loop to search 3 times]
+
+        quantity is stock quantity 
+        name exist 
+        cost will be automatically updated from the last purchase 
+        price will be displayed during sales 
+
+
+        quantity will be added during purchase 
+        quantity will be substracted during sales 
+
+
+        supplier cannot be changed 
+
+        editing the product: 
+            quantity cannot be edited if product is in purchase or sales.
+    Sales 
+
+    Purchase 
+
+    Stock Take: (Future)
+
+

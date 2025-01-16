@@ -1,0 +1,63 @@
+### **Admin Login**
+| **Option**                  | **Description**                                             |
+|-----------------------------|-------------------------------------------------------------|
+| Add Patient                 | Add a new patient to the system.                           |
+| Edit Patient                | Edit existing patient details.                             |
+| View Patient                | View patient details.                                      |
+| Add Doctor                  | Add a new doctor to the system.                            |
+| Edit Doctor                 | Edit existing doctor details.                              |
+| View Doctor                 | View doctor details.                                       |
+              -| Add Department              | Add a new department to the system.                        |
+              -| Edit Department             | Edit existing department details.                          |
+              -| View Department             | View department details.                                   |
+| Schedule Appointment        | Schedule appointments for patients with doctors.           |
+| View Appointments           | View all scheduled appointments.                           |
+| Add Medical History         | Add medical history to a patient.                          |
+| View Medical History        | View a patient's medical history.                          |
+| Cancel Appointment          | Cancel an existing appointment.                            |
+| View Payment                | View all payment details.                           |
+| Monthly Report              | Monthly report of the Hospital.                            |
+| Exit                        | Exit the system.                                           |
+
+---
+
+### **Front Desk Login**
+| **Option**                  | **Description**                                             |
+|-----------------------------|-------------------------------------------------------------|
+| Add Patient                 | Add a new patient to the system.                           |
+| Edit Patient                | Edit existing patient details.                             |
+| View Patient                | View patient details.                                      |
+| View Doctor                 | View doctor details.                                       |
+           -| View Department             | View department details.                                   |
+| Schedule Appointment        | Schedule appointments for patients with doctors.           |
+| View Appointments           | View all scheduled appointments.                           |
+| Cancel Appointment          | Cancel an existing appointment.                            |
+| Exit                        | Exit the system.                                           |
+
+
+
+---
+### **Patient Login**
+| **Option**                  | **Description**                                             |
+|-----------------------------|-------------------------------------------------------------|
+| View Profile                | View personal details (name, age, ailment, etc.).          |
+| View Appointment Details    | View the details of scheduled appointments.                |
+| Book Appointment            | Schedule a new appointment with a doctor.                  |
+| View Medical History        | View personal medical history.                             |
+| Cancel Appointment          | Cancel an existing appointment.                            |
+| Payment                     | Payment after consultation.                                |
+| Prescription                | Detailed priscription after consultation.                  |
+| Report                      | Can see report for each consultation.                      |
+| Exit                        | Exit the system.                                           |
+
+---
+
+### **Doctor Login**
+| **Option**                  | **Description**                                             |
+|-----------------------------|-------------------------------------------------------------|
+| View Patient Details        | View details of patients assigned to the doctor.           |
+| Add Medical History /       | Add each patient consultation details.                     |
+  Constultation details          
+| View Medical History        | View the medical history of assigned patients.             |
+| View Appointments           | View scheduled appointments with patients.                 |
+| Exit                        | Exit the system.                                           |
