@@ -6,6 +6,26 @@ Admin App
             Is Username, Password? 
             Yes: One of the Patient / Doctor / Help Desk / Admin Page   
             No: Invalid Username / Password 
+    Admin Page {{ abel, athira, nayana, ayisha, 
+        dhaheen, dhaheen, athira,
+        athira  
+        abel}}
+      [1] admins [2] departments [3] doctors [4] patients
+      [5] schedules [6] appointments [7] consulations
+      [8] payments
+      [9] logout 
+    Help Desk Page <sub set of admin page>
+      [4] patients [6] appointments 
+      [7] consulations
+      [8] payments
+      [9] logout 
+    Doctor Page {{ nayana, nayana, abel, abel }}
+      [1] View Profile [2] Search Patients [3] Change Password [4] Logout 
+    Patient Page {{ ayisha, ayisha, dhaheen,
+      abel, abel }}
+      [1] View Profile [2] History [3] Book Appointment 
+      [4] Change Password [5] Logout 
+    
     Patient Registration 
       id, 
       name, age, gender, phone, email, location, address,  
@@ -18,6 +38,7 @@ Admin App
 
       editable fields : phone, email, address, location
       after consultation non editable fields: name, age 
+
     Patient Management 
       [1] create [2] edit [3] delete [4] search [99] exit 
       delete they may do if no consulation there 
