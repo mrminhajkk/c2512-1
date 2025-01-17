@@ -11,7 +11,7 @@ App
             minhaj, 
             vinayak }}
         [1] admins [2] floors [3] spots [4] reservations [5] parking payments  
-        [6] vehicles 
+        [6] cars 
         [99] logout
         Choice: 1
 
@@ -84,7 +84,21 @@ App
         Page Number: 1/2 [1] Prev Page [2] Next Page [99] Exit (20 items per page) (displayed if pages)
 
     Driver Registration 
+        Name: 
+        Email: 
+            Email Exist.
+        Alternate Email: 
+        Password: 
+        Phone: 
+            Phone Exist.
+        Alternate Phone: 
 
+        Car Number: 
+        Car Model: 
+        Car Type: 
+
+        Driver Registerd Successfully.
+        Press any key to continue...
     Admin Management > Spot Management:
         Search Floor: GR 
         Spot Number : GR-S001 
@@ -92,7 +106,7 @@ App
         Are you sure to create the spot?
 
     Reservation :
-        Vehicle: 
+        Car Number: 
         Spot: GR-S001
         Date:  
         Start Time: 
@@ -102,7 +116,7 @@ App
         Generated Booking Number is B240117-0001
 
     Parking Payment
-        Booking Number / Vehicle Number: 
+        Booking Number / Car Number: 
         Amount: 
         Payment Mode: 
         Payment Recived Successfully.

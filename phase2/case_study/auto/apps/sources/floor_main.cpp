@@ -5,7 +5,7 @@
 #include"./../headers/floor_main.h"
 #include"./../headers/ui_common.h"
 
-class Controller { 
+class FloorController { 
     public: 
         static void Read(std::string& floorNumber, int flags = 3) {
             if((flags & 1) != 0) {
@@ -74,7 +74,7 @@ static int ReadFloorMenu() {
 }
 
 void ManageFloor() { 
-    Controller controller;
+    FloorController controller;
     
     int choice;
 

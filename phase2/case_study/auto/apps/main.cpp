@@ -1,12 +1,12 @@
 #include "./../headers/ui_common.h"
-#include "./../headers/floor_main.h"
+#include "./../headers/app_main.h"
 
-void ManageApp() {
-    ManageFloor();
+void ManageApps() {
+    AppMain();
 }
 
 int main() {
-    ManageApp();
+    ManageApps();
     return 0;
 }
 

@@ -5,7 +5,7 @@
 #include"./../headers/admin_main.h"
 #include"./../headers/ui_common.h"
 
-class Controller { 
+class AdminController { 
     public: 
         static void Read(std::string& name,
             std::string& email,
@@ -102,7 +102,7 @@ static int ReadAdminMenu() {
 }
 
 void ManageAdmin() { 
-    Controller controller;
+    AdminController controller;
     
     int choice;
 
