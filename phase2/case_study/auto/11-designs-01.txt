@@ -1,0 +1,112 @@
+App
+    [1] Driver Registration     minhaj
+    [2] Login [3] Exit 
+        Fields: Username (email), Password 
+        During Login: 
+            Is Username, Password? 
+            Yes: One of the Admin / Driver Page
+            No: Invalid Username / Password 
+
+    Admin Page {{ vinayak, sana, sana, pitchumani, pitchumani, 
+            minhaj, 
+            vinayak }}
+        [1] admins [2] floors [3] spots [4] reservations [5] parking payments  
+        [6] vehicles 
+        [99] logout
+        Choice: 1
+
+    Driver Page {{pitchumani, pitchumani, pitchumani, 
+        minhaj, minhaj}}
+        [1] Reserve Parking [2] Parking Payment [3] bookings 
+        [4] Display Profile [99] logout
+
+    Admin Management                                                         
+        [1] create [2] edit [3] delete [4] display all [99] exit 
+        id, 
+        name, email, password, phone, role (1-admin)
+        created_at, updated_at 
+
+    Admin Management > Create Admin 
+        Name: 
+        Email: 
+            Email Exist.
+        Alternate Email: 
+        Password: 
+        Phone: 
+            Phone Exist.
+        Alternate Phone: 
+        Role : Admin
+        [1] edit...
+        [99] Confirm To Create
+        Option: 99
+        Admin Created Successfully.
+        Press any key to continue...
+    
+    Admin Management > Edit Admin
+        Search By Email / Phone:   
+        If Exist: 
+            Editing....
+            Name: 
+            Email:
+            Password:
+            Phone: 
+            Role:  Admin
+            [1] edit...
+            [99] Confirm To Update 
+            Option: 99
+            Admin Updated Successfully 
+            Press any key to continue...
+        If Not Exist: 
+            Email / Phone does not exist. (3 times allowed for wrong search)
+            OR 
+            Your limit to search reached 3 times. Sorry...
+            Press any key to continue...
+        
+    Admin Management > Delete Admin
+        Search By Email / Phone:
+        If Exist:    
+            Name: 
+            Email:
+            Password:
+            Phone: 
+            Role:  
+            [99] Confirm To Delete 
+            Option: 99
+            Admin Deleted Successfully.
+            Press any key to continue...
+        If Not Exist: 
+            Email / Phone does not exist. 
+            Press any key to continue...
+    
+    Admin Management > Display All 
+        Name        Email           Phone           Role 
+        ...
+        Page Number: 1/2 [1] Prev Page [2] Next Page [99] Exit (20 items per page) (displayed if pages)
+
+    Driver Registration 
+
+    Admin Management > Spot Management:
+        Search Floor: GR 
+        Spot Number : GR-S001 
+        Available: available <default> 
+        Are you sure to create the spot?
+
+    Reservation :
+        Vehicle: 
+        Spot: GR-S001
+        Date:  
+        Start Time: 
+        End Time: 
+        Amount: 
+        Vehicle is reserved for booking.
+        Generated Booking Number is B240117-0001
+
+    Parking Payment
+        Booking Number / Vehicle Number: 
+        Amount: 
+        Payment Mode: 
+        Payment Recived Successfully.
+        Generated Payment Reference Number: P240117-0001
+       
+
+    
