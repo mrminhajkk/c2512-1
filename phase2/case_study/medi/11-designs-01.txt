@@ -118,7 +118,7 @@ App
             quantity cannot be edited if product is in purchase or sales.
     Sales Management 
         id 
-        date, payment_mode, invoice_number, total_amount 
+        date, payment_mode, invoice_number, total_amount, customer, phone  
         created_at 
 
         id, 
