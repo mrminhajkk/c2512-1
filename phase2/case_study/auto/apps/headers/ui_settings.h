@@ -1,2 +1,2 @@
 #pragma once
-#define CLRSCR_METHOD 1 // 1 - ANSI Escape Codes 2- system "clear"
+#define CLRSCR_METHOD 2 // 1 - ANSI Escape Codes 2- system "clear"

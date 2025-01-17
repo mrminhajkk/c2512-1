@@ -16,17 +16,23 @@ class AdminController {
 
             
             if((flags & 1) != 0) {
-                name = uiCommon.in.Str("Enter name");
+                name = uiCommon.in.Str("Enter name:");
             }
 
             if((flags & 2) != 0) {
-                email = uiCommon.in.Str("Enter email");
+                do {
+                    email = uiCommon.in.Str("Enter email:");
+                    if(!uiCommon.in.exist()) {
+                        break;
+                    }
+                    std::cout << "Email exist." << std::endl;
+                } while(true);
             }
             if((flags & 4) != 0) {
-                password = uiCommon.in.Str("Enter password");
+                password = uiCommon.in.Str("Enter password:");
             }
             if((flags & 8) != 0) {
-                phone = uiCommon.in.Str("Enter phone");
+                phone = uiCommon.in.Str("Enter phone:");
             }
             if((flags & 16) != 0) {
                 role = 1; // 1 - admin

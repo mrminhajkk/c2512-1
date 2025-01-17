@@ -43,6 +43,9 @@ class UiCommon {
 
         class Input {
             public:
+                Input() {
+                    srand(static_cast<unsigned>(time(0)));
+                }
                 std::string Str(std::string caption = "") {
                     std::cout << caption;
 
@@ -82,6 +85,17 @@ class UiCommon {
                         std::cerr << "Invalid Number" << std::endl;
                         return this->Double(caption);
                     }
+                }
+                int giveMeNumber(int start, int end)
+                {	
+                    const int MAX_SIZE = end - start + 1;
+                    int num = rand() % MAX_SIZE;
+                    num += start;
+                    return num;
+                }
+                bool exist() {
+                    int num = giveMeNumber(1,10);
+                    return (num == 1);
                 }
         };
 
