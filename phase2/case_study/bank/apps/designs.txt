@@ -19,20 +19,22 @@ App:
             A table or list of most recent actions 
                 (eg: new users, completed transactions)
         ::Admin > Manage Users Page::
-            - "Search" 
-            - "Add User"
-            - "View"    
-            - "Edit"
-            - "Delete"
-            - "Reset Password"
-            - "Lock Account"
+            Pick Option:
+            [1] "Search" 
+            [2] "Add User"
+            [3] "View"    
+            [4] "Edit"
+            [5] "Delete"
+            [6] "Reset Password"
+            [7] "Lock Account"
+            Your Option:
         ::Admin > Manage Users > Search::
             Search By
             [1] Name
             [2] Account Type 
             [3] Status 
             [4] Exit 
-            Option: 
+            Your Option: 
             Search By Name: 
             /Account Type (1-,2-,3):
             /Status (1-,2-):
@@ -55,7 +57,17 @@ App:
         ::Admin > Manage Users > View::
             Enter Name / Email: mahesh
             !Display Fields
-            Editable Fields: 
+            !Edit the Fields here.
+            [91] Confirm To Update [99] Cancel 
+            !Confirmation Message.
         ::Admin > Manage Users > Reset Password::
+            Enter Name / Email: mahesh
+            New Password: 
+            [91] Confirm To Reset Password [99] Cancel 
+            !Confirmation Message.
         ::Admin > Manage Users > Lock Account::    
+            Enter Name / Email: mahesh            
+            [91] Confirm To Lock Account [99] Cancel 
+            !Confirmation Message.
+
             
