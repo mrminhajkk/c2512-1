@@ -1,0 +1,6 @@
+Pages:
+    1. App Start Page 
+    2. Admin Home Page 
+    3. Driver Home Page 
+    4. Admin > Spot Management 
+    5. Admin > Spot Magemement > Create Spot 

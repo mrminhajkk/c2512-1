@@ -1,0 +1,61 @@
+App: 
+    ::Login Page::
+        - fields: email, password
+            email {required}
+            password {required}
+        ::Admin Page:: 
+            - "Dashboard", "User Management", "Monitor Transactions"
+            - "Loan Approval", "Reports & Analysis"
+            - "Settings"
+            - "Forgot Password", "Logout"
+        ::Admin > Dashboard::
+            - Cards at the Top: 
+            Total users 
+            Total Transactions 
+                monthly: , yearly: 
+            Pending Loan Applications
+            Reports Generated 
+            - Recent Activities 
+            A table or list of most recent actions 
+                (eg: new users, completed transactions)
+        ::Admin > Manage Users Page::
+            - "Search" 
+            - "Add User"
+            - "View"    
+            - "Edit"
+            - "Delete"
+            - "Reset Password"
+            - "Lock Account"
+        ::Admin > Manage Users > Search::
+            Search By
+            [1] Name
+            [2] Account Type 
+            [3] Status 
+            [4] Exit 
+            Option: 
+            Search By Name: 
+            /Account Type (1-,2-,3):
+            /Status (1-,2-):
+            Table : Name | Email | Account Type | Status 
+            Pagination: 1 / 4 [1] Prev [2] Next [3] Exit | Option: 
+        ::Admin > Manage Users > Add User::
+            fields: Name, Email, Password, Account Type
+                status (default Active)
+                id generated automatically 
+            name: required 
+            email: required, exist, isEmail
+        ::Admin > Manage Users > View::
+            Enter Name / Email: mahesh
+            !Display Fields
+            Name:  ???
+            Email: ???
+            Account Type : ???
+            Status: ???
+            ... 
+        ::Admin > Manage Users > View::
+            Enter Name / Email: mahesh
+            !Display Fields
+            Editable Fields: 
+        ::Admin > Manage Users > Reset Password::
+        ::Admin > Manage Users > Lock Account::    
+            

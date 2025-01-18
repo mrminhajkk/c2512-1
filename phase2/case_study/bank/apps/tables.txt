@@ -1,0 +1,54 @@
+users : 
+    id
+    name, email, password, phone, address 
+    status : 1-Active (Default), 2- Inactive
+    created_at 
+admins: 
+    id 
+    username, password 
+    role : 1-SuperAdmin, 2-Manager, 3-Staff 
+    created_at 
+accounts:
+    id 
+    user_id 
+    account_type (1-Savings, 2-Current, 3-Loan)
+    balance, interest_rate
+    status : 1-Active, 2-Inactive 
+    created_at 
+transactions: 
+    id
+    account_id 
+    transaction_type : 1-Deposit, 2-Withdrawal, 3-Transfer 
+    amount, transaction_date,
+    status : 1-Success, 2-Pending, 3-Failed 
+    description
+    created_at 
+loans: 
+    id
+    user_id
+    loan_type : 1-Personal, 2-Home, 3-Car, 4-Business 
+    loan_amount, interest_rate 
+    tenure_months, approved_amount
+    loan_status : 1-Pending (default), 2-Approved, 3-Rejected 
+    application_date (default sysdate)
+    created_at 
+reports: 
+    id
+    admin_id
+    report_type : 1-User Activity, 2-Transactions, 3-Loans, 4-Balances
+    generated_date (default sysdate) 
+    description 
+    created_at 
+accounts_logins 
+    id 
+    user_id, 
+    login_time (default sysdate)
+    ip_address, device_info 
+    created_at 
+notifications: 
+    id, 
+    user_id, 
+    admin_id,
+    message, notification_date, 
+    status : 1-Read, 2-Unread (default)
+    created_at 
