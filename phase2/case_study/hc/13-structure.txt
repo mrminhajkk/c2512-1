@@ -1,7 +1,7 @@
-c2512auto  [minhaj]
+C2512ge  [abel]
     - /misc 
-    - /designs  
-        - req.txt   [sana]
+    - /designs 
+        - req.txt   [ayisha]
         - tab.txt 
         - /ref
     - /app
