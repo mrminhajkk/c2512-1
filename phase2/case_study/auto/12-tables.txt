@@ -1,0 +1,7 @@
+tables: 
+    1. users 
+    2. vehicles 
+    3. floors 
+    4. spots 
+    5. reservations 
+    6. payments
