@@ -1,0 +1,14 @@
+1. users: id, name, email, password, phone, role, created_at, updated_at 
+2. suppliers: id, name, email, phone, address, created_at, updated_at
+3. products: id, code, name, descrpiton, category, supplier_id, 
+             quantity, cost, mrp, price, expiry_date, 
+             created_at, updated_at 
+4. purchases_master: id, supplier_id, date, invoice_number, bill_amount, is_cancelled, created_at
+   purchase_itmes: id, purchase_id, product_id, quantity, cost, amount, expiry 
+5. sales_master: id, date, invoice_number, bill_amount, is_cancelled, 
+        pay_mode, customer, customer_phone, doctor, 
+        created_at
+   sales_itmes: id, sales_id, product_id, quantity, mrp, price, amount, expiry
+
+
+   

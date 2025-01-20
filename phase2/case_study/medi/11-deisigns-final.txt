@@ -1,0 +1,194 @@
+POC: Create User, Login 
+"designs, uicode, app"
+
+::Application:: 
+    ::Login::
+        - page title
+        - form : username, password (caption, error message(s))
+            - fields 
+                username {required}
+                password {required}
+            - on form submit 
+                - Logging Into App 
+                OR
+                - Invalid Username / Password message.
+            - after form submit: 
+                - successful message welcoming the user 
+                - DISPATCH / ROUTE to the page 
+        ::Admin Page::
+            ::Home::
+                Welcome sooraj!
+                -Nav Pages: 
+                    [1] User Management [2] Supplier Management [3] Product Management 
+                    [4] Purchase Management [5] Sales Management
+                    [6] Change Password
+                    [99] Logout
+            ::Change Password::
+                    - page title 
+                    - old_password field {required, matched}, new_password field {required}
+                    - on form submit: 
+                        - OR Confirm  
+                        - OR Exit  
+                    - after form submit:
+                        - successful message    
+                            - login
+            ::User Management:: 
+                -Nav Pages: 
+                    [1] Create [2] Edit [3] Delete [4] Search
+                    [5] Change Password
+                    [99] Exit
+                ::User Management > Create:: 
+                    - page title
+                    - form : name, password, email, phone, 
+                             role 
+                        - fields: (caption, error message(s))
+                            name {required}
+                            password {required, strength}
+                            email {required, isEmail, isExist}
+                            phone {required, 10-digits isPhoneNumber, isExist}
+                            role {selectable}
+                    - on form submit: 
+                        - allow to edit field / group of fields !XXX
+                        - OR Confirm  
+                        - OR Exit  
+                    - after form submit:
+                        - successful message 
+                ::User Management > Edit::
+                    - page title 
+                    - starts with Search: 
+                    - display the fields of an user
+                    - edit field / group of fields !XXX
+                    - on form submit: 
+                        - OR Confirm  
+                        - OR Exit  
+                    - after form submit:
+                        - successful message 
+                ::User Management > Delete::
+                    - page title 
+                    - starts with Search: 
+                    - display the fields of an user                    -
+                    - on form submit: 
+                        - OR Confirm  
+                        - OR Exit  
+                    - after form submit:
+                        - successful message 
+                ::User Management > Search::
+                    - page title 
+                    - starts with Search: 
+                    - display the users in tabular format 
+                    - pagination if more than one page, here page = 20 business objects  
+                ::User Management > Change Password::
+                    - page title 
+                    - starts with Search: 
+                    - display the fields of an user
+                    - new_password field {required}
+                    - on form submit: 
+                        - OR Confirm  
+                        - OR Exit  
+                    - after form submit:
+                        - successful message       
+            ::Supplier Management::             
+            ::Product Management:: 
+                -Nav Pages: 
+                    [1] Create [2] Edit [3] Delete [4] Search
+                    [5] Change Password
+                    [99] Exit 
+                ::Product Management > Create:: 
+                    - page title
+                        - form :  name, description, category, quantity, supplier, cost, mrp, price, expiry
+                            - fields: (caption, error message(s))
+                                name {required, isExist}
+                                description {required, isExist}
+                                category {required}
+                                quantity {required, minimum=0}
+                                supplier {<search supplier>}
+                                    !After Search, Display as "Sooraj, Ph:1112223333, sooraj@gmail.com, addr:kazhakootam side gate techno park"
+                                cost {required, minimum=0}
+                                mrp {required, minimum=0}
+                                price {required, minimum=0, price <= mrp}
+                                expiry {required, isDate, expiry >= sysdate}
+                        - on form submit: 
+                            - allow to edit field / group of fields !XXX
+                            - OR Confirm  
+                            - OR Exit  
+                        - after form submit:
+                            - successful message 
+                                - code is generated 
+            ::Purchase Management::
+                -Nav Pages: 
+                    [1] Create [2] View [3] Cancel [4] Today Purchases        ! Cancel By Invoice Number:
+                    [5] Purchase By Date  [purchase date sort asc]
+                    [99] Exit 
+                ::Create Purchase::
+                    - form 
+                        fields: product, quanity [many iterations of entries]
+                            product {required, isExist, isStockAvailable, "END" to stop the iterations} by code or name 
+                            !display "Stock Quantity:10, Cost:, Expiry:"
+                            quantity {required, minimum=0}
+                            !display the table of added puchase line items as follows:
+                            cost {required}
+                            code    product   quanity     cost   amount  expirty 
+                    - purchase level form fields : supplier{required}, invoice number{required}, invoice date {required}
+                    - display the purhcase invoice 
+                    - on form submit: 
+                        - allow to edit pruchase line items     !XXX
+                        - allow to edit pruchase level fields   !XXX
+                        - OR Confirm  
+                        - OR Exit  
+                    - after form submit:
+                        - successful message 
+                            - update the stock quantity and cost and expiry date for each product 
+                            
+                ::Purchase By Date::
+                    - field : date {requrired, isDate}
+                    - result is tabular form {Date, Invoice Number, Supplier, Items Count, Bill Amount}
+
+            ::Sales Management::
+                -Nav Pages: 
+                    [1] Create [2] View [3] Cancel [4] Today Sales        ! View / Cancel By Invoice Number:
+                    [5] Sales By Date  [sales date sort asc]
+                    [99] Exit 
+                ::Create Sales::
+                    - form 
+                        fields: product, quanity [many iterations of entries]
+                            product {required, isExist, isStockAvailable, "END" to stop the iterations} by code or name 
+                            !display "Stock Quantity:10, MRP: , Price: $10, Expiry:"
+                            quantity {required, minimum=0, quantity <= stock_quantity}
+                            !display the table of added sales line items as follows:
+
+                            code    product   quanity     price   amount  expirty 
+                    - sales level form fields : customer, phone, doctor, {not required [optional] fields}
+                         pay_mode {selectable}
+                    - display the sales invoice 
+                    - on form submit: 
+                        - allow to edit sales line items
+                        - allow to edit sales level form fields
+                        - OR Confirm  
+                        - OR Exit  
+                    - after form submit:
+                        - successful message 
+                            - invoice number is generated 
+                            - update [decrement/reduce] the stock quantity 
+
+                ::Sales By Date::
+                    - field : date {requrired, isDate}
+                    - result is tabular form {Date, Invoice Number, Supplier, Items Count, Bill Amount}
+        ::Manager Page::
+            ::Home::
+                Welcome sooraj!
+                -Nav Pages: 
+                    [2] Supplier Management [3] Product Management 
+                    [4] Purchase Management [5] Sales Management
+                    [6] Change Password
+                    [99] Logout 
+            ::Change Password::
+                    the same in Admin Page
+        ::Pharmacist Page::
+            ::Home::
+                Welcome sooraj!
+                -Nav Pages: 
+                    [5] Sales Management
+                    [6] Change Password
+                    [99] Logout 
+            ::Change Password::
+                    the same in Admin Page
