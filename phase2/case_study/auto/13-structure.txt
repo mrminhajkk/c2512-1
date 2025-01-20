@@ -1,0 +1,14 @@
+c2512auto 
+    - /misc 
+    - /designs 
+        - req.txt
+        - tab.txt 
+        - /ref
+    - /app
+        - /headers 
+        - /sources 
+        - Makefile 
+    - /uiapp
+        - /headers 
+        - /sources 
+        - Makefile 
