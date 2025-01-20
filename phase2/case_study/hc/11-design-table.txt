@@ -1,0 +1,10 @@
+1. users : 
+2. patients :
+3. departments : 
+4. doctors :
+5. schedules:
+6. appointments: 
+7. medical_histories: 
+8. payments: 
+9. login:                   !!XXX
+10. login_activities:       !!XXX (audit purpose HIPAA)

@@ -1,0 +1,95 @@
+POC: User, Login 
+designs, uicode, app 
+
+::Application::
+    ::Patient Registration::
+
+    ::Login::
+        - page title
+        - form : username, password (caption, error message(s))
+            - fields 
+                username {required}
+                password {required}
+            - on form submit 
+                - Logging Into App 
+                OR
+                - Invalid Username / Password message.
+            - after form submit: 
+                - successful message welcoming the user 
+                - DISPATCH / ROUTE to the page 
+        ::Patient Page::
+
+        ::Doctor Page::
+
+        ::Admin Page::
+            ::Home::
+                Welcome sooraj!
+                -Nav Pages: 
+                    [1] Patient Management [2] Department Mangement 
+                    [3] Doctor Management [4] Appointment Management 
+                    [5] Schedule Management [6] Consultation Management 
+                    [7] Payment Management [8] User Management 
+                    [9] Change Password
+                    [99] Logout
+            ::Change Password::
+                - page title 
+                - old_password field {required, matched}, new_password field {required}
+                - on form submit: 
+                    - OR Confirm  
+                    - OR Exit  
+                - after form submit:
+                    - successful message    
+                        - login
+            ::Patient Management::
+                -Nav Pages: 
+                    [1] Create [2] Edit [3] Delete [4] Search
+                    [99] Exit
+                ::Patient Management > Create::
+                    - page title
+                    - form : name, age, gender, email, password, 
+                        phone, address, location, relation 
+                        - fields: (caption, error message(s))
+                            name {required}
+                            age {required, minimum=0, maximum=160}
+                            gender {selectable}
+                            email {required, isEmail, isExist}
+                                if email exists: ask relationship from original one
+                            relation: Father (if phone/email not exist before, field is empty ie not displayable field)
+                            password {required, strength}
+                            phone {required, 10-digits isPhoneNumber, isExist}
+                                display automatically if you entered the relationship 
+                            address
+                                display automatically if you entered the relationship 
+                            location
+                                display automatically if you entered the relationship 
+                    - on form submit: 
+                        - allow to edit field / group of fields !XXX
+                        - OR Confirm  
+                        - OR Exit  
+                    - after form submit:
+                        - successful message 
+                            - generate the patient number 
+            ::Doctor Management::
+                -Nav Pages: 
+                    [1] Create [2] Edit [3] Delete [4] Search
+                    [99] Exit
+                ::Doctor Management > Create::
+                    - page title
+                    - form : name, department, phone, email, password, address, location 
+                        - fields: (caption, error message(s))
+                            name {required}
+                            department {searchable}
+                                !Display as "Cardialogy, heart is very important for life...."
+                            email {required, isEmail, isExist}
+                            password {required, strength}
+                            phone {required, 10-digits isPhoneNumber, isExist}
+                            address
+                            location
+                    - on form submit: 
+                        - allow to edit field / group of fields !XXX
+                        - OR Confirm  
+                        - OR Exit  
+                    - after form submit:
+                        - successful message 
+                            - generate the doctor code 
+        ::Help Desk Operator Page::
