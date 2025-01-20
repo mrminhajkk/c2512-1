@@ -1,6 +1,6 @@
 tables: 
     1. users 
-    2. vehicles 
+    2. cars 
     3. floors 
     4. spots 
     5. reservations 
