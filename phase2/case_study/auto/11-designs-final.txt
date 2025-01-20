@@ -108,27 +108,27 @@ Application [1] [POC]
                     - successful message 
                         - logout 
         ::Admin Page::
-            ::Home Page::
+            ::Home Page:: [1.2.2]
                 -Nav Pages: 
                     [1] Admins Management [2] Floor Management [3] Spot Management 
                     [4] Bookings History [5] Payments History
                     [99] Logout 
-            ::Admins Management:: 
+            ::Admins Management:: [1.2.2.1]
                 -Nav Pages: 
                     [1] Create [2] Edit [3] Search [4] Delete
                     [5] Change Password 
                     [99] Exit 
-            ::Floor Management::
+            ::Floor Management:: [1.2.2.2]
                     [1] Create [2] Edit [3] Search [4] Delete 
                     [5] Display Spots Availability
                     [99] Exit
-            ::Spot Management::
+            ::Spot Management:: [1.2.2.3]
                     [1] Create [2] Edit [3] Search [4] Delete 
                     [99] Exit    
-            ::Bookings History::
+            ::Bookings History:: [1.2.2.4]
                     [1] Today Bookings [2] Bookings By Date         ! display table {Time Car   Driver  Parking} 10:00 TN 45 Z1020 Minhaj GR-001 10-Feb-2025 10:00-21:00
                     [99] Exit            
-            ::Payments History::
+            ::Payments History:: [1.2.2.5]
                     [1] Today Payments [2] Payments By Date         ! display table {Time Car   Driver  Parking Amount} 10:00 TN 45 Z1020 Minhaj GR-001 1000
                     [99] Exit 
 
